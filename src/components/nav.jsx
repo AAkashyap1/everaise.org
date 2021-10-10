@@ -5,8 +5,6 @@ import { useAuth } from '../contexts/AuthContext.js'
 import { database } from '../firebase'
 import {
   FingerPrintIcon,
-  MailIcon,
-  QuestionMarkCircleIcon,
 } from '@heroicons/react/outline'
 import { 
   GlobeIcon,
