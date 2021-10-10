@@ -10,7 +10,6 @@ import {
   GlobeIcon,
   VariableIcon, 
   CalculatorIcon,
-
 } from '@heroicons/react/solid'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Logo from '../images/EveraiseAcademy.png'
