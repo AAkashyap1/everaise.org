@@ -1,0 +1,73 @@
+{
+  "name": "react-firebase-hooks",
+  "version": "3.0.4",
+  "description": "React Hooks for Firebase",
+  "author": "CS Frequency Limited (https://csfrequency.com)",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/csfrequency/react-firebase-hooks",
+  "bugs": "https://github.com/csfrequency/react-firebase-hooks/issues",
+  "keywords": [
+    "react",
+    "hooks",
+    "firebase"
+  ],
+  "files": [
+    "auth/dist/*.js",
+    "auth/dist/auth",
+    "auth/dist/util",
+    "auth/dist/*.js.flow",
+    "auth/package.json",
+    "database/dist/*.js",
+    "database/dist/database",
+    "database/dist/util",
+    "database/dist/*.js.flow",
+    "database/package.json",
+    "dist/*.js",
+    "dist/*.js.map",
+    "firestore/dist/*.js",
+    "firestore/dist/firestore",
+    "firestore/dist/util",
+    "firestore/dist/*.js.flow",
+    "firestore/package.json",
+    "storage/dist/*.js",
+    "storage/dist/storage",
+    "storage/dist/util",
+    "storage/dist/*.js.flow",
+    "storage/package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csfrequency/react-firebase-hooks.git"
+  },
+  "scripts": {
+    "build": "npm run clean && rollup -c",
+    "clean": "rimraf ./dist ./auth/dist ./auth/*.d.ts ./database/dist ./database/*.d.ts ./firestore/dist ./firestore/*.d.ts ./storage/dist ./storage/*.d.ts ./util/*.d.ts",
+    "dev": "npm run clean && rollup -c -w",
+    "prepublish": "npm run build",
+    "prettier": "prettier --check .",
+    "start": "rollup -c -w"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "firebase": "^8.0.0",
+    "path": "^0.12.7",
+    "prettier": "2.2.1",
+    "react": "^17.0.1",
+    "rimraf": "^2.6.2",
+    "rollup": "0.57.1",
+    "rollup-plugin-commonjs": "9.1.0",
+    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-node-resolve": "3.3.0",
+    "rollup-plugin-typescript2": "0.12.0",
+    "rollup-plugin-uglify": "3.0.0",
+    "typescript": "2.8.1"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "firebase": ">= 8.0.0"
+  },
+  "typings": "index.d.ts"
+}

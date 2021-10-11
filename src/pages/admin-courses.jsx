@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useAuth } from '../contexts/AuthContext'
 import { database } from '../firebase'
+import Launch from '../images/launch.png'
+import EvCirc from '../images/evcirc.png'
 import {
   CalculatorIcon,
   HomeIcon,
@@ -119,7 +121,7 @@ export default function AdminCourses() {
                 <Link to="/landing">
                   <img
                     className="h-8 w-auto"
-                    src={process.env.REACT_APP_LAUNCH}
+                    src={Launch}
                     alt="Everaise Launch"
                   ></img>
                 </Link>
@@ -176,7 +178,7 @@ export default function AdminCourses() {
               <Link to="/landing">
                 <img
                   className="h-8 w-auto"
-                  src={process.env.REACT_APP_LAUNCH}
+                  src={Launch}
                   alt="Everaise logo"
                 ></img>
               </Link>
@@ -259,7 +261,7 @@ export default function AdminCourses() {
                       <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={process.env.REACT_APP_EVCIRC}
+                          src={EvCirc}
                           alt=""
                         />
                         <span className="ml-3 text-gray-700 text-sm font-medium lg:block">
@@ -349,14 +351,14 @@ export default function AdminCourses() {
                   <div className="flex items-center">
                     <img
                       className="hidden h-16 w-16 rounded-full sm:block"
-                      src={process.env.REACT_APP_EVCIRC}
+                      src={EvCirc}
                       alt=""
                     />
                     <div>
                       <div className="flex items-center">
                         <img
                           className="h-16 w-16 rounded-full sm:hidden"
-                          src={process.env.REACT_APP_EVCIRC}
+                          src={EvCirc}
                           alt=""
                         />
                         <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">

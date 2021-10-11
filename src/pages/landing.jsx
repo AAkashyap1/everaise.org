@@ -5,6 +5,7 @@ import Nav from '../components/nav'
 import Footer from '../components/footer'
 import { LightBulbIcon, LockOpenIcon, SearchCircleIcon } from '@heroicons/react/outline'
 import Logo from '../images/Chalkboard.png'
+import Board from '../images/board.png'
 
 const metrics = [
   { id: 1, stat: '1500+', emphasis: 'Students', rest: 'have been inspired through Everaise.' },
@@ -238,7 +239,7 @@ export default function Landing() {
               <div className="h-full xl:relative xl:col-start-2">
                 <img
                   className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
-                  src={process.env.REACT_APP_BOARD}
+                  src={Board}
                   alt="Chalkboard"
                 />
                 <div

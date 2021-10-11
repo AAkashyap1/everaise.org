@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext.js'
+import EvCirc from '../images/evcirc.png'
 import { XCircleIcon, CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/solid'
+import Board from '../images/board.png'
 
 export default function SignIn1(props) {
   const emailRef = useRef()
@@ -55,7 +57,7 @@ export default function SignIn1(props) {
             <Link to="/landing"> 
               <img
                 className="h-12 w-auto"
-                src={process.env.REACT_APP_EVCIRC}
+                src={EvCirc}
                 alt="Everaise"
               />
             </Link>
@@ -190,7 +192,7 @@ export default function SignIn1(props) {
       <div className="hidden lg:block relative w-0 flex-1">
         <img
           className="absolute inset-0 h-full w-full object-cover"
-          src={process.env.REACT_APP_BOARD}
+          src={Board}
           alt="Board with Writing"
         />
       </div>
