@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  REACT_APP_FIREBASE_API_KEY: AIzaSyCtNgUqlIOqJVJUkf2p6ncM5jgdssa9BSk
+  REACT_APP_FIREBASE_AUTH_DOMAIN: everaise-launch-83ee8.firebaseapp.com
+  REACT_APP_FIREBASE_DATABASE_URL: https://everaise-launch-83ee8-default-rtdb.firebaseio.com
+  REACT_APP_FIREBASE_PROJECT_ID: everaise-launch-83ee8
+  REACT_APP_FIREBASE_STORAGE_BUCKET: everaise-launch-83ee8.appspot.com
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID: 862278495973
+  REACT_APP_FIREBASE_APP_ID: 1:862278495973:web:40ce33cb196be320382e0c
+  REACT_APP_FIREBASE_MEASUREMENT_ID: G-RBBZJNHH3S
+  REACT_APP_EVCIRC: https://media.discordapp.net/attachments/805001580746637344/833470922563518494/evcirc.png?width=527&height=527
+  REACT_APP_PRIVACY: https://docs.google.com/document/d/e/2PACX-1vTdow0IXqkqWFEXcXdsNzla3IxIwKupaulImhvylq6nTBj7nDkZHyo7iFgPwFiQH1WgBFxvRW7QyOhE/pub
+  REACT_APP_TERMS: https://docs.google.com/document/d/e/2PACX-1vTG0Rfwg1IkmjtNHf2ZR-BfVRglq-c09WKTIr1cz8xgWM1ajG-vpkl438qn0JJya6tRkrkpcYdKrwqQ/pub
+  REACT_APP_CHALKBOARD: https://cdn.discordapp.com/attachments/771065743344795658/841472838309642271/Screen_Shot_2021-05-10_at_8.31.33_PM.png
+  REACT_APP_BOARD: https://cdn.discordapp.com/attachments/712062038188228669/836040338320654387/Screen_Shot_2021-04-25_at_8.45.02_PM.png
+  REACT_APP_LINKEDIN: https://cdn.discordapp.com/attachments/698939157992701962/842868840664399922/63Q8w8vfLUVSzhb3Q2G3wn7B7iKml2PlG4eVmk8CMcv0772jWF94ZyFzdMqlCdhf63mh10yfqqgD8WfU0H7AreHfGLCyIRwVGZxX.png
+  REACT_APP_LAUNCH: https://cdn.discordapp.com/attachments/826254368893435915/834491471444312094/launch_1.png
+  REACT_APP_LOGO: https://cdn.discordapp.com/attachments/826254368893435915/888779643178610708/Website20Logo20with20name202-removebg-preview.png
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
