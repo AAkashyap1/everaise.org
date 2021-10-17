@@ -1,8 +1,9 @@
 import Nav from '../components/nav';
 import Footer from '../components/footer'
-import { useEffect } from 'react'  
+import { useEffect } from 'react' 
+import { Link } from 'react-router-dom' 
 
-const core = [
+export const core = [
   {
     name: 'Preston Fu',
     roles: ['Co-founder', 'Logistics', 'Outreach'],
@@ -105,7 +106,7 @@ const core = [
   },
 ]
 
-const staff = [
+export const staff = [
   {
     name: 'Evan Kim',
     roles: ['Physics', 'Curriculum', 'Instructor'],
@@ -304,7 +305,7 @@ export default function Team() {
               <p className="text-xl text-gray-500">
               Our team is comprised of high school and college students who have been successful 
               in a variety of STEM fields, including math, physics, and biology. Interested in being part
-              of the team? <span className="text-indigo-500">Join us!</span>
+              of the team? Learn more {' '}<Link to="/people/join"><span className="text-indigo-500">here</span></Link>!
               </p>
             </div>
             <ul className="flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">

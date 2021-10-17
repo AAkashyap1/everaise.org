@@ -20,7 +20,9 @@ import Update from './pages/update';
 import Home from './pages/home';
 import Homework from './pages/homework';
 import Dashboard from './pages/dashboard';
-import Guest from './pages/guest';
+import Guest from './pages/guest'
+import Estimathon from './pages/estimathon';
+import Resources from './pages/resources'
 import NotFound from './pages/404';
 
 
@@ -33,10 +35,12 @@ ReactDOM.render(
             <Redirect to="/"></Redirect>
           </Route>
           <Route exact path="/" component={Landing} />
-          <Route path="/team" component={Team} />
+          <Route path="/people/team" component={Team} />
           <Route path="/contact" component={Contact} />
-          <Route path="/events" component={Guest} />
+          <Route path="/events/estimathon" component={Estimathon} />
+          <Route path="/events/guest-speakers" component={Guest} />
           <Route path="/sign-in-student" component={SignIn1} />
+          <Route path="/resources" component={Resources} />
           <ProfileRoute path="/profile" component={Profile} />
           <PrivateRoute path="/update" component={Update} />
           <PrivateRoute path="/enroll" component={Enroll} />

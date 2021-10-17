@@ -6,10 +6,11 @@ import Footer from '../components/footer'
 import { LightBulbIcon, LockOpenIcon, SearchCircleIcon } from '@heroicons/react/outline'
 import Logo from '../images/Chalkboard.png'
 import Board from '../images/board.png'
+import { core, staff } from './team'
 
 const metrics = [
   { id: 1, stat: '1500+', emphasis: 'Students', rest: 'have been inspired through Everaise.' },
-  { id: 2, stat: '30+', emphasis: 'Experienced staff members', rest: 'help contribute to Everiase.' },
+  { id: 2, stat: String(core.length + staff.length), emphasis: 'Experienced staff members', rest: 'help contribute to Everiase.' },
   { id: 3, stat: '40+', emphasis: 'Countries', rest: 'from around the globe have been impacted by Everaise.' },
 ]
 
@@ -257,7 +258,7 @@ export default function Landing() {
                 </span>
               </h2>
               <p className="mt-3 text-xl font-bold text-gray-900">
-              We are a group of 50 or so high school and college students who have been successful in a variety of STEM fields, including math, physics, and biology.
+              We are a group of 30 or so high school and college students who have been successful in a variety of STEM fields, including math, physics, and biology.
               </p>
               <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
                 {metrics.map((item) => (
@@ -362,6 +363,7 @@ export default function Landing() {
             </div>
           </div>
         </div>
+        
         {/* Sponsor Us */}
         <div className="bg-gray-50">
           <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 py-12 lg:px-8">
