@@ -18,7 +18,7 @@ export const core = [
     name: 'Ananth Kashyap',
     roles: ['Software Engineer'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/712062038188228669/860924457655599124/Screen_Shot_2021-07-01_at_11.15.33_PM.png',
+      'https://media-exp1.licdn.com/dms/image/C4D03AQH07DUdbFFFSg/profile-displayphoto-shrink_400_400/0/1633740449469?e=1640217600&v=beta&t=DwT6a6yYozE85eJu_rGEv3L6WU0Zkb-L-lLiH939cKk',
     achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
     education: 'Fox Chapel Area High School, PA — Class of 2023',
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
