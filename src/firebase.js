@@ -27,6 +27,7 @@ export const database = {
   math_assignments: firestore.collection("math_assignments"),
   biology_assignments: firestore.collection("biology_assignments"),
   astronomy_assignments: firestore.collection("astronomy_assignments"),
+  latex: firestore.collection("latex"),
 }
 
 export const increment = firebase.firestore.FieldValue.increment(1)

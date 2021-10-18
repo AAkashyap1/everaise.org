@@ -1,17 +1,14 @@
 import Nav from '../components/nav';
 import Footer from '../components/footer'
-import { useEffect } from 'react'  
+import { useEffect, useState } from 'react'  
 import EvCirc from '../images/evcirc.png'
-import Latex from 'react-latex'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
+import { database } from '../firebase';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-
-// eslint-disable-next-line
-const scoring = `An interval you submit, $[\mathrm{min}, \mathrm{max}]$, where min and max are positive integers, is called good if it contains the correct answer to the problem. Your score is given by: $$\left( 10 + \sum_{\text{good intervals}}\left\lfloor \frac{\mathrm{max}}{\mathrm{min}} \right\rfloor \right) \cdot 2 ^{13 - (\#\text{ of good intervals})}$$ Thus, wider intervals increase your score, and incorrect/blank intervals double your score. The lowest score wins.`
 
 const faqs = [
   {
@@ -39,9 +36,19 @@ const contests = [
 ]
 
 export default function Estimathon() {
+  const [scoring, setScoring] = useState('')
+  const Latex = require('react-latex')
   useEffect(() => {
     document.title = 'Events - Everaise Academy'
   })
+
+  function GetScoring() {
+    database.latex.doc("default").get().then((doc) => {
+      setScoring(doc.data().Latex);
+    })
+
+    return scoring
+  }
 
   return (
     <div>
@@ -165,7 +172,7 @@ export default function Estimathon() {
                     <div className="py-4 sm:py-5 sm:gap-4 sm:px-6">
                       <dt className="text-base font-normal text-gray-700">
                         <Latex>
-                          {scoring}
+                          {GetScoring()}
                         </Latex>
                       </dt>
                     </div>
