@@ -60,7 +60,7 @@ export default function Resources() {
             <div className="space-y-5 sm:space-y-4 xl:max-w-none">
               <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Our Resources</h2>
               <p className="text-xl text-gray-500">
-              hese books grew out of the curriculum from Everaise Academy courses taught over the past two years. Each book offers a comprehensive, 
+              These books grew out of the curriculum from Everaise Academy courses taught over the past two years. Each book offers a comprehensive, 
               in-depth review of their respective fields, complete with theoretical exposition, detailed walkthroughs to a myriad of example problems, 
               and a wide variety of practice problems with hints and full solutions. They are available at a low cost on Amazon; our students gain 
               digital access for free.
