@@ -1,6 +1,13 @@
 import Nav from "../components/nav"
+import { useEffect } from 'react'
 
 export default function NotFound() {
+
+  useEffect(() => {
+    document.title = 'Page not Found - Everaise Academy'
+    document.body = 'Sorry, we did not find the page you were looking for.'
+  })
+
   return (
     <div className="min-h-screen">
       <Nav />

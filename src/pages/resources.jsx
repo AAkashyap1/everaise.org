@@ -48,7 +48,7 @@ const resources = [
 
 export default function Resources() {
   useEffect(() => {
-    document.title = 'Events - Everaise Academy'
+    document.title = 'Resources - Everaise Academy'
   })
 
   return (

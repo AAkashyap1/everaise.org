@@ -20,9 +20,10 @@ import Update from './pages/update';
 import Home from './pages/home';
 import Homework from './pages/homework';
 import Dashboard from './pages/dashboard';
-import Guest from './pages/guest'
+import Guest from './pages/guest';
 import Estimathon from './pages/estimathon';
-import Resources from './pages/resources'
+import Resources from './pages/resources';
+import Courses from './pages/courses';
 import NotFound from './pages/404';
 
 
@@ -38,6 +39,7 @@ ReactDOM.render(
           <Route path="/people/team" component={Team} />
           <Route path="/contact" component={Contact} />
           <Route path="/events/estimathon" component={Estimathon} />
+          <Route path="/courses" component={Courses} />
           <Route path="/events/guest-speakers" component={Guest} />
           <Route path="/sign-in-student" component={SignIn1} />
           <Route path="/resources" component={Resources} />

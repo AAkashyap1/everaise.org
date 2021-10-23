@@ -131,7 +131,7 @@ const speakers = [
 
 export default function Guest() {
   useEffect(() => {
-    document.title = 'Events - Everaise Academy'
+    document.title = 'Guest Speakers - Everaise Academy'
   })
 
   return (

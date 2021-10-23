@@ -301,7 +301,7 @@ export default function Team() {
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="space-y-12">
             <div className="space-y-5 sm:space-y-4 xl:max-w-none">
-              <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Meet our team</h2>
+              <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Meet Our Team</h2>
               <p className="text-xl text-gray-500">
               Our team is comprised of high school and college students who have been successful 
               in a variety of STEM fields, including math, physics, and biology. Interested in being part
