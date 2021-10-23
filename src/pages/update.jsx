@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react'
 import { Transition, Listbox } from '@headlessui/react'
-import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/outline'
+import { CheckCircleIcon } from '@heroicons/react/outline'
 import { SelectorIcon, CheckIcon } from '@heroicons/react/solid'
 import { database, getUserInfo } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
