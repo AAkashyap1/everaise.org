@@ -5,7 +5,6 @@ export default function NotFound() {
 
   useEffect(() => {
     document.title = 'Page not Found - Everaise Academy'
-    document.body = 'Sorry, we did not find the page you were looking for.'
   })
 
   return (

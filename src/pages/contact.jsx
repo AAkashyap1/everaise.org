@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 export default function Contact() {
   useEffect(() => {
     document.title = 'Contact Us - Everaise Academy'
-    document.body = 'Have any questions or concerns? Contact Everaise Academy here.'
   })
 
   return (

@@ -88,7 +88,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     document.title = 'Dashboard - ' + courseName
-    document.body = 'View handouts, leaderboards, and homework assignments for the 2021 Everaise Academy ' + courseName + ' course.'
   })
 
   function GetLeaders() {

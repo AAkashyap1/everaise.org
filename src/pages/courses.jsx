@@ -97,7 +97,6 @@ export default function Courses() {
 
   useEffect(() => {
     document.title = 'Courses - Everaise Academy'
-    document.body = `View Everaise Academy's full list of high-quality, in-depth courses.`
   })
 
   return (
