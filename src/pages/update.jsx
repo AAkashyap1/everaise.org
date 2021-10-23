@@ -6,7 +6,7 @@ import { database, getUserInfo } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 import { countryData } from '../variables/countries'
 import Nav from '../components/nav'
-import Footer from '../components/footer'
+import Footer from '../components/footer' 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
