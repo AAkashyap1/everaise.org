@@ -9,7 +9,6 @@ import Logo from '../images/Chalkboard.png'
 import Board from '../images/board.png'
 import { core, staff } from './team'
 import CountUpOnce from '../utility/count'
-import Typing from 'react-typing-animation'
 import Carousel from 'react-elastic-carousel'
 
 const metrics = [
@@ -62,24 +61,26 @@ const people = [
 
 const speakers = [
   {
-    name: 'Sameer Rajesh',
-    roles: ['Junior @ UC Berkeley'],
+    name: 'Dr. Chong Hon Yew',
+    roles: ['President @ Astronomical Society of Penang'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/unnamed-9-1.png',
-    title: 'Itsy Bitsy Origami',
+      'https://everaise.org/wp-content/uploads/Photo-1.jpg',
+    title: 'What will James Webb will tell us?',
     description: 
-      `Beginning with a brief discussion and survey of the introduction of concepts from physics 
-      to the study of biology, we will make our way through understanding the protein folding problem 
-      and looking at recent advances, culminating in the recent release of AlphaFold as an efficient 
-      protein structure prediction algorithm. Topics include biophysics, modeling, and computational 
-      methods in biology.`,
+      `Since its launch in 1990, the Hubble Space Telescope has not ceased to amaze astronomers and 
+      astronomy enthusiasts around the world with its amazing images of astronomical objects, ranging 
+      from the Earth and nearby stars to the edge of the observable universe. The James Webb Space 
+      Telescope, to be launched in late 2021, will explore even further into the universe and discover 
+      unimaginable astronomical objects and astrophysical phenomena. What could these include, and how 
+      are they practical today?`,
     background: 
-      `Sameer Rajesh is a rising junior at UC Berkeley studying Molecular and Cell Biology. Sameer’s 
-      interests lie in biophysics and biophysical chemistry, and he uses tools from these fields to 
-      help build physical models for biological phenomena. When not hunched over his bench, he’s usually 
-      hanging out with friends, watching TV, and, as of recently, dabbling in writing.`,
-    link: 'https://www.youtube.com/watch?v=L53MnG4uOlo',
-    date: 'July 28, 2021'
+      `Dr. Chong Hon Yew is the president of the Astronomical Society of Penang, Malaysia. Dr. Chong 
+      received his Ph.D. in Low-Temperature Physics from the University of Grenoble, France in 1979 and 
+      later became a lecturer in physics at the University of Science, Malaysia. As an advisor to the 
+      university’s astronomy club, he has promoted a variety of astronomy activities in schools, colleges, 
+      government departments, multinational companies, and large shopping complexes.`,
+    link: 'https://youtu.be/KRKYn1Eyp7E',
+    date: 'August 2, 2021'
   },
   {
     name: 'CJ Quines',
@@ -101,26 +102,24 @@ const speakers = [
     date: 'July 31, 2021'
   },
   {
-    name: 'Dr. Chong Hon Yew',
-    roles: ['President @ Astronomical Society of Penang'],
+    name: 'Sameer Rajesh',
+    roles: ['Junior @ UC Berkeley'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/Photo-1.jpg',
-    title: 'What will James Webb will tell us?',
+      'https://everaise.org/wp-content/uploads/unnamed-9-1.png',
+    title: 'Itsy Bitsy Origami',
     description: 
-      `Since its launch in 1990, the Hubble Space Telescope has not ceased to amaze astronomers and 
-      astronomy enthusiasts around the world with its amazing images of astronomical objects, ranging 
-      from the Earth and nearby stars to the edge of the observable universe. The James Webb Space 
-      Telescope, to be launched in late 2021, will explore even further into the universe and discover 
-      unimaginable astronomical objects and astrophysical phenomena. What could these include, and how 
-      are they practical today?`,
+      `Beginning with a brief discussion and survey of the introduction of concepts from physics 
+      to the study of biology, we will make our way through understanding the protein folding problem 
+      and looking at recent advances, culminating in the recent release of AlphaFold as an efficient 
+      protein structure prediction algorithm. Topics include biophysics, modeling, and computational 
+      methods in biology.`,
     background: 
-      `Dr. Chong Hon Yew is the president of the Astronomical Society of Penang, Malaysia. Dr. Chong 
-      received his Ph.D. in Low-Temperature Physics from the University of Grenoble, France in 1979 and 
-      later became a lecturer in physics at the University of Science, Malaysia. As an advisor to the 
-      university’s astronomy club, he has promoted a variety of astronomy activities in schools, colleges, 
-      government departments, multinational companies, and large shopping complexes.`,
-    link: 'https://youtu.be/KRKYn1Eyp7E',
-    date: 'August 2, 2021'
+      `Sameer Rajesh is a rising junior at UC Berkeley studying Molecular and Cell Biology. Sameer’s 
+      interests lie in biophysics and biophysical chemistry, and he uses tools from these fields to 
+      help build physical models for biological phenomena. When not hunched over his bench, he’s usually 
+      hanging out with friends, watching TV, and, as of recently, dabbling in writing.`,
+    link: 'https://www.youtube.com/watch?v=L53MnG4uOlo',
+    date: 'July 28, 2021'
   },
   {
     name: 'Professor Michael Sipser',
@@ -270,10 +269,7 @@ export default function Landing() {
                     <span className="block text-white">Scientists Worldwide</span>
                   </h1>
                   <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-white">
-                    <span>Making quality education {' '}</span>
-                    <Typing speed={10}>
-                      <span className="ml-2">freely accessible to all</span>
-                    </Typing>
+                    <span>Making quality education freely accessible to all</span>
                   </div>
                   <div className="mt-7 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                     <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">

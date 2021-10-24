@@ -2,6 +2,7 @@ import Nav from '../components/nav';
 import Footer from '../components/footer'
 import { useEffect } from 'react'  
 import { Link } from 'react-router-dom'
+
 const speakers = [
   {
     name: 'Sameer Rajesh',
