@@ -38,7 +38,7 @@ ReactDOM.render(
           <Route exact path="/" component={Landing} />
           <Route path="/people/team" component={Team} />
           <Route path="/contact" component={Contact} />
-          <Route path="/events/estimathon" component={Estimathon} />
+          <Route path="/events/contests/estimathon" component={Estimathon} />
           <Route path="/courses" component={Courses} />
           <Route path="/events/guest-speakers" component={Guest} />
           <Route path="/sign-in-student" component={SignIn1} />

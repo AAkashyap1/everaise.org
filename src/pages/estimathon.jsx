@@ -1,7 +1,6 @@
 import Nav from '../components/nav';
 import Footer from '../components/footer'
-import { useEffect, useState } from 'react'  
-import EvCirc from '../images/evcirc.png'
+import { useEffect, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import { database } from '../firebase';
@@ -25,12 +24,9 @@ const faqs = [
 
 const contests = [
   {
-    name: 'Everaise Academy',
     date: 'August 6, 2021',
     time: '11 AM ET',
     location: 'Discord Server',
-    email: 'info@everaise.org',
-    image: EvCirc,
     status: 'Ended',
   },
 ]
@@ -75,12 +71,6 @@ export default function Estimathon() {
                               scope="col"
                               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
-                              Host
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
                               Time
                             </th>
                             <th
@@ -103,17 +93,6 @@ export default function Estimathon() {
                         <tbody className="bg-white divide-y divide-gray-200">
                           {contests.map((contest) => (
                             <tr key={contest.email}>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <div className="flex items-center">
-                                  <div className="flex-shrink-0 h-10 w-10">
-                                    <img className="h-10 w-10 rounded-full" src={contest.image} alt="" />
-                                  </div>
-                                  <div className="ml-4">
-                                    <div className="text-sm font-medium text-gray-900">{contest.name}</div>
-                                    <div className="text-sm text-gray-500">{contest.email}</div>
-                                  </div>
-                                </div>
-                              </td>
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="text-sm text-gray-900">{contest.date}</div>
                                 <div className="text-sm text-gray-500">{contest.time}</div>

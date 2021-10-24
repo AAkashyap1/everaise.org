@@ -24,7 +24,7 @@ const events = [
     name: 'Contests',
     description: 'Participate in carefully crafted, challenging contests with some of the best Olympiad students from around the world.',
     icon: ChartBarIcon,
-    href: '/events/estimathon'
+    href: '/events/contests/estimathon'
   },
 ]
 

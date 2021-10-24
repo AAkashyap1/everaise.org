@@ -99,10 +99,10 @@ export default function Courses() {
   return (
     <div>
       <Nav />
-      <div className="bg-white">
+      <div className="mb-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="space-y-12">
-            <div className="space-y-5 sm:space-y-4 xl:max-w-none">
+            <div className="-mb-4 space-y-5 sm:space-y-4 xl:max-w-none">
               <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Course Offerings</h2>
               <p className="text-xl text-gray-500">
                 Our full course list is listed below, along with their start and end dates. 
@@ -118,7 +118,6 @@ export default function Courses() {
               <p className="mb-5 text-xl text-gray-500">
                 Information for Summer 2022 courses will be posted in Spring 2022.
               </p>
-
               <div className="xl:hidden"> 
                 <ul className="border border-gray-200 rounded-md mt-2 divide-y divide-gray-200 overflow-hidden xl:hidden">
                   {courses2021.map((course) => (
