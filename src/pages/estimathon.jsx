@@ -170,7 +170,7 @@ export default function Estimathon() {
                           {({ open }) => (
                             <>
                               <dt className="text-lg">
-                                <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
+                                <Disclosure.Button className="unfocus text-left w-full flex justify-between items-start text-gray-400">
                                   <span className="font-normal text-gray-700">{faq.question}</span>
                                   <span className="ml-6 h-7 flex items-center">
                                     <ChevronDownIcon
