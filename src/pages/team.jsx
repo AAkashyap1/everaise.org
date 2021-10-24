@@ -372,7 +372,7 @@ export default function Team() {
                 </li>
               ))}
             </ul>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
               {staff.map((person) => (
                 <li key={person.name} className="py-10 px-6 border border-gray-200 shadow-lg rounded-lg xl:px-10 text-left">
                   <div className="space-y-6 xl:space-y-10">

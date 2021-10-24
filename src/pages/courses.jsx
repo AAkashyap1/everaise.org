@@ -170,13 +170,13 @@ export default function Courses() {
                             Dates
                           </th>
                           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Hours
+                          </th>
+                          <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Head
                           </th>
                           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Cost
-                          </th>
-                          <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Hours
                           </th>
                           <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
@@ -193,15 +193,15 @@ export default function Courses() {
                               <span className="text-gray-500 font-medium">{course.dates} </span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              {course.hours.map(hour => 
+                                <p className="text-gray-500 font-medium">{hour}</p>
+                              )}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                               <span className="text-gray-500 font-medium">{course.head} </span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                               <span className="text-gray-900 font-medium">{course.cost} </span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              {course.hours.map(hour => 
-                                <p className="text-gray-500 font-medium">{hour}</p>
-                              )}
                             </td>
                             <td className="text-right px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                               <span
