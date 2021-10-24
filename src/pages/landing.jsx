@@ -1,17 +1,21 @@
 import { useEffect } from 'react'
-import { PayPalButton } from 'react-paypal-button-v2'
+// import { PayPalButton } from 'react-paypal-button-v2'
 import { Link } from 'react-router-dom'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline'
 import { LightBulbIcon, LockOpenIcon, SearchCircleIcon } from '@heroicons/react/outline'
 import Logo from '../images/Chalkboard.png'
 import Board from '../images/board.png'
 import { core, staff } from './team'
+import CountUpOnce from '../utility/count'
+import Typing from 'react-typing-animation'
+import Carousel from 'react-elastic-carousel'
 
 const metrics = [
-  { id: 1, stat: '1500+', emphasis: 'Students', rest: 'have been inspired through Everaise.' },
-  { id: 2, stat: String(core.length + staff.length), emphasis: 'Experienced staff members', rest: 'help contribute to Everiase.' },
-  { id: 3, stat: '40+', emphasis: 'Countries', rest: 'from around the globe have been impacted by Everaise.' },
+  { id: 1, end: 1500, suffix: '+', emphasis: 'Students', rest: 'have been inspired through Everaise.' },
+  { id: 2, end: core.length + staff.length, suffix: '', emphasis: 'Experienced staff members', rest: 'help contribute to Everiase.' },
+  { id: 3, end: 40, suffix: '+', emphasis: 'Countries', rest: 'from around the globe have been impacted by Everaise.' },
 ]
 
 const people = [
@@ -58,8 +62,47 @@ const people = [
 
 const speakers = [
   {
+    name: 'Sameer Rajesh',
+    roles: ['Junior @ UC Berkeley'],
+    imageUrl:
+      'https://everaise.org/wp-content/uploads/unnamed-9-1.png',
+    title: 'Itsy Bitsy Origami',
+    description: 
+      `Beginning with a brief discussion and survey of the introduction of concepts from physics 
+      to the study of biology, we will make our way through understanding the protein folding problem 
+      and looking at recent advances, culminating in the recent release of AlphaFold as an efficient 
+      protein structure prediction algorithm. Topics include biophysics, modeling, and computational 
+      methods in biology.`,
+    background: 
+      `Sameer Rajesh is a rising junior at UC Berkeley studying Molecular and Cell Biology. Sameer’s 
+      interests lie in biophysics and biophysical chemistry, and he uses tools from these fields to 
+      help build physical models for biological phenomena. When not hunched over his bench, he’s usually 
+      hanging out with friends, watching TV, and, as of recently, dabbling in writing.`,
+    link: 'https://www.youtube.com/watch?v=L53MnG4uOlo',
+    date: 'July 28, 2021'
+  },
+  {
+    name: 'CJ Quines',
+    roles: ['Junior @ MIT'],
+    imageUrl:
+      'https://everaise.org/wp-content/uploads/2020/05/received_595203618020746.jpeg',
+    title: 'Type Theory',
+    description: 
+      `What are types, how are they related to proofs, and how do computers use them to automatically 
+      check proofs?`,
+    background: 
+      `CJ Quines is a rising junior at the Massachusetts Institute of Technology, studying math and 
+      computer science. He represented the Philippines at the IOI and at the APMO, where he won a bronze 
+      medal and participated in their IMO training camps; additionally, he and his partner won second 
+      prize for their mathematics project at Intel ISEF. Currently, he helps run the Philippines’ training 
+      camps for the IOI and IMO. In his free time, CJ enjoys writing, talking to friends, and giving and 
+      receiving hugs.`,
+    link: 'https://www.youtube.com/watch?v=bnbOlnRa5rM&pp=sAQA',
+    date: 'July 31, 2021'
+  },
+  {
     name: 'Dr. Chong Hon Yew',
-    roles: ['Astronomy'],
+    roles: ['President @ Astronomical Society of Penang'],
     imageUrl:
       'https://everaise.org/wp-content/uploads/Photo-1.jpg',
     title: 'What will James Webb will tell us?',
@@ -80,47 +123,8 @@ const speakers = [
     date: 'August 2, 2021'
   },
   {
-    name: 'CJ Quines',
-    roles: ['Math 1'],
-    imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/received_595203618020746.jpeg',
-    title: 'Type Theory',
-    description: 
-      `What are types, how are they related to proofs, and how do computers use them to automatically 
-      check proofs?`,
-    background: 
-      `CJ Quines is a rising junior at the Massachusetts Institute of Technology, studying math and 
-      computer science. He represented the Philippines at the IOI and at the APMO, where he won a bronze 
-      medal and participated in their IMO training camps; additionally, he and his partner won second 
-      prize for their mathematics project at Intel ISEF. Currently, he helps run the Philippines’ training 
-      camps for the IOI and IMO. In his free time, CJ enjoys writing, talking to friends, and giving and 
-      receiving hugs.`,
-    link: 'https://www.youtube.com/watch?v=bnbOlnRa5rM&pp=sAQA',
-    date: 'July 31, 2021'
-  },
-  {
-    name: 'Sameer Rajesh',
-    roles: ['Biology', 'Physics'],
-    imageUrl:
-      'https://everaise.org/wp-content/uploads/unnamed-9-1.png',
-    title: 'Itsy Bitsy Origami',
-    description: 
-      `Beginning with a brief discussion and survey of the introduction of concepts from physics 
-      to the study of biology, we will make our way through understanding the protein folding problem 
-      and looking at recent advances, culminating in the recent release of AlphaFold as an efficient 
-      protein structure prediction algorithm. Topics include biophysics, modeling, and computational 
-      methods in biology.`,
-    background: 
-      `Sameer Rajesh is a rising junior at UC Berkeley studying Molecular and Cell Biology. Sameer’s 
-      interests lie in biophysics and biophysical chemistry, and he uses tools from these fields to 
-      help build physical models for biological phenomena. When not hunched over his bench, he’s usually 
-      hanging out with friends, watching TV, and, as of recently, dabbling in writing.`,
-    link: 'https://www.youtube.com/watch?v=L53MnG4uOlo',
-    date: 'July 28, 2021'
-  },
-  {
     name: 'Professor Michael Sipser',
-    roles: ['Math 1'],
+    roles: ['Professor @ MIT'],
     imageUrl:
       'https://everaise.org/wp-content/uploads/2020/05/sipser2.jpg',
     title: 'P vs NP',
@@ -133,6 +137,60 @@ const speakers = [
       Student Advising Award, 2003, the U.C. Berkeley Distinguished Alumni Award, 2015.`,
     link: 'https://www.youtube.com/channel/UCGyILrSYokhRvJ_ibJKlMfw',
     date: 'July 26, 2020'
+  },
+  {
+    name: 'Professor Scott Sheffield',
+    roles: ['Professor @ MIT'],
+    imageUrl:
+      'https://everaise.org/wp-content/uploads/photo.jpg',
+    title: 'Martingales and the Optional Stopping Theorem',
+    description: 
+      ``,
+    background: 
+      `Professor Scott Sheffield is a professor of mathematics at MIT. Sheffield is a probability 
+      theorist, working on geometrical questions that arise in such areas as statistical physics, game 
+      theory, and metric spaces, as well as long-standing problems in percolation theory. Sheffield 
+      graduated from Harvard University in 1998 with an A.B. and A.M. in mathematics, and in 2003, 
+      received his Ph.D. in mathematics from Stanford University. Before becoming a professor at MIT,
+      Sheffield held postdoctoral positions at Microsoft Research, the University of California at 
+      Berkeley, and the Institute for Advanced Study.`,
+    link: 'https://www.youtube.com/channel/UCGyILrSYokhRvJ_ibJKlMfw',
+    date: 'July 18, 2020'
+  },
+  {
+    name: 'Simon Rubinstein-Salzedo',
+    roles: ['Founder @ Euler Math Circle'],
+    imageUrl:
+      'https://everaise.org/wp-content/uploads/unnamed.jpg',
+    title: 'Division points of hypocycloids',
+    description: 
+      ``,
+    background: 
+      `Simon Rubinstein-Salzedo received his Ph.D. in mathematics from Stanford University in 2012. 
+      Afterward, he taught at Dartmouth College and Stanford University. In 2015, he founded Euler 
+      Circle, a mathematics institute in the San Francisco Bay Area, dedicated to teaching college-level 
+      mathematics classes to advanced high-school students, as well as mentoring them in mathematics 
+      research. His research interests include number theory, algebraic geometry, combinatorics,
+      probability, and game theory. He is also the namesake of SFFT (Simon’s Favorite Factoring Trick).`,
+    link: 'https://www.youtube.com/channel/UCGyILrSYokhRvJ_ibJKlMfw',
+    date: 'July 18, 2020'
+  },
+  {
+    name: 'D. Branch Moody, MD',
+    roles: ['Professor of Medicine @ Harvard Medical School'],
+    imageUrl:
+      'https://everaise.org/wp-content/uploads/moody_pic.jpg',
+    title: 'TBA',
+    description: 
+      ``,
+    background: 
+      `Branch Moody is a Physician at Brigham and Women’s Hospital and a Professor of Medicine at Harvard 
+      Medical School. He earned his MD at The Johns Hopkins University School of Medicine in 2002. His 
+      lab focuses on the natural interactions of human Dendritic cells and T cells and uses human systems 
+      to study the roles of CD1 proteins, Toll-like receptors and lipid antigens in T cell responses to 
+      tuberculosis, HIV, and autoimmune diseases.`,
+    link: 'https://www.youtube.com/channel/UCGyILrSYokhRvJ_ibJKlMfw',
+    date: 'July 2020'
   },
 ]
 
@@ -159,6 +217,39 @@ export default function Landing() {
     document.title = 'Everaise Academy'
   })
 
+  const bp = [
+    { width: 1, itemsToShow: 1 },
+    { width: 450, itemsToShow: 2 },
+    { width: 700, itemsToShow: 3 },
+    { width: 950, itemsToShow: 4 },
+  ]
+
+  function Arrow({ type, onClick, isEdge }) {
+    const pointer =
+      type === 'PREV' ? (
+        <ArrowLeftIcon
+          className={`${
+            isEdge
+              ? 'text-gray-400 cursor-not-allowed'
+              : 'cursor-pointer text-gray-900'
+          } block h-8 w-8`}
+        />
+      ) : (
+        <ArrowRightIcon
+          className={`${
+            isEdge
+              ? 'text-gray-400 cursor-not-allowed'
+              : 'cursor-pointer text-gray-900'
+          } block h-8 w-8`}
+        />
+      )
+    return (
+      <button onClick={onClick} disabled={isEdge}>
+        {pointer}
+      </button>
+    )
+  }
+
   return (
     <div className="bg-white">
       <main>
@@ -178,8 +269,12 @@ export default function Landing() {
                     <span className="block text-white">Inspiring Student{' '}</span>
                     <span className="block text-white">Scientists Worldwide</span>
                   </h1>
-                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-white">Making
-                  quality education freely accessible to all</div>
+                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-white">
+                    <span>Making quality education {' '}</span>
+                    <Typing speed={10}>
+                      <span className="ml-2">freely accessible to all</span>
+                    </Typing>
+                  </div>
                   <div className="mt-7 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                     <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
                       <a
@@ -263,7 +358,9 @@ export default function Landing() {
               <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
                 {metrics.map((item) => (
                   <p key={item.id}>
-                    <span className="block text-2xl font-bold text-gray-900">{item.stat}</span>
+                    <span className="block text-2xl font-bold text-gray-900">  
+                      <CountUpOnce end={item.end} suffix={item.suffix} />
+                    </span>
                     <span className="mt-1 block text-base text-gray-700">
                       <span className="font-medium text-gray-9000">{item.emphasis}</span> {item.rest}
                     </span>
@@ -281,41 +378,43 @@ export default function Landing() {
             <p className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl">
                 Guest Speakers
             </p>
-            <p className="mt-4 text-base font-medium text-gray-600 tracking-tight sm:text-lg">
+            <p className="mt-4 text-base text-gray-700 sm:text-lg">
               Every year, Everaise Academy invites professors from prestigious universities, industry professionals, 
               and top graduate and undergraduate students to give free talks. <span className="text-indigo-500"><Link to="/events">Learn more &rarr;</Link></span>
             </p>
             <div className="mt-12">
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                {speakers.map((speaker) => (
-                  <div key={speaker.name} className="pt-6">
-                    <div className="flow-root border border-gray-200 shadow-lg rounded-lg px-6 pb-8">
-                      <div className="-mt-6">
-                        <div>
-                          <span className="inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full p-1 shadow-lg">
-                            <img alt={speaker.name} src={speaker.imageUrl} className="h-44 w-44 rounded-full object-cover text-indigo-500" aria-hidden="true" />
-                          </span>
+              <div>
+                <Carousel className="flex justify-center flex-col border-gray-200 py-3 gap-8" breakPoints={bp} pagination={false} renderArrow={Arrow}>
+                  {speakers.map((speaker) => (
+                    <div key={speaker.name} className="py-6 px-2">
+                      <div className="flow-root border border-gray-200 shadow-lg rounded-lg px-6 pb-8">
+                        <div className="-mt-6">
+                          <div>
+                            <span className="inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full p-1 shadow-lg">
+                              <img alt={speaker.name} src={speaker.imageUrl} className="h-44 w-44 rounded-full object-cover text-indigo-500" aria-hidden="true" />
+                            </span>
+                          </div>
+                          <h3 className="mt-5 sm:text-xl text-lg font-medium text-gray-900 tracking-tight">{speaker.title}</h3>
+                          <h3 className="mt-1 text-base font-medium text-gray-700 tracking-tight">{speaker.name}</h3>
+                          <h3 className="mt-3 text-lg font-medium text-gray-900 tracking-tight">{speaker.date}</h3>
+                          <a href={speaker.link} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 hover:text-indigo-700 trans-300 text-indigo-500">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" className="svg-inline--fa fa-youtube fa-w-18 h-4 w-4 mr-2" 
+                            role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                              <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+                            </svg> View Talk
+                          </a>
                         </div>
-                        <h3 className="mt-5 sm:text-xl text-lg font-medium text-gray-900 tracking-tight">{speaker.title}</h3>
-                        <h3 className="mt-1 text-base font-medium text-gray-700 tracking-tight">{speaker.name}</h3>
-                        <h3 className="mt-3 text-lg font-medium text-gray-900 tracking-tight">{speaker.date}</h3>
-                        <a href={speaker.link} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 hover:text-indigo-700 trans-300 text-indigo-500">
-                          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" className="svg-inline--fa fa-youtube fa-w-18 h-4 w-4 mr-2" 
-                          role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
-                          </svg> View Talk
-                        </a>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </Carousel>
               </div>
             </div>
           </div>
         </div>
 
         {/* Testimonials */}
-        <div className="relative bg-white pt-16">
+        <div className="relative bg-white pt-10">
           <div className="mx-auto max-w-md px-4 text-center max-w-4xl sm:px-6 lg:px-8 lg:max-w-7xl">
             <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Testimonials</h2>
             <p className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl">
@@ -324,7 +423,7 @@ export default function Landing() {
             <div className="mt-12">
               <ul className="grid grid-cols-1 gap-6">
                 {people.map((person) => (
-                  <li key={person.email} className="border border-gray-200 col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
+                  <li key={person.name} className="border border-gray-200 col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
                     <div className="w-full flex items-center justify-between px-6 pt-6 pb-5 space-x-6">
                       <div className="flex-1">
                         <div className="flex items-center space-x-3">
@@ -364,7 +463,7 @@ export default function Landing() {
           </div>
         </div>
         
-        {/* Sponsor Us */}
+        {/* Sponsor Us
         <div className="bg-gray-50">
           <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 py-12 lg:px-8">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -380,34 +479,7 @@ export default function Landing() {
             </div>
           </div>
         </div>
-
-        {/* CTA Section */}
-        <div className="bg-white">
-          <div className="max-w-4xl mx-auto pt-24 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
-            <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              <span className="block">Ready to get started?{' '}</span>
-              <span className="block bg-cyan-600 bg-clip-text text-transparent">
-                Create an account to access Launch.
-              </span>
-            </h2>
-            <div className="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
-              <Link
-                to="/profile"
-                className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-500"
-              >
-                Get Started
-              </Link>
-              <a
-                href="https://everaise.org/mission/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-cyan-600 bg-cyan-100 hover:bg-cyan-200"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
+        */}
       </main>
       <Footer />
     </div>
