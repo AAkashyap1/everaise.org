@@ -17,6 +17,7 @@ export default function SignIn1(props) {
 
   useEffect(() => {
     document.title = 'Sign In - Everaise Launch'
+    window.scrollTo(0, 0)
   })
 
   async function handleSubmit(event) {

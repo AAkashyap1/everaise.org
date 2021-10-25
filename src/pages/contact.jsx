@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 export default function Contact() {
   useEffect(() => {
     document.title = 'Contact Us - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   return (

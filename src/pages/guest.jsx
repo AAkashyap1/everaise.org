@@ -131,8 +131,10 @@ const speakers = [
 ]
 
 export default function Guest() {
+
   useEffect(() => {
     document.title = 'Guest Speakers - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   return (

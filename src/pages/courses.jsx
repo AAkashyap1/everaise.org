@@ -94,6 +94,7 @@ export default function Courses() {
 
   useEffect(() => {
     document.title = 'Courses - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   return (

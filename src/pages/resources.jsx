@@ -49,6 +49,7 @@ const resources = [
 export default function Resources() {
   useEffect(() => {
     document.title = 'Resources - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   return (

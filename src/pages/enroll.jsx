@@ -26,6 +26,7 @@ export default function Enroll() {
 
   useEffect(() => {
     document.title = 'Enroll - Everaise Launch'
+    window.scrollTo(0, 0)
   })
 
   useEffect(() => {

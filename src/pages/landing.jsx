@@ -214,6 +214,7 @@ const goals = [
 export default function Landing() {
   useEffect(() => {
     document.title = 'Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   const bp = [
@@ -231,7 +232,7 @@ export default function Landing() {
             isEdge
               ? 'text-gray-400 cursor-not-allowed'
               : 'cursor-pointer text-gray-900'
-          } block h-8 w-8`}
+          } unfocus block h-8 w-8`}
         />
       ) : (
         <ArrowRightIcon
@@ -239,7 +240,7 @@ export default function Landing() {
             isEdge
               ? 'text-gray-400 cursor-not-allowed'
               : 'cursor-pointer text-gray-900'
-          } block h-8 w-8`}
+          } unfocus block h-8 w-8`}
         />
       )
     return (
@@ -376,7 +377,8 @@ export default function Landing() {
             </p>
             <p className="mt-4 text-base text-gray-700 sm:text-lg">
               Every year, Everaise Academy invites professors from prestigious universities, industry professionals, 
-              and top graduate and undergraduate students to give free talks. <span className="text-indigo-500"><Link to="/events">Learn more &rarr;</Link></span>
+              and top graduate and undergraduate students to give free talks. <span className="text-indigo-500">
+              <Link to="/events/guest-speakers">Learn more &rarr;</Link></span>
             </p>
             <div className="mt-12">
               <div>

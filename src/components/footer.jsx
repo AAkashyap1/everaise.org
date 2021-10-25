@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 
 const footerNavigation = {
   discover: [
-    { name: 'Courses', href: '/enroll' },
-    { name: 'Events', href: '/events' },
+    { name: 'Courses', href: '/courses' },
+    { name: 'Events', href: '/events/guest-speakers' },
     { name: 'Resources', href: '/resources' },
   ],
   support: [
-    { name: 'Join our Team', href: '/team' },
+    { name: 'Join our Team', href: '/people/team' },
     { name: 'Sponsor', href: '' },
     { name: 'Donate', href: '' },
   ],
@@ -107,9 +107,9 @@ export default function Footer() {
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.support.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-indigo-500">
+                        <Link to={item.href} className="text-base text-gray-400 hover:text-indigo-500">
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

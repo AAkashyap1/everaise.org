@@ -36,6 +36,7 @@ export default function Update() {
 
   useEffect(() => {
     document.title = 'Update Profile - Everaise Launch'
+    window.scrollTo(0, 0)
   })
 
   useEffect(() => {

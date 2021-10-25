@@ -5,6 +5,7 @@ export default function NotFound() {
 
   useEffect(() => {
     document.title = 'Page not Found - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   return (

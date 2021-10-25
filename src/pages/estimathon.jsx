@@ -34,8 +34,10 @@ const contests = [
 export default function Estimathon() {
   const [scoring, setScoring] = useState('')
   const Latex = require('react-latex')
+
   useEffect(() => {
     document.title = 'Estimathon - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   function GetScoring() {

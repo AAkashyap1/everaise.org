@@ -292,6 +292,7 @@ export const staff = [
 export default function Team() {
   useEffect(() => {
     document.title = 'Team - Everaise Academy'
+    window.scrollTo(0, 0)
   })
 
   return (

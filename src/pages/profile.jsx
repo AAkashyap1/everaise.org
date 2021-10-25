@@ -40,6 +40,7 @@ export default function Profile() {
 
   useEffect(() => {
     document.title = 'Create Profile - Everaise Launch'
+    window.scrollTo(0, 0)
   })
 
   async function handleLogin(event) {

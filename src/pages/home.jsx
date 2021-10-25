@@ -64,6 +64,7 @@ export default function Home() {
 
   useEffect(() => {
     document.title = 'Course Home - Everaise Launch'
+    window.scrollTo(0, 0)
   })
 
   useEffect(() => {
