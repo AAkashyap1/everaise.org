@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline'
+import { ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
 import { LightBulbIcon, LockOpenIcon, SearchCircleIcon } from '@heroicons/react/outline'
 import Logo from '../images/Chalkboard.png'
 import Board from '../images/board.png'
@@ -260,16 +260,16 @@ export default function Landing() {
             <div className="static shadow-xl sm:overflow-hidden">
               <div className="items-center relative h-screen inset-0">
                 <img
-                  className="h-full w-full object-cover"
-                  src={Logo}
+                  className="filter blur-md h-full w-full object-cover"
+                  src={Board}
                   alt="Chalkboard"
                 />
                 <div className="absolute inset-0 px-4 py-16 mt-20 md:mt-14 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                  <h1 className="text-center font-extrabold tracking-tight text-5xl sm:text-6xl md:text-7xl">
-                    <span className="block text-white">Inspiring Student{' '}</span>
-                    <span className="block text-white">Scientists Worldwide</span>
+                  <h1 className="text-center font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl">
+                    <span className="block text-gray-900">Inspiring Student{' '}</span>
+                    <span className="block text-gray-900">Scientists Worldwide</span>
                   </h1>
-                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-white">
+                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-gray-900">
                     <span>Making quality education freely accessible to all</span>
                   </div>
                   <div className="mt-7 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
@@ -280,13 +280,13 @@ export default function Landing() {
                         rel="noreferrer"
                         className="flex items-center justify-center px-4 py-3 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-sm text-cyan-600 bg-white hover:bg-opacity-80 sm:px-8"
                       >
-                        Join our Discord
+                        Join our Discord <ExternalLinkIcon className="ml-2 text-cyan-600 h-5 w-5"/>
                       </a>
                       <Link
                         to="/enroll"
                         className="flex items-center justify-center px-4 py-3 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-opacity-80 sm:px-8"
                       >
-                        Enroll
+                        Enroll &rarr;
                       </Link>
                     </div>
                   </div>
@@ -332,7 +332,7 @@ export default function Landing() {
               <div className="h-full xl:relative xl:col-start-2">
                 <img
                   className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
-                  src={Board}
+                  src={Logo}
                   alt="Chalkboard"
                 />
                 <div

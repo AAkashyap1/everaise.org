@@ -9,6 +9,37 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const catalog = [
+  {
+    name: 'Physics Mechanics',
+    img: 'https://everaise.org/wp-content/uploads/2020/04/Screen-Shot-2020-04-24-at-9.32.13-PM.png',
+    desc: `A rigorous treatment of mechanics including kinematics, Newton’s laws, collisions, 
+          rolling motion, oscillations, fluid statics, fictitious forces, and error analysis.`,
+    dates: 'June 21 – August 6',
+  },
+  {
+    name: 'Biology',
+    img: 'https://everaise.org/wp-content/uploads/2020/05/received_864303084037580.png',
+    desc: `A deep study of theoretical biology, covering a range of topics from cell biology, 
+            genetics, and human anatomy and physiology to the mechanisms underlying plant life`,
+    dates: 'July 5 – August 6',
+  },
+  {
+    name: 'Math Competitions I',
+    img: 'https://everaise.org/wp-content/uploads/2020/04/Screen-Shot-2020-04-24-at-9.31.32-PM.png',
+    desc: `An intuition-building math competitions course including sequences and series, 
+            polynomials, combinatorial identities, triangle centers, and modular arithmetic.`,
+    dates: 'July 12 – August 6',
+  },
+  {
+    name: 'Astronomy',
+    img: 'https://everaise.org/wp-content/uploads/bop.jpg',
+    desc: `An introductory course in astronomy, including celestial coordinates, stellar systems, 
+            and cosmology in addition to important physics topics such as orbital mechanics.`,
+    dates: 'July 12 – August 6',
+  },
+]
+
 const courses2021 = [
   {
     course: 'Physics Mechanics',
@@ -103,8 +134,8 @@ export default function Courses() {
       <div className="mb-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="space-y-12">
-            <div className="-mb-4 space-y-5 sm:space-y-4 xl:max-w-none">
-              <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Course Offerings</h2>
+            <div className="-mb-4 space-y-6 xl:max-w-none">
+              <h2 className="font-extrabold text-gray-900 tracking-tight text-4xl">Course Offerings</h2>
               <p className="text-xl text-gray-500">
                 Our full course list is listed below, along with their start and end dates. 
                 As of now, each course is offered one time throughout the year, during summer. 
@@ -114,11 +145,42 @@ export default function Courses() {
                 zones.
               </p>
             </div>
-            <ul className="flex jusify-center grid">
-              <h2 className="mb-3 text-3xl font-bold text-gray-900 tracking-tight">Class Schedule</h2>
-              <p className="mb-5 text-xl text-gray-500">
-                Information for Summer 2022 courses will be posted in Spring 2022.
-              </p>
+            <ul className="flex jusify-center grid space-y-5 md:space-y-8">
+              <div>
+                <h2 className="mb-3 text-3xl font-bold text-gray-900 tracking-tight">Course Catalog</h2>
+                <p className="text-xl text-gray-500">
+                    Below are all of our courses. Click on any course below for more details about 
+                    each course, including the dates and times of upcoming classes.
+                </p>
+              </div>
+              <div className="space-y-4">
+                {catalog.map((course) => (
+                  <li key={course.name} className="border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
+                    <div className="space-y-6 hidden md:block col-span-0 md:col-span-1">
+                      <div className="">
+                        <img className="rounded-l-lg w-72 h-80 md:h-60" src={course.img} alt="" />
+                      </div>
+                    </div>
+                    <div className="px-8 py-6 col-span-4 md:col-span-3">
+                      <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
+                        {course.name}
+                      </div>
+                      <div className="text-gray-900 mt-4 font-medium text-lg">
+                        <div className="font-normal text-lg font-semibold text-gray-700">{course.dates}</div>
+                      </div>
+                      <div className="text-gray-900 mt-4 font-medium text-lg">
+                        <div className="font-normal text-base text-gray-700 italic">{course.desc}</div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </div>
+              <div>
+                <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Class Schedule</h2>
+                <p className="text-xl text-gray-500">
+                  Information for Summer 2022 courses will be posted in Spring 2022.
+                </p>
+              </div>
               <div className="xl:hidden"> 
                 <ul className="border border-gray-200 rounded-md mt-2 divide-y divide-gray-200 overflow-hidden xl:hidden">
                   {courses2021.map((course) => (
