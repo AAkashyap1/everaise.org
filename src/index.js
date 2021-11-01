@@ -24,6 +24,7 @@ import Guest from './pages/guest';
 import Estimathon from './pages/estimathon';
 import Resources from './pages/resources';
 import Courses from './pages/courses';
+import Course from './pages/course';
 import NotFound from './pages/404';
 
 
@@ -40,6 +41,7 @@ ReactDOM.render(
           <Route path="/contact" component={Contact} />
           <Route path="/events/contests/estimathon" component={Estimathon} />
           <Route path="/courses" component={Courses} />
+          <Route exact path="/course/:course" component={Course} />
           <Route path="/events/guest-speakers" component={Guest} />
           <Route path="/sign-in-student" component={SignIn1} />
           <Route path="/resources" component={Resources} />

@@ -1,6 +1,7 @@
 import Nav from '../components/nav';
 import Footer from '../components/footer'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
   ChevronRightIcon,
 } from '@heroicons/react/solid'
@@ -16,6 +17,7 @@ const catalog = [
     desc: `A rigorous treatment of mechanics including kinematics, Newton’s laws, collisions, 
           rolling motion, oscillations, fluid statics, fictitious forces, and error analysis.`,
     dates: 'June 21 – August 6',
+    link: 'physics'
   },
   {
     name: 'Biology',
@@ -23,6 +25,7 @@ const catalog = [
     desc: `A deep study of theoretical biology, covering a range of topics from cell biology, 
             genetics, and human anatomy and physiology to the mechanisms underlying plant life`,
     dates: 'July 5 – August 6',
+    link: 'biology'
   },
   {
     name: 'Math Competitions I',
@@ -30,6 +33,7 @@ const catalog = [
     desc: `An intuition-building math competitions course including sequences and series, 
             polynomials, combinatorial identities, triangle centers, and modular arithmetic.`,
     dates: 'July 12 – August 6',
+    link: 'math',
   },
   {
     name: 'Astronomy',
@@ -37,6 +41,7 @@ const catalog = [
     desc: `An introductory course in astronomy, including celestial coordinates, stellar systems, 
             and cosmology in addition to important physics topics such as orbital mechanics.`,
     dates: 'July 12 – August 6',
+    link: 'astronomy'
   },
 ]
 
@@ -155,7 +160,7 @@ export default function Courses() {
               </div>
               <div className="space-y-4">
                 {catalog.map((course) => (
-                  <li key={course.name} className="border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
+                  <Link to={`/course/${course.link}`} key={course.name} className="border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
                     <div className="space-y-6 hidden md:block col-span-0 md:col-span-1">
                       <div className="">
                         <img className="rounded-l-lg w-72 h-80 md:h-52" src={course.img} alt="" />
@@ -169,7 +174,7 @@ export default function Courses() {
                         <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
                       </div>
                     </div>
-                  </li>
+                  </Link>
                 ))}
               </div>
               <div>
