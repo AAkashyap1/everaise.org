@@ -158,18 +158,15 @@ export default function Courses() {
                   <li key={course.name} className="border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
                     <div className="space-y-6 hidden md:block col-span-0 md:col-span-1">
                       <div className="">
-                        <img className="rounded-l-lg w-72 h-80 md:h-60" src={course.img} alt="" />
+                        <img className="rounded-l-lg w-72 h-80 md:h-52" src={course.img} alt="" />
                       </div>
                     </div>
-                    <div className="px-8 py-6 col-span-4 md:col-span-3">
+                    <div className="px-8 pb-6 pt-3 md:py-6 col-span-4 md:col-span-3">
                       <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
                         {course.name}
                       </div>
-                      <div className="text-gray-900 mt-4 font-medium text-lg">
-                        <div className="font-normal text-lg font-semibold text-gray-700">{course.dates}</div>
-                      </div>
-                      <div className="text-gray-900 mt-4 font-medium text-lg">
-                        <div className="font-normal text-base text-gray-700 italic">{course.desc}</div>
+                      <div className="text-gray-900 mt-4 font-medium">
+                        <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
                       </div>
                     </div>
                   </li>

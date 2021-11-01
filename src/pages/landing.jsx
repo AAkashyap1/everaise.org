@@ -260,16 +260,16 @@ export default function Landing() {
             <div className="static shadow-xl sm:overflow-hidden">
               <div className="items-center relative h-screen inset-0">
                 <img
-                  className="filter blur-md h-full w-full object-cover"
-                  src={Board}
+                  className="h-full w-full object-cover"
+                  src={Logo}
                   alt="Chalkboard"
                 />
                 <div className="absolute inset-0 px-4 py-16 mt-20 md:mt-14 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                   <h1 className="text-center font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl">
-                    <span className="block text-gray-900">Inspiring Student{' '}</span>
-                    <span className="block text-gray-900">Scientists Worldwide</span>
+                    <span className="block text-white">Inspiring Student{' '}</span>
+                    <span className="block text-white">Scientists Worldwide</span>
                   </h1>
-                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-gray-900">
+                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-white">
                     <span>Making quality education freely accessible to all</span>
                   </div>
                   <div className="mt-7 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
@@ -332,7 +332,7 @@ export default function Landing() {
               <div className="h-full xl:relative xl:col-start-2">
                 <img
                   className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
-                  src={Logo}
+                  src={Board}
                   alt="Chalkboard"
                 />
                 <div
