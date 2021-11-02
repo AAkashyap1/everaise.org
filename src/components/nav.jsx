@@ -35,12 +35,6 @@ const people = [
     icon: UserGroupIcon,
     href: '/people/team'
   },
-  {
-    name: 'Get Involved',
-    description: 'Want to join the Everaise team? Learn more here!',
-    icon: HandIcon,
-    href: '/people/join'
-  },
   { name: 'Contact Us', 
     description: 'We respond to all forms and emails as soon as possible.',
     icon: MailIcon, 
