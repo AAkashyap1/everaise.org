@@ -310,7 +310,7 @@ export default function Landing() {
                     <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
                       <div className="-mt-6">
                         <div>
-                          <span className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-md shadow-lg">
+                          <span className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-by-500 to-cyan-600 rounded-md shadow-lg">
                             <goal.icon className="h-7 w-7 text-indigo-500" aria-hidden="true" />
                           </span>
                         </div>

@@ -18,6 +18,9 @@ import {
 import Math from '../images/books/Math.png'  
 import Astronomy from '../images/books/Astronomy.png'  
 import Physics from '../images/books/Physics.png'  
+import Math1H from '../files/Math1.pdf'
+import BiologyH from '../files/Biology.pdf'
+import PhysicsH from '../files/Physics.pdf'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -118,7 +121,9 @@ export default function Course() {
                   testimonial: { 
                     quote: 'Tons of problem solving skills, different aspects and considerations in advanced researches in the Sciences (via guest lectures), having to communicate with avid learners from all over the world and a brand-new respect and appreciation for Physics!',
                     name: 'Felix Yew',
-                  }
+                  },
+                  diagnostic: PhysicsH,
+                  prereq: <p className="mt-2">Physics: Students at or approaching USAPhO qualification or with sufficient math or physics background.</p>
                 },
     'biology' : {
                   name: 'Biology',
@@ -136,7 +141,9 @@ export default function Course() {
                   testimonial: { 
                     quote: 'The best part of the program were learning something new everyday in a well presented manner through the handouts. I loved how the information in the handout was easy to digest so I could understand them better',
                     name: 'Sushrit Pasumarthy',
-                  }
+                  },
+                  diagnostic: BiologyH,
+                  prereq: <p className="mt-2">Biology: Students who have participated in USABO or have completed a high school biology course.</p>
                 },
     'math'    : {
                   name: 'Math Competitions I',
@@ -154,7 +161,9 @@ export default function Course() {
                   testimonial: { 
                     quote: 'The commitment to learning and excellence all for free really stood out. Normally, you would assume people to charge large swaths of money for content of this standard and genre, but the level at which content was presented and the follow-up and help to students was phenomenal and at the same time was free of cost.',
                     name: 'Krish Shah',
-                  }
+                  },
+                  diagnostic: Math1H,
+                  prereq: <p className="mt-2">Math 1: Students at or approaching AIME qualification.</p>
                 },
     'astronomy':{
                   name: 'Astronomy',
@@ -172,10 +181,30 @@ export default function Course() {
                   testimonial: { 
                     quote: 'The best part about the program was how organized everything was. We got the handout schedule way before the program started, so I always knew what was coming. The handouts were generally well-written and comprehensive as well. The Everaise team clearly put a lot of effort into planning these 5 weeks.',
                     name: 'Cindy Yu',
-                  }
+                  },
+                  diagnostic: '',
+                  prereq: <p className="mt-2">Astronomy: Students at or approaching NAO qualification or have a strong background in trigonometry.</p>
                 },
   }
   const data = courses[course]
+
+  const faqs = [
+    {
+      id: 1,
+      question: "Prerequisites",
+      answer: 
+        <div>
+          <p>There is no prerequisite age. Students are advised to take our diagnostic exam to decide whether they are ready to take this course. As many of the topics covered in our courses are also tested on academic competitions, here is a rough guide based on American STEM competitions.</p>
+          {data.prereq}
+        </div>
+    },
+    {
+      id: 2,
+      question: "Diagnostic",
+      answer:
+        <span>This diagnostic quiz is a good indication of the difficulty of this course.{data.diagnostic ? <a href={data.diagnostic} download className="ml-1 text-blue-500">Click to download!</a> : <span className="ml-1 text-blue-500">Coming soon!</span>}</span>
+    },
+  ]
 
   useEffect(() => {
     document.title = 'Courses - Everaise Academy'
@@ -189,9 +218,16 @@ export default function Course() {
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="space-y-12">
             <div className="-mb-4 space-y-6 xl:max-w-none">
-              <h2 className="font-extrabold text-gray-900 tracking-tight text-4xl">
-                {data.name} - <Link to="/enroll" className="text-cyan-600 hover:text-cyan-700">Enroll</Link>
-              </h2>
+              <div>
+                <h2 className="text-base font-semibold tracking-wide uppercase text-cyan-600">
+                  <Link to="/enroll" className="text-cyan-600 hover:text-cyan-700">
+                    Enroll Now!
+                  </Link>
+                </h2>
+                <h2 className="font-extrabold text-gray-900 tracking-tight text-4xl">
+                  {data.name}
+                </h2>
+              </div>
               <p className="text-xl text-gray-500">
                 {data.desc}
               </p>
@@ -222,7 +258,7 @@ export default function Course() {
                           <benefit.icon className="h-6 w-6" aria-hidden="true" />
                         </span>
                       </div>
-                      <div className="mt-8">
+                      <div className="mt-2">
                         <h3 className="text-lg font-medium">
                           {benefit.href.startsWith('https') ? 
                             <a href={benefit.href} target="_blank" rel="noreferrer" 
@@ -279,31 +315,6 @@ export default function Course() {
               </div>
               <div>
                 <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Course Format</h2>
-                <p className="text-xl text-gray-500">
-                  Throughout our Summer 2021 courses, students will work through handouts and watch videos that will develop 
-                  theory, provide examples to cultivate a true understanding of the material, and provide challenging problems 
-                  to be submitted for homework. Each set of handouts and videos is expected to take roughly 4-5 hours per 
-                  topic, so students who wish to gain a deep understanding of the material should expect to spend about 12-15 
-                  hours per week.
-                </p>
-                <p className="mt-4 text-xl text-gray-500">
-                  Our web portal, Everaise Launch, is up and running! There, students will be able to register for classes and 
-                  view the corresponding handouts, videos, and homework submission forms when the courses begin. All Summer 2021 
-                  courses are self-paced with recommended (optional) due dates; students are free to jump around between the 
-                  accessible materials. More details about Everaise Launch and registration will be posted shortly.
-                </p>
-                <p className="mt-4 text-xl text-gray-500">
-                  Instructors will be available via Discord, both for general communication on our discussion board and for office 
-                  hours that will run several times per week. Students will also be able to chat with each other on Discord. Students
-                  who do not have access to Discord will only be able to contact instructors via email, where response times will 
-                  be much slower.
-                </p>
-                <p className="mt-4 text-xl text-gray-500">
-                  The Summer 2021 course offerings and dates are posted below.
-                </p>
-              </div>
-              <div>
-                <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Course Topics</h2>
                 <p className="text-xl text-gray-500">
                   Throughout our Summer 2021 courses, students will work through handouts and watch videos that will develop 
                   theory, provide examples to cultivate a true understanding of the material, and provide challenging problems 
@@ -392,7 +403,23 @@ export default function Course() {
                 </div>
               </div>}
               <div>
-                <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Testimonial</h2>
+                <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Is this course for me?</h2>
+                <div className="divide-y divide-gray-200">
+                  <div className="mt-8">
+                    <dl className="divide-y divide-gray-200">
+                      {faqs.map((faq) => (
+                        <div key={faq.id} className="pt-6 pb-8 md:grid md:grid-cols-12 md:gap-8">
+                          <dt className="text-base font-medium text-gray-900 md:col-span-5">{faq.question}</dt>
+                          <dd className="mt-2 md:mt-0 md:col-span-7">
+                            <p className="text-base text-gray-500">{faq.answer}</p>
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div>
                 <section className="py-4 overflow-hidden md:py-6 lg:py-8">
                   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <svg
@@ -404,7 +431,6 @@ export default function Course() {
                       role="img"
                       aria-labelledby="svg-Testimonial"
                     >
-                      <title id="svg-Testimonial">Testimonial</title>
                       <defs>
                         <pattern
                           id="ad119f34-7694-4c31-947f-5c9d249b21f3"
@@ -429,14 +455,7 @@ export default function Course() {
                         </div>
                         <footer className="mt-8">
                           <div className="md:flex md:items-center md:justify-center">
-                            <div className="md:flex-shrink-0">
-                              <img
-                                className="mx-auto h-10 w-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                              />
-                            </div>
-                            <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
+                            <div className="mt-3 text-center md:mt-0 md:flex md:items-center">
                               <div className="text-base font-medium text-gray-900">{data.testimonial.name}</div>
 
                               <svg className="hidden md:block mx-1 h-5 w-5 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
