@@ -50,10 +50,10 @@ function classNames(...classes) {
 const navigation = [
   { name: 'Courses', href: '/courses' },
   { name: 'Resources', href: '/resources' },
-  { name: 'Guest Speakers', href: '/events/guest-speakeres' },
-  { name: 'Contests', href: '/events/estimathon' },
+  { name: 'Guest Speakers', href: '/events/guest-speakers' },
+  { name: 'Contests', href: '/events/contests/estimathon' },
   { name: 'Team', href: '/people/team' },
-  { name: 'Contact Us', href: '/people/contact' },
+  { name: 'Contact Us', href: '/contact' },
 ]
 
 export default function Nav() {
