@@ -7,7 +7,6 @@ import {
   BookOpenIcon,
   ChartBarIcon,
   ClipboardIcon,
-  ClipboardListIcon,
   ClockIcon,
   DatabaseIcon,
   DesktopComputerIcon,
@@ -112,7 +111,7 @@ export default function Course() {
                         rolling motion, oscillations, fluid statics, fictitious forces, and error analysis.`,
                   dates: 'June 21 – August 6',
                   link: 'physics', 
-                  topics: ['Kinematics in One Dimension and Calculus Overview', 'Kinematics in Two Dimensions', 'Newton’s Laws', 'Friction', 'Momentum and Collisions', 'Energy', 'Springs', 'Central Forces', 'Angular Kinematics', 'Angular Dynamics', 'Rolling motion', 'Statics', 'Oscillations', 'Gravitation', 'Orbital Mechanics', 'Fluid Statics', 'Fluid Dynamics', 'Fictitious Forces', 'Error Propagation and Analysis'],
+                  topics: [['Kinematics in One Dimension and Calculus Overview', 'Kinematics in Two Dimensions', 'Newton’s Laws', 'Friction', 'Momentum and Collisions'], ['Energy', 'Springs', 'Central Forces', 'Angular Kinematics', 'Angular Dynamics'], ['Rolling motion', 'Statics', 'Oscillations', 'Gravitation', 'Orbital Mechanics'], ['Fluid Statics', 'Fluid Dynamics', 'Fictitious Forces', 'Error Propagation and Analysis']],
                   book: {
                     people: 'Brian Lee and William Shi',
                     image: Physics,
@@ -132,7 +131,7 @@ export default function Course() {
                           genetics, and human anatomy and physiology to the mechanisms underlying plant life`,
                   dates: 'July 5 – August 6',
                   link: 'biology', 
-                  topics: ['Fundamentals of Macromolecules', 'Membrane Structures', 'Proteins', 'Cellular Metabolism and Cell Cycle', 'Signal Transduction', 'Advanced Topics in Cell Biology', 'The Genetic Basis of Life', 'The Central Dogma – Transcription', 'The Central Dogma – Translation', 'Population Genetics', 'Phylogenetics / Evolutionary Genetics', 'Biotechnology', 'Integumentary System, Skeletal System, Muscular System', 'Cardiovascular System, Respiratory System', 'Nervous System', 'Endocrine System, Digestive System', 'Urinary System, Immune System', 'Reproductive System, Development', 'Fundamentals of Plant Anatomy', 'The Plant Root', 'The Movement of Water / Solutes', 'Plant Hormones', 'Photosynthesis', 'Evolution of Plants'],
+                  topics: [['Fundamentals of Macromolecules', 'Membrane Structures', 'Proteins', 'Cellular Metabolism and Cell Cycle', 'Signal Transduction', 'Advanced Topics in Cell Biology'], ['The Genetic Basis of Life', 'The Central Dogma – Transcription', 'The Central Dogma – Translation', 'Population Genetics', 'Phylogenetics / Evolutionary Genetics', 'Biotechnology'], ['Integumentary System, Skeletal System, Muscular System', 'Cardiovascular System, Respiratory System', 'Nervous System', 'Endocrine System, Digestive System', 'Urinary System, Immune System', 'Reproductive System, Development'], ['Fundamentals of Plant Anatomy', 'The Plant Root', 'The Movement of Water / Solutes', 'Plant Hormones', 'Photosynthesis', 'Evolution of Plants']],
                   book: {
                     people: '',
                     image: '',
@@ -152,7 +151,7 @@ export default function Course() {
                           polynomials, combinatorial identities, triangle centers, and modular arithmetic.`,
                   dates: 'July 12 – August 6',
                   link: 'math',
-                  topics: ['Exponents, Radicals, Logarithms', 'Sequences and Series', 'Polynomials, Graphs', 'Angles, Circles', 'Triangles and Triangle Centers', 'Area, Length, Ratios', 'Casework and Complementary Counting', 'Principle of Inclusion-Exclusion', 'Probability', 'Bases, Decimal Representations', 'Primes, Factorizations, GCD/LCM', 'Modular Arithmetic'],
+                  topics: [['Exponents, Radicals, Logarithms', 'Sequences and Series', 'Polynomials, Graphs'], ['Angles, Circles', 'Triangles and Triangle Centers', 'Area, Length, Ratios'], ['Casework and Complementary Counting', 'Principle of Inclusion-Exclusion', 'Probability'], ['Bases, Decimal Representations', 'Primes, Factorizations, GCD/LCM', 'Modular Arithmetic']],
                   book: {
                     people: 'Saadiq Shaikh and Matthew Chen',
                     image: Math,
@@ -172,7 +171,7 @@ export default function Course() {
                           and cosmology in addition to important physics topics such as orbital mechanics.`,
                   dates: 'July 12 – August 6',
                   link: 'astronomy', 
-                  topics: ['Introduction to Astronomy', 'Kinematics', 'Momentum and Collisions', 'Dynamics and Rotation', 'Gravitation', 'Orbital Mechanics', 'Spherical Geometry', 'Celestial Coordinate Systems 1', 'Celestial Coordinate System 2', 'Celestial Coordinate Conversions', 'Celestial Timekeeping Systems', 'Geocentric Planetary Phenomena', 'Reduction in positional observations', 'Physics of Stars and Planets', 'Stellar Evolution', 'Stellar Systems', 'Cosmic Distance Ladder', 'Cosmology', 'Optics', 'Night Sky Observation'],
+                  topics: [['Introduction to Astronomy', 'Kinematics', 'Momentum and Collisions', 'Dynamics and Rotation', 'Gravitation'], ['Orbital Mechanics', 'Spherical Geometry', 'Celestial Coordinate Systems 1', 'Celestial Coordinate System 2', 'Celestial Coordinate Conversions'], ['Celestial Timekeeping Systems', 'Geocentric Planetary Phenomena', 'Reduction in positional observations', 'Physics of Stars and Planets', 'Stellar Evolution'], ['Stellar Systems', 'Cosmic Distance Ladder', 'Cosmology', 'Optics', 'Night Sky Observation']],
                   book: {
                     people: 'Chooi Je Qin and Gregory Pylypovych',
                     image: Astronomy,
@@ -293,7 +292,7 @@ export default function Course() {
                   ))}
                 </div>
               </div>
-              <div>
+              <div className="">
                 <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Why Everaise?</h2>
                 <p className="text-xl text-gray-500">
                   Our goal at Everaise is to instill a lifelong love of learning in our students. We aren’t just a 
@@ -340,42 +339,53 @@ export default function Course() {
               </div>
               <div>
                 <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Course Topics</h2>
-                <div className="">
-                  <div className="">
-                    <div className="flex flex-col mt-2">
-                      <div className="align-middle min-w-full overflow-x-auto shadow overflow-hidden rounded-lg shadow-sm border border-gray-200">
-                        <table className="min-w-full divide-y divide-gray-200">
-                          <thead>
-                            <tr>
-                              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Topics
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
-                            {data.topics.map((topic) => (
-                              <tr key={topic} className="bg-white">
-                                <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                  <div className="flex">
-                                    <div className="group inline-flex space-x-2 truncate text-sm">
-                                      <ClipboardListIcon
-                                        className="flex-shrink-0 h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                                        aria-hidden="true"
-                                      />
-                                      <p className="text-gray-500 truncate group-hover:text-gray-900">
-                                        {topic}
+                
+              <div className="bg-white py-5 px-6">
+
+                {/* Activity Feed */}
+                <div className="flow-root">
+                  <ul className="-mb-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-10">
+                      {data.topics.map((topics) => (
+                        <div>
+                          {topics.map((topic, topicIdx) => (
+                            <li key={topic}>
+                              <div className="relative pb-8">
+                                {topicIdx !== topics.length - 1 ? (
+                                  <span
+                                    className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
+                                    aria-hidden="true"
+                                  />
+                                ) : null}
+                                <div className="relative flex space-x-5">
+                                  <div>
+                                    <span
+                                      className={
+                                        'cursor-pointer transform hover:scale-125 bg-green-400 h-8 w-8 rounded-full flex items-center justify-center ring-2 ring-white'
+                                      }
+                                    >
+                                      <Link to="/enroll">
+                                        <ClipboardIcon className="w-5 h-5 text-white" aria-hidden="true" />
+                                      </Link>
+                                    </span>
+                                  </div>
+                                  <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                    <div>
+                                      <p className="text-sm text-gray-500">
+                                        {topic}{' '}
                                       </p>
                                     </div>
                                   </div>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
+                                </div>
+                              </div>
+                            </li>
+                          ))}
+                        </div>
+                      ))}
                     </div>
-                  </div>
+                  </ul>
                 </div>
+              </div>
               </div>
               {data.book.image && <div>
                 <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Course Materials</h2>

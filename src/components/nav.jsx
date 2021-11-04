@@ -6,7 +6,6 @@ import { database } from '../firebase'
 import {
   UserGroupIcon, 
   MailIcon, 
-  HandIcon,
   ChatAltIcon,
   ChartBarIcon
 } from '@heroicons/react/outline'
