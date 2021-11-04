@@ -16,7 +16,7 @@ export const core = [
   },
   {
     name: 'Ananth Kashyap',
-    roles: ['Software Engineer'],
+    roles: ['Full Stack Developer'],
     imageUrl:
       'https://media-exp1.licdn.com/dms/image/C4D03AQH07DUdbFFFSg/profile-displayphoto-shrink_400_400/0/1633740449469?e=1640217600&v=beta&t=DwT6a6yYozE85eJu_rGEv3L6WU0Zkb-L-lLiH939cKk',
     achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
