@@ -163,18 +163,19 @@ export default function Courses() {
                   <div className="transform hover:-translate-y-0.5 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
                     <div className="space-y-6 hidden md:block col-span-0 md:col-span-1">
                       <Link to={`/course/${course.link}`} key={course.name}>
-                        <img className="rounded-l-lg w-72 h-80 md:h-52" src={course.img} alt="" />
+                        <img className="rounded-l-lg w-72 h-80 md:h-60" src={course.img} alt="" />
                       </Link>
                     </div>
                     <div className="px-8 pb-6 pt-3 md:py-6 col-span-4 md:col-span-3">
-                      <Link to={`/course/${course.link}`} key={course.name}>
                         <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
                           {course.name}
                         </div>
                         <div className="text-gray-900 mt-4 font-medium">
                           <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
+                          <Link to={`/course/${course.link}`} key={course.name}>
+                            <button className="unfocus hover:text-indigo-700 mt-4 font-normal text-lg text-indigo-500">More info &rarr;</button>
+                          </Link>
                         </div>
-                      </Link>
                     </div>
                   </div>
                 ))}

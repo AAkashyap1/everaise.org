@@ -9,9 +9,10 @@ import {
   ChatAltIcon,
   ChartBarIcon,
   XIcon,
-  MenuIcon
+  MenuIcon,
+  SpeakerphoneIcon,
 } from '@heroicons/react/outline'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, ChevronUpIcon} from '@heroicons/react/solid'
 import Logo from '../images/EveraiseAcademy.png'
 
 const events = [
@@ -35,6 +36,12 @@ const people = [
     description: 'View the people who help make Everaise Academy possible.',
     icon: UserGroupIcon,
     href: '/people/team'
+  },
+  {
+    name: 'Join Us',
+    description: 'View the people who help make Everaise Academy possible.',
+    icon: SpeakerphoneIcon,
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSeiQXl_vdbjcAFv4SRt1Zr8wZiylSfh4y30CMSVFr5r_ZQl3g/viewform'
   },
   { name: 'Contact Us', 
     description: 'We respond to all forms and emails as soon as possible.',
@@ -60,6 +67,8 @@ export default function Nav() {
   const [name, setName] = useState('')
   const [admin, setAdmin] = useState(false)
   const { currentUser, signout } = useAuth()
+  const [mobileEventsOpen, setMobileEventsOpen] = useState(false)
+  const [mobilePeopleOpen, setMobilePeopleOpen] = useState(false)
 
   async function handleLogout(event) {
     event.preventDefault()
@@ -106,7 +115,7 @@ export default function Nav() {
                 </Link>
               </div>
               <Popover.Group as="nav" className="hidden md:flex space-x-10 z-40">
-                <Link to="/courses" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                <Link to="/courses" className="unfocus text-base font-medium text-gray-500 hover:text-gray-900">
                   Courses
                 </Link>
                 <Link to="/resources" className="text-base font-medium text-gray-500 hover:text-gray-900">
@@ -204,18 +213,33 @@ export default function Nav() {
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                               {people.map((item) => (
-                                <Link
-                                  to={item.href}
-                                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                >
-                                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-cyan-600 text-white sm:h-12 sm:w-12">
-                                    <item.icon className="h-6 w-6" aria-hidden="true" />
-                                  </div>
-                                  <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                    <p className="mt-1 text-sm text-gray-500">{item.description}</p>
-                                  </div>
-                                </Link>
+                                item.href.startsWith('/') ?
+                                  <Link
+                                    to={item.href}
+                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                                  >
+                                    <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-cyan-600 text-white sm:h-12 sm:w-12">
+                                      <item.icon className="h-6 w-6" aria-hidden="true" />
+                                    </div>
+                                    <div className="ml-4">
+                                      <p className="text-base font-medium text-gray-900">{item.name}</p>
+                                      <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+                                    </div>
+                                  </Link> :
+                                  <a
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                                  >
+                                    <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-cyan-600 text-white sm:h-12 sm:w-12">
+                                      <item.icon className="h-6 w-6" aria-hidden="true" />
+                                    </div>
+                                    <div className="ml-4">
+                                      <p className="text-base font-medium text-gray-900">{item.name}</p>
+                                      <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+                                    </div>
+                                  </a>
                               ))}
                             </div>
                           </div>
@@ -333,6 +357,8 @@ export default function Nav() {
                   )}
                 </Menu>
               </div>
+
+              {/* Mobile Nav Menu */}
               <div className="flex md:hidden items-center">
                 <div className="md:hidden">
                   <nav className="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
@@ -372,11 +398,15 @@ export default function Nav() {
                     <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                       <div className="px-5 pt-4 flex items-center justify-between">
                         <div>
-                          <img
-                            className="h-8 w-auto"
-                            src={Logo}
-                            alt="logo"
-                          />
+                          <Link
+                            to="/landing"
+                          >
+                            <img
+                              className="h-8 w-auto"
+                              src={Logo}
+                              alt="logo"
+                            />
+                          </Link>
                         </div>
                         <div className="-mr-2">
                           <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-800 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -386,28 +416,89 @@ export default function Nav() {
                         </div>
                       </div>
                       <div className="px-2 pt-2 pb-3">
-                        {navigation.map((item) => (
-                          <Link
-                            key={item.name}
-                            to={item.href}
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        <Link
+                          to="/courses"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          Courses
+                        </Link>
+                        <Link
+                          to="/resources"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          Resources
+                        </Link>
+                        <div 
+                          onClick={() => setMobileEventsOpen(!mobileEventsOpen)}
+                          className="cursor-pointer w-full inline-flex block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          <div
+                            className="flex justify-start w-full"
                           >
-                            {item.name}
-                          </Link>
-                        ))}
+                            Events
+                          </div>
+                          {mobileEventsOpen ? 
+                            <span><ChevronUpIcon className="mt-1 h-5 w-5 flex justify-end"/></span> :
+                            <span><ChevronDownIcon className="mt-1 h-5 w-5 flex justify-end"/></span>
+                          }
+                        </div>
+                        {mobileEventsOpen &&
+                          <div>
+                            {events.map((item) => (
+                              <Link
+                                key={item.name}
+                                to={item.href}
+                                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                              >
+                                <span className="ml-5">{item.name}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        }
+                        <div 
+                          onClick={() => setMobilePeopleOpen(!mobilePeopleOpen)}
+                          className="cursor-pointer w-full inline-flex block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          <div
+                            className="flex justify-start w-full"
+                          >
+                            People
+                          </div>
+                          {mobilePeopleOpen ? 
+                            <span><ChevronUpIcon className="mt-1 h-5 w-5 flex justify-end"/></span> :
+                            <span><ChevronDownIcon className="mt-1 h-5 w-5 flex justify-end"/></span>
+                          }
+                        </div>
+                        {mobilePeopleOpen &&
+                          <div>
+                            {people.map((item) => (
+                              item.href.startsWith('/') ? 
+                                <Link
+                                  key={item.name}
+                                  to={item.href}
+                                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                                >
+                                  <span className="ml-5">{item.name}</span>
+                                </Link> :
+                                <a
+                                  key={item.name}
+                                  href={item.href}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                                >
+                                  <span className="ml-5">{item.name}</span>
+                                </a> 
+                            ))}
+                          </div>
+                        }
                         {!currentUser && 
                           <div>
                             <Link
                               to="/home"
                               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                             >
-                              Log In
-                            </Link>
-                            <Link
-                              to="/profile"
-                              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                            >
-                              Sign Up
+                              Log In / Sign Up
                             </Link>
                           </div>
                         }
