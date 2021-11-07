@@ -160,21 +160,23 @@ export default function Courses() {
               </div>
               <div className="space-y-4">
                 {catalog.map((course) => (
-                  <Link to={`/course/${course.link}`} key={course.name} className="border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
+                  <div className="transform hover:-translate-y-0.5 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
                     <div className="space-y-6 hidden md:block col-span-0 md:col-span-1">
-                      <div className="">
+                      <Link to={`/course/${course.link}`} key={course.name}>
                         <img className="rounded-l-lg w-72 h-80 md:h-52" src={course.img} alt="" />
-                      </div>
+                      </Link>
                     </div>
                     <div className="px-8 pb-6 pt-3 md:py-6 col-span-4 md:col-span-3">
-                      <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
-                        {course.name}
-                      </div>
-                      <div className="text-gray-900 mt-4 font-medium">
-                        <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
-                      </div>
+                      <Link to={`/course/${course.link}`} key={course.name}>
+                        <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
+                          {course.name}
+                        </div>
+                        <div className="text-gray-900 mt-4 font-medium">
+                          <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
               <div>
@@ -184,7 +186,7 @@ export default function Courses() {
                 </p>
               </div>
               <div className="xl:hidden"> 
-                <ul className="border border-gray-200 rounded-md mt-2 divide-y divide-gray-200 overflow-hidden xl:hidden">
+                <ul className="border border-gray-200 rounded-md mt-2 divide-y divide-gray-200 ">
                   {courses2021.map((course) => (
                     <li key={course.course}>
                       <a href={course.course} className="block px-4 py-4 bg-white hover:bg-gray-50">
@@ -206,7 +208,7 @@ export default function Courses() {
                               </span>
                               <span className="mb-2">Head - {course.head}</span>
                               <time dateTime={course.dates}>{course.dates}</time>
-                              <div className="flex">
+                              <div className="flex hidden sm:block">
                                 {course.hours.map((hour, index) => {
                                   return <span className={classNames('inline', index === 0 ? '' : 'ml-1')} key={hour}>{hour}{index === course.hours.length - 1 ? " " : ","}</span>
                                 })}

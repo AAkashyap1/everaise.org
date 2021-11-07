@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export const core = [
   {
     name: 'Preston Fu',
-    roles: ['Co-founder', 'Logistics', 'Outreach'],
+    roles: ['Co-founder', 'Executive Board Member', 'Logistics', 'Outreach'],
     imageUrl:
       'https://cdn.discordapp.com/attachments/712062038188228669/887854210664767568/Screen_Shot_2021-09-15_at_8.15.30_PM.png',
     achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge (COMC) International Honor Roll', 'Ross Mathematics Program Alumnus'],
@@ -15,18 +15,8 @@ export const core = [
     gitHubUrl: '',
   },
   {
-    name: 'Ananth Kashyap',
-    roles: ['Full Stack Developer'],
-    imageUrl:
-      'https://media-exp1.licdn.com/dms/image/C4D03AQH07DUdbFFFSg/profile-displayphoto-shrink_400_400/0/1633740449469?e=1640217600&v=beta&t=DwT6a6yYozE85eJu_rGEv3L6WU0Zkb-L-lLiH939cKk',
-    achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
-    education: 'Fox Chapel Area High School, PA — Class of 2023',
-    linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
-    gitHubUrl: 'https://github.com/AAkashyap1',
-  },
-  {
     name: 'Matthew Chen',
-    roles: ['Math 1 Head'],
+    roles: ['Math 1 Head', 'Executive Board Member', 'Math 1 Founding Member'],
     imageUrl:
       'https://cdn.discordapp.com/attachments/837192617338994719/854394055466024980/FaceApp_16237736720902.jpg',
     achievements: ['2x USA(J)MO Qualifier', 'PUMaC A Algebra 8th Place, Individual Finals 20th Place', 'USEMO Distinction', 'USAPHO Qualifier'],
@@ -35,18 +25,18 @@ export const core = [
     gitHubUrl: '',
   },
   {
-    name: 'Kiran Sun',
-    roles: ['Math 1 Associate Head'],
+    name: 'Je Qin Chooi',
+    roles: ['Astronomy Head', 'Executive Board Member', 'Astronomy Founding Member'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/Screen-Shot-2020-04-30-at-11.38.48-PM.png',
-    achievements: ['Canadian Junior Mathematical Olympiad (CJMO) Qualifier', '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier', 'AIME Qualifier'],
-    education: 'St. George’s School, British Columbia — Class of 2024',
+      'https://cdn.discordapp.com/attachments/826254368893435915/889042206235709490/image0.png',
+    achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
+    education: `Kolej Tuanku Ja'afar, Malaysia - Class of 2022`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
   {
     name: 'Ashmit Dutta',
-    roles: ['Physics Head'],
+    roles: ['Physics Head', 'Executive Board Member', 'Physics Founding Member'],
     imageUrl:
       'https://cdn.discordapp.com/attachments/712062038188228669/887854398024343632/Screen_Shot_2021-09-15_at_8.16.18_PM.png',
     achievements: ['Thomas Jefferson Physics Olympiad (TJPhO) Second Place', 'Physics Unlimited Explorer Competition (PUEC) Special Award', 'Online Physics Olympiad (OPhO) Problem Writer'],
@@ -56,7 +46,7 @@ export const core = [
   },
   {
     name: 'Krish Jayarapu',
-    roles: ['Biology Head'],
+    roles: ['Biology Head', 'Executive Board Member'],
     imageUrl:
       'https://everaise.org/wp-content/uploads/104107670_2755503924561566_7891133707076737469_n.png',
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
@@ -65,14 +55,24 @@ export const core = [
     gitHubUrl: '',
   },
   {
-    name: 'Chooi Je Qin',
-    roles: ['Astronomy Head'],
+    name: 'Kiran Sun',
+    roles: ['Math 1 Associate Head', 'Executive Board Member', 'Math 1 Founding Member'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/826254368893435915/889042206235709490/image0.png',
-    achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
-    education: `Kolej Tuanku Ja'afar, Malaysia - Class of 2022`,
+      'https://everaise.org/wp-content/uploads/2020/05/Screen-Shot-2020-04-30-at-11.38.48-PM.png',
+    achievements: ['Canadian Junior Mathematical Olympiad (CJMO) Qualifier', '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier', 'AIME Qualifier'],
+    education: 'St. George’s School, British Columbia — Class of 2024',
     linkedInUrl: '',
     gitHubUrl: '',
+  },
+  {
+    name: 'Ananth Kashyap',
+    roles: ['Director of Technology'],
+    imageUrl:
+      'https://media-exp1.licdn.com/dms/image/C4D03AQH07DUdbFFFSg/profile-displayphoto-shrink_400_400/0/1633740449469?e=1640217600&v=beta&t=DwT6a6yYozE85eJu_rGEv3L6WU0Zkb-L-lLiH939cKk',
+    achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
+    education: 'Fox Chapel Area High School, PA — Class of 2023',
+    linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
+    gitHubUrl: 'https://github.com/AAkashyap1',
   },
   {
     name: 'Abhay Bestrapalli',
@@ -329,7 +329,7 @@ export default function Team() {
                         })}
                       </div>
                       <ul className="items-center flex justify-center space-x-5">
-                        <li>
+                        {person.gitHubUrl && <li>
                           <a href={person.gitHubUrl} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-300">
                             <span className="sr-only">GitHub</span>
                             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -340,8 +340,8 @@ export default function Team() {
                               />
                             </svg>
                           </a>
-                        </li>
-                        <li>
+                        </li>}
+                        {person.linkedInUrl && <li>
                           <a href={person.linkedInUrl} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-300">
                             <span className="sr-only">LinkedIn</span>
                             <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -352,7 +352,7 @@ export default function Team() {
                               />
                             </svg>
                           </a>
-                        </li>
+                        </li>}
                       </ul>
                     </div>
                   </div>
