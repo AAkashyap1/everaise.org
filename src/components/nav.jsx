@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Popover, Menu, Transition } from '@headlessui/react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory} from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext.js'
 import { database } from '../firebase'
 import {
@@ -69,6 +69,7 @@ export default function Nav() {
   const { currentUser, signout } = useAuth()
   const [mobileEventsOpen, setMobileEventsOpen] = useState(false)
   const [mobilePeopleOpen, setMobilePeopleOpen] = useState(false)
+  const history = useHistory()
 
   async function handleLogout(event) {
     event.preventDefault()
@@ -397,16 +398,15 @@ export default function Nav() {
                   >
                     <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                       <div className="px-5 pt-4 flex items-center justify-between">
-                        <div>
-                          <Link
-                            to="/landing"
-                          >
-                            <img
-                              className="h-8 w-auto"
-                              src={Logo}
-                              alt="logo"
-                            />
-                          </Link>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => history.push("/landing")}
+                        >
+                          <img
+                            className="h-8 w-auto"
+                            src={Logo}
+                            alt="logo"
+                          />
                         </div>
                         <div className="-mr-2">
                           <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-800 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

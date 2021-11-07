@@ -640,7 +640,7 @@ export default function Home() {
                                 </div>
                               </div>
                             </p> :
-                            <button onClick={event => { Refresh(event, item.id) }} className="text-left relative flex space-x-3">
+                            <button onClick={event => { Refresh(event, item.id) }} className="unfocus text-left relative flex space-x-3">
                               <div>
                                 <p
                                   className={classNames(
