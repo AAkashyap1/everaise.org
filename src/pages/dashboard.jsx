@@ -1,7 +1,8 @@
 import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import { database, increment } from '../firebase'
+import { database } from '../firebase'
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore'
 import { useAuth } from '../contexts/AuthContext'
 import Launch from '../images/launch.png'
 import EvCirc from '../images/evcirc.png'
@@ -52,39 +53,63 @@ export default function Dashboard() {
   const { signout, currentUser } = useAuth()
   const [numAssignments, setNumAssignments] = useState(4)
   const [viewStatus, setViewStatus] = useState(true)
+  const [cards, setCards] = useState([])
   const history = useHistory()
 
   let courseName = null
   let userData = null
   let defaultDoc = null
-  let string = null
   let assignments = null
 
   if (course === 'physics') {
     courseName = 'Physics Mechanics'
     userData = database.physics_users
     defaultDoc = 'hL3k7Amo4XKNzD3l5y7Z'
-    string = 'physics_users'
     assignments = 25
   } else if (course === 'math') {
     courseName = 'Math Competitions 1'
     userData = database.math_users
     defaultDoc = 'oESnyw427hwAxLSt6tuk'
-    string = 'math_users'
     assignments = 16
   } else if (course === 'biology') {
     courseName = 'Biology'
     defaultDoc = '1XLDJJ2bO3tjEBA6i15G'
     userData = database.biology_users
-    string = 'biology_users'
     assignments = 28
   } else if (course === 'astronomy') {
     courseName = 'Astronomy'
     defaultDoc = '1Z2ywXi5PDYfDT8PWb8p'
     userData = database.astronomy_users
-    string = 'astronomy_users'
     assignments = 23
   }
+
+  const users = useCollectionData(userData)[0]
+  const user = useDocumentData(userData.doc(currentUser.email))[0]
+
+  useEffect(() => {
+    if (user && users.length > 0) {
+      let rank = 1;
+      for (const tempUser of users) {
+        if(tempUser.points > user.points) {
+          rank += 1
+        }
+      }
+      setCards(
+        [
+          {
+            name: 'Points', 
+            icon: FireIcon,
+            amount: user.points
+          },
+          {
+            name: 'Rank', 
+            icon: ChartSquareBarIcon,
+            amount: rank + '/' + users.length
+          },
+        ]
+      )
+    }
+  }, [users, user])
 
   useEffect(() => {
     document.title = 'Dashboard - ' + courseName
@@ -170,50 +195,6 @@ export default function Dashboard() {
     event.preventDefault()
     setNumAssignments(assignments - numAssignments)
     setViewStatus(!viewStatus)
-  }
-
-
-  function GetCards() {
-    const [cards, setCards] = useState([])
-
-    useEffect(() => {
-      let arr = []
-      const u1 = userData.doc(currentUser.email).get()
-        .then((doc) => {
-        })
-      const u2 = userData.orderBy("points", "desc").get()
-        .then((querySnapshot) => {
-          userData.doc(currentUser.email).update({
-            rank: 1
-          })
-          querySnapshot.forEach((doc) => {
-            userData.doc(currentUser.email).get().then((doc1) => {
-              if (doc.data().active === true && doc.data().points > doc1.data().points) {
-                userData.doc(currentUser.email).update({
-                  rank: increment
-                })
-              }
-            })
-          })
-        })
-      const u3 = userData.doc(currentUser.email).get()
-        .then((doc) => {
-          arr.unshift({ name: 'Rank', icon: ChartSquareBarIcon, amount: doc.data().rank + '/' })
-        })
-      const u4 = database.total_users.doc(string).get()
-        .then((doc1) => {
-          arr[1].amount = arr[1].amount + doc1.data().total_users
-        })
-      const u5 = userData.doc(currentUser.email).get()
-        .then((doc) => {
-          arr.unshift({ name: 'Points', icon: FireIcon, amount: (doc.data().points) })
-        })
-      Promise.all([u1, u2, u3, u4, u5])
-        .then(() => {
-          setCards(arr)
-        })
-    }, [])
-    return cards
   }
 
   function getUserName() {
@@ -579,30 +560,58 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="mt-8">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">Overview</h2>
-              <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {GetCards().map((card) => (
-                  <div key={card.name} className="bg-white overflow-hidden shadow rounded-lg">
-                    <div className="p-5">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0">
-                          <card.icon className="h-6 w-6 text-gray-400" aria-hidden="true" />
-                        </div>
-                        <div className="ml-5 w-0 flex-1">
-                          <dl>
-                            <dt className="text-sm font-medium text-gray-500 truncate">{card.name}</dt>
-                            <dd>
-                              <div className="text-lg font-medium text-gray-900">{card.amount}</div>
-                            </dd>
-                          </dl>
+            {cards.length === 0 &&
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-lg leading-6 font-medium text-gray-900">Overview</h2>
+                <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {['1', '2'].map((card) => (
+                    <div key={card} className="bg-white overflow-hidden shadow rounded-lg">
+                      <div className="p-5">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0">
+                            <div className="h-6 w-6 bg-gray-200 rounded-full " aria-hidden="true" />
+                          </div>
+                          <div className="ml-5 w-0 flex-1">
+                            <dl className="space-y-1.5">
+                              <dt className="text-sm rounded-md text-gray-200 bg-gray-200 w-1/2 h-4">Points</dt>
+                              <dd>
+                                <div className="text-sm rounded-md text-gray-200 bg-gray-200">1/333</div>
+                              </dd>
+                            </dl>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            }
+            {cards.length > 0 &&
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-lg leading-6 font-medium text-gray-900">Overview</h2>
+                <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {cards.map((card) => (
+                    <div key={card.name} className="bg-white overflow-hidden shadow rounded-lg">
+                      <div className="p-5">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0">
+                            <card.icon className="h-6 w-6 text-gray-400" aria-hidden="true" />
+                          </div>
+                          <div className="ml-5 w-0 flex-1">
+                            <dl>
+                              <dt className="text-sm font-medium text-gray-500 truncate">{card.name}</dt>
+                              <dd>
+                                <div className="text-lg font-medium text-gray-900">{card.amount}</div>
+                              </dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            }
 
             <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">
               Assignment Log

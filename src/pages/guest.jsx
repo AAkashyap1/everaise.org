@@ -3,12 +3,21 @@ import Footer from '../components/footer'
 import { useEffect } from 'react'  
 import { Link } from 'react-router-dom'
 
+import Moody from '../images/speakers/Moody.png'
+import Quines from '../images/speakers/Quines.png'
+import Rajesh from '../images/speakers/Rajesh.png'
+import Salzedo from '../images/speakers/Salzedo.png'
+import Scheffield from '../images/speakers/Scheffield.png'
+import Sipser from '../images/speakers/Sipser.png'
+import Yew from '../images/speakers/Yew.png'
+
+
 const speakers = [
   {
     name: 'Sameer Rajesh',
     roles: ['Junior @ UC Berkeley'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/unnamed-9-1.png',
+      Rajesh,
     title: 'Itsy Bitsy Origami',
     description: 
       `Beginning with a brief discussion and survey of the introduction of concepts from physics 
@@ -27,7 +36,7 @@ const speakers = [
     name: 'CJ Quines',
     roles: ['Junior @ MIT'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/received_595203618020746.jpeg',
+      Quines,
     title: 'Type Theory',
     description: 
       `What are types, how are they related to proofs, and how do computers use them to automatically 
@@ -45,7 +54,7 @@ const speakers = [
     name: 'Dr. Chong Hon Yew',
     roles: ['President @ Astronomical Society of Penang'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/Photo-1.jpg',
+      Yew,
     title: 'Hubble is great; what will James Webb will tell us?',
     description: 
       `Since its launch in 1990, the Hubble Space Telescope has not ceased to amaze astronomers and 
@@ -66,7 +75,7 @@ const speakers = [
     name: 'Professor Michael Sipser',
     roles: ['Professor @ MIT'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/sipser2.jpg',
+      Sipser,
     title: 'P vs NP',
     description: 
       ``,
@@ -78,10 +87,10 @@ const speakers = [
     link: 'https://www.youtube.com/channel/UCGyILrSYokhRvJ_ibJKlMfw',
   },
   {
-    name: 'Professor Scott Sheffield',
+    name: 'Professor Scott Scheffield',
     roles: ['Professor @ MIT'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/photo.jpg',
+      Scheffield,
     title: 'Martingales and the Optional Stopping Theorem',
     description: 
       ``,
@@ -99,7 +108,7 @@ const speakers = [
     name: 'Simon Rubinstein-Salzedo',
     roles: ['Founder @ Euler Math Circle'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/unnamed.jpg',
+      Salzedo,
     title: 'Division points of hypocycloids',
     description: 
       ``,
@@ -116,7 +125,7 @@ const speakers = [
     name: 'D. Branch Moody, MD',
     roles: ['Professor of Medicine @ Harvard Medical School'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/moody_pic.jpg',
+      Moody,
     title: 'TBA',
     description: 
       ``,

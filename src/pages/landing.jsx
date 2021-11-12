@@ -11,6 +11,19 @@ import { core, staff } from './team'
 import CountUpOnce from '../utility/count'
 import Carousel from 'react-elastic-carousel'
 
+import JaneStreet from '../images/sponsors/JaneStreet.png'
+import AoPS from '../images/sponsors/AoPS.png'
+import Wolfram from '../images/sponsors/Wolfram.png'
+import Maple from '../images/sponsors/Maple.png'
+
+import Moody from '../images/speakers/Moody.png'
+import Quines from '../images/speakers/Quines.png'
+import Rajesh from '../images/speakers/Rajesh.png'
+import Salzedo from '../images/speakers/Salzedo.png'
+import Scheffield from '../images/speakers/Scheffield.png'
+import Sipser from '../images/speakers/Sipser.png'
+import Yew from '../images/speakers/Yew.png'
+
 const metrics = [
   { id: 1, end: 1500, suffix: '+', emphasis: 'Students', rest: 'have been inspired through Everaise.' },
   { id: 2, end: core.length + staff.length, suffix: '', emphasis: 'Experienced staff members', rest: 'help contribute to Everiase.' },
@@ -64,8 +77,8 @@ const speakers = [
     name: 'Dr. Chong Hon Yew',
     roles: ['President @ Astronomical Society of Penang'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/Photo-1.jpg',
-    title: 'What will James Webb will tell us?',
+      Yew,
+    title: 'What will James Webb tell us?',
     description: 
       `Since its launch in 1990, the Hubble Space Telescope has not ceased to amaze astronomers and 
       astronomy enthusiasts around the world with its amazing images of astronomical objects, ranging 
@@ -86,7 +99,7 @@ const speakers = [
     name: 'CJ Quines',
     roles: ['Junior @ MIT'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/received_595203618020746.jpeg',
+      Quines,
     title: 'Type Theory',
     description: 
       `What are types, how are they related to proofs, and how do computers use them to automatically 
@@ -105,7 +118,7 @@ const speakers = [
     name: 'Sameer Rajesh',
     roles: ['Junior @ UC Berkeley'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/unnamed-9-1.png',
+      Rajesh,
     title: 'Itsy Bitsy Origami',
     description: 
       `Beginning with a brief discussion and survey of the introduction of concepts from physics 
@@ -125,7 +138,7 @@ const speakers = [
     name: 'Professor Michael Sipser',
     roles: ['Professor @ MIT'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/sipser2.jpg',
+      Sipser,
     title: 'P vs NP',
     description: 
       ``,
@@ -141,7 +154,7 @@ const speakers = [
     name: 'Professor Scott Sheffield',
     roles: ['Professor @ MIT'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/photo.jpg',
+      Scheffield,
     title: 'Martingales and the Optional Stopping Theorem',
     description: 
       ``,
@@ -160,7 +173,7 @@ const speakers = [
     name: 'Simon Rubinstein-Salzedo',
     roles: ['Founder @ Euler Math Circle'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/unnamed.jpg',
+      Salzedo,
     title: 'Division points of hypocycloids',
     description: 
       ``,
@@ -178,7 +191,7 @@ const speakers = [
     name: 'D. Branch Moody, MD',
     roles: ['Professor of Medicine @ Harvard Medical School'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/moody_pic.jpg',
+      Moody,
     title: 'TBA',
     description: 
       ``,
@@ -446,16 +459,16 @@ export default function Landing() {
             </p>
             <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:mt-8">
               <div className="rounded-l-sm col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src="https://everaise.org/wp-content/uploads/elementor/thumbs/janestreet-ookcfvfht54oy885licxeamc8uipkl8nrhe9ih105c.png" alt="Jane Street" />
+                <img className="max-h-12" src={JaneStreet} alt="Jane Street" />
               </div>
               <div className="col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src="https://everaise.org/wp-content/uploads/96377525_2853633141352031_4475931134517051392_n.png" alt="AoPS" />
+                <img className="max-h-12" src={AoPS} alt="AoPS" />
               </div>
               <div className="col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src="https://everaise.org/wp-content/uploads/wolfram-768x605.png" alt="Wolfram" />
+                <img className="max-h-12" src={Wolfram} alt="Wolfram" />
               </div>
               <div className="rounded-r-sm col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src="https://everaise.org/wp-content/uploads/mapleboi.png" alt="Maple" />
+                <img className="max-h-12" src={Maple} alt="Maple" />
               </div>
             </div>
           </div>
