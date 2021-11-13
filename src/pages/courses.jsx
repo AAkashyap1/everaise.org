@@ -6,6 +6,11 @@ import {
   ChevronRightIcon,
 } from '@heroicons/react/solid'
 
+import Physics from '../images/courses/Physics.jpg'
+import Math from '../images/courses/Math.jpg'
+import Biology from '../images/courses/Biology.jpg'
+import Astronomy from '../images/courses/Astronomy.jpg'
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -13,7 +18,7 @@ function classNames(...classes) {
 const catalog = [
   {
     name: 'Physics Mechanics',
-    img: 'https://everaise.org/wp-content/uploads/2020/04/Screen-Shot-2020-04-24-at-9.32.13-PM.png',
+    img: Physics,
     desc: `A rigorous treatment of mechanics including kinematics, Newton’s laws, collisions, 
           rolling motion, oscillations, fluid statics, fictitious forces, and error analysis.`,
     dates: 'June 21 – August 6',
@@ -21,7 +26,7 @@ const catalog = [
   },
   {
     name: 'Biology',
-    img: 'https://everaise.org/wp-content/uploads/2020/05/received_864303084037580.png',
+    img: Biology,
     desc: `A deep study of theoretical biology, covering a range of topics from cell biology, 
             genetics, and human anatomy and physiology to the mechanisms underlying plant life`,
     dates: 'July 5 – August 6',
@@ -29,7 +34,7 @@ const catalog = [
   },
   {
     name: 'Math Competitions I',
-    img: 'https://everaise.org/wp-content/uploads/2020/04/Screen-Shot-2020-04-24-at-9.31.32-PM.png',
+    img: Math,
     desc: `An intuition-building math competitions course including sequences and series, 
             polynomials, combinatorial identities, triangle centers, and modular arithmetic.`,
     dates: 'July 12 – August 6',
@@ -37,7 +42,7 @@ const catalog = [
   },
   {
     name: 'Astronomy',
-    img: 'https://everaise.org/wp-content/uploads/bop.jpg',
+    img: Astronomy,
     desc: `An introductory course in astronomy, including celestial coordinates, stellar systems, 
             and cosmology in addition to important physics topics such as orbital mechanics.`,
     dates: 'July 12 – August 6',
