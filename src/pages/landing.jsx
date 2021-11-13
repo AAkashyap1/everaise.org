@@ -278,7 +278,7 @@ export default function Landing() {
                   alt="Chalkboard"
                 />
                 <div className="absolute inset-0 px-4 py-16 mt-20 md:mt-14 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                  <h1 className="text-center font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl">
+                  <h1 className="text-center font-semibold text-5xl sm:text-6xl md:text-7xl">
                     <span className="block text-white">Inspiring Student{' '}</span>
                     <span className="block text-white">Scientists Worldwide</span>
                   </h1>
