@@ -3,12 +3,42 @@ import Footer from '../components/footer'
 import { useEffect } from 'react' 
 import { Link } from 'react-router-dom' 
 
+import PrestonFu from '../images/team/PrestonFu.png'
+import MatthewChen from '../images/team/MatthewChen.png'
+import ChooiJeQin from '../images/team/ChooiJeQin.png'
+import AshmitDutta from '../images/team/AshmitDutta.png'
+import KrishJayarapu from '../images/team/KrishJayarapu.png'
+import KiranSun from '../images/team/KiranSun.png'
+import AnanthKashyap from '../images/team/AnanthKashyap.png'
+import AbhayBestrapalli from '../images/team/AbhayBestrapalli.png'
+import FarazAhmedSiddiqui from '../images/team/FarazAhmedSiddiqui.png'
+import JeffreyWei from '../images/team/JeffreyWei.png'
+
+import AnujSakarda from '../images/team/AnujSakarda.png'
+import OliviaLi from '../images/team/OliviaLi.png'
+import GaryHu from '../images/team/GaryHu.png'
+import JustinHua from '../images/team/JustinHua.png'
+import IvyZheng from '../images/team/IvyZheng.png'
+import DerekChen from '../images/team/DerekChen.png'
+import PeterPu from '../images/team/PeterPu.png'
+import AnuragChittawar from '../images/team/AnuragChittawar.png'
+import AniruddhaSharma from '../images/team/AniruddhaSharma.png'
+import AtharvaMahajan from '../images/team/AtharvaMahajan.png'
+import YamanAcharya from '../images/team/YamanAcharya.png'
+import HaoliYin from '../images/team/HaoliYin.png'
+import VictorLi from '../images/team/VictorLi.JPG'
+import NathanMa from '../images/team/NathanMa.png'
+import AlbertYe from '../images/team/AlbertYe.png'
+import JeffreyHu from '../images/team/JeffreyHu.jpg'
+import LohithTummala from '../images/team/LohithTummala.png'
+import EvanKim from '../images/team/EvanKim.png'
+
 export const core = [
   {
     name: 'Preston Fu',
     roles: ['Co-founder', 'Executive Board Member', 'Logistics', 'Outreach'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/712062038188228669/887854210664767568/Screen_Shot_2021-09-15_at_8.15.30_PM.png',
+      PrestonFu,
     achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge (COMC) International Honor Roll', 'Ross Mathematics Program Alumnus'],
     education: 'Saratoga High School, CA — Class of 2022',
     linkedInUrl: '',
@@ -18,7 +48,7 @@ export const core = [
     name: 'Matthew Chen',
     roles: ['Math 1 Head', 'Executive Board Member', 'Math 1 Founding Member'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/837192617338994719/854394055466024980/FaceApp_16237736720902.jpg',
+      MatthewChen,
     achievements: ['2x USA(J)MO Qualifier', 'PUMaC A Algebra 8th Place, Individual Finals 20th Place', 'USEMO Distinction', 'USAPHO Qualifier'],
     education: 'Wayzata High School, MN — Class of 2023',
     linkedInUrl: '',
@@ -28,7 +58,7 @@ export const core = [
     name: 'Je Qin Chooi',
     roles: ['Astronomy Head', 'Executive Board Member', 'Astronomy Founding Member'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/826254368893435915/889042206235709490/image0.png',
+      ChooiJeQin,
     achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
     education: `Kolej Tuanku Ja'afar, Malaysia - Class of 2022`,
     linkedInUrl: '',
@@ -38,7 +68,7 @@ export const core = [
     name: 'Ashmit Dutta',
     roles: ['Physics Head', 'Executive Board Member', 'Physics Founding Member'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/712062038188228669/887854398024343632/Screen_Shot_2021-09-15_at_8.16.18_PM.png',
+      AshmitDutta,
     achievements: ['Thomas Jefferson Physics Olympiad (TJPhO) Second Place', 'Physics Unlimited Explorer Competition (PUEC) Special Award', 'Online Physics Olympiad (OPhO) Problem Writer'],
     education: 'Wayzata High School, MN — Class of 2023',
     linkedInUrl: '',
@@ -48,7 +78,7 @@ export const core = [
     name: 'Krish Jayarapu',
     roles: ['Biology Head', 'Executive Board Member'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/104107670_2755503924561566_7891133707076737469_n.png',
+      KrishJayarapu,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
     education: 'Carmel High School, IN — Class of 2022',
     linkedInUrl: '',
@@ -58,7 +88,7 @@ export const core = [
     name: 'Kiran Sun',
     roles: ['Math 1 Associate Head', 'Executive Board Member', 'Math 1 Founding Member'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/05/Screen-Shot-2020-04-30-at-11.38.48-PM.png',
+      KiranSun,
     achievements: ['Canadian Junior Mathematical Olympiad (CJMO) Qualifier', '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier', 'AIME Qualifier'],
     education: 'St. George’s School, British Columbia — Class of 2024',
     linkedInUrl: '',
@@ -68,7 +98,7 @@ export const core = [
     name: 'Ananth Kashyap',
     roles: ['Director of Technology'],
     imageUrl:
-      'https://media-exp1.licdn.com/dms/image/C4D03AQH07DUdbFFFSg/profile-displayphoto-shrink_400_400/0/1633740449469?e=1640217600&v=beta&t=DwT6a6yYozE85eJu_rGEv3L6WU0Zkb-L-lLiH939cKk',
+      AnanthKashyap,
     achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
     education: 'Fox Chapel Area High School, PA — Class of 2023',
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
@@ -78,7 +108,7 @@ export const core = [
     name: 'Abhay Bestrapalli',
     roles: ['Astronomy Associate Head'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/abhay.png',
+      AbhayBestrapalli,
     achievements: ['Indian International Mathematical Olympiad Training Camp (IMOTC)', 'USA IOAA 2021 Main Team', 'Indian Astronomy Selection Camp (IOAA OCSC)'],
     education: 'Delhi Public School Bangalore East — Class of 2022',
     linkedInUrl: '',
@@ -88,7 +118,7 @@ export const core = [
     name: 'Faraz Ahmed Siddiqui',
     roles: ['Astronomy Associate Head'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924137562112000/Screenshot_3_1_-_KA_Sayed.png',
+      FarazAhmedSiddiqui,
     achievements: ['INAO Qualifier', 'Physics Unlimited Explorer Competition (PUEC) Bronze Award', 'OPhO Invitational Qualifier'],
     education: 'Holy Family High School, Maharashtra, India — Class of 2024',
     linkedInUrl: 'https://www.linkedin.com/in/faraz-ahmed-siddiqui-73a3ba216/',
@@ -98,7 +128,7 @@ export const core = [
     name: 'Jeffrey Wei',
     roles: ['Astronomy Associate Head'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/712062038188228669/887857862959849503/Screen_Shot_2021-09-15_at_8.30.04_PM.png',
+      JeffreyWei,
     achievements: [],
     education: 'Acton Boxborough Regional High School, MA — Class of 2023',
     linkedInUrl: '',
@@ -111,7 +141,7 @@ export const staff = [
     name: 'Evan Kim',
     roles: ['Physics', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/evan.png',
+      EvanKim,
     achievements: ['USAPhO Semifinalist', 'AMC 10 Distinguished Honor Roll', 'AIME Qualifier', 'National Science Bowl Qualifier'],
     education: 'Tesla STEM High School, WA — Class of 2023',
     linkedInUrl: '',
@@ -121,7 +151,7 @@ export const staff = [
     name: 'Lohith Tummala',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/2020/04/Screen-Shot-2020-04-28-at-4.16.56-PM.png',
+      LohithTummala,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
     education: 'Paul Laurence Dunbar High School, KY — Class of 2021',
     linkedInUrl: '',
@@ -131,7 +161,7 @@ export const staff = [
     name: 'Jeffrey Hu',
     roles: ['Math 1', 'Physics', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/Screen-Shot-2020-05-04-at-10.12.05-PM.png',
+      JeffreyHu,
     achievements: ['3x AIME qualifier', 'USAPhO qualifier', 'Santa Clara University Math Contest Honorable Mention'],
     education: 'Saratoga High School, CA — Class of 2022',
     linkedInUrl: '',
@@ -141,7 +171,7 @@ export const staff = [
     name: 'Albert Ye',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862923431824982016/a_-_Albert_Ye.jpg?width=670&height=670',
+      AlbertYe,
     achievements: ['3x AIME Qualifier', 'AMC 10 Distinguished Honor Roll', 'USAMTS Leaderboard'],
     education: 'Saratoga High School, CA — Class of 2022',
     linkedInUrl: '',
@@ -151,7 +181,7 @@ export const staff = [
     name: 'Nathan Ma',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/nathan.png',
+      NathanMa,
     achievements: ['2x AMC 10 Distinguished Honor Roll', '2x AIME Qualifier', 'MathCounts Nationals Qualifier'],
     education: 'Stevenson High School, IL — Class of 2023',
     linkedInUrl: '',
@@ -161,7 +191,7 @@ export const staff = [
     name: 'Victor Li',
     roles: ['Biology', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/DSC05913-Victor-Li.jpg',
+      VictorLi,
     achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
     education: 'Massachusetts Institute of Technology — Class of 2025',
     linkedInUrl: '',
@@ -171,7 +201,7 @@ export const staff = [
     name: 'Haoli Yin',
     roles: ['Biology', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://everaise.org/wp-content/uploads/Screen-Shot-2020-05-06-at-10.01.50-PM.png',
+      HaoliYin,
     achievements: [],
     education: '',
     linkedInUrl: '',
@@ -181,7 +211,7 @@ export const staff = [
     name: 'Yaman Acharya',
     roles: ['Astronomy', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862926000820060210/IMG_20210218_104940_-_Yaman_Acharya.jpg?width=362&height=669',
+      YamanAcharya,
     achievements: ['IAO Qualifier', 'NAO Finalist', 'Intern at Nepal Astronomical Society (NASO)'],
     education: 'Vishwa Adarsha College, Province No. 1, Nepal — Class of 2022',
     linkedInUrl: '',
@@ -191,7 +221,7 @@ export const staff = [
     name: 'Atharva Mahajan',
     roles: ['Physics', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862923769484148756/everaise_-_atharva_mahajan.jpg?width=429&height=670',
+      AtharvaMahajan,
     achievements: ['Indian Physics Selection Camp (OCSC)', 'KVPY Top 50', 'RMO Qualifier'],
     education: 'Rankers International School, Madhya Pradesh, India — Class of 2022',
     linkedInUrl: '',
@@ -201,7 +231,7 @@ export const staff = [
     name: 'Aniruddha Sharma',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924137592258610/photo_2021-05-28_20-04-32_-_aniruddha_sharma.jpg?width=591&height=670',
+      AniruddhaSharma,
     achievements: ['Physics Unlimited Explorer Competition (PUEC) Third Place', 'Stanford Code in Place Alumnus', 'Gaussian Curvature Mathematics Committee Member'],
     education: 'Delhi Public School, Bhopal, India — Class of 20XX',
     linkedInUrl: '',
@@ -211,7 +241,7 @@ export const staff = [
     name: 'Anurag Chittawar',
     roles: ['Biology', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924136627044392/IMG-20210518-WA0023_-_Anu_Chittawar.jpg?width=501&height=670',
+      AnuragChittawar,
     achievements: ['2x INBO gold medalist', 'AIR 52 in KVPY SA'],
     education: 'Yogi Raj Public School, Rajasthan, India — Class of 2021',
     linkedInUrl: '',
@@ -221,7 +251,7 @@ export const staff = [
     name: 'Peter Pu',
     roles: ['Biology', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862926006319185960/photoactual_-_John_Bob.jpg?width=504&height=671',
+      PeterPu,
     achievements: ['USABO Finalist (Top 20)', 'AMC 10 DHR', 'AMC 12 DHR'],
     education: 'University of Chicago Laboratory Schools, IL — Class of 2022',
     linkedInUrl: '',
@@ -231,7 +261,7 @@ export const staff = [
     name: 'Derek Chen',
     roles: ['Biology', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924130739159060/DerekChen2773_1_-_Derek_Chen.png?width=638&height=670',
+      DerekChen,
     achievements: ['2021 USABO Team Member', '5x AIME Qualifier', 'USAPhO Honorable Mention', 'PROMYS Alumnus'],
     education: 'Belmont High School, MA — Class of 2022',
     linkedInUrl: '',
@@ -241,7 +271,7 @@ export const staff = [
     name: 'Ivy Zheng',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924139781685248/IMG_7415_3_-_Ivy_Zheng.jpg?width=604&height=670',
+      IvyZheng,
     achievements: ['2x AIME Qualifier', 'AMC 10 Distinguished Honor Roll'],
     education: 'Lexington High School, MA — Class of 2024',
     linkedInUrl: '',
@@ -251,7 +281,7 @@ export const staff = [
     name: 'Justin Hua',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://cdn.discordapp.com/attachments/860658233898565663/862925999033417728/Grade_11_Photo_-_Lieutenant_Justin.png',
+      JustinHua,
     achievements: ['Ross Mathematics Program Alumnus'],
     education: 'Hugh McRoberts Secondary School, British Columbia, Canada — Class of 2021',
     linkedInUrl: '',
@@ -261,7 +291,7 @@ export const staff = [
     name: 'Gary Hu',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924129154105374/image0_-_Gary_98.jpg',
+      GaryHu,
     achievements: ['AIME Qualifier', 'AMC 10 Distinction', 'CMIMC Algebra Number Theory Top 50'],
     education: 'Montclair Kimberley Academy, NJ — Class of 2024',
     linkedInUrl: '',
@@ -271,7 +301,7 @@ export const staff = [
     name: 'Olivia Li',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862925995660279818/everaise_-_Olivia_Li.jpg',
+      OliviaLi,
     achievements: ['AIME Qualifier', 'Math Prize for Girls Alumnus', 'USACO Silver Qualifier'],
     education: 'Dougherty Valley High School, CA — Class of 2023',
     linkedInUrl: '',
@@ -281,7 +311,7 @@ export const staff = [
     name: 'Anuj Sakarda',
     roles: ['Math 1', 'Curriculum', 'Instructor'],
     imageUrl:
-      'https://media.discordapp.net/attachments/860658233898565663/862924143727738880/IMG_2217_-_Anuj_Sakarda.jpeg?width=669&height=670',
+      AnujSakarda,
     achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
     education: 'Acton Boxborough Regional High School, MA — Class of 2022',
     linkedInUrl: '',

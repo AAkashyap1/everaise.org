@@ -55,7 +55,7 @@ const speakers = [
     roles: ['President @ Astronomical Society of Penang'],
     imageUrl:
       Yew,
-    title: 'Hubble is great; what will James Webb will tell us?',
+    title: 'Hubble is great; what will James Webb tell us?',
     description: 
       `Since its launch in 1990, the Hubble Space Telescope has not ceased to amaze astronomers and 
       astronomy enthusiasts around the world with its amazing images of astronomical objects, ranging 
