@@ -23,6 +23,7 @@ import Salzedo from '../images/speakers/Salzedo.png'
 import Scheffield from '../images/speakers/Scheffield.png'
 import Sipser from '../images/speakers/Sipser.png'
 import Yew from '../images/speakers/Yew.png'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const metrics = [
   { id: 1, end: 1500, suffix: '+', emphasis: 'Students', rest: 'have been inspired through Everaise.' },
@@ -281,14 +282,13 @@ export default function Landing() {
                 </p>
                 <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow">
-                    <a
-                      href="https://discord.gg/JE5TaCrrFn"
-                      target="_blank"
-                      rel="noreferrer"
+                    <AnchorLink
                       className="shadow-lg w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 md:py-4 md:text-lg md:px-10"
+                      href="#about"
+                      offset="40px"
                     >
-                      Join our Discord <span className="h-5 w-5 ml-2"><ExternalLinkIcon /></span>
-                    </a>
+                      Learn More
+                    </AnchorLink>
                   </div>
                   <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                     <Link
@@ -313,7 +313,7 @@ export default function Landing() {
         
         {/* Goals Section */}
         <div className="relative bg-white pt-16 pb-16">
-          <div className="mx-auto max-w-md px-4 text-center max-w-4xl sm:px-6 lg:px-8 lg:max-w-7xl">
+          <div id="about" className="mx-auto max-w-md px-4 text-center max-w-4xl sm:px-6 lg:px-8 lg:max-w-7xl">
             <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Our Goals</h2>
             <p className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl">
               At Everaise, we're committed to building a deeper understanding.
