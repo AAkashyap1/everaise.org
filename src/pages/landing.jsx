@@ -3,9 +3,9 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
-import { ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline'
 import { LightBulbIcon, LockOpenIcon, SearchCircleIcon } from '@heroicons/react/outline'
-import Logo from '../images/Chalkboard.png'
+import PhysicsCalc from '../images/physics.jpg'
 import Board from '../images/board.png'
 import { core, staff } from './team'
 import CountUpOnce from '../utility/count'
@@ -267,46 +267,40 @@ export default function Landing() {
     <div className="bg-white">
       <main>
         {/* Hero section */}
-        <div className="bg-gray-900 h-screen z-20">
-          <Nav />
-          <div className="max-w-full mx-auto">
-            <div className="static shadow-xl sm:overflow-hidden">
-              <div className="items-center relative h-screen inset-0">
-                <img
-                  className="h-full w-full object-cover"
-                  src={Logo}
-                  alt="Chalkboard"
-                />
-                <div className="absolute inset-0 px-4 py-16 mt-20 md:mt-14 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                  <h1 className="text-center font-semibold text-5xl sm:text-6xl md:text-7xl">
-                    <span className="block text-white">Inspiring Student{' '}</span>
-                    <span className="block text-white">Scientists Worldwide</span>
-                  </h1>
-                  <div className="flex justify-center text-center text-xl sm:text-2xl md:text-3xl mt-5 font-semibold text-white">
-                    <span>Making quality education freely accessible to all</span>
-                  </div>
-                  <div className="mt-7 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                    <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                      <a
-                        href="https://discord.gg/JE5TaCrrFn"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center justify-center px-4 py-3 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-sm text-cyan-600 bg-white hover:bg-opacity-80 sm:px-8"
-                      >
-                        Join our Discord <ExternalLinkIcon className="ml-2 text-cyan-600 h-5 w-5"/>
-                      </a>
-                      <Link
-                        to="/enroll"
-                        className="flex items-center justify-center px-4 py-3 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-opacity-80 sm:px-8"
-                      >
-                        Enroll &rarr;
-                      </Link>
-                    </div>
+        <div className="bg-gray-100 lg:h-screen z-20">
+          <div className="shadow-lg">
+            <Nav />
+          </div>
+          <main className="lg:relative -py-5">
+            <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-52 lg:text-left">
+              <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
+                <h1 className="text-5xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+                  <span className="block xl:inline">Inspiring Students</span>{' '}
+                  <span className="block text-cyan-600 xl:inline">Worldwide</span>
+                </h1>
+                <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
+                  By students, for students: Making quality education freely accessible to all. This is the official website for Everaise Academy.
+                </p>
+                <div className="mt-10 md:flex md:justify-center lg:justify-start">
+                  <div className="mt-3 rounded-md shadow sm:mt-0">
+                    <Link
+                      to="/enroll"
+                      className="shadow-lg w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 md:py-4 md:text-lg md:px-14"
+                    >
+                      Enroll &rarr;
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <div className="relative w-full h-0 lg:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
+              <img
+                className="absolute inset-0 w-full h-full object-cover shadow-lg"
+                src={Board}
+                alt=""
+              />
+            </div>
+          </main>
         </div>
         
         {/* Goals Section */}
@@ -345,7 +339,7 @@ export default function Landing() {
               <div className="h-full xl:relative xl:col-start-2">
                 <img
                   className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
-                  src={Board}
+                  src={PhysicsCalc}
                   alt="Chalkboard"
                 />
                 <div
