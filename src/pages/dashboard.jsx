@@ -572,7 +572,7 @@ export default function Dashboard() {
                       <div className="p-5">
                         <div className="flex items-center">
                           <div className="flex-shrink-0">
-                            <div className="h-6 w-6 bg-gray-200 rounded-full " aria-hidden="true" />
+                            <div className="h-6 w-6 bg-gray-200 rounded-full animate-pulse" aria-hidden="true" />
                           </div>
                           <div className="ml-5 w-0 flex-1">
                             <dl className="space-y-1.5">
@@ -631,11 +631,11 @@ export default function Dashboard() {
                           <span className="flex-1 flex space-x-2 truncate">
                             <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
                             <span className="flex flex-col text-gray-900 text-sm truncate space-y-1">
-                              <span className="bg-gray-200 text-gray-200 rounded-md h-4 truncate">Kinematics in One Dimension</span>
+                              <span className="bg-gray-200 text-gray-200 rounded-md h-4 truncate animate-pulse">Kinematics in One Dimension</span>
                               <span>
-                                <span className="bg-gray-200 text-gray-200 rounded-md font-medium">99 / 100</span>{' '}
+                                <span className="bg-gray-200 text-gray-200 rounded-md font-medium animate-pulse">99 / 100</span>{' '}
                               </span>
-                              <time className="rounded-md bg-gray-200 text-gray-200 text-sm w-1/2 h-4">June 23, 2021</time>
+                              <time className="rounded-md bg-gray-200 text-gray-200 text-sm w-1/2 h-4 animate-pulse">June 23, 2021</time>
                             </span>
                           </span>
                         </span>
@@ -719,9 +719,9 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {homework.map((assignment) => (
-                          assignment.disabled === true ?
-                            (<tr key={assignment.id} className="bg-white">
+                        {homework.length === 0 ? 
+                          ['1', '2', '3', '4'].map((assignment) => (
+                            (<tr key={assignment} className="bg-white">
                               <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                 <p>
                                   <div className="flex">
@@ -730,73 +730,111 @@ export default function Dashboard() {
                                         className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
                                         aria-hidden="true"
                                       />
-                                      <p className="text-gray-900 truncate group-hover:text-gray-400">{assignment.name}</p>
+                                      <p className="animate-pulse rounded-md bg-gray-200 text-gray-200">Kinematics in One Dim</p>
                                     </p>
                                   </div>
                                 </p>
                               </td>
                               <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
                                 <p>
-                                  <span className="text-gray-900 font-medium">{assignment.grade} </span>
+                                  <span className="animate-pulse text-gray-200 bg-gray-200 rounded-md font-medium">93 / 100</span>
                                 </p>
                               </td>
                               <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
                                 <p>
                                   <span
-                                    className={classNames(
-                                      statusStyles[assignment.status],
-                                      'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
-                                    )}
+                                    className="animate-pulse bg-gray-200 text-gray-200 inline-flex items-center px-2.5 rounded-md text-xs font-medium capitalize"
                                   >
-                                    {assignment.status}
+                                    Completed
                                   </span>
                                 </p>
                               </td>
                               <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
                                 <p>
-                                  <time dateTime={assignment.datetime}>{assignment.date}</time>
+                                  <time className="bg-gray-200 rounded-md text-gray-200 animate-pulse">June 23, 2021</time>
                                 </p>
                               </td>
                             </tr>)
-                            :
-                            (<tr key={assignment.id} className="bg-white">
-                              <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                  <div className="flex">
-                                    <p className="group inline-flex space-x-2 truncate text-sm">
-                                      <DocumentTextIcon
-                                        className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
-                                        aria-hidden="true"
-                                      />
-                                      <p className="text-gray-900 truncate group-hover:text-gray-400">{assignment.name}</p>
-                                    </p>
-                                  </div>
-                                </Link>
-                              </td>
-                              <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                                <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                  <span className="text-gray-900 font-medium">{assignment.grade} </span>
-                                </Link>
-                              </td>
-                              <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
-                                <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                  <span
-                                    className={classNames(
-                                      statusStyles[assignment.status],
-                                      'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
-                                    )}
-                                  >
-                                    {assignment.status}
-                                  </span>
-                                </Link>
-                              </td>
-                              <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                                <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                  <time dateTime={assignment.datetime}>{assignment.date}</time>
-                                </Link>
-                              </td>
-                            </tr>)
-                        ))}
+                          )) :
+                          homework.map((assignment) => (
+                            assignment.disabled === true ?
+                              (<tr key={assignment.id} className="bg-white">
+                                <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                  <p>
+                                    <div className="flex">
+                                      <p className="group inline-flex space-x-2 truncate text-sm">
+                                        <DocumentTextIcon
+                                          className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
+                                          aria-hidden="true"
+                                        />
+                                        <p className="text-gray-900 truncate group-hover:text-gray-400">{assignment.name}</p>
+                                      </p>
+                                    </div>
+                                  </p>
+                                </td>
+                                <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                  <p>
+                                    <span className="text-gray-900 font-medium">{assignment.grade} </span>
+                                  </p>
+                                </td>
+                                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
+                                  <p>
+                                    <span
+                                      className={classNames(
+                                        statusStyles[assignment.status],
+                                        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
+                                      )}
+                                    >
+                                      {assignment.status}
+                                    </span>
+                                  </p>
+                                </td>
+                                <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                  <p>
+                                    <time dateTime={assignment.datetime}>{assignment.date}</time>
+                                  </p>
+                                </td>
+                              </tr>)
+                              :
+                              (<tr key={assignment.id} className="bg-white">
+                                <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                  <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
+                                    <div className="flex">
+                                      <p className="group inline-flex space-x-2 truncate text-sm">
+                                        <DocumentTextIcon
+                                          className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
+                                          aria-hidden="true"
+                                        />
+                                        <p className="text-gray-900 truncate group-hover:text-gray-400">{assignment.name}</p>
+                                      </p>
+                                    </div>
+                                  </Link>
+                                </td>
+                                <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                  <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
+                                    <span className="text-gray-900 font-medium">{assignment.grade} </span>
+                                  </Link>
+                                </td>
+                                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
+                                  <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
+                                    <span
+                                      className={classNames(
+                                        statusStyles[assignment.status],
+                                        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
+                                      )}
+                                    >
+                                      {assignment.status}
+                                    </span>
+                                  </Link>
+                                </td>
+                                <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                  <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
+                                    <time dateTime={assignment.datetime}>{assignment.date}</time>
+                                  </Link>
+                                </td>
+                              </tr>)
+                          ))
+                        }
                       </tbody>
                     </table>
                     {/* Pagination */}

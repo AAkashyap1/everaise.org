@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline'
+import { ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
 import { LightBulbIcon, LockOpenIcon, SearchCircleIcon } from '@heroicons/react/outline'
 import PhysicsCalc from '../images/physics.jpg'
 import Board from '../images/board.png'
@@ -268,9 +268,7 @@ export default function Landing() {
       <main>
         {/* Hero section */}
         <div className="bg-gray-50 z-20">
-          <div className="shadow-lg">
-            <Nav />
-          </div>
+          <Nav />
           <main className="lg:relative -py-5">
             <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
               <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
@@ -281,13 +279,24 @@ export default function Landing() {
                 <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
                   By students, for students: Making quality education freely accessible to all. This is the official website for Everaise Academy.
                 </p>
-                <div className="mt-10 md:flex md:justify-center lg:justify-start">
-                  <div className="mt-3 rounded-md sm:mt-0">
-                    <div
-                      className="w-full flex items-center justify-center px-8 py-3 text-gray-50 text-base font-medium rounded-mdmd:py-4 md:text-lg md:px-14"
+                <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+                  <div className="rounded-md shadow">
+                    <a
+                      href="https://discord.gg/JE5TaCrrFn"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="shadow-lg w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 md:py-4 md:text-lg md:px-10"
+                    >
+                      Join our Discord <span className="h-5 w-5 ml-2"><ExternalLinkIcon /></span>
+                    </a>
+                  </div>
+                  <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                    <Link
+                      to="/enroll"
+                      className="shadow-lg w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-cyan-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                     >
                       Enroll &rarr;
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>

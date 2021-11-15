@@ -55,7 +55,7 @@ export default function Resources() {
   return (
     <div>
       <Nav />
-      <div className="bg-white">
+      <div className="mt-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="space-y-12">
             <div className="space-y-5 sm:space-y-4 xl:max-w-none">

@@ -99,7 +99,7 @@ export default function Nav() {
 
   return (
     <header>
-      <Popover className="relative bg-white">
+      <Popover className="shadow-lg relative bg-white">
         {({ open }) => (
           <>
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:space-x-10 lg:px-8">

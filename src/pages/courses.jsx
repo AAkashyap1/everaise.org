@@ -141,7 +141,7 @@ export default function Courses() {
   return (
     <div>
       <Nav />
-      <div className="mb-5 bg-white">
+      <div className="my-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="space-y-12">
             <div className="-mb-4 space-y-6 xl:max-w-none">
