@@ -54,40 +54,43 @@ export default function Dashboard() {
   const [numAssignments, setNumAssignments] = useState(4)
   const [viewStatus, setViewStatus] = useState(true)
   const [cards, setCards] = useState([])
+  const [leaders, setLeaders] = useState([])
+  const [homework, setHomework] = useState([])
   const history = useHistory()
 
   let courseName = null
   let userData = null
   let defaultDoc = null
-  let assignments = null
+  let totalAssignments = null
 
   if (course === 'physics') {
     courseName = 'Physics Mechanics'
     userData = database.physics_users
     defaultDoc = 'hL3k7Amo4XKNzD3l5y7Z'
-    assignments = 25
+    totalAssignments = 25
   } else if (course === 'math') {
     courseName = 'Math Competitions 1'
     userData = database.math_users
     defaultDoc = 'oESnyw427hwAxLSt6tuk'
-    assignments = 16
+    totalAssignments = 16
   } else if (course === 'biology') {
     courseName = 'Biology'
     defaultDoc = '1XLDJJ2bO3tjEBA6i15G'
     userData = database.biology_users
-    assignments = 28
+    totalAssignments = 28
   } else if (course === 'astronomy') {
     courseName = 'Astronomy'
     defaultDoc = '1Z2ywXi5PDYfDT8PWb8p'
     userData = database.astronomy_users
-    assignments = 23
+    totalAssignments = 23
   }
 
-  const users = useCollectionData(userData)[0]
+  const users = useCollectionData(userData.orderBy("points", "desc"))[0]
   const user = useDocumentData(userData.doc(currentUser.email))[0]
+  const assignments = useCollectionData(userData.doc(currentUser.email).collection('assignments').orderBy('assigned', 'asc').limit(numAssignments))[0]
 
   useEffect(() => {
-    if (user && users.length > 0) {
+    if (user && users) {
       let rank = 1;
       for (const tempUser of users) {
         if(tempUser.points > user.points) {
@@ -112,88 +115,88 @@ export default function Dashboard() {
   }, [users, user])
 
   useEffect(() => {
+    if (users) {
+      for (let i = 0; i < 10; i++) {
+        if (users[i].points > 0) {
+          setLeaders(prevLeaders => 
+            [
+              ...prevLeaders,
+              {
+                name: users[i].first_name + " " + users[i].last_name,
+                points: users[i].points
+              }
+            ]
+          )
+        }
+      }
+    }
+  }, [users])
+
+  useEffect(() => {
+    console.log(assignments)
+    if (assignments) {
+      for (const assignment of assignments) {
+        if (assignment.completed === 0) {
+          setHomework(prevHomework => 
+            [
+              ...prevHomework,
+              {
+                id: assignment.name,
+                module: assignment.module,
+                name: assignment.name,
+                disabled: assignment.disabled,
+                grade: assignment.earned + '/' + assignment.points,
+                status: 'not Started',
+                date: monthNames[assignment.assigned.toDate().getMonth()] + ' ' + assignment.assigned.toDate().getDate() + ', ' + assignment.assigned.toDate().getFullYear(),
+                datetime: assignment.assigned,
+              }
+            ]
+          )
+        } else if (assignment.completed === assignment.problems) {
+          setHomework(prevHomework => 
+            [
+              ...prevHomework,
+              {
+                id: assignment.name,
+                module: assignment.module,
+                name: assignment.name,
+                disabled: assignment.disabled,
+                grade: assignment.earned + '/' + assignment.points,
+                status: 'complete',
+                date: monthNames[assignment.assigned.toDate().getMonth()] + ' ' + assignment.assigned.toDate().getDate() + ', ' + assignment.assigned.toDate().getFullYear(),
+                datetime: assignment.assigned,
+              }
+            ]
+          )
+        } else {
+          setHomework(prevHomework => 
+            [
+              ...prevHomework,
+              {
+                id: assignment.name,
+                module: assignment.module,
+                name: assignment.name,
+                disabled: assignment.disabled,
+                grade: assignment.earned + '/' + assignment.points,
+                status: 'in Progress',
+                date: monthNames[assignment.assigned.toDate().getMonth()] + ' ' + assignment.assigned.toDate().getDate() + ', ' + assignment.assigned.toDate().getFullYear(),
+                datetime: assignment.assigned,
+              }
+            ]
+          )
+        }
+      }
+    }
+  }, [assignments])
+
+  useEffect(() => {
     document.title = 'Dashboard - ' + courseName
   })
 
-  function GetLeaders() {
-    const [leaders, setLeaders] = useState([])
-
-    useEffect(() => {
-      userData.where("points", ">", 0).orderBy("points", "desc").limit(10).get()
-        .then((querySnapshot) => {
-          let arr = []
-          querySnapshot.forEach((doc) => {
-            arr.push({ name: (doc.data().first_name + ' ' + doc.data().last_name), points: doc.data().points, date: doc.data().date })
-          })
-          setLeaders(arr)
-
-        })
-    }, [])
-
-    return leaders
-  }
-
-  function GetAssignments(limit) {
-    const [assignments, setAssignments] = useState([])
-    const [assignmentCount, setAssignmentCount] = useState(0)
-
-    useEffect(() => {
-      userData.doc(currentUser.email).collection('assignments').orderBy('assigned', 'asc').limit(limit).get()
-        .then((querySnapshot) => {
-          let arr = []
-          let count = 0
-          querySnapshot.forEach((doc) => {
-            if (doc.data().completed === 0) {
-              arr.push({
-                id: doc.id,
-                module: doc.data().module,
-                name: doc.data().name,
-                disabled: doc.data().disabled,
-                grade: doc.data().earned + '/' + doc.data().points,
-                status: 'not Started',
-                date: monthNames[doc.data().assigned.toDate().getMonth()] + ' ' + doc.data().assigned.toDate().getDate() + ', ' + doc.data().assigned.toDate().getFullYear(),
-                datetime: doc.data().assigned,
-              })
-            } else if (doc.data().completed === doc.data().problems) {
-              arr.push({
-                id: doc.id,
-                module: doc.data().module,
-                name: doc.data().name,
-                disabled: doc.data().disabled,
-                grade: doc.data().earned + '/' + doc.data().points,
-                status: 'complete',
-                date: monthNames[doc.data().assigned.toDate().getMonth()] + ' ' + doc.data().assigned.toDate().getDate() + ', ' + doc.data().assigned.toDate().getFullYear(),
-                datetime: doc.data().assigned,
-              })
-            } else {
-              arr.push({
-                id: doc.id,
-                module: doc.data().module,
-                name: doc.data().name,
-                disabled: doc.data().disabled,
-                grade: doc.data().earned + '/' + doc.data().points,
-                status: 'in Progress',
-                date: monthNames[doc.data().assigned.toDate().getMonth()] + ' ' + doc.data().assigned.toDate().getDate() + ', ' + doc.data().assigned.toDate().getFullYear(),
-                datetime: doc.data().assigned,
-              })
-            }
-            count = count + 1
-          })
-          setAssignments(arr)
-          setAssignmentCount(count)
-        })
-    }, [limit])
-
-    return {
-      assignments,
-      assignmentCount
-    }
-
-  }
-
   function updateAssignments(event) {
+    setHomework([])
     event.preventDefault()
-    setNumAssignments(assignments - numAssignments)
+    setNumAssignments(totalAssignments - numAssignments)
     setViewStatus(!viewStatus)
   }
 
@@ -573,9 +576,9 @@ export default function Dashboard() {
                           </div>
                           <div className="ml-5 w-0 flex-1">
                             <dl className="space-y-1.5">
-                              <dt className="text-sm rounded-md text-gray-200 bg-gray-200 w-1/2 h-4">Points</dt>
+                              <dt className="text-sm rounded-md text-gray-200 bg-gray-200 w-1/2 h-4 animate-pulse">Points</dt>
                               <dd>
-                                <div className="text-sm rounded-md text-gray-200 bg-gray-200">1/333</div>
+                                <div className="text-sm rounded-md text-gray-200 bg-gray-200 animate-pulse">1/333</div>
                               </dd>
                             </dl>
                           </div>
@@ -620,42 +623,62 @@ export default function Dashboard() {
             {/* Activity list (smallest breakpoint only) */}
             <div className="shadow sm:hidden">
               <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
-                {GetAssignments(numAssignments).assignments.map((assignment) => (
-                  <li key={assignment.id}>
-                    {assignment.disabled === true ?
+                {homework.length === 0 ?
+                  ['1', '2', '3', '4'].map((assignment) => (
+                    <li key={assignment}>
                       <p className="block px-4 py-4 bg-white hover:bg-gray-50">
                         <span className="flex items-center space-x-4">
                           <span className="flex-1 flex space-x-2 truncate">
                             <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
-                            <span className="flex flex-col text-gray-900 text-sm truncate">
-                              <span className="truncate">{assignment.name}</span>
+                            <span className="flex flex-col text-gray-900 text-sm truncate space-y-1">
+                              <span className="bg-gray-200 text-gray-200 rounded-md h-4 truncate">Kinematics in One Dimension</span>
                               <span>
-                                <span className="text-gray-900 font-medium">{assignment.grade}</span>{' '}
+                                <span className="bg-gray-200 text-gray-200 rounded-md font-medium">99 / 100</span>{' '}
                               </span>
-                              <time dateTime={assignment.datetime}>{assignment.date}</time>
+                              <time className="rounded-md bg-gray-200 text-gray-200 text-sm w-1/2 h-4">June 23, 2021</time>
                             </span>
                           </span>
-                          <ChevronRightIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
                         </span>
-                      </p> :
-                      <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`} className="block px-4 py-4 bg-white hover:bg-gray-50">
-                        <span className="flex items-center space-x-4">
-                          <span className="flex-1 flex space-x-2 truncate">
-                            <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
-                            <span className="flex flex-col text-gray-900 text-sm truncate">
-                              <span className="truncate">{assignment.name}</span>
-                              <span>
-                                <span className="text-gray-900 font-medium">{assignment.grade}</span>{' '}
+                      </p>
+                    </li>
+                  )) :
+                  homework.map((assignment) => (
+                    <li key={assignment.id}>
+                      {assignment.disabled === true ?
+                        <p className="block px-4 py-4 bg-white hover:bg-gray-50">
+                          <span className="flex items-center space-x-4">
+                            <span className="flex-1 flex space-x-2 truncate">
+                              <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
+                              <span className="flex flex-col text-gray-900 text-sm truncate">
+                                <span className="truncate">{assignment.name}</span>
+                                <span>
+                                  <span className="text-gray-900 font-medium">{assignment.grade}</span>{' '}
+                                </span>
+                                <time dateTime={assignment.datetime}>{assignment.date}</time>
                               </span>
-                              <time dateTime={assignment.datetime}>{assignment.date}</time>
                             </span>
+                            <ChevronRightIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
                           </span>
-                          <ChevronRightIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
-                        </span>
-                      </Link>
-                    }
-                  </li>
-                ))}
+                        </p> :
+                        <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`} className="block px-4 py-4 bg-white hover:bg-gray-50">
+                          <span className="flex items-center space-x-4">
+                            <span className="flex-1 flex space-x-2 truncate">
+                              <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
+                              <span className="flex flex-col text-gray-900 text-sm truncate">
+                                <span className="truncate">{assignment.name}</span>
+                                <span>
+                                  <span className="text-gray-900 font-medium">{assignment.grade}</span>{' '}
+                                </span>
+                                <time dateTime={assignment.datetime}>{assignment.date}</time>
+                              </span>
+                            </span>
+                            <ChevronRightIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
+                          </span>
+                        </Link>
+                      }
+                    </li>
+                  ))
+                }
               </ul>
 
               <nav
@@ -696,7 +719,7 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {GetAssignments(numAssignments).assignments.map((assignment) => (
+                        {homework.map((assignment) => (
                           assignment.disabled === true ?
                             (<tr key={assignment.id} className="bg-white">
                               <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -783,7 +806,7 @@ export default function Dashboard() {
                     >
                       <div className="hidden sm:block">
                         <p className="text-sm text-gray-700">
-                          Showing <span className="font-medium">{GetAssignments(numAssignments).assignmentCount}</span>{' '}assignment{GetAssignments(numAssignments).assignmentCount === 1 ? '' : 's'}
+                          Showing <span className="font-medium">{numAssignments}</span>{' '}assignment{numAssignments === 1 ? '' : 's'}
                         </p>
                       </div>
                       <div className="flex-1 flex justify-between sm:justify-end">
@@ -807,7 +830,7 @@ export default function Dashboard() {
             {/* Activity list (smallest breakpoint only) */}
             <div className="shadow sm:hidden">
               <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
-                {GetLeaders().map((leader) => (
+                {leaders.map((leader) => (
                   <li key={leader.points}>
                     <p className="block px-4 py-4 bg-white hover:bg-gray-50">
                       <span className="flex items-center space-x-4">
@@ -846,24 +869,44 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {GetLeaders().map((leader) => (
-                          <tr key={leader.points} className="bg-white">
-                            <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              <div className="flex">
-                                <p className="group inline-flex space-x-2 truncate text-sm">
-                                  <UserIcon
-                                    className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                  <span className="text-gray-900 truncate group-hover:text-gray-400">{leader.name}</span>
-                                </p>
-                              </div>
-                            </td>
-                            <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                              <span className="text-gray-900 font-medium">{leader.points} </span>
-                            </td>
-                          </tr>
-                        ))}
+                        {leaders.length === 0 ?
+                          ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].map((leader) => (
+                            <tr key={leader} className="bg-white">
+                              <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <div className="flex">
+                                  <p className="group inline-flex space-x-2 truncate text-sm">
+                                    <UserIcon
+                                      className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
+                                      aria-hidden="true"
+                                    />
+                                    <span className="rounded-md w-1/2 h-4 bg-gray-200 truncate text-gray-200 animate-pulse">Ananth Kashyap / Ananth Kashyap</span>
+                                  </p>
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                <span className="text-gray-200 bg-gray-200 rounded-md w-full h-4 animate-pulse">250</span>
+                              </td>
+                            </tr>
+                          )) :
+                          leaders.map((leader) => (
+                            <tr key={leader.points} className="bg-white">
+                              <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <div className="flex">
+                                  <p className="group inline-flex space-x-2 truncate text-sm">
+                                    <UserIcon
+                                      className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
+                                      aria-hidden="true"
+                                    />
+                                    <span className="text-gray-900 truncate group-hover:text-gray-400">{leader.name}</span>
+                                  </p>
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                <span className="text-gray-900 font-medium">{leader.points} </span>
+                              </td>
+                            </tr>
+                          )) 
+                        }
                       </tbody>
                     </table>
                   </div>

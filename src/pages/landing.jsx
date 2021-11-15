@@ -281,16 +281,6 @@ export default function Landing() {
                 <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
                   By students, for students: Making quality education freely accessible to all. This is the official website for Everaise Academy.
                 </p>
-                <div className="mt-10 md:flex md:justify-center lg:justify-start">
-                  <div className="mt-3 rounded-md shadow sm:mt-0">
-                    <Link
-                      to="/enroll"
-                      className="shadow-lg w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 md:py-4 md:text-lg md:px-14"
-                    >
-                      Enroll &rarr;
-                    </Link>
-                  </div>
-                </div>
               </div>
             </div>
             <div className="relative w-full h-0 lg:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
