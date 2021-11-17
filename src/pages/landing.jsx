@@ -450,7 +450,7 @@ export default function Landing() {
                         <p>{person.testimonial}</p>
                       </blockquote>
                       <figcaption className="flex items-center space-x-4 p-6 md:px-10 py-2 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-cyan-500 to-blue-300">
-                        <div className="flex-auto">{person.name} - {person.course}</div>
+                        <div className="flex-auto">{person.name}, {person.course}</div>
                       </figcaption>
                     </figure>
                   </li>
