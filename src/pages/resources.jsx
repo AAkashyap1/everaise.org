@@ -8,6 +8,7 @@ import Physics from '../images/books/Physics.png'
 const resources = [
   {
     people: 'Saadiq Shaikh and Matthew Chen',
+    href: 'https://www.amazon.com/dp/B09LGRQ2P3?ref_=pe_3052080_397514860',
     image: Math,
     title: 'Everaise Academy: Math Competitions I',
     description: 
@@ -20,6 +21,7 @@ const resources = [
   },
   {
     people: 'Brian Lee and William Shi',
+    href: 'https://www.amazon.com/dp/B09LGTTPGS?ref_=pe_3052080_397514860',
     image: Physics,
     title: 'Everaise Academy: Physics Mechanics',
     description: 
@@ -33,6 +35,7 @@ const resources = [
   },
   {
     people: 'Chooi Je Qin and Gregory Pylypovych',
+    href: 'https://www.amazon.com/dp/B09LGNNMH9?ref_=pe_3052080_397514860',
     image: Astronomy,
     title: 'Everaise Academy: Astronomy',
     description: 
@@ -72,12 +75,25 @@ export default function Resources() {
                 <li key={book.title} className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-3">
                   <div className="space-y-6 xl:space-y-10">
                     <div className="flex justify-center">
-                      <img className="object-cover mx-auto h-72 w-72 rounded-full" src={book.image} alt="" />
+                      <a 
+                        target="_blank"
+                        rel="noreferrer"
+                        href={book.href}
+                      >
+                        <img className="transform hover:scale-110 object-cover mx-auto h-72 w-72 rounded-full" src={book.image} alt="" />
+                      </a>
                     </div>
                   </div>
                   <div className="px-8 md:pl-4 lg:pl-0 md:pr-16 col-span-2">
                     <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
-                      {book.title}
+                      <a 
+                        target="_blank"
+                        rel="noreferrer"
+                        href={book.href}
+                        className="hover:text-gray-600"
+                      >
+                        {book.title}
+                      </a>
                     </div>
                     <div className="text-gray-900 mt-4 font-medium text-lg">
                       <div className="font-normal text-lg font-semibold text-gray-700">{book.people}</div>
