@@ -4,10 +4,14 @@ import { useParams } from 'react-router-dom'
 import firebase from 'firebase/app'
 import { database, increment } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
+import AsciiMathParser from "../utility/asciimath";
+
+const parser = new AsciiMathParser();
 
 export default function SAQuestion(props) {
   const { assignmentId } = useParams()
-  const Latex = require('react-latex')
   const [message, setMessage] = useState('')
   const [confirmation, setConfirmation] = useState('')
   const [error, setError] = useState('')
@@ -16,7 +20,8 @@ export default function SAQuestion(props) {
   const [disabled, setDisabled] = useState(false)
   const [response, setResponse] = useState('')
   const [append, setAppend] = useState(false)
-  const [latex, setLatex] = useState('')
+
+  const renderedLatex = response && parser.parse(response)
 
   let userData = null
   let solution = null
@@ -28,7 +33,7 @@ export default function SAQuestion(props) {
     solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
     userData = database.math_users
   } else if (props.course === 'biology') {
-    solution = <Latex>{props.soution}</Latex>
+    solution = <TeX math={props.solution} />
     userData = database.biology_users
   } else if (props.course === 'astronomy') {
     solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
@@ -74,7 +79,6 @@ export default function SAQuestion(props) {
       })
   }
 
-
   function CheckAnswer(event) {
     setConfirmation('')
     event.preventDefault()
@@ -104,6 +108,7 @@ export default function SAQuestion(props) {
 
   function GiveUp(event) {
     event.preventDefault()
+    setError('')
     setConfirmation('Are you sure you want to give up on this question?')
   }
 
@@ -118,17 +123,11 @@ export default function SAQuestion(props) {
     userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
       completed: increment
     })
-    setLatex('')
   }
 
   function NotConfirmed(event) {
     event.preventDefault()
     setConfirmation('')
-  }
-
-  function GetLatexRender(event) {
-    event.preventDefault()
-    setLatex(response)
   }
 
 
@@ -144,6 +143,13 @@ export default function SAQuestion(props) {
           disabled={disabled}
           onChange={e => { setResponse(e.target.value) }}
         ></textarea>
+        {renderedLatex && <div className="mt-4 rounded-md bg-green-50 p-4">
+          <div className="flex">
+            <div className="ml-3">
+              <h3 className="text-sm text-green-800"><TeX math={renderedLatex} /></h3>
+            </div>
+          </div>
+        </div>}
         <span className="mt-4 relative z-0 inline-flex rounded-md">
           <button
             disabled={disabled}
@@ -152,13 +158,6 @@ export default function SAQuestion(props) {
               "-ml-px relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
           >
             Submit
-          </button>
-          <button
-            type="button"
-            onClick={GetLatexRender}
-            className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            Render LaTeX
           </button>
           <button
             disabled={disabled}
@@ -196,15 +195,6 @@ export default function SAQuestion(props) {
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        }
-        {latex &&
-          <div className="mt-4 rounded-md bg-green-50 p-4">
-            <div className="flex">
-              <div className="ml-3">
-                <h3 className="text-sm text-green-800"><Latex>{latex}</Latex></h3>
               </div>
             </div>
           </div>

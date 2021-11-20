@@ -4,9 +4,10 @@ import { database, increment } from '../firebase'
 import { useParams } from 'react-router-dom'
 import firebase from 'firebase/app'
 import { useAuth } from '../contexts/AuthContext'
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
 
 export default function MCQuestion(props) {
-  const Latex = require('react-latex')
   const { assignmentId } = useParams()
   const [userAnswer, setUserAnswer] = useState('')
   const [message, setMessage] = useState('')
@@ -27,7 +28,7 @@ export default function MCQuestion(props) {
     solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
     userData = database.math_users
   } else if (props.course === 'biology') {
-    solution = <Latex>{props.solution}</Latex>
+    solution = <TeX>{props.solution}</TeX>
     userData = database.biology_users
   } else if (props.course === 'astronomy') {
     solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
