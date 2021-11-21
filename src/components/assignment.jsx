@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { database } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
 import MCQuestion from './mcquestion'
 import SAQuestion from './saquestion'
 import FRQuestion from './frquestion'
@@ -14,6 +15,8 @@ import {
 export default function Assignment(props) {
   const { currentUser } = useAuth()
   const { assignmentId } = useParams()
+  const [points, setPoints] = useState(0)
+  const [completed, setCompleted] = useState(0)
 
   let userData = null
   let append = null
@@ -32,6 +35,15 @@ export default function Assignment(props) {
   } else if (props.course === 'astronomy') {
     userData = database.astronomy_users
   }
+
+  const assignment = useDocumentData(userData.doc(currentUser.email).collection('assignments').doc(assignmentId))[0]
+
+  useEffect(() => {
+    if (assignment) {
+      setPoints(assignment.earned)
+      setCompleted(assignment.completed)
+    }
+  }, [assignment])
 
   function GetQuestions() {
     const [questions, setQuestions] = useState([])
@@ -122,11 +134,11 @@ export default function Assignment(props) {
             <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
               <div className="sm:col-span-1">
                 <dt className="text-sm font-medium text-gray-500">Progress</dt>
-                <dd className="mt-1 text-sm text-gray-900">{Math.round((props.completed / props.problems) * 100)}% Completed</dd>
+                <dd className="mt-1 text-sm text-gray-900">{Math.round((completed / props.problems) * 100)}% Completed</dd>
               </div>
               <div className="sm:col-span-1">
                 <dt className="text-sm font-medium text-gray-500">Points</dt>
-                <dd className="mt-1 text-sm text-gray-900">{props.earned}/{props.points}</dd>
+                <dd className="mt-1 text-sm text-gray-900">{points}/{props.points}</dd>
               </div>
               <div className="sm:col-span-2">
                 <dt className="text-sm font-medium text-gray-500">Attachments</dt>
