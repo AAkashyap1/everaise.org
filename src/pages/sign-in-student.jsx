@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext.js'
 import EvCirc from '../images/evcirc.png'
 import { XCircleIcon, CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/solid'
-import Board from '../images/board.png'
+import Board from '../images/index.png'
 
 export default function SignIn1(props) {
   const emailRef = useRef()
