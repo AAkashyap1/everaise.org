@@ -71,7 +71,7 @@ export default function Update() {
   return (
     <div className="bg-white">
       <Nav />
-      <div className="pt-5 pb-16">
+      <div className="mt-5 pt-5 pb-16">
         <header>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
             <h1 className="text-3xl font-bold leading-tight text-gray-900">Your Profile</h1>
