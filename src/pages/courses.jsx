@@ -2,10 +2,6 @@ import Nav from '../components/nav';
 import Footer from '../components/footer'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  ChevronRightIcon,
-} from '@heroicons/react/solid'
-
 import Physics from '../images/courses/Physics.jpg'
 import Math from '../images/courses/Math.jpg'
 import Biology from '../images/courses/Biology.jpg'
