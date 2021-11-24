@@ -9,17 +9,17 @@ const footerNavigation = {
     { name: 'Resources', href: '/resources' },
   ],
   support: [
-    { name: 'Join our Team', href: '/people/team' },
+    { name: 'Join our Team', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeiQXl_vdbjcAFv4SRt1Zr8wZiylSfh4y30CMSVFr5r_ZQl3g/viewform' },
     { name: 'Sponsor', href: '' },
     { name: 'Donate', href: '' },
   ],
   help: [
-    { name: 'FAQ', href: '/FAQ' },
+    { name: 'FAQ', href: '/contact' },
     { name: 'Contact Us', href: '/contact' },
   ],
   legal: [
-    { name: 'Privacy', href: process.env.REACT_APP_PRIVACY },
-    { name: 'Terms', href: process.env.REACT_APP_TERMS },
+    { name: 'Privacy', href: 'https://docs.google.com/document/d/1N-UYeLVg4Jy2VEXC3Y3v-AHlQOiEYXM8DPsCCNY6Dr0/pub' },
+    { name: 'Terms', href: 'https://docs.google.com/document/d/1h5-ytQPE6JCJOIQ-7vqCsxaGxs4bnVqzHOxC3QzkUBM/pub' },
   ],
   social: [
     {
@@ -95,9 +95,14 @@ export default function Footer() {
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.discover.map((item) => (
                       <li key={item.name}>
-                        <Link to={item.href} className="text-base text-gray-400 hover:text-indigo-500">
-                          {item.name}
-                        </Link>
+                        {item.href.startsWith('https') ? 
+                          <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </a> :
+                          <Link to={item.href} className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </Link> 
+                        }
                       </li>
                     ))}
                   </ul>
@@ -107,9 +112,14 @@ export default function Footer() {
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.support.map((item) => (
                       <li key={item.name}>
-                        <Link to={item.href} className="text-base text-gray-400 hover:text-indigo-500">
-                          {item.name}
-                        </Link>
+                        {item.href.startsWith('https') ? 
+                          <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </a> :
+                          <Link to={item.href} className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </Link> 
+                        }
                       </li>
                     ))}
                   </ul>
@@ -121,9 +131,14 @@ export default function Footer() {
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.help.map((item) => (
                       <li key={item.name}>
-                        <Link to={item.href} className="text-base text-gray-400 hover:text-indigo-500">
-                          {item.name}
-                        </Link>
+                        {item.href.startsWith('https') ? 
+                          <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </a> :
+                          <Link to={item.href} className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </Link> 
+                        }
                       </li>
                     ))}
                   </ul>
@@ -133,9 +148,14 @@ export default function Footer() {
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.legal.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-indigo-500">
-                          {item.name}
-                        </a>
+                        {item.href.startsWith('https') ? 
+                          <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </a> :
+                          <Link to={item.href} className="text-base text-gray-400 hover:text-white">
+                            {item.name}
+                          </Link> 
+                        }
                       </li>
                     ))}
                   </ul>
@@ -178,7 +198,7 @@ export default function Footer() {
           <div className="mt-12 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
             <div className="flex space-x-6 md:order-2">
               {footerNavigation.social.map((item) => (
-                <a key={item.name} href={item.href} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-indigo-500">
+                <a key={item.name} href={item.href} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white">
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
                 </a>
