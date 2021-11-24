@@ -165,11 +165,9 @@ export default function Courses() {
               </div>
               <div className="space-y-4">
                 {catalog.map((course) => (
-                  <div className="transform hover:-translate-y-0.5 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
+                  <div className="border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-4">
                     <div className="space-y-6 hidden md:block col-span-0 md:col-span-1">
-                      <Link to={`/course/${course.link}`} key={course.name}>
-                        <img className="rounded-l-lg w-72 h-80 md:h-60" src={course.img} alt="" />
-                      </Link>
+                      <img className="rounded-l-lg w-72 h-80 md:h-60" src={course.img} alt="" />
                     </div>
                     <div className="px-8 pb-6 pt-3 md:py-6 col-span-4 md:col-span-3">
                         <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
@@ -178,7 +176,7 @@ export default function Courses() {
                         <div className="text-gray-900 mt-4 font-medium">
                           <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
                           <Link to={`/course/${course.link}`} key={course.name}>
-                            <button className="unfocus hover:text-indigo-700 mt-4 font-normal text-lg text-indigo-500">More info &rarr;</button>
+                            <button className="py-1.5 px-3 rounded-md bg-cyan-600 unfocus hover:bg-cyan-700 mt-4 font-normal text-base text-white">More info &rarr;</button>
                           </Link>
                         </div>
                     </div>
@@ -195,7 +193,7 @@ export default function Courses() {
                 <ul className="border border-gray-200 rounded-md mt-2 divide-y divide-gray-200 ">
                   {courses2021.map((course) => (
                     <li key={course.course}>
-                      <a href={course.course} className="block px-4 py-4 bg-white hover:bg-gray-50">
+                      <div className="block px-4 py-4 bg-white hover:bg-gray-50">
                         <span className="flex items-center space-x-4">
                           <span className="flex-1 flex space-x-2 truncate">
                             <span className="flex flex-col text-gray-500 text-sm truncate">
@@ -221,9 +219,8 @@ export default function Courses() {
                               </div>
                             </span>
                           </span>
-                          <ChevronRightIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
                         </span>
-                      </a>
+                      </div>
                     </li>
                   ))}
                 </ul>

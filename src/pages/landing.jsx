@@ -15,6 +15,7 @@ import JaneStreet from '../images/sponsors/JaneStreet.png'
 import AoPS from '../images/sponsors/AoPS.png'
 import Wolfram from '../images/sponsors/Wolfram.png'
 import Maple from '../images/sponsors/Maple.png'
+import Biolympiads from '../images/sponsors/Biolympiads.png'
 
 import Moody from '../images/speakers/Moody.png'
 import Quines from '../images/speakers/Quines.png'
@@ -207,6 +208,25 @@ const speakers = [
   },
 ]
 
+const sponsors = [
+  {
+    name: "Jane Street",
+    image: JaneStreet,
+  },
+  {
+    name: "AoPS",
+    image: AoPS,
+  },
+  {
+    name: "Wolfram",
+    image: Wolfram,
+  },
+  {
+    name: "Maple",
+    image: Maple,
+  },
+]
+
 const goals = [
   {
     name: 'Inspire',
@@ -340,6 +360,34 @@ export default function Landing() {
           </div>
         </div>
 
+        {/* CTA SECTION */}
+        <div className="bg-white">
+          <div className="max-w-7xl mx-auto pb-12 px-8 sm:px-10 md:pb-16 md:px-12 md:flex md:items-center md:justify-between">
+            <h2 className="text-center md:text-left text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <span className="block">Ready to dive in?</span>
+              <span className="block text-cyan-600">View our courses and resources.</span>
+            </h2>
+            <div className="flex justify-center mt-8 flex md:ml-6 lg:ml-0 md:mt-0 md:flex-shrink-0">
+              <div className="inline-flex rounded-md shadow">
+                <Link
+                  to="/courses"
+                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700"
+                >
+                  Our courses
+                </Link>
+              </div>
+              <div className="ml-3 inline-flex rounded-md shadow">
+                <Link
+                  to="/resources"
+                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-cyan-600 bg-white hover:bg-cyan-50"
+                >
+                  Our Resources
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* About Us */}
         <div className="relative bg-gray-50">
           <div className="h-80 absolute inset-x-0 bottom-0 xl:top-0 xl:h-full">
@@ -460,25 +508,44 @@ export default function Landing() {
           </div>
         </div>
 
+        <div className="bg-white">
+          <div className="max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+            <p className="text-center mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl">
+              Partners
+            </p>
+            <div className="flow-root ">
+              <div className="flex flex-wrap sm:flex-row justify-center">
+                {[{ name: 'Biolympiads', image: Biolympiads }].map((s) => {
+                  let key = s.name.replace(/[\W_]+/g, '-').toLowerCase()
+                  return (
+                    <div key={key} className="mt-4 px-4 lg:px-8 items-center flex">
+                      <div>
+                        <img
+                          className="sm:my-0 h-auto w-72 mx-auto"
+                          src={s.image}
+                          alt={s.name}
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Logo Cloud */}
         <div className="bg-white">
-          <div className="max-w-7xl mx-auto pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-base font-semibold uppercase text-gray-600 tracking-wider">
-              We are proudly sponsored by the following companies
+          <div className="max-w-7xl mx-auto pb-16 px-4 sm:px-6 lg:px-8">
+            <p className="text-center mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl">
+              Sponsors
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:mt-8">
-              <div className="rounded-l-sm col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src={JaneStreet} alt="Jane Street" />
-              </div>
-              <div className="col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src={AoPS} alt="AoPS" />
-              </div>
-              <div className="col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src={Wolfram} alt="Wolfram" />
-              </div>
-              <div className="rounded-r-sm col-span-1 flex justify-center py-8 px-8">
-                <img className="max-h-12" src={Maple} alt="Maple" />
-              </div>
+            <div className="mt-8 grid grid-cols-2 gap-0.5 md:grid-cols-2 lg:grid-cols-4">
+              {sponsors.map((sponsor) => (
+                <div className="rounded-l-sm col-span-1 flex justify-center py-4 px-4">
+                  <img className="max-h-12 sm:max-h-16" src={sponsor.image} alt={sponsor.name} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

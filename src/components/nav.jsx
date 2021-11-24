@@ -122,133 +122,128 @@ export default function Nav() {
                 <Link to="/resources" className="text-base font-medium text-gray-500 hover:text-gray-900">
                   Resources
                 </Link>
-                <Popover className="relative">
-                  {({ open }) => (
-                    <>
-                      <Popover.Button
-                        className={classNames(
-                          open ? 'text-gray-900' : 'text-gray-500',
-                          'unfocus group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500'
-                        )}
-                      >
-                        <span>Events</span>
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? 'text-gray-600' : 'text-gray-400',
-                            'ml-2 h-5 w-5 group-hover:text-gray-500'
-                          )}
-                          aria-hidden="true"
-                        />
-                      </Popover.Button>
+                <Menu as="div" className="relative inline-block text-left">
+                  <Menu.Button 
+                    className={classNames(
+                      open ? 'text-gray-900' : 'text-gray-500',
+                      'unfocus group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500'
+                    )}
+                  >
+                    <span className="text-base font-medium text-gray-500 hover:text-gray-900">
+                      Events
+                    </span>
+                    <ChevronDownIcon
+                      className={classNames(
+                        open ? 'text-gray-600' : 'text-gray-400',
+                        'ml-2 h-5 w-5 group-hover:text-gray-500'
+                      )}
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
 
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        enter="transition ease-out duration-200"
-                        enterFrom="opacity-0 translate-y-1"
-                        enterTo="opacity-100 translate-y-0"
-                        leave="transition ease-in duration-150"
-                        leaveFrom="opacity-100 translate-y-0"
-                        leaveTo="opacity-0 translate-y-1"
-                      >
-                        <Popover.Panel
-                          static
-                          className="absolute z-10 -ml-4 mt-3 transform w-screen max-w-md lg:max-w-2xl lg:ml-0 md::left-1/2 md:-translate-x-1/2"
-                        >
-                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                            <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                              {events.map((item) => (
-                                <Link
-                                  to={item.href}
-                                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="py-1">
+                        {events.map((event) => (
+                          <Menu.Item>
+                            {({ active }) => (
+                              event.href.startsWith('https') ? 
+                                <a
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  href={event.href}
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'unfocus block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900'
+                                  )}
                                 >
-                                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-cyan-600 text-white sm:h-12 sm:w-12">
-                                    <item.icon className="h-6 w-6" aria-hidden="true" />
-                                  </div>
-                                  <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                    <p className="mt-1 text-sm text-gray-500">{item.description}</p>
-                                  </div>
+                                  {event.name}
+                                </a> : 
+                                <Link
+                                  to={event.href}
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'unfocus block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900'
+                                  )}
+                                >
+                                  {event.name}
                                 </Link>
-                              ))}
-                            </div>
-                          </div>
-                        </Popover.Panel>
-                      </Transition>
-                    </>
-                  )}
-                </Popover>
-                <Popover className="relative">
-                  {({ open }) => (
-                    <>
-                      <Popover.Button
-                        className={classNames(
-                          open ? 'text-gray-900' : 'text-gray-500',
-                          'unfocus group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500'
-                        )}
-                      >
-                        <span>People</span>
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? 'text-gray-600' : 'text-gray-400',
-                            'ml-2 h-5 w-5 group-hover:text-gray-500'
-                          )}
-                          aria-hidden="true"
-                        />
-                      </Popover.Button>
+                            )}
+                          </Menu.Item>
+                        ))}
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+                <Menu as="div" className="relative inline-block text-left">
+                  <Menu.Button 
+                    className={classNames(
+                      open ? 'text-gray-900' : 'text-gray-500',
+                      'unfocus group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500'
+                    )}
+                  >
+                    <span className="text-base font-medium text-gray-500 hover:text-gray-900">
+                      People
+                    </span>
+                    <ChevronDownIcon
+                      className={classNames(
+                        open ? 'text-gray-600' : 'text-gray-400',
+                        'ml-2 h-5 w-5 group-hover:text-gray-500'
+                      )}
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
 
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        enter="transition ease-out duration-200"
-                        enterFrom="opacity-0 translate-y-1"
-                        enterTo="opacity-100 translate-y-0"
-                        leave="transition ease-in duration-150"
-                        leaveFrom="opacity-100 translate-y-0"
-                        leaveTo="opacity-0 translate-y-1"
-                      >
-                        <Popover.Panel
-                          static
-                          className="absolute z-10 -ml-4 mt-3 transform w-screen max-w-md lg:max-w-2xl lg:ml-0 md:left-1/2 md:-translate-x-1/2"
-                        >
-                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                            <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                              {people.map((item) => (
-                                item.href.startsWith('/') ?
-                                  <Link
-                                    to={item.href}
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-cyan-600 text-white sm:h-12 sm:w-12">
-                                      <item.icon className="h-6 w-6" aria-hidden="true" />
-                                    </div>
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                      <p className="mt-1 text-sm text-gray-500">{item.description}</p>
-                                    </div>
-                                  </Link> :
-                                  <a
-                                    href={item.href}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-cyan-600 text-white sm:h-12 sm:w-12">
-                                      <item.icon className="h-6 w-6" aria-hidden="true" />
-                                    </div>
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                      <p className="mt-1 text-sm text-gray-500">{item.description}</p>
-                                    </div>
-                                  </a>
-                              ))}
-                            </div>
-                          </div>
-                        </Popover.Panel>
-                      </Transition>
-                    </>
-                  )}
-                </Popover>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="py-1">
+                        {people.map((topic) => (
+                          <Menu.Item>
+                            {({ active }) => (
+                              topic.href.startsWith('https') ? 
+                                <a
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  href={topic.href}
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'unfocus block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900'
+                                  )}
+                                >
+                                  {topic.name}
+                                </a> :
+                                <Link
+                                  to={topic.href}
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'unfocus block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900'
+                                  )}
+                                >
+                                  {topic.name}
+                                </Link>
+                            )}
+                          </Menu.Item>
+                        ))}
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 <Menu as="div" className="ml-3 relative z-50">

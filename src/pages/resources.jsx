@@ -75,13 +75,7 @@ export default function Resources() {
                 <li key={book.title} className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-3">
                   <div className="space-y-6 xl:space-y-10">
                     <div className="flex justify-center">
-                      <a 
-                        target="_blank"
-                        rel="noreferrer"
-                        href={book.href}
-                      >
-                        <img className="transform hover:scale-110 object-cover mx-auto h-72 w-72 rounded-full" src={book.image} alt="" />
-                      </a>
+                      <img className="transform hover:scale-110 object-cover mx-auto h-80 w-80 rounded-full" src={book.image} alt="" />
                     </div>
                   </div>
                   <div className="px-8 md:pl-4 lg:pl-0 md:pr-16 col-span-2">
@@ -101,6 +95,9 @@ export default function Resources() {
                     <div className="text-gray-900 mt-4 font-medium text-lg">
                       <div className="font-normal text-base text-gray-700 italic">{book.description}</div>
                     </div>
+                    <a target="_blank" rel="noreferrer" className="mt-3" href={book.href}>
+                      <div className="unfocus hover:text-indigo-700 mt-4 font-normal text-lg text-indigo-500">View Paperback &rarr;</div>
+                    </a>
                   </div>
                 </li>
               ))}
