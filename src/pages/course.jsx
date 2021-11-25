@@ -8,16 +8,9 @@ import {
   AcademicCapIcon,
   BookOpenIcon,
   CalendarIcon,
-  ChartBarIcon,
   ClipboardIcon,
-  ClockIcon,
-  DatabaseIcon,
-  DesktopComputerIcon,
-  GlobeIcon,
-  IdentificationIcon,
   QuestionMarkCircleIcon,
   UserCircleIcon,
-  UsersIcon,
 } from '@heroicons/react/outline'
 
 
