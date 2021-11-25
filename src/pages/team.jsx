@@ -40,7 +40,7 @@ export const core = [
     imageUrl:
       PrestonFu,
     achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge (COMC) International Honor Roll', 'Ross Mathematics Program Alumnus'],
-    education: 'Saratoga High School, CA — Class of 2022',
+    education: 'Saratoga High School, CA – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -50,7 +50,7 @@ export const core = [
     imageUrl:
       MatthewChen,
     achievements: ['2x USA(J)MO Qualifier', 'PUMaC A Algebra 8th Place, Individual Finals 20th Place', 'USEMO Distinction', 'USAPHO Qualifier'],
-    education: 'Wayzata High School, MN — Class of 2023',
+    education: 'Wayzata High School, MN – Class of 2023',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -60,7 +60,7 @@ export const core = [
     imageUrl:
       ChooiJeQin,
     achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
-    education: `Kolej Tuanku Ja'afar, Malaysia - Class of 2022`,
+    education: `Kolej Tuanku Ja'afar, Malaysia – Class of 2022`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -70,7 +70,7 @@ export const core = [
     imageUrl:
       AshmitDutta,
     achievements: ['Thomas Jefferson Physics Olympiad (TJPhO) Second Place', 'Physics Unlimited Explorer Competition (PUEC) Special Award', 'Online Physics Olympiad (OPhO) Problem Writer'],
-    education: 'Wayzata High School, MN — Class of 2023',
+    education: 'Wayzata High School, MN – Class of 2023',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -80,7 +80,7 @@ export const core = [
     imageUrl:
       KrishJayarapu,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
-    education: 'Carmel High School, IN — Class of 2022',
+    education: 'Carmel High School, IN – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -90,7 +90,7 @@ export const core = [
     imageUrl:
       KiranSun,
     achievements: ['Canadian Junior Mathematical Olympiad (CJMO) Qualifier', '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier', 'AIME Qualifier'],
-    education: 'St. George’s School, British Columbia — Class of 2024',
+    education: 'St. George’s School, British Columbia – Class of 2024',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -100,7 +100,7 @@ export const core = [
     imageUrl:
       AnanthKashyap,
     achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
-    education: 'Fox Chapel Area High School, PA — Class of 2023',
+    education: 'Fox Chapel Area High School, PA – Class of 2023',
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
     gitHubUrl: 'https://github.com/AAkashyap1',
   },
@@ -110,7 +110,7 @@ export const core = [
     imageUrl:
       AbhayBestrapalli,
     achievements: ['Indian International Mathematical Olympiad Training Camp (IMOTC)', 'USA IOAA 2021 Main Team', 'Indian Astronomy Selection Camp (IOAA OCSC)'],
-    education: 'Delhi Public School Bangalore East — Class of 2022',
+    education: 'Delhi Public School Bangalore East – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -120,7 +120,7 @@ export const core = [
     imageUrl:
       FarazAhmedSiddiqui,
     achievements: ['INAO Qualifier', 'Physics Unlimited Explorer Competition (PUEC) Bronze Award', 'OPhO Invitational Qualifier'],
-    education: 'Holy Family High School, Maharashtra, India — Class of 2024',
+    education: 'Holy Family High School, Maharashtra, India – Class of 2024',
     linkedInUrl: 'https://www.linkedin.com/in/faraz-ahmed-siddiqui-73a3ba216/',
     gitHubUrl: '',
   },
@@ -130,20 +130,17 @@ export const core = [
     imageUrl:
       JeffreyWei,
     achievements: [],
-    education: 'Acton Boxborough Regional High School, MA — Class of 2023',
+    education: 'Acton Boxborough Regional High School, MA – Class of 2023',
     linkedInUrl: '',
     gitHubUrl: '',
   },
-]
-
-export const staff = [
   {
     name: 'Evan Kim',
     roles: ['Physics', 'Curriculum', 'Instructor'],
     imageUrl:
       EvanKim,
     achievements: ['USAPhO Semifinalist', 'AMC 10 Distinguished Honor Roll', 'AIME Qualifier', 'National Science Bowl Qualifier'],
-    education: 'Tesla STEM High School, WA — Class of 2023',
+    education: 'Tesla STEM High School, WA – Class of 2023',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -153,7 +150,7 @@ export const staff = [
     imageUrl:
       LohithTummala,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
-    education: 'Paul Laurence Dunbar High School, KY — Class of 2021',
+    education: 'Paul Laurence Dunbar High School, KY – Class of 2021',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -163,7 +160,7 @@ export const staff = [
     imageUrl:
       JeffreyHu,
     achievements: ['3x AIME qualifier', 'USAPhO qualifier', 'Santa Clara University Math Contest Honorable Mention'],
-    education: 'Saratoga High School, CA — Class of 2022',
+    education: 'Saratoga High School, CA – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -173,7 +170,7 @@ export const staff = [
     imageUrl:
       AlbertYe,
     achievements: ['3x AIME Qualifier', 'AMC 10 Distinguished Honor Roll', 'USAMTS Leaderboard'],
-    education: 'Saratoga High School, CA — Class of 2022',
+    education: 'Saratoga High School, CA – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -183,7 +180,7 @@ export const staff = [
     imageUrl:
       NathanMa,
     achievements: ['2x AMC 10 Distinguished Honor Roll', '2x AIME Qualifier', 'MathCounts Nationals Qualifier'],
-    education: 'Stevenson High School, IL — Class of 2023',
+    education: 'Stevenson High School, IL – Class of 2023',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -193,7 +190,7 @@ export const staff = [
     imageUrl:
       VictorLi,
     achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
-    education: 'Massachusetts Institute of Technology — Class of 2025',
+    education: 'Massachusetts Institute of Technology – Class of 2025',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -213,7 +210,7 @@ export const staff = [
     imageUrl:
       YamanAcharya,
     achievements: ['IAO Qualifier', 'NAO Finalist', 'Intern at Nepal Astronomical Society (NASO)'],
-    education: 'Vishwa Adarsha College, Province No. 1, Nepal — Class of 2022',
+    education: 'Vishwa Adarsha College, Province No. 1, Nepal – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -223,7 +220,7 @@ export const staff = [
     imageUrl:
       AtharvaMahajan,
     achievements: ['Indian Physics Selection Camp (OCSC)', 'KVPY Top 50', 'RMO Qualifier'],
-    education: 'Rankers International School, Madhya Pradesh, India — Class of 2022',
+    education: 'Rankers International School, Madhya Pradesh, India – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -233,7 +230,7 @@ export const staff = [
     imageUrl:
       AniruddhaSharma,
     achievements: ['Physics Unlimited Explorer Competition (PUEC) Third Place', 'Stanford Code in Place Alumnus', 'Gaussian Curvature Mathematics Committee Member'],
-    education: 'Delhi Public School, Bhopal, India — Class of 20XX',
+    education: 'Delhi Public School, Bhopal, India – Class of 20XX',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -243,7 +240,7 @@ export const staff = [
     imageUrl:
       AnuragChittawar,
     achievements: ['2x INBO gold medalist', 'AIR 52 in KVPY SA'],
-    education: 'Yogi Raj Public School, Rajasthan, India — Class of 2021',
+    education: 'Yogi Raj Public School, Rajasthan, India – Class of 2021',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -253,7 +250,7 @@ export const staff = [
     imageUrl:
       PeterPu,
     achievements: ['USABO Finalist (Top 20)', 'AMC 10 DHR', 'AMC 12 DHR'],
-    education: 'University of Chicago Laboratory Schools, IL — Class of 2022',
+    education: 'University of Chicago Laboratory Schools, IL – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -263,7 +260,7 @@ export const staff = [
     imageUrl:
       DerekChen,
     achievements: ['2021 USABO Team Member', '5x AIME Qualifier', 'USAPhO Honorable Mention', 'PROMYS Alumnus'],
-    education: 'Belmont High School, MA — Class of 2022',
+    education: 'Belmont High School, MA – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -273,7 +270,7 @@ export const staff = [
     imageUrl:
       IvyZheng,
     achievements: ['2x AIME Qualifier', 'AMC 10 Distinguished Honor Roll'],
-    education: 'Lexington High School, MA — Class of 2024',
+    education: 'Lexington High School, MA – Class of 2024',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -283,7 +280,7 @@ export const staff = [
     imageUrl:
       JustinHua,
     achievements: ['Ross Mathematics Program Alumnus'],
-    education: 'Hugh McRoberts Secondary School, British Columbia, Canada — Class of 2021',
+    education: 'Hugh McRoberts Secondary School, British Columbia, Canada – Class of 2021',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -293,7 +290,7 @@ export const staff = [
     imageUrl:
       GaryHu,
     achievements: ['AIME Qualifier', 'AMC 10 Distinction', 'CMIMC Algebra Number Theory Top 50'],
-    education: 'Montclair Kimberley Academy, NJ — Class of 2024',
+    education: 'Montclair Kimberley Academy, NJ – Class of 2024',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -303,7 +300,7 @@ export const staff = [
     imageUrl:
       OliviaLi,
     achievements: ['AIME Qualifier', 'Math Prize for Girls Alumnus', 'USACO Silver Qualifier'],
-    education: 'Dougherty Valley High School, CA — Class of 2023',
+    education: 'Dougherty Valley High School, CA – Class of 2023',
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -313,11 +310,13 @@ export const staff = [
     imageUrl:
       AnujSakarda,
     achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
-    education: 'Acton Boxborough Regional High School, MA — Class of 2022',
+    education: 'Acton Boxborough Regional High School, MA – Class of 2022',
     linkedInUrl: '',
     gitHubUrl: '',
   },
 ]
+
+export const staff = []
 
 export default function Team() {
   useEffect(() => {
