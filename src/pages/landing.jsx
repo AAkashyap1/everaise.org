@@ -440,10 +440,14 @@ export default function Landing() {
             </p>
             <p className="mt-4 text-base text-gray-700 sm:text-lg">
               Every year, Everaise Academy invites professors from prestigious universities, industry professionals, 
-              and top graduate and undergraduate students to give free talks. <span className="text-indigo-500">
-              <Link to="/events/guest-speakers">Learn more &rarr;</Link></span>
+              and top graduate and undergraduate students to give free talks.
             </p>
-            <div className="mt-12">
+            <p className="mt-8">
+              <Link to="/events/guest-speakers" className="py-3 px-5 rounded-md bg-cyan-600 unfocus hover:bg-cyan-700 font-normal text-lg text-white">
+                Learn more &rarr;
+              </Link>
+            </p>
+            <div className="mt-8">
               <div>
                 <Carousel className="flex justify-center flex-col border-gray-200 py-3 gap-8" breakPoints={bp} pagination={false} renderArrow={Arrow}>
                   {speakers.map((speaker) => (
