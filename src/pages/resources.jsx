@@ -96,7 +96,7 @@ export default function Resources() {
                       <div className="font-normal text-base text-gray-700 italic">{book.description}</div>
                     </div>
                     <a target="_blank" rel="noreferrer" className="mt-3" href={book.href}>
-                      <div className="unfocus hover:text-indigo-700 mt-4 font-normal text-lg text-indigo-500">View Paperback &rarr;</div>
+                      <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">View paperback &rarr;</button>
                     </a>
                   </div>
                 </li>

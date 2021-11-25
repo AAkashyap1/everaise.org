@@ -27,7 +27,6 @@ export default function Landing() {
         <GuestSpeakers />
         <Testimonials />
         <Sponsors />
-
         {/* Sponsor Us
         <div className="bg-gray-50">
           <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 py-12 lg:px-8">

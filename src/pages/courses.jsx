@@ -172,7 +172,7 @@ export default function Courses() {
                         <div className="text-gray-900 mt-4 font-medium">
                           <div className="font-normal text-base md:text-lg text-gray-700 italic">{course.desc}</div>
                           <Link to={`/course/${course.link}`} key={course.name}>
-                            <button className="py-1.5 px-3 rounded-md bg-cyan-600 unfocus hover:bg-cyan-700 mt-4 font-normal text-base text-white">More info &rarr;</button>
+                            <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">More info &rarr;</button>
                           </Link>
                         </div>
                     </div>
