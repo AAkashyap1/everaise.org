@@ -52,7 +52,7 @@ export default function Guest() {
                       <div className="font-medium text-lg leading-6 space-y-1">
                         <h3 className="flex text-2xl font-semibold -mt-3 sm:-mt-2 md:-mt-2 lg:-mt-2 xl:-mt-6 mb-2 justify-center text-gray-900">{person.name}</h3>
                         <div className="flex justify-center">
-                          <h3 className="flex text-md font-medium leading-6 mx-6 justify-center text-gray-900">{person.role}</h3>
+                          <h3 className="flex text-md font-medium leading-6 mx-6 justify-center text-gray-900 text-center">{person.role}</h3>
                         </div>
                         <div className="flex justify-center">
                           <a href={person.link} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 hover:text-indigo-700 trans-300 text-indigo-500">
