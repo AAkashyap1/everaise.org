@@ -13,7 +13,7 @@ import {
   SpeakerphoneIcon,
 } from '@heroicons/react/outline'
 import { ChevronDownIcon, ChevronUpIcon} from '@heroicons/react/solid'
-import Logo from '../images/EveraiseAcademy.png'
+import Logo from '../images/EveraiseAcademy.svg'
 
 const events = [
   {
@@ -102,14 +102,14 @@ export default function Nav() {
       <Popover className="shadow-lg relative bg-white">
         {({ open }) => (
           <>
-            <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:space-x-10 lg:px-8">
+            <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-4 sm:px-6 md:space-x-10 lg:px-8">
               <div className="flex lg:w-0 lg:flex-1">
                 <Link
                   to="/landing"
                 >
                   <span className="sr-only">Everaise</span>
                   <img
-                    className="h-8 w-auto sm:h-10"
+                    className="h-8 w-auto"
                     src={Logo}
                     alt="Everaise Academy"
                   />
