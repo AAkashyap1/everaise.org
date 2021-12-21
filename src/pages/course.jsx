@@ -177,10 +177,10 @@ export default function Course() {
                   <div className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-4">
                     <div className="space-y-6 xl:space-y-10">
                       <div className="flex justify-center">
-                        <img className="object-cover mx-auto h-72 w-72 md:w-56 md:h-56 rounded-full" src={data.book.image} alt="" />
+                        <img className="object-cover mx-auto h-72 w-72 md:w-64 md:h-64 md:ml-8 rounded-full" src={data.book.image} alt="" />
                       </div>
                     </div>
-                    <div className="px-8 md:pl-4 lg:pl-0 md:pr-16 md:col-span-3">
+                    <div className="px-8 md:pl-8 md:pr-16 md:col-span-3">
                       <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
                         {data.book.title}
                       </div>
@@ -195,6 +195,9 @@ export default function Course() {
                           a physical copy of the book upon completing the course.
                         </div>
                       </div>
+                      <a download className="mt-4" href={data.book.sample}>
+                        <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">Download Sample &rarr;</button>
+                      </a>
                     </div>
                   </div>
                 </div>}
