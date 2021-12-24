@@ -6,7 +6,7 @@ import Board from '../../images/index.png'
 
 export default function Hero() {
   return (
-    <div className="bg-gray-50 z-20">
+    <div className="min-h-screen bg-gray-50 z-20">
       <Nav />
       <main className="lg:relative -py-5">
         <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
@@ -39,7 +39,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-0 lg:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
+        <div className="relative w-full h-0 lg:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:min-h-screen lg:h-full">
           <img
             className="absolute inset-0 w-full h-full object-cover shadow-lg"
             src={Board}
