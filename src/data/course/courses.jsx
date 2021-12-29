@@ -42,7 +42,7 @@ const courses = {
     book: {
       people: '',
       image: '',
-      title: '',
+      title: 'Everaise Academy: Biology',
       sample: BiologySample,
     },
     testimonial: {
