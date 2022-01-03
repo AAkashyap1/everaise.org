@@ -89,12 +89,12 @@ const speakers = [
   },
   {
     name: 'Ali Cy',
-    role: 'Captain @ Hunter College Math Team',
+    role: 'Contestant @ European Girls’ Math Olympiad (EGMO)',
     imageUrl:
       Cy,
     title: 'Meta-Solving',
     description: 
-      `Contestant @ European Girls’ Math Olympiad (EGMO)`,
+      ``,
     background: 
       `Ali is a rising high-school junior who has been a passionate math contestant for three years.  
       She took part in the 2020 European Girls’ Math Olympiad as part of Team USA and received a silver medal, 
