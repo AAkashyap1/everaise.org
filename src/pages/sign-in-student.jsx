@@ -10,15 +10,24 @@ export default function SignIn1(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const [modalOpen, setModalOpen] = useState(false)
-  const { login } = useAuth()
+  const { currentUser, login } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-  const nextScreen = props.location.state.toLowerCase()
+  var nextScreen = '';
 
   useEffect(() => {
     document.title = 'Sign In - Everaise Launch'
     window.scrollTo(0, 0)
+    if (props.location.state) {
+      // eslint-disable-next-line
+      nextScreen = props.location.state.toLowerCase();
+    } else {
+      nextScreen = '/home'
+    }
+    if (currentUser && currentUser.email) {
+      history.push(nextScreen);
+    }
   })
 
   async function handleSubmit(event) {
