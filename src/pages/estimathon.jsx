@@ -1,4 +1,4 @@
-import Nav from '../components/nav';
+import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
 import { useEffect, useState } from 'react'
 import { Disclosure } from '@headlessui/react'

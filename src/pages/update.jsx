@@ -5,7 +5,7 @@ import { SelectorIcon, CheckIcon } from '@heroicons/react/solid'
 import { database, getUserInfo } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 import { countryData } from '../variables/countries'
-import Nav from '../components/nav'
+import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer' 
 
 function classNames(...classes) {

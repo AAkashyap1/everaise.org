@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react'
 import { Popover, Menu, Transition } from '@headlessui/react'
 import { Link, useHistory} from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext.js'
-import { database } from '../firebase'
+import { useAuth } from '../../../contexts/AuthContext.js'
+import { database } from '../../../firebase'
 import {
   UserGroupIcon, 
   MailIcon, 
@@ -13,7 +13,7 @@ import {
   SpeakerphoneIcon,
 } from '@heroicons/react/outline'
 import { ChevronDownIcon, ChevronUpIcon} from '@heroicons/react/solid'
-import Logo from '../images/EveraiseAcademy.svg'
+import Logo from '../../../images/EveraiseAcademy.svg'
 
 const events = [
   {

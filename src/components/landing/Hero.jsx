@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
-import Nav from '../nav'
+import Nav from '../global/navs/nav'
 import Board from '../../images/index.png'
 
 export default function Hero() {

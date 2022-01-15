@@ -4,16 +4,17 @@ import { useAuth } from '../contexts/AuthContext.js'
 import EvCirc from '../images/evcirc.png'
 import { XCircleIcon, CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/solid'
 import Board from '../images/index.png'
+import ForgotPasswordModal from '../components/login/modal.jsx'
 
 export default function SignIn1(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
+  const [modalOpen, setModalOpen] = useState(false)
   const { login, sendPasswordResetEmail } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const history = useHistory()
-  const nextScreen = props.location.state.toLowerCase()
 
   useEffect(() => {
     document.title = 'Sign In - Everaise Launch'
@@ -27,7 +28,7 @@ export default function SignIn1(props) {
       setError('')
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push(nextScreen)
+      history.push('/home')
     } catch {
       setError('Sorry, we did not recognize this login')
     }
@@ -35,23 +36,14 @@ export default function SignIn1(props) {
     setLoading(false)
   }
 
-  async function resetPassword(event) {
-    event.preventDefault()
-
-    try {
-      setError('')
-      setLoading(true)
-      await sendPasswordResetEmail(emailRef.current.value)
-      setMessage('Password reset email sent to ' + emailRef.current.value)
-    } catch {
-      setError('Sorry, we were unable to send a password reset email to ' + emailRef.current.value)
-    } finally {
-      setLoading(false)
-    }
+  function openModal(event) {
+    event.preventDefault();
+    setModalOpen(true);
   }
 
   return (
     <div className="min-h-screen bg-white flex">
+      <ForgotPasswordModal open={modalOpen} setOpen={setModalOpen} />
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
@@ -71,18 +63,7 @@ export default function SignIn1(props) {
             </p>
           </div>
 
-          <div className="mt-8">
-            <div className="rounded-md bg-red-50 p-4">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <ExclamationCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
-                </div>
-                <div className="ml-3">
-                  <h3 className="text-sm text-red-800">If you forgot your password, type the email associated with your account into the email field and hit the 'Forgot your password?' button.</h3>
-                </div>
-              </div>
-            </div>
-
+          <div className="mt-5">
             <div>
               <div className="mt-6 relative">
                 <div className="absolute inset-0 flex items-center" aria-hidden="true">
@@ -171,7 +152,7 @@ export default function SignIn1(props) {
 
                   <form>
                     <div className="text-sm">
-                      <button disabled={loading} onClick={resetPassword} className="font-medium text-cyan-900 hover:text-cyan-500">
+                      <button disabled={loading} onClick={openModal} className="unfocus font-medium text-cyan-900 hover:text-cyan-500">
                         Forgot your password? 
                       </button>
                     </div>

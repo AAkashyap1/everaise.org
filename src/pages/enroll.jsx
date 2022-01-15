@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline'
-import Nav from '../components/nav'
+import Nav from '../components/global/navs/nav'
 import { useAuth } from '../contexts/AuthContext'
 import { database, getUserInfo, increment, decrement } from '../firebase'
 import Footer from '../components/footer'
@@ -252,7 +252,7 @@ export default function Enroll() {
   return (
     <div className="bg-white">
       <Nav />
-      <div className="pt-5 pb-16">
+      <div className="mt-5 pt-5 pb-16">
         <header>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
             <h1 className="text-3xl font-bold leading-tight text-gray-900">Course Enrollment</h1>
