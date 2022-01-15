@@ -2,10 +2,9 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { MailIcon } from '@heroicons/react/outline'
 import { useAuth } from '../../contexts/AuthContext'
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/solid'
+import { CheckCircleIcon } from '@heroicons/react/solid'
 
 export default function ForgotPasswordModal(props) {
-  const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const { sendPasswordResetEmail } = useAuth()
   const emailRef = useRef(null)
@@ -14,13 +13,10 @@ export default function ForgotPasswordModal(props) {
     event.preventDefault();
     try {
       await sendPasswordResetEmail(emailRef.current.value);
-      setError('');
-      setMessage('Password reset email sent to ' + emailRef.current.value);
-      props.setOpen(false);
     } catch {
-      setMessage('');
-      setError('Sorry, we were unable to send a password reset email to ' + emailRef.current.value);
+
     }
+    setMessage('Password reset instructions have been sent to ' + emailRef.current.value + ' if there is an account associated with this email.');
   }
 
   return (
@@ -81,18 +77,6 @@ export default function ForgotPasswordModal(props) {
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-              {error && 
-                <div className="mt-5 w-full rounded-md bg-red-50 p-4">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
-                    </div>
-                    <div className="ml-3">
-                      <h3 className="text-sm text-red-800">{error}</h3>
-                    </div>
-                  </div>
-                </div>
-              }
               {message && 
                 <div className="mt-5 w-full rounded-md bg-green-50 p-4">
                   <div className="flex">
