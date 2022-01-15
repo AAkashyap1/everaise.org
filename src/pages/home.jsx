@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { database, increment } from '../firebase'
 import EvCirc from '../images/evcirc.png'
@@ -42,8 +42,7 @@ const announcements = [
 export default function Home() {
   const [name, setName] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { signout, currentUser } = useAuth()
-  const history = useHistory()
+  const { currentUser } = useAuth()
   const [cards, setCards] = useState([])
   const [count, setCount] = useState(0)
   const [loaded, setLoaded] = useState(false);
@@ -116,17 +115,6 @@ export default function Home() {
         setName(doc.data().first_name + ' ' + doc.data().last_name)
       })
     return name
-  }
-
-  async function handleLogout(event) {
-    event.preventDefault()
-
-    try {
-      await signout()
-      history.push("/landing")
-    } catch {
-      
-    }
   }
 
   return (

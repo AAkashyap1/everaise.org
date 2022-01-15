@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext.js'
 import EvCirc from '../images/evcirc.png'
-import { XCircleIcon, CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/solid'
+import { XCircleIcon } from '@heroicons/react/solid'
 import Board from '../images/index.png'
 import ForgotPasswordModal from '../components/login/modal.jsx'
 
@@ -10,11 +10,11 @@ export default function SignIn1(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const [modalOpen, setModalOpen] = useState(false)
-  const { login, sendPasswordResetEmail } = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState('')
   const history = useHistory()
+  const nextScreen = props.location.state.toLowerCase()
 
   useEffect(() => {
     document.title = 'Sign In - Everaise Launch'
@@ -28,7 +28,7 @@ export default function SignIn1(props) {
       setError('')
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push('/home')
+      history.push(nextScreen)
     } catch {
       setError('Sorry, we did not recognize this login')
     }
@@ -119,19 +119,6 @@ export default function SignIn1(props) {
                       </div>
                       <div className="ml-3">
                         <h3 className="text-sm text-red-800">{error}</h3>
-                      </div>
-                    </div>
-                  </div>
-                }
-
-                {message && 
-                  <div className="rounded-md bg-green-50 p-4">
-                    <div className="flex">
-                      <div className="flex-shrink-0">
-                        <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
-                      </div>
-                      <div className="ml-3">
-                        <h3 className="text-sm text-green-800">{message}</h3>
                       </div>
                     </div>
                   </div>

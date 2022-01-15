@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Link, useHistory, useParams } from 'react-router-dom'
+import { Link,/* useHistory, useParams */} from 'react-router-dom'
 import { Dialog, Transition } from '@headlessui/react'
 import Launch from '../../../images/launch.png'
 import {
@@ -11,13 +11,16 @@ function classNames(...classes) {
 }
 
 export default function SideNav(props) {
+  /*
   const history = useHistory();
   const { course } = useParams();
+  
   function RefreshModule(event, moduleVal, id) {
     event.preventDefault()
     history.push(`/homework/${course}/${moduleVal}/${id}`)
     history.go(0)
   }
+  */
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">

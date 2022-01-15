@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react'
-import { useHistory, useParams, Link } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import courseData from '../data/launch/courseData'
 import Assignment from '../components/assignment'
-import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { homeworkNavigation } from '../data/launch/navigation/labels'
-import ProfileDropdown from '../components/global/dropdowns/ProfileDropdown'
 import SideNav from '../components/global/navs/SideNav'
-import EvCirc from '../images/evcirc.png'
 import {
-  ChartBarIcon,
-  ChatAlt2Icon,
   MenuAlt1Icon,
   XIcon,
 } from '@heroicons/react/outline'
@@ -61,7 +57,7 @@ export default function Home() {
       }
       setModules(assignments);
     }
-  }, [assignmentData])
+  }, [assignmentData, course, module])
 
   useEffect(() => {
     courseData[course].userData.doc(currentUser.email).collection('assignments').doc(assignmentId).get().then((doc) => {

@@ -34,7 +34,6 @@ function classNames(...classes) {
 
 export default function Dashboard() {
   const { course } = useParams()
-  const [name, setName] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { currentUser } = useAuth()
   const [numAssignments, setNumAssignments] = useState(4)

@@ -13,13 +13,13 @@ export default function ForgotPasswordModal(props) {
   async function resetPassword(event) {
     event.preventDefault();
     try {
-      await sendPasswordResetEmail(emailRef.current.value)
+      await sendPasswordResetEmail(emailRef.current.value);
       setError('');
       setMessage('Password reset email sent to ' + emailRef.current.value);
       props.setOpen(false);
     } catch {
       setMessage('');
-      setError('Sorry, we were unable to send a password reset email to ' + emailRef.current.value)
+      setError('Sorry, we were unable to send a password reset email to ' + emailRef.current.value);
     }
   }
 
