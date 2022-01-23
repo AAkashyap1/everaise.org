@@ -99,7 +99,7 @@ export const core = [
     roles: ['Director of Technology'],
     imageUrl:
       AnanthKashyap,
-    achievements: ['2021 AIME Qualifier / AMC 10 Distinction', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
+    achievements: ['2x AIME Qualifier', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
     education: 'Fox Chapel Area High School, PA – Class of 2023',
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
     gitHubUrl: 'https://github.com/AAkashyap1',
