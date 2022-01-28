@@ -338,9 +338,48 @@ export default function Team() {
               of the team? Learn more {' '}<Link to="/people/join"><span className="text-indigo-500">here</span></Link>!
               </p>
             </div>
-            <ul className="flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
+            <ul className="flex jusify-center space-y-4 grid grid-cols-1">
               {core.map((person) => (
-                <li key={person.name} className="py-10 px-6 border border-gray-200 shadow-lg text-left rounded-lg xl:px-10">
+                <li key={person.name} className="border py-8 border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-7">
+                  <div className="items-center my-auto md:ml-8 xl:ml-16 space-y-6 col-span-7 md:col-span-2 p-2">
+                    <img className="object-cover mx-auto h-56 w-56 xl:h-64 xl:w-64 rounded-full" src={person.imageUrl} alt={person.name} />
+                  </div>
+                  <div className="mt-3 md:mt-0 px-12 py-auto col-span-7 md:col-span-5">
+                    <div className="text-gray-900 font-semibold text-2xl text-italic">
+                      {person.name}
+                    </div>
+                    <div className="mt-1 font-medium text-lg leading-6">
+                      {person.roles.map(role => {
+                        return (
+                          <span
+                            className="mr-2 inline-flex items-center px-2.5 py-0.5 rounded-full leading-4 bg-gray-300 text-sm font-normal text-gray-900"
+                            key={role}
+                          >
+                            {role}
+                          </span>
+                        )
+                      })}
+                    </div>
+                    <div className="mt-3 text-gray-900 space-y-4 font-medium">
+                      <div className="mt-3 text-gray-900 font-medium text-lg">
+                        Education: 
+                        <ul className="">
+                          <li className="font-normal text-base text-gray-700">{person.education}</li>
+                        </ul>
+                      </div>
+                      <div className="text-gray-900 font-medium text-lg">
+                        Achievements: 
+                        <ul className="ml-7 list-disc">
+                          {person.achievements.map(achievement => {
+                            return <li className="font-normal text-base text-gray-700">{achievement}</li>
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                /*
+                <li className="py-10 px-6 border border-gray-200 shadow-lg text-left rounded-lg xl:px-10">
                   <div className="space-y-6 xl:space-y-10">
                     <img className="object-cover mx-auto h-56 w-56 rounded-full" src={person.imageUrl} alt="" />
                     <div className="space-y-2 flex justify-between">
@@ -400,6 +439,7 @@ export default function Team() {
                     </ul>
                   </div>
                 </li>
+                */
               ))}
             </ul>
             <ul className="grid grid-cols-1 sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
