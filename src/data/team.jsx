@@ -70,7 +70,7 @@ const current = [
     imageUrl:
       PrestonFu,
     achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll', 'Ross Mathematics Program Alumnus'],
-    education: 'Saratoga High School, USA \'22',
+    education: `Saratoga High School, USA '22`,
     linkedInUrl: 'https://www.linkedin.com/in/preston-fu/',
     gitHubUrl: '',
   },
@@ -80,7 +80,7 @@ const current = [
     imageUrl:
       MatthewChen,
     achievements: ['2x USA(J)MO Qualifier', 'PUMaC A Algebra 8th Place, Individual Finals 20th Place', 'USEMO Distinction', 'USAPHO Qualifier'],
-    education: 'Wayzata High School, USA \'23',
+    education: `Wayzata High School, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -90,7 +90,7 @@ const current = [
     imageUrl:
       ChooiJeQin,
     achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
-    education: `Kolej Tuanku Ja'afar, Malaysia \'22`,
+    education: `Kolej Tuanku Ja'afar, Malaysia '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -100,7 +100,7 @@ const current = [
     imageUrl:
       AshmitDutta,
     achievements: ['Thomas Jefferson Physics Olympiad (TJPhO) Second Place', 'Physics Unlimited Explorer Competition (PUEC) Special Award', 'Online Physics Olympiad (OPhO) Problem Writer'],
-    education: 'Langley High School, USA \'23',
+    education: `Langley High School, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/ashmit-dutta-2447881aa/',
     gitHubUrl: '',
   },
@@ -110,7 +110,7 @@ const current = [
     imageUrl:
       KrishJayarapu,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
-    education: 'Carmel High School, USA \'22',
+    education: `Carmel High School, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -120,7 +120,7 @@ const current = [
     imageUrl:
       KiranSun,
     achievements: ['Canadian Junior Mathematical Olympiad (CJMO) Qualifier', '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier', 'AIME Qualifier'],
-    education: 'St. George’s School, Canada \'24',
+    education: `St. George's School, Canada '24`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -130,7 +130,7 @@ const current = [
     imageUrl:
       AnanthKashyap,
     achievements: ['2x AIME Qualifier', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
-    education: 'Fox Chapel Area High School, USA \'23',
+    education: `Fox Chapel Area High School, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
     gitHubUrl: 'https://github.com/AAkashyap1',
   },
@@ -140,7 +140,7 @@ const current = [
     imageUrl:
       AbhayBestrapalli,
     achievements: ['Indian International Mathematical Olympiad Training Camp (IMOTC)', 'USA IOAA 2021 Main Team', 'Indian Astronomy Selection Camp (IOAA OCSC)'],
-    education: 'Delhi Public School Bangalore East, India \'22',
+    education: `Delhi Public School Bangalore East, India '22`,
     linkedInUrl: 'https://www.linkedin.com/in/abhay-bestrapalli-739280222/',
     gitHubUrl: '',
   },
@@ -150,7 +150,7 @@ const current = [
     imageUrl:
       FarazAhmedSiddiqui,
     achievements: ['Physics Unlimited Explorer Competition (PUEC) Bronze Award', 'OPhO Invitational Qualifier'],
-    education: 'Holy Family High School, India \'24',
+    education: `Holy Family High School, India '24`,
     linkedInUrl: 'https://www.linkedin.com/in/faraz-ahmed-siddiqui-73a3ba216/',
     gitHubUrl: '',
   },
@@ -160,7 +160,7 @@ const current = [
     imageUrl:
       JeffreyWei,
     achievements: ['NAC Qualifier', 'AIME Qualifier', 'Beaver Works Summer Institute Alumnus'],
-    education: 'Acton Boxborough Regional High School, USA \'23',
+    education: `Acton Boxborough Regional High School, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -170,7 +170,7 @@ const current = [
     imageUrl:
       EvanKim,
     achievements: ['USAPhO Semifinalist', 'AMC 10 Distinguished Honor Roll', 'AIME Qualifier', 'National Science Bowl Qualifier'],
-    education: 'Tesla STEM High School, USA \'23',
+    education: `Tesla STEM High School, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -180,7 +180,7 @@ const current = [
     imageUrl:
       LohithTummala,
     achievements: ['USA(J)MO Qualifier', '2x AMC Distinguished Honor Roll', '2x MathCounts National Qualifier'],
-    education: 'Electrical and Computer Engineering @ Carnegie Mellon University, USA \'25',
+    education: `Electrical and Computer Engineering @ Carnegie Mellon University, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/ltummala/',
     gitHubUrl: '',
   },
@@ -190,7 +190,7 @@ const current = [
     imageUrl:
       JeffreyHu,
     achievements: ['3x AIME qualifier', 'USAPhO qualifier', 'Santa Clara University Math Contest Honorable Mention'],
-    education: 'Saratoga High School, USA \'22',
+    education: `Saratoga High School, USA '22`,
     linkedInUrl: 'https://www.linkedin.com/in/jeffrey-hu-8473b918b/',
     gitHubUrl: '',
   },
@@ -200,7 +200,7 @@ const current = [
     imageUrl:
       AlbertYe,
     achievements: ['3x AIME Qualifier', 'AMC 10 Distinguished Honor Roll', 'USAMTS Leaderboard'],
-    education: 'Saratoga High School, USA \'22',
+    education: `Saratoga High School, USA '22`,
     linkedInUrl: 'https://www.linkedin.com/in/albert-ye-587aa81a2/',
     gitHubUrl: '',
   },
@@ -210,7 +210,7 @@ const current = [
     imageUrl:
       NathanMa,
     achievements: ['2x AMC 10 Distinguished Honor Roll', '2x AIME Qualifier', 'MathCounts Nationals Qualifier'],
-    education: 'Stevenson High School, USA \'23',
+    education: `Stevenson High School, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -220,7 +220,7 @@ const current = [
     imageUrl:
       VictorLi,
     achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
-    education: 'Massachusetts Institute of Technology, uSA \'25',
+    education: `Massachusetts Institute of Technology, uSA '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -230,7 +230,7 @@ const current = [
     imageUrl:
       HaoliYin,
     achievements: ['USABO Semifinalist', '2x Science Olympiad National Biology Event Medalist', 'Global Hackathon Top 5'],
-    education: 'CS+Pre-Med @ Vanderbilt University \'25',
+    education: `CS+Pre-Med @ Vanderbilt University '25`,
     linkedInUrl: 'https://www.linkedin.com/in/haoliyin/',
     gitHubUrl: '',
   },
@@ -240,7 +240,7 @@ const current = [
     imageUrl:
       YamanAcharya,
     achievements: ['IAO Qualifier', 'NAO Finalist', 'Intern at Nepal Astronomical Society (NASO)'],
-    education: 'Vishwa Adarsha College, Nepal \'22',
+    education: `Vishwa Adarsha College, Nepal '22`,
     linkedInUrl: 'https://www.linkedin.com/in/yaman-acharya-994250219/',
     gitHubUrl: '',
   },
@@ -250,7 +250,7 @@ const current = [
     imageUrl:
       AtharvaMahajan,
     achievements: ['Indian Physics Selection Camp (OCSC)', 'KVPY Top 50', 'RMO Qualifier'],
-    education: 'Rankers International School, India \'22',
+    education: `Rankers International School, India '22`,
     linkedInUrl: 'https://www.linkedin.com/in/atharva-mahajan-5957b4212/',
     gitHubUrl: '',
   },
@@ -260,7 +260,7 @@ const current = [
     imageUrl:
       AniruddhaSharma,
     achievements: ['Physics Unlimited Explorer Competition (PUEC) Third Place', 'Stanford Code in Place Alumnus', 'Gaussian Curvature Mathematics Committee Member'],
-    education: 'Rajeev Gandhi Higher Secondary School \'20',
+    education: `Rajeev Gandhi Higher Secondary School '20`,
     linkedInUrl: 'https://www.linkedin.com/in/asharma1729/',
     gitHubUrl: '',
   },
@@ -270,7 +270,7 @@ const current = [
     imageUrl:
       AnuragChittawar,
     achievements: ['2x INBO gold medalist', 'AIR 52 in KVPY SA'],
-    education: 'Biology @ Indian Institute of Science \'25',
+    education: `Biology @ Indian Institute of Science '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -280,7 +280,7 @@ const current = [
     imageUrl:
       PeterPu,
     achievements: ['USABO Finalist (Top 20)', 'AMC 10 DHR', 'AMC 12 DHR'],
-    education: 'University of Chicago Laboratory Schools, USA \'22',
+    education: `University of Chicago Laboratory Schools, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -290,7 +290,7 @@ const current = [
     imageUrl:
       DerekChen,
     achievements: ['2021 USABO Team Member', '5x AIME Qualifier', 'USAPhO Honorable Mention', 'PROMYS Alumnus'],
-    education: 'Belmont High School, USA \'22',
+    education: `Belmont High School, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -300,7 +300,7 @@ const current = [
     imageUrl:
       IvyZheng,
     achievements: ['2x AIME Qualifier', 'AMC 10 Distinguished Honor Roll'],
-    education: 'Lexington High School, USA \'24',
+    education: `Lexington High School, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -310,7 +310,7 @@ const current = [
     imageUrl:
       JustinHua,
     achievements: ['Ross Mathematics Program Alumnus'],
-    education: 'Hugh McRoberts Secondary School, Canada \'21',
+    education: `Hugh McRoberts Secondary School, Canada '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -320,7 +320,7 @@ const current = [
     imageUrl:
       GaryHu,
     achievements: ['AIME Qualifier', 'AMC 10 Distinction', 'CMIMC Algebra Number Theory Top 50'],
-    education: 'Montclair Kimberley Academy, USA \'24',
+    education: `Montclair Kimberley Academy, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -330,7 +330,7 @@ const current = [
     imageUrl:
       OliviaLi,
     achievements: ['AIME Qualifier', 'Math Prize for Girls Alumnus', 'USACO Silver Qualifier'],
-    education: 'Dougherty Valley High School, USA \'23',
+    education: `Dougherty Valley High School, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -340,7 +340,7 @@ const current = [
     imageUrl:
       AnujSakarda,
     achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
-    education: 'Acton Boxborough Regional High School, USA \'22',
+    education: `Acton Boxborough Regional High School, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -353,7 +353,7 @@ const archive = [
     imageUrl:
       BrianLee,
     achievements: [],
-    education: 'Math+CS @ Massachusetts Institute of Technology, USA \'25',
+    education: `Math+CS @ Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/brian-lee-70a3111ab/',
     gitHubUrl: '',
   },
@@ -363,7 +363,7 @@ const archive = [
     imageUrl:
       WilliamShi,
     achievements: [],
-    education: 'Math+CS @ Harvard University, USA \'25',
+    education: `Math+CS @ Harvard University, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/william-shi-80/',
     gitHubUrl: '',
   },
@@ -373,7 +373,7 @@ const archive = [
     imageUrl:
       SaadiqShaikh,
     achievements: [],
-    education: 'Math+CS @ Carnegie Mellon University, USA \'25',
+    education: `Math+CS @ Carnegie Mellon University, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/saadiq-shaikh-5a3785161/',
     gitHubUrl: '',
   },
@@ -383,7 +383,7 @@ const archive = [
     imageUrl:
       GregPylypovych,
     achievements: [],
-    education: 'Math+CS @ Massachusetts Institute of Technology, USA \'25',
+    education: `Math+CS @ Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/gregory-pylypovych-911542221/',
     gitHubUrl: '',
   },
@@ -393,7 +393,7 @@ const archive = [
     imageUrl:
       JetChung,
     achievements: [],
-    education: 'Math @ University of Oxford, United Kingdom \'25',
+    education: `Math @ University of Oxford, United Kingdom '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -403,7 +403,7 @@ const archive = [
     imageUrl:
       JustinShan,
     achievements: [],
-    education: 'Neuroscience+CS @ Massachusetts Institute of Technology, USA \'25',
+    education: `Neuroscience+CS @ Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/justin-shan-1ab448194/',
     gitHubUrl: '',
   },
@@ -413,7 +413,7 @@ const archive = [
     imageUrl:
       AndrewWu,
     achievements: [],
-    education: 'Math @ Yale University, USA \'23',
+    education: `Math @ Yale University, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/andrewgongwu/',
     gitHubUrl: '',
   },
@@ -423,7 +423,7 @@ const archive = [
     imageUrl:
       JenniferWang,
     achievements: [],
-    education: 'Massachusetts Institute of Technology, USA \'25',
+    education: `Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -433,7 +433,7 @@ const archive = [
     imageUrl:
       DennisChen,
     achievements: [],
-    education: 'Amador Valley High School, USA \'23',
+    education: `Amador Valley High School, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/dennisrchen/',
     gitHubUrl: '',
   },
@@ -443,7 +443,7 @@ const archive = [
     imageUrl:
       FionaAbneyMcPeek,
     achievements: [],
-    education: 'University of Chicago Laboratory Schools, USA \'23',
+    education: `University of Chicago Laboratory Schools, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -453,7 +453,7 @@ const archive = [
     imageUrl:
       AndersOlsen,
     achievements: [],
-    education: 'Massachusetts Institute of Technology, MIT \'22',
+    education: `Massachusetts Institute of Technology, MIT '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -463,7 +463,7 @@ const archive = [
     imageUrl:
       AlexIzmailov,
     achievements: [],
-    education: 'Math+CS @ Brown University, USA \'24',
+    education: `Math+CS @ Brown University, USA '24`,
     linkedInUrl: 'https://www.linkedin.com/in/alizma0/',
     gitHubUrl: '',
   },
@@ -473,7 +473,7 @@ const archive = [
     imageUrl:
       SarahGleghorn,
     achievements: [],
-    education: 'Skipton Girls\' High School, United Kingdom \'23',
+    education: `Skipton Girls' High School, United Kingdom '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -483,7 +483,7 @@ const archive = [
     imageUrl:
       ValentioIverson,
     achievements: [],
-    education: 'CS @ University of Waterloo, Canada \'26',
+    education: `CS @ University of Waterloo, Canada '26`,
     linkedInUrl: 'https://www.linkedin.com/in/valentio-iverson-0252771b1/',
     gitHubUrl: '',
   },
@@ -493,7 +493,7 @@ const archive = [
     imageUrl:
       SivaMuthupalaniappan,
     achievements: [],
-    education: 'Harvard University, USA \'23',
+    education: `Harvard University, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/smuthu1618/',
     gitHubUrl: '',
   },
@@ -503,8 +503,18 @@ const archive = [
     imageUrl:
       NishantBhakar,
     achievements: [],
-    education: 'CS+Physics @ UC Berkeley, USA \'24',
+    education: `CS+Physics @ UC Berkeley, USA '24`,
     linkedInUrl: 'https://www.linkedin.com/in/nishant-bhakar/',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Luke Choi',
+    roles: ['Math 1', 'Math 2', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      LukeChoi,
+    achievements: [],
+    education: `Brown University, USA '25`,
+    linkedInUrl: 'https://www.linkedin.com/in/luke-choi-6876281b5/',
     gitHubUrl: '',
   },
   {
@@ -513,7 +523,7 @@ const archive = [
     imageUrl:
       JoshuaLee,
     achievements: [],
-    education: 'Math+CS @ Massachusetts Institute of Technology, USA \'25',
+    education: `Math+CS @ Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/joshua-lee-53400b1a0/',
     gitHubUrl: '',
   },
@@ -523,7 +533,7 @@ const archive = [
     imageUrl:
       SanjayNagaraj,
     achievements: [],
-    education: 'CS @ Stanford University, USA \'24',
+    education: `CS @ Stanford University, USA '24`,
     linkedInUrl: 'https://www.linkedin.com/in/sanjay-nagaraj/',
     gitHubUrl: '',
   },
@@ -533,7 +543,7 @@ const archive = [
     imageUrl:
       NiyanthRao,
     achievements: [],
-    education: 'Math+CS @ Carnegie Mellon University, USA \'25',
+    education: `Math+CS @ Carnegie Mellon University, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/niyanthr/',
     gitHubUrl: '',
   },
@@ -543,7 +553,7 @@ const archive = [
     imageUrl:
       CharlesYu,
     achievements: [],
-    education: 'Livingston High School, USA \'22',
+    education: `Livingston High School, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -553,7 +563,7 @@ const archive = [
     imageUrl:
       DylanLiu,
     achievements: [],
-    education: 'Math+CS @ Massachusetts Institute of Technology, USA \'23',
+    education: `Math+CS @ Massachusetts Institute of Technology, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/dylan-liu-9b4352193/',
     gitHubUrl: '',
   },
@@ -563,7 +573,7 @@ const archive = [
     imageUrl:
       AndrewYuan,
     achievements: [],
-    education: 'Math+CS @ Yale University, USA \'23',
+    education: `Math+CS @ Yale University, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/andrew-yuan-01702a156/',
     gitHubUrl: '',
   },
@@ -573,7 +583,7 @@ const archive = [
     imageUrl:
       JasonCheah,
     achievements: [],
-    education: 'Thomas Jefferson High School for Science and Technology, USA \'21',
+    education: `Thomas Jefferson High School for Science and Technology, USA '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -583,7 +593,7 @@ const archive = [
     imageUrl:
       SusiFeng,
     achievements: [],
-    education: 'Enloe High School USA \'21',
+    education: `Enloe High School USA '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -593,7 +603,7 @@ const archive = [
     imageUrl:
       AlbertZhu,
     achievements: [],
-    education: 'Bellaire High School, USA \'22',
+    education: `Bellaire High School, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -603,7 +613,7 @@ const archive = [
     imageUrl:
       PoonamSahoo,
     achievements: [],
-    education: 'Acton Boxborough Regional High School, USA \'21',
+    education: `Acton Boxborough Regional High School, USA '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -613,7 +623,7 @@ const archive = [
     imageUrl:
       SanjitBasker,
     achievements: [],
-    education: 'CS @ Cornell University, USA \'23',
+    education: `CS @ Cornell University, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/sanjit-basker/',
     gitHubUrl: '',
   },
@@ -623,7 +633,7 @@ const archive = [
     imageUrl:
       JinhaKim,
     achievements: [],
-    education: 'CS @ Massachusetts Institute of Technology, USA \'25',
+    education: `CS @ Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: 'https://www.linkedin.com/in/jinha-kim-b587631a7/',
     gitHubUrl: '',
   },
@@ -633,7 +643,7 @@ const archive = [
     imageUrl:
       JessicaHe,
     achievements: [],
-    education: 'Phillips Academy Andover, USA \'22',
+    education: `Phillips Academy Andover, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -643,7 +653,7 @@ const archive = [
     imageUrl:
       VismaySharan,
     achievements: [],
-    education: 'Atlantic Community High School, USA \'21',
+    education: `Atlantic Community High School, USA '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -653,7 +663,7 @@ const archive = [
     imageUrl:
       PeterLuo,
     achievements: [],
-    education: 'Harvard University, USA \'25',
+    education: `Harvard University, USA '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -663,7 +673,7 @@ const archive = [
     imageUrl:
       LaurenTan,
     achievements: [],
-    education: 'SMK Taman Putri Kulai High School, Malaysia \'21',
+    education: `SMK Taman Putri Kulai High School, Malaysia '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -673,7 +683,7 @@ const archive = [
     imageUrl:
       JiyoungLee,
     achievements: [],
-    education: 'Doctor of Pharmacy, Northeastern University, USA \'22',
+    education: `Doctor of Pharmacy, Northeastern University, USA '22`,
     linkedInUrl: 'https://www.linkedin.com/in/jiyoung-gina-lee-994b74159/',
     gitHubUrl: '',
   },
