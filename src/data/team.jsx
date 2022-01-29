@@ -149,7 +149,7 @@ const current = [
     roles: ['Associate Head of Astronomy'],
     imageUrl:
       FarazAhmedSiddiqui,
-    achievements: ['INAO Qualifier', 'Physics Unlimited Explorer Competition (PUEC) Bronze Award', 'OPhO Invitational Qualifier'],
+    achievements: ['Physics Unlimited Explorer Competition (PUEC) Bronze Award', 'OPhO Invitational Qualifier'],
     education: 'Holy Family High School, India \'24',
     linkedInUrl: 'https://www.linkedin.com/in/faraz-ahmed-siddiqui-73a3ba216/',
     gitHubUrl: '',
@@ -347,16 +347,6 @@ const current = [
 ]
 
 const archive = [
-  {
-    name: 'Preston Fu',
-    roles: ['Co-founder', 'Program Coordinator'],
-    imageUrl:
-      PrestonFu,
-    achievements: [],
-    education: 'Saratoga High School, USA \'22',
-    linkedInUrl: 'https://www.linkedin.com/in/preston-fu/',
-    gitHubUrl: '',
-  },
   {
     name: 'Brian Lee',
     roles: ['Co-founder', 'Physics Co-founder and Co-head', 'Finance'],
