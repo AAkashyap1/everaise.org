@@ -1,4 +1,4 @@
-import Nav from '../components/nav';
+import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -172,32 +172,55 @@ export default function Course() {
                     </div>
                   </div>
                 </div>
-                {data.book.image && <div id='materials'>
+                <div id='materials'>
                   <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Course Materials</h2>
-                  <div className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-4">
-                    <div className="space-y-6 xl:space-y-10">
-                      <div className="flex justify-center">
-                        <img className="object-cover mx-auto h-72 w-72 md:w-56 md:h-56 rounded-full" src={data.book.image} alt="" />
-                      </div>
-                    </div>
-                    <div className="px-8 md:pl-4 lg:pl-0 md:pr-16 md:col-span-3">
-                      <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
-                        {data.book.title}
-                      </div>
-                      <div className="text-gray-900 mt-4 font-medium text-lg">
-                        <div className="font-normal text-lg font-semibold text-gray-700">{data.book.people}</div>
-                      </div>
-                      <div className="text-gray-900 mt-4 font-medium text-lg">
-                        <div className="font-normal text-base text-gray-700 italic">
-                          The course follows the official Everaise Academy {' ' + data.name + ' '} book, which
-                          includes both problems and solutions. During the course, students receive printable
-                          digital handouts that collectively form the entire book. Many of our students to purchase
-                          a physical copy of the book upon completing the course.
+                  {data.book.image ?
+                    <div className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-4">
+                      <div className="space-y-6 xl:space-y-10">
+                        <div className="flex justify-center">
+                          <img className="object-cover mx-auto h-72 w-72 md:w-64 md:h-64 md:ml-8 rounded-full" src={data.book.image} alt="" />
                         </div>
                       </div>
+                      <div className="px-8 md:pl-8 md:pr-16 md:col-span-3">
+                        <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
+                          {data.book.title}
+                        </div>
+                        <div className="text-gray-900 mt-4 font-medium text-lg">
+                          <div className="font-normal text-lg font-semibold text-gray-700">{data.book.people}</div>
+                        </div>
+                        <div className="text-gray-900 mt-4 font-medium text-lg">
+                          <div className="font-normal text-base text-gray-700 italic">
+                            The course follows the official Everaise Academy {' ' + data.name + ' '} book, which
+                            includes both problems and solutions. During the course, students receive printable
+                            digital handouts that collectively form the entire book. Many of our students to purchase
+                            a physical copy of the book upon completing the course.
+                          </div>
+                        </div>
+                        <a download className="mt-4" href={data.book.sample}>
+                          <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">Download Sample &rarr;</button>
+                        </a>
+                      </div>
+                    </div> : 
+                    <div className="py-6 border border-gray-200 shadow-lg text-left rounded-lg">
+                      <div className="px-8 md:pl-8 md:pr-16">
+                        <div className="text-gray-900 font-semibold text-2xl text-italic">
+                          {data.book.title}
+                        </div>
+                        <div className="text-gray-900 mt-4 font-medium text-lg">
+                          <div className="font-normal text-base text-gray-700 italic">
+                            The course follows the official Everaise Academy {' ' + data.name + ' '} book, which
+                            includes both problems and solutions. During the course, students receive printable
+                            digital handouts that collectively form the entire book. Many of our students to purchase
+                            a physical copy of the book upon completing the course.
+                          </div>
+                        </div>
+                        <a download className="mt-4" href={data.book.sample}>
+                          <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">Download Sample &rarr;</button>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </div>}
+                  }
+                </div>
                 <div id='faq'>
                   <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Is this course for me?</h2>
                   <div className="divide-y divide-gray-200">

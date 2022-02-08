@@ -5,6 +5,8 @@ import Salzedo from '../images/speakers/Salzedo.png'
 import Scheffield from '../images/speakers/Scheffield.png'
 import Sipser from '../images/speakers/Sipser.png'
 import Yew from '../images/speakers/Yew.png'
+import Wen from '../images/speakers/Wen.png'
+import Cy from '../images/speakers/Cy.png'
 
 
 const speakers = [
@@ -86,6 +88,22 @@ const speakers = [
     date: 'July 26, 2020'
   },
   {
+    name: 'Ali Cy',
+    role: 'Contestant @ European Girls’ Math Olympiad (EGMO)',
+    imageUrl:
+      Cy,
+    title: 'Meta-Solving',
+    description: 
+      ``,
+    background: 
+      `Ali is a rising high-school junior who has been a passionate math contestant for three years.  
+      She took part in the 2020 European Girls’ Math Olympiad as part of Team USA and received a silver medal, 
+      and scored 27 on the 2019 USA Junior Math Olympiad. She also enjoys programming, playing anime songs 
+      on the piano, and writing.`,
+    link: 'https://www.youtube.com/watch?v=XF9CkgtK7ug',
+    date: 'July 19, 2020'
+  },
+  {
     name: 'Professor Scott Scheffield',
     role: 'Professor @ MIT',
     imageUrl:
@@ -123,11 +141,46 @@ const speakers = [
     date: 'July 18, 2020'
   },
   {
+    name: 'Tovi Wen',
+    role: 'Captain @ Hunter College Math Team',
+    imageUrl:
+      Wen,
+    title: 'The Nine Point Circle',
+    description: 
+      ``,
+    background: 
+      `At 17, Tovi is captain of the senior math team at Hunter College High School. As a member of NYC’s 
+      premier math team, he has represented the city at competitions including Harvard/MIT’s HMMT, 
+      Carnegie Mellon’s CMIMC and Princeton’s PUMaC, where he was an individual finalist. A junior US 
+      Math Olympiad qualifier, he is an experienced tutor and teaching assistant and has presented an 
+      academic paper at CUNY Graduate Center in MoMath’s 2019 MOVES Conference.`,
+    link: 'https://www.youtube.com/watch?v=SPAPMyfd1GU',
+    date: 'July 17, 2020'
+  },
+  {
+    name: 'CJ Quines',
+    role: 'Sophomore @ MIT',
+    imageUrl:
+      Quines,
+    title: 'Diagonalization',
+    description: 
+      ``,
+    background: 
+      `CJ Quines is a rising junior at the Massachusetts Institute of Technology, studying math and 
+      computer science. He represented the Philippines at the IOI and at the APMO, where he won a bronze 
+      medal and participated in their IMO training camps; additionally, he and his partner won second 
+      prize for their mathematics project at Intel ISEF. Currently, he helps run the Philippines’ training 
+      camps for the IOI and IMO. In his free time, CJ enjoys writing, talking to friends, and giving and 
+      receiving hugs.`,
+    link: 'https://www.youtube.com/watch?v=rBwnNzKl3iM',
+    date: 'July 3, 2021'
+  },
+  {
     name: 'D. Branch Moody, MD',
     role: 'Professor of Medicine @ Harvard Medical School',
     imageUrl:
       Moody,
-    title: 'TBA',
+    title: 'The 4 Big Questions of Science',
     description: 
       ``,
     background: 
@@ -136,6 +189,7 @@ const speakers = [
       lab focuses on the natural interactions of human Dendritic cells and T cells and uses human systems 
       to study the roles of CD1 proteins, Toll-like receptors and lipid antigens in T cell responses to 
       tuberculosis, HIV, and autoimmune diseases.`,
+    link: 'https://www.youtube.com/channel/UCGyILrSYokhRvJ_ibJKlMfw',
     date: 'July 2020'
   },
 ]

@@ -1,4 +1,4 @@
-import Nav from "../components/nav"
+import Nav from '../components/global/navs/nav';
 import { useEffect } from 'react'
 
 export default function NotFound() {

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import Footer from '../components/footer'
 // import { PayPalButton } from 'react-paypal-button-v2'
-
 import Hero from '../components/landing/Hero'
 import Goals from '../components/landing/Goals'
 import CallToAction from '../components/landing/CallToAction'
@@ -9,7 +8,6 @@ import Numbers from '../components/landing/Numbers'
 import GuestSpeakers from '../data/landing/guest'
 import Testimonials from '../components/landing/Testimonials'
 import Sponsors from '../components/landing/Sponsors'
-
 
 export default function Landing() {
   useEffect(() => {

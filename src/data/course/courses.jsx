@@ -4,6 +4,10 @@ import Physics from '../../images/books/Physics.png'
 import Math1H from '../../files/Math1.pdf'
 import BiologyH from '../../files/Biology.pdf'
 import PhysicsH from '../../files/Physics.pdf'
+import MathSample from '../../files/samples/Math1_BasicCounting_2021.pdf'
+import BiologySample from '../../files/samples/Biology_CellMetabolismCycle_2021.pdf'
+import AstronomySample from '../../files/samples/Astronomy_CelestialCoordinateConversions_2021.pdf'
+import PhysicsSample from '../../files/samples/Physics_OrbitalMechanics_2021.pdf'
 
 const courses = {
   'physics': {
@@ -18,6 +22,7 @@ const courses = {
       people: 'Brian Lee and William Shi',
       image: Physics,
       title: 'Everaise Academy: Physics Mechanics',
+      sample: PhysicsSample,
     },
     testimonial: {
       quote: 'Tons of problem solving skills, different aspects and considerations in advanced researches in the Sciences (via guest lectures), having to communicate with avid learners from all over the world and a brand-new respect and appreciation for Physics!',
@@ -37,7 +42,8 @@ const courses = {
     book: {
       people: '',
       image: '',
-      title: '',
+      title: 'Everaise Academy: Biology',
+      sample: BiologySample,
     },
     testimonial: {
       quote: 'The best part of the program were learning something new everyday in a well presented manner through the handouts. I loved how the information in the handout was easy to digest so I could understand them better',
@@ -58,6 +64,7 @@ const courses = {
       people: 'Saadiq Shaikh and Matthew Chen',
       image: Math,
       title: 'Everaise Academy: Math Competitions I',
+      sample: MathSample,
     },
     testimonial: {
       quote: 'The commitment to learning and excellence all for free really stood out. Normally, you would assume people to charge large swaths of money for content of this standard and genre, but the level at which content was presented and the follow-up and help to students was phenomenal and at the same time was free of cost.',
@@ -78,6 +85,7 @@ const courses = {
       people: 'Chooi Je Qin and Gregory Pylypovych',
       image: Astronomy,
       title: 'Everaise Academy: Astronomy',
+      sample: AstronomySample,
     },
     testimonial: {
       quote: 'The best part about the program was how organized everything was. We got the handout schedule way before the program started, so I always knew what was coming. The handouts were generally well-written and comprehensive as well. The Everaise team clearly put a lot of effort into planning these 5 weeks.',

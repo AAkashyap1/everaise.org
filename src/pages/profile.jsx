@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext.js'
 import { database } from '../firebase'
 import { countryData } from '../variables/countries'
-import Nav from '../components/nav.jsx'
+import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
 
 let countries = []
