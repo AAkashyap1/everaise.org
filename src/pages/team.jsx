@@ -1,8 +1,8 @@
-import Nav from '../components/nav';
+import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { current, archive } from '../data/team'
+import Page from '../components/page'
 
 export default function Team() {
   return (
@@ -138,14 +138,6 @@ export default function Team() {
                     Education:
                     <ul className="">
                       <li className="font-normal text-base text-gray-700">{person.education}</li>
-                    </ul>
-                  </div>
-                  <div className="text-gray-900 mt-4 font-medium text-lg">
-                    Achievements:
-                    <ul className="ml-7 list-disc">
-                      {person.achievements.map(achievement => {
-                        return <li className="font-normal text-base text-gray-700">{achievement}</li>
-                      })}
                     </ul>
                   </div>
                 </li>
