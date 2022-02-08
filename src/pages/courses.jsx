@@ -1,6 +1,6 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { useEffect } from 'react'
+import Page from '../components/page'
 import { Link } from 'react-router-dom'
 import Physics from '../images/courses/Physics.jpg'
 import Math from '../images/courses/Math.jpg'
@@ -129,13 +129,16 @@ const statusStyles = {
 
 export default function Courses() {
 
-  useEffect(() => {
-    document.title = 'Courses - Everaise Academy'
-    window.scrollTo(0, 0)
-  })
-
   return (
-    <div>
+    <Page 
+      title="Courses - Everaise Academy"
+      description="Our full course list is listed below, along with their start and end dates. 
+      As of now, each course is offered one time throughout the year, during summer. 
+      Each offering covers the same material as other offerings of that course. Click 
+      any course name below for more information about that course. All times are 
+      listed in ET = UTC-4. Click any time below to view its conversion to other time 
+      zones."
+    >
       <Nav />
       <div className="my-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
@@ -291,6 +294,6 @@ export default function Courses() {
         </div>
       </div>
       <Footer />
-    </div>
+    </Page>
   )
 }

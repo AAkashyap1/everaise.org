@@ -28,3 +28,15 @@ export const homeNavigation = [
 export const homeSecondaryNavigation = [
   { name: 'Discussion', href: 'https://discord.gg/JE5TaCrrFn', icon: ChatAlt2Icon, current: false },
 ]
+
+export const adminHomeNavigation = [
+  { name: 'Home', href: '/admin/home', icon: HomeIcon, current: true },
+]
+
+export const adminDashboardNavigation = [
+  { name: 'Dashboard', href: '', icon: ChartBarIcon, current: true },
+]
+
+export const adminDashboardSecondaryNavigation = [
+  { name: 'Home', href: '/admin/home', icon: HomeIcon, current: false },
+]

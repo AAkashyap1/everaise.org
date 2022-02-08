@@ -1,6 +1,6 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { useEffect } from 'react' 
+import Page from '../components/page';
 import { Link } from 'react-router-dom' 
 
 import PrestonFu from '../images/team/PrestonFu.png'
@@ -319,13 +319,12 @@ export const core = [
 export const staff = []
 
 export default function Team() {
-  useEffect(() => {
-    document.title = 'Team - Everaise Academy'
-    window.scrollTo(0, 0)
-  })
-
   return (
-    <div>
+    <Page
+      title="Team - Everaise Academy"
+      description="Our team is comprised of high school and college students who have been successful 
+      in a variety of STEM fields, including math, physics, and biology."
+    >
       <Nav />
       <div className="mt-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
@@ -484,6 +483,6 @@ export default function Team() {
         </div>
       </div>
       <Footer />
-    </div>
+    </Page>
   )
 }

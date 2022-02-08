@@ -1,11 +1,13 @@
 import EvCirc from '../../../images/evcirc.png'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Menu, Transition } from '@headlessui/react'
 import { useAuth } from '../../../contexts/AuthContext'
 import {
   ChevronDownIcon,
 } from '@heroicons/react/solid'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
+import { database } from '../../../firebase'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,17 +15,26 @@ function classNames(...classes) {
 
 export default function LaunchNav(props) {
   const history = useHistory()
-  const { signout } = useAuth()
+  const [admin, setAdmin] = useState(false);
+  const { currentUser, signout } = useAuth()
+  const user = useDocumentData(database.users.doc(currentUser.email))[0]
+
+  useEffect(() => {
+    if (user) {
+      setAdmin(user.admin || user.instructor);
+    }
+  }, [user])
 
   async function handleLogout(event) {
     event.preventDefault()
     try {
-      await signout()
       history.push("/landing")
+      await signout()
     } catch (err) {
       console.log(err)
     }
   }
+
   return (
     <div className="bg-white shadow">
       <div className="px-4 sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
@@ -97,13 +108,41 @@ export default function LaunchNav(props) {
                           to="/enroll"
                           className={classNames(
                             active ? 'bg-gray-100' : '',
-                            'block px-4 py-2 text-sm text-gray-700'
+                            'text-left block px-4 w-full py-2 text-sm text-gray-700'
                           )}
                         >
-                          View Courses
+                          My Courses
                         </Link>
                       )}
                     </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          to="/home"
+                          className={classNames(
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-sm text-gray-700'
+                          )}
+                        >
+                          Course Home
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    {admin && 
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/admin/home"
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            Admin Portal
+                          </Link>
+                        )}
+                      </ Menu.Item>
+                    }
                     <Menu.Item>
                       {({ active }) => (
                         <button

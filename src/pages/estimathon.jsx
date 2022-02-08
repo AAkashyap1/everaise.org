@@ -1,9 +1,10 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import { database } from '../firebase';
+import Page from '../components/page'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -35,11 +36,6 @@ export default function Estimathon() {
   const [scoring, setScoring] = useState('')
   const Latex = require('react-latex')
 
-  useEffect(() => {
-    document.title = 'Estimathon - Everaise Academy'
-    window.scrollTo(0, 0)
-  })
-
   function GetScoring() {
     database.latex.doc("default").get().then((doc) => {
       setScoring(doc.data().Latex);
@@ -49,7 +45,10 @@ export default function Estimathon() {
   }
 
   return (
-    <div>
+    <Page
+      title="Estimathon - Everaise Academy"
+      description="Win prizes by combining trivia, game theory, and STEM knowledge to cool estimation problems!"
+    >
       <Nav />
       <div className="mt-5 bg-white">
         <div className="mb-12 mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
@@ -198,6 +197,6 @@ export default function Estimathon() {
         </div>
       </div>
       <Footer />
-    </div>
+    </Page>
   )
 }

@@ -75,7 +75,7 @@ export default function SideNav(props) {
               <div className="flex-shrink-0 flex items-center px-4">
                 <Link to="/landing">
                   <img
-                    className="h-8 w-auto"
+                    className="h-12 w-auto"
                     src={Launch}
                     alt="Everaise logo"
                   ></img>
@@ -178,7 +178,7 @@ export default function SideNav(props) {
             <div className="flex items-center flex-shrink-0 px-4">
               <Link to="/landing">
                 <img
-                  className="h-8 w-auto"
+                  className="h-12 w-auto"
                   src={Launch}
                   alt="Everaise logo"
                 ></img>
