@@ -1,6 +1,6 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { useEffect } from 'react'
+import Page from '../components/page';
 import Math from '../images/books/Math.png'  
 import Astronomy from '../images/books/Astronomy.png'  
 import Physics from '../images/books/Physics.png'  
@@ -50,62 +50,65 @@ const resources = [
 ]
 
 export default function Resources() {
-  useEffect(() => {
-    document.title = 'Resources - Everaise Academy'
-    window.scrollTo(0, 0)
-  })
-
   return (
-    <div>
-      <Nav />
-      <div className="mt-5 bg-white">
-        <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
-          <div className="space-y-12">
-            <div className="space-y-5 sm:space-y-4 xl:max-w-none">
-              <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Our Resources</h2>
-              <p className="text-xl text-gray-500">
-              These books grew out of the curriculum from Everaise Academy courses taught over the past two years. Each book offers a comprehensive, 
-              in-depth review of their respective fields, complete with theoretical exposition, detailed walkthroughs to a myriad of example problems, 
-              and a wide variety of practice problems with hints and full solutions. They are available at a low cost on Amazon; our students gain 
-              digital access for free.
-              </p>
-            </div>
-            <ul className="flex jusify-center space-y-4 grid">
-              {resources.map((book) => (
-                <li key={book.title} className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-3">
-                  <div className="space-y-6 xl:space-y-10">
-                    <div className="flex justify-center">
-                      <img className="transform hover:scale-110 object-cover mx-auto h-80 w-80 rounded-full" src={book.image} alt="" />
+    <Page
+      title="Resources - Everaise Academy"
+      description="These books grew out of the curriculum from Everaise Academy courses taught over the past two years. Each book offers a comprehensive, 
+      in-depth review of their respective fields, complete with theoretical exposition, detailed walkthroughs to a myriad of example problems, 
+      and a wide variety of practice problems with hints and full solutions. They are available at a low cost on Amazon; our students gain 
+      digital access for free."
+    >
+      <div>
+        <Nav />
+        <div className="mt-5 bg-white">
+          <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
+            <div className="space-y-12">
+              <div className="space-y-5 sm:space-y-4 xl:max-w-none">
+                <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Our Resources</h2>
+                <p className="text-xl text-gray-500">
+                These books grew out of the curriculum from Everaise Academy courses taught over the past two years. Each book offers a comprehensive, 
+                in-depth review of their respective fields, complete with theoretical exposition, detailed walkthroughs to a myriad of example problems, 
+                and a wide variety of practice problems with hints and full solutions. They are available at a low cost on Amazon; our students gain 
+                digital access for free.
+                </p>
+              </div>
+              <ul className="flex jusify-center space-y-4 grid">
+                {resources.map((book) => (
+                  <li key={book.title} className="py-10 border border-gray-200 shadow-lg text-left rounded-lg grid grid-cols-1 md:grid-cols-3">
+                    <div className="space-y-6 xl:space-y-10">
+                      <div className="flex justify-center">
+                        <img className="transform hover:scale-110 object-cover mx-auto h-80 w-80 rounded-full" src={book.image} alt="" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="px-8 md:pl-4 lg:pl-0 md:pr-16 col-span-2">
-                    <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
-                      <a 
-                        target="_blank"
-                        rel="noreferrer"
-                        href={book.href}
-                        className="hover:text-gray-600"
-                      >
-                        {book.title}
+                    <div className="px-8 md:pl-4 lg:pl-0 md:pr-16 col-span-2">
+                      <div className="text-gray-900 mt-4 font-semibold text-2xl text-italic">
+                        <a 
+                          target="_blank"
+                          rel="noreferrer"
+                          href={book.href}
+                          className="hover:text-gray-600"
+                        >
+                          {book.title}
+                        </a>
+                      </div>
+                      <div className="text-gray-900 mt-4 font-medium text-lg">
+                        <div className="font-normal text-lg font-semibold text-gray-700">{book.people}</div>
+                      </div>
+                      <div className="text-gray-900 mt-4 font-medium text-lg">
+                        <div className="font-normal text-base text-gray-700 italic">{book.description}</div>
+                      </div>
+                      <a target="_blank" rel="noreferrer" className="mt-3" href={book.href}>
+                        <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">View paperback &rarr;</button>
                       </a>
                     </div>
-                    <div className="text-gray-900 mt-4 font-medium text-lg">
-                      <div className="font-normal text-lg font-semibold text-gray-700">{book.people}</div>
-                    </div>
-                    <div className="text-gray-900 mt-4 font-medium text-lg">
-                      <div className="font-normal text-base text-gray-700 italic">{book.description}</div>
-                    </div>
-                    <a target="_blank" rel="noreferrer" className="mt-3" href={book.href}>
-                      <button className="py-1 px-4 rounded-md bg-blue-500 unfocus hover:bg-blue-600 mt-4 font-normal text-sm text-white">View paperback &rarr;</button>
-                    </a>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Page>
   )
 }

@@ -1,6 +1,6 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
@@ -12,8 +12,7 @@ import {
   QuestionMarkCircleIcon,
   UserCircleIcon,
 } from '@heroicons/react/outline'
-
-
+import Page from '../components/page';
 import courses from '../data/course/courses';
 import BenefitsGrid from '../components/course/BenefitsGrid';
 import WhyEveraise from '../components/course/WhyEveraise';
@@ -56,12 +55,11 @@ export default function Course() {
     { name: 'Is this course for me?', href: '#faq', icon: UserCircleIcon },
   ]
 
-  useEffect(() => {
-    document.title = 'Courses - Everaise Academy'
-  })
-
   return (
-    <div>
+    <Page 
+      title={courses[course].name +  " - Everaise Academy"}
+      description={courses[course].desc}
+    >
       <Nav />
       <div className="my-5 bg-white">
         <div className="contaier mx-auto pt-4 sm:pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
@@ -296,6 +294,6 @@ export default function Course() {
         </div>
       </div>
       <Footer />
-    </div>
+    </Page>
   )
 }

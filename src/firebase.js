@@ -28,6 +28,8 @@ export const database = {
   biology_assignments: firestore.collection("biology_assignments"),
   astronomy_assignments: firestore.collection("astronomy_assignments"),
   latex: firestore.collection("latex"),
+  announcements: firestore.collection('announcements'),
+  registrations: firestore.collection('registration'),
 }
 
 export const increment = firebase.firestore.FieldValue.increment(1)

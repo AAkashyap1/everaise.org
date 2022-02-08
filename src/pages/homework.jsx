@@ -3,8 +3,9 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import courseData from '../data/launch/courseData'
 import Assignment from '../components/assignment'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore'
 import { homeworkNavigation } from '../data/launch/navigation/labels'
+import Page from '../components/page'
 import SideNav from '../components/global/navs/SideNav'
 import {
   MenuAlt1Icon,
@@ -40,11 +41,18 @@ export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [count, setCount] = useState(0)
   const history = useHistory()
-
+  const [title, setTitle] = useState('');
+  const assignment = useDocumentData(courseData[course].assignmentData.doc(assignmentId))
   const [modules, setModules] = useState([]);
   const assignmentData = useCollectionData(courseData[course].assignmentData)[0];
 
   homeworkNavigation[0].href = `/dashboard/${course}`
+
+  useEffect(() => {
+    if (assignment) {
+      setTitle(assignment.name + ' - Everaise Launch');
+    }
+  }, [assignment])
 
   useEffect(() => {
     if (assignmentData) {
@@ -58,12 +66,7 @@ export default function Home() {
       setModules(assignments);
     }
   }, [assignmentData, course, module])
-
-  useEffect(() => {
-    courseData[course].userData.doc(currentUser.email).collection('assignments').doc(assignmentId).get().then((doc) => {
-      document.title = doc.data().name + ' - ' + courseData[course].courseName + ' Homework'
-    })
-  })
+  
 
   function GetTimeline() {
     const [assignments, setAssignments] = useState([])
@@ -161,121 +164,126 @@ export default function Home() {
   }
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100">
-      <SideNav 
-        sidebarOpen={sidebarOpen} 
-        setSidebarOpen={setSidebarOpen} 
-        navigation={homeworkNavigation}
-        secondaryNavigation={modules}
-      />
-      <div className="flex-1 overflow-auto focus:outline-none">
-        <div className="block lg:hidden relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:border-none">
-          <button
-            className="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
-            onClick={() => setSidebarOpen(true)}
-          >
-            <span className="sr-only">Open sidebar</span>
-            <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <main className="flex-1 relative pb-8 z-0 overflow-y-auto">
-          <LaunchNav info={courseData[course].courseName + ' - Module ' + module} />
-          <div className="mt-8 mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-6xl lg:px-8 lg:gap-8 lg:grid-flow-col-dense lg:grid-cols-3">
-            <section aria-labelledby="timeline-title" className="lg:col-start-1 lg:col-span-1">
-              <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                <h2 id="timeline-title" className="text-lg font-medium text-gray-900">
-                  Assignment Timeline
-                </h2>
-                <div className="rounded-md bg-yellow-50 p-4 mt-3">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <ExclamationIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
-                    </div>
-                    <div className="ml-3">
-                      <h3 className="text-sm font-medium text-yellow-800">Due dates are optional</h3>
-                      <div className="mt-2 text-sm text-yellow-700">
-                        <p>
-                          The following due dates are recommended, but not mandatory. This is a self-paced course.
-                        </p>
+    <Page
+      title={title}
+      description=""
+    >
+      <div className="h-screen flex overflow-hidden bg-gray-100">
+        <SideNav 
+          sidebarOpen={sidebarOpen} 
+          setSidebarOpen={setSidebarOpen} 
+          navigation={homeworkNavigation}
+          secondaryNavigation={modules}
+        />
+        <div className="flex-1 overflow-auto focus:outline-none">
+          <div className="block lg:hidden relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:border-none">
+            <button
+              className="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <span className="sr-only">Open sidebar</span>
+              <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <main className="flex-1 relative pb-8 z-0 overflow-y-auto">
+            <LaunchNav info={courseData[course].courseName + ' - Module ' + module} />
+            <div className="mt-8 mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-6xl lg:px-8 lg:gap-8 lg:grid-flow-col-dense lg:grid-cols-3">
+              <section aria-labelledby="timeline-title" className="lg:col-start-1 lg:col-span-1">
+                <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                  <h2 id="timeline-title" className="text-lg font-medium text-gray-900">
+                    Assignment Timeline
+                  </h2>
+                  <div className="rounded-md bg-yellow-50 p-4 mt-3">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <ExclamationIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
+                      </div>
+                      <div className="ml-3">
+                        <h3 className="text-sm font-medium text-yellow-800">Due dates are optional</h3>
+                        <div className="mt-2 text-sm text-yellow-700">
+                          <p>
+                            The following due dates are recommended, but not mandatory. This is a self-paced course.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* Activity Feed */}
-                <div className="mt-6 flow-root">
-                  <ul className="-mb-8">
-                    {GetTimeline().assignments.map((item, itemIdx) => (
-                      <li key={item.id}>
-                        <div className="relative pb-8">
-                          {itemIdx !== count - 1 ? (
-                            <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
-                          ) : null}
-                          {item.disabled === true ?
-                            <p className="text-left relative flex space-x-3">
-                              <div>
-                                <p
-                                  className={classNames(
-                                    item.type.bgColorClass,
-                                    'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
-                                  )}
-                                >
-                                  <item.type.icon className="w-5 h-5 text-white" aria-hidden="true" />
-                                </p>
-                              </div>
-                              <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                  {/* Activity Feed */}
+                  <div className="mt-6 flow-root">
+                    <ul className="-mb-8">
+                      {GetTimeline().assignments.map((item, itemIdx) => (
+                        <li key={item.id}>
+                          <div className="relative pb-8">
+                            {itemIdx !== count - 1 ? (
+                              <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+                            ) : null}
+                            {item.disabled === true ?
+                              <p className="text-left relative flex space-x-3">
                                 <div>
-                                  <p className="mb-3 text-sm text-gray-500">
-                                    {item.content}{' '}
-                                    <span
-                                      className="text-left font-medium text-gray-900 hover:text-gray-500"
-                                    >
-                                      {item.name}
-                                    </span>
+                                  <p
+                                    className={classNames(
+                                      item.type.bgColorClass,
+                                      'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
+                                    )}
+                                  >
+                                    <item.type.icon className="w-5 h-5 text-white" aria-hidden="true" />
                                   </p>
                                 </div>
-                                <div className="text-right text-sm whitespace-nowrap text-gray-500">
-                                  <time dateTime={item.datetime}>{item.date}</time>
+                                <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                  <div>
+                                    <p className="mb-3 text-sm text-gray-500">
+                                      {item.content}{' '}
+                                      <span
+                                        className="text-left font-medium text-gray-900 hover:text-gray-500"
+                                      >
+                                        {item.name}
+                                      </span>
+                                    </p>
+                                  </div>
+                                  <div className="text-right text-sm whitespace-nowrap text-gray-500">
+                                    <time dateTime={item.datetime}>{item.date}</time>
+                                  </div>
                                 </div>
-                              </div>
-                            </p> :
-                            <button onClick={event => { Refresh(event, item.id) }} className="unfocus text-left relative flex space-x-3">
-                              <div>
-                                <p
-                                  className={classNames(
-                                    item.type.bgColorClass,
-                                    'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
-                                  )}
-                                >
-                                  <item.type.icon className="w-5 h-5 text-white" aria-hidden="true" />
-                                </p>
-                              </div>
-                              <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                              </p> :
+                              <button onClick={event => { Refresh(event, item.id) }} className="unfocus text-left relative flex space-x-3">
                                 <div>
-                                  <p className="mb-3 text-sm text-gray-500">
-                                    {item.content}{' '}
-                                    <span
-                                      className="text-left font-medium text-gray-900 hover:text-gray-500"
-                                    >
-                                      {item.name}
-                                    </span>
+                                  <p
+                                    className={classNames(
+                                      item.type.bgColorClass,
+                                      'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
+                                    )}
+                                  >
+                                    <item.type.icon className="w-5 h-5 text-white" aria-hidden="true" />
                                   </p>
                                 </div>
-                                <div className="text-right text-sm whitespace-nowrap text-gray-500">
-                                  <time dateTime={item.datetime}>{item.date}</time>
+                                <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                  <div>
+                                    <p className="mb-3 text-sm text-gray-500">
+                                      {item.content}{' '}
+                                      <span
+                                        className="text-left font-medium text-gray-900 hover:text-gray-500"
+                                      >
+                                        {item.name}
+                                      </span>
+                                    </p>
+                                  </div>
+                                  <div className="text-right text-sm whitespace-nowrap text-gray-500">
+                                    <time dateTime={item.datetime}>{item.date}</time>
+                                  </div>
                                 </div>
-                              </div>
-                            </button>}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                              </button>}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </section>
-            {GetAssignment()}
-          </div>
-        </main>
+              </section>
+              {GetAssignment()}
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </Page>
   )
 }

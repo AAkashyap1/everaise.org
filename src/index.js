@@ -5,11 +5,11 @@ import './index.css';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import ProfileRoute from './components/ProfileRoute';
-import AdminRoute from './components/AdminRoute';
+import AdminRoute from './components/admin/AdminRoute';
 import reportWebVitals from './reportWebVitals';
-import Admin from './pages/admin';
-import AdminCourses from './pages/admin-courses';
-import CreateAssignment from './pages/create-assignment'
+import AdminDashboard from './pages/admin/dashboard';
+import AdminHome from './pages/admin/home';
+import CreateAssignment from './pages/admin/assignment'
 import Landing from './pages/landing';
 import Team from './pages/team';
 import Contact from './pages/contact';
@@ -51,8 +51,8 @@ ReactDOM.render(
           <PrivateRoute path="/home" component={Home} />
           <PrivateRoute exact path="/dashboard/:course" component={Dashboard} />
           <PrivateRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
-          <AdminRoute path="/admin-courses" component={AdminCourses} />
-          <AdminRoute exact path="/admin/:course" component={Admin} />
+          <AdminRoute path="/admin/home" component={AdminHome} />
+          <AdminRoute exact path="/admin/dashboard/:course" component={AdminDashboard} />
           <AdminRoute exact path="/admin/:course/homework/:assignmentId" component={CreateAssignment} />
           <Route path="*" component={NotFound} />
         </Switch>
