@@ -168,7 +168,7 @@ export default function Home() {
                           </div>
                           <div className="bg-gray-50 px-5 py-3">
                             <div className="text-sm">
-                              <Link to={ `/admin/dashboard/${card.to}`} className="font-medium text-cyan-700 hover:text-cyan-900">
+                              <Link to={ `/dashboard/${card.to}`} className="font-medium text-cyan-700 hover:text-cyan-900">
                                 View Dashboard &rarr;
                               </Link>
                             </div>
