@@ -139,7 +139,7 @@ const current = [
     roles: ['Associate Head of Astronomy'],
     imageUrl:
       AbhayBestrapalli,
-    achievements: ['Indian International Mathematical Olympiad Training Camp (IMOTC)', 'USA IOAA 2021 Main Team', 'Indian Astronomy Selection Camp (IOAA OCSC)'],
+    achievements: ['Indian International Mathematical Olympiad Training Camp (IMOTC)', 'IOAA 2021 Silver Medalist', 'Indian Astronomy Selection Camp (IOAA OCSC)'],
     education: `Delhi Public School Bangalore East, India '22`,
     linkedInUrl: 'https://www.linkedin.com/in/abhay-bestrapalli-739280222/',
     gitHubUrl: '',
