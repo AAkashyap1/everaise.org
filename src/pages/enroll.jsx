@@ -49,10 +49,10 @@ export default function Enroll() {
       try {
         database.users.doc(currentUser.email).update({
           courses: [
-            { name: 'Physics Mechanics', value: physics, grade: 'No Grade', points: 0 },
-            { name: 'Biology', value: biology, grade: 'No Grade', points: 0 },
-            { name: 'Astronomy', value: astronomy, grade: 'No Grade', points: 0 },
-            { name: 'Math Competitions I', value: math, grade: 'No Grade', points: 0 },
+            { name: 'Physics Mechanics', value: physics },
+            { name: 'Biology', value: biology },
+            { name: 'Astronomy', value: astronomy },
+            { name: 'Math Competitions I', value: math },
           ]
         })
 

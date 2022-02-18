@@ -205,7 +205,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-              &copy; 2021 Everaise Academy Inc., a 501(c)(3) non-profit and PVSA-certifying public charity.
+              &copy; 2022 Everaise Academy Inc., a 501(c)(3) non-profit and PVSA-certifying public charity.
             </p>
           </div>
         </div>

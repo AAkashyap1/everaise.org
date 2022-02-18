@@ -51,12 +51,12 @@ export default function Update() {
     event.preventDefault()
 
     database.users.doc(currentUser.email).update({
-        age: age,
-        first_name: firstName,
-        last_name: lastName,
-        parent1Email: parent1Email,
-        parent2Email: parent2Email,
-        country: selected.name, 
+      age: age,
+      first_name: firstName,
+      last_name: lastName,
+      parent1Email: parent1Email,
+      parent2Email: parent2Email,
+      country: selected.name, 
     })
     
    setUpdateData(!updateData)

@@ -10,7 +10,6 @@ import Sponsors from '../components/landing/Sponsors'
 import Page from '../components/page'
 
 export default function Landing() {
-
   return (
     <Page
       title="Everaise Academy"

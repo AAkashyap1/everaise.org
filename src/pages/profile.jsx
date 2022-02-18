@@ -76,10 +76,10 @@ export default function Profile() {
         parent1Email: parent1Email,
         parent2Email: parent2Email,
         courses: [
-          { name: 'Physics Mechanics', value: false, grade: 'No Grade', points: 0 },
-          { name: 'Biology', value: false, grade: 'No Grade', points: 0 },
-          { name: 'Astronomy', value: false, grade: 'No Grade', points: 0 },
-          { name: 'Math Competitions I', value: false, grade: 'No Grade', points: 0  },
+          { name: 'Physics Mechanics', value: false },
+          { name: 'Biology', value: false },
+          { name: 'Astronomy', value: false },
+          { name: 'Math Competitions I', value: false  },
         ],
         country: selected.name
       })

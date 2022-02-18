@@ -53,7 +53,7 @@ ReactDOM.render(
           <PrivateRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
           <AdminRoute path="/admin/home" component={AdminHome} />
           <AdminRoute exact path="/admin/dashboard/:course" component={AdminDashboard} />
-          <AdminRoute exact path="/admin/:course/homework/:assignmentId" component={CreateAssignment} />
+          <AdminRoute exact path="/admin/homework/:course/:assignmentId" component={CreateAssignment} />
           <Route path="*" component={NotFound} />
         </Switch>
       </AuthProvider>
