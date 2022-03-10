@@ -388,16 +388,6 @@ const archive = [
     gitHubUrl: '',
   },
   {
-    name: 'Jet Chung',
-    roles: ['Co-founder', 'Full-Stack Developer', 'Outreach'],
-    imageUrl:
-      JetChung,
-    achievements: [],
-    education: `Math @ University of Oxford, United Kingdom '25`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
     name: 'Justin Shan',
     roles: ['Biology Founder and Head'],
     imageUrl:
