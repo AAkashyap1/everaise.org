@@ -51,9 +51,10 @@ export default function Timeline() {
       for (let i = 0; i < userModule.docs.length; i++) {
         let completed = 0;
         for (const question of userModule.docs[i].data().questions) {
+          console.log(question)
           if (
-            (question.type === 'MC' && question.submissions < 2) ||
-            (question.type === 'SA' && question.submissions < 100)
+            (question.submissions < 2) ||
+            (question.submissions === 99)
           ) {
             completed += 1;
           }

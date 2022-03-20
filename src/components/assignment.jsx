@@ -133,6 +133,7 @@ export default function Assignment(props) {
                           index={questionIdx}
                         /> : 
                         <SAQuestion
+                          question={question.question}
                           userAnswer={props.answers[questionIdx].userAnswer}
                           number={question.displayNo}
                           submissions={props.answers[questionIdx].submissions}
@@ -141,7 +142,7 @@ export default function Assignment(props) {
                           points={question.points}
                           solution={question.solution}
                           index={questionIdx}
-                        />
+                          />
                     }
                   </div>
                 ))}

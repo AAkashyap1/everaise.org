@@ -53,6 +53,7 @@ export default function SAQuestion(props) {
       setError('');
       setMessage(true);
     } else {
+      setSubmissions(99);
       setError('That answer is incorrect!');
     }
   }
