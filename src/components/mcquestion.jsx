@@ -44,6 +44,7 @@ export default function MCQuestion(props) {
     docRef.update({
       questions: tempQuestions,
     })
+    setConfirmation(false);
     if (String(answer) === String(props.answer)) {
       setSubmissions(0); 
       setError('');
@@ -106,7 +107,10 @@ export default function MCQuestion(props) {
         </button>
         <button
           disabled={submissions === 0}
-          onClick={() => setConfirmation(true)}
+          onClick={() => { 
+            setConfirmation(true);
+            setError('');
+          }}
           type="button"
           className={submissions === 0 ? "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
             "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
