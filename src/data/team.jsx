@@ -220,7 +220,7 @@ const current = [
     imageUrl:
       VictorLi,
     achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
-    education: `Massachusetts Institute of Technology, uSA '25`,
+    education: `Massachusetts Institute of Technology, USA '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },

@@ -1,169 +1,110 @@
 import { useState, useEffect } from 'react'
 import { CheckCircleIcon, QuestionMarkCircleIcon, XCircleIcon } from '@heroicons/react/solid'
 import { useParams } from 'react-router-dom'
-import firebase from 'firebase/app'
-import { database, increment } from '../firebase'
+import { database } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 import 'katex/dist/katex.min.css';
 import TeX from '@matejmazur/react-katex';
 import AsciiMathParser from "../utility/asciimath";
+import Latex from 'react-latex'
 
 const parser = new AsciiMathParser();
 
 export default function SAQuestion(props) {
-  const { assignmentId } = useParams()
-  const [message, setMessage] = useState('')
-  const [confirmation, setConfirmation] = useState('')
-  const [error, setError] = useState('')
-  const [updateData, setUpdateData] = useState(false)
-  const { currentUser } = useAuth()
-  const [disabled, setDisabled] = useState(false)
-  const [response, setResponse] = useState('')
-  const [append, setAppend] = useState(false)
+  const { currentUser } = useAuth();
+  const { course, assignmentId, module } = useParams();
+  const docRef = database.users.doc(currentUser.email)
+    .collection('courses')
+    .doc(course)
+    .collection('modules')
+    .doc(module)
+    .collection('assignments')
+    .doc(assignmentId)
 
-  const renderedLatex = response && parser.parse(response)
-
-  let userData = null
-  let solution = null
-
-  if (props.course === 'physics') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
-    userData = database.physics_users
-  } else if (props.course === 'math') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
-    userData = database.math_users
-  } else if (props.course === 'biology') {
-    solution = <TeX math={props.solution} />
-    userData = database.biology_users
-  } else if (props.course === 'astronomy') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
-    userData = database.astronomy_users
-  }
+  const [answer, setAnswer] = useState(props.userAnswer);
+  const [error, setError] = useState(props.submissions === 0 ? (String(props.answer) === String(props.userAnswer) ? '' : 'Solution:') : '');
+  const [confirmation, setConfirmation] = useState(false);
+  const [message, setMessage] = useState(String(props.answer) === String(props.userAnswer));
+  const [submissions, setSubmissions] = useState(props.submissions);
 
   useEffect(() => {
-    setResponse(props.userAnswer)
-    if (props.attempts === 1) {
-      setAppend(true)
-      setMessage('You have earned ' + props.points + ' points. Solution: ')
-      setDisabled(true)
-    } else if (props.attempts === 0) {
-      setAppend(true)
-      setError('Solution: ')
-      setDisabled(true)
+    async function updateSubmissions() {
+      let result = await docRef.get();
+      let tempQuestions = result.data().questions;
+      tempQuestions[props.index].submissions = submissions;
+      docRef.update({
+        questions: tempQuestions,
+      })
     }
-  }, [props.completed, props.userAnswer, props.attempts, props.points, assignmentId])
+    updateSubmissions();
+  // eslint-disable-next-line
+  }, [submissions])
 
-  function UpdateStatus(status) {
-    userData.doc(currentUser.email).collection('assignments').doc(props.id)
-      .collection('questions').doc(String(props.number)).update({
-        completed: status
-      }).finally(() => {
-        setUpdateData(!updateData)
-      })
-  }
-
-  useEffect(() => {
-    userData.doc(currentUser.email).collection('assignments')
-      .doc(props.id).collection('questions').doc(String(props.number)).update({
-        status: response,
-      })
-    console.log(true)
-  }, [userData, response, currentUser.email, props.id, props.number])
-
-  function UpdateSubmissions(number) {
-    userData.doc(currentUser.email).collection('assignments').doc(props.id).collection('questions')
-      .doc(String(props.number)).update({
-        attempts: number
-      }).finally(() => {
-        setUpdateData(!updateData)
-      })
-  }
-
-  function CheckAnswer(event) {
-    setConfirmation('')
-    event.preventDefault()
-    setMessage('')
-    setError('')
-    if (response.trim() === String(props.answer)) {
-      setDisabled(true)
-      UpdateStatus(true)
-      UpdateSubmissions(1)
-      setAppend(true)
-      setMessage('You have earned ' + props.points + ' points. Solution: ')
-      let Promises = []
-      Promises.push(userData.doc(currentUser.email).update({
-        points: firebase.firestore.FieldValue.increment(props.points)
-      }))
-      Promises.push(userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-        earned: firebase.firestore.FieldValue.increment(props.points)
-      }))
-      Promises.push(userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-        completed: increment
-      }))
-      Promise.all(Promises)
-    } else {
-      setError('Sorry, that is not correct')
-    }
-  }
-
-  function GiveUp(event) {
-    event.preventDefault()
-    setError('')
-    setConfirmation('Are you sure you want to give up on this question?')
-  }
-
-  function Confirmed(event) {
-    event.preventDefault()
-    UpdateStatus(true)
-    UpdateSubmissions(0)
-    setConfirmation('')
-    setDisabled(true)
-    setAppend(true)
-    setError('Solution: ')
-    userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-      completed: increment
+  async function checkAnswer(e) {
+    e.preventDefault();
+    let result = await docRef.get();
+    let tempQuestions = result.data().questions;
+    tempQuestions[props.index].userAnswer = answer;
+    docRef.update({
+      questions: tempQuestions,
     })
+    if (String(answer) === String(props.answer)) {
+      setSubmissions(0); 
+      setError('');
+      setMessage(true);
+    } else {
+      setError('That answer is incorrect!');
+    }
   }
 
-  function NotConfirmed(event) {
-    event.preventDefault()
-    setConfirmation('')
+  function giveUp(e) {
+    e.preventDefault();
+    setSubmissions(0);
+    setConfirmation(false);
+    setError('Solution:');
   }
-
 
   return (
     <div>
-      <form onSubmit={CheckAnswer} action="#" method="POST">
+      <form onSubmit={checkAnswer} action="#" method="POST">
+        <div className="my-3">
+          {(props.question.startsWith('https') ? 
+            <img alt="Question" src={props.question} className="h-30 w-full"/> : 
+            <Latex>{props.question}</Latex>)
+          }
+        </div>
         <textarea
-          id="about"
-          name="about"
+          id="answer"
+          name="answer"
           rows={3}
-          className="mt-4 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-          defaultValue={response}
-          disabled={disabled}
-          onChange={e => { setResponse(e.target.value) }}
+          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
+          value={answer}
+          disabled={submissions === 0}
+          onChange={e => setAnswer(e.target.value)}
         ></textarea>
-        {renderedLatex && <div className="mt-4 rounded-md bg-green-50 p-4">
-          <div className="flex">
-            <div className="ml-3">
-              <h3 className="text-sm text-green-800"><TeX math={renderedLatex} /></h3>
+        {answer && 
+          <div className="mt-4 rounded-md bg-green-50 p-4">
+            <div className="flex">
+              <div className="ml-3">
+                <h3 className="text-sm text-green-800"><TeX math={parser.parse(answer)} /></h3>
+              </div>
             </div>
           </div>
-        </div>}
+        }
         <span className="mt-4 relative z-0 inline-flex rounded-md">
           <button
-            disabled={disabled}
+            disabled={submissions === 0}
             type="submit"
-            className={disabled ? "-ml-px relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
-              "-ml-px relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
+            className={submissions === 0 ? "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
+              "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
           >
             Submit
           </button>
           <button
-            disabled={disabled}
-            onClick={GiveUp}
+            disabled={submissions === 0}
+            onClick={() => setConfirmation(true)}
             type="button"
-            className={disabled ? "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
+            className={submissions === 0 ? "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
               "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
           >
             Give Up
@@ -176,18 +117,18 @@ export default function SAQuestion(props) {
                 <QuestionMarkCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
               </div>
               <div className="ml-3">
-                <h3 className="text-sm text-red-800">{confirmation}</h3>
+                <h3 className="text-sm text-red-800">Are you sure you want to give up?</h3>
                 <div className="mt-2">
                   <div className="-mx-2 -my-1.5 flex">
                     <button
-                      onClick={Confirmed}
+                      onClick={giveUp}
                       type="button"
                       className="bg-red-50 px-2 py-1.5 rounded-md text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-600"
                     >
                       Yes
                     </button>
                     <button
-                      onClick={NotConfirmed}
+                      onClick={() => setConfirmation(false)}
                       type="button"
                       className="ml-3 bg-red-50 px-2 py-1.5 rounded-md text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-600"
                     >
@@ -203,10 +144,18 @@ export default function SAQuestion(props) {
           <div className="mt-4 rounded-md bg-green-50 p-4">
             <div className="flex">
               <div className="flex-shrink-0">
-                <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+                <CheckCircleIcon className="h-5 w-30 text-green-400" aria-hidden="true" />
               </div>
               <div className="ml-3 mr-7">
-                <h3 className="text-sm text-green-800"><p className={append ? 'font-semibold mb-2' : 'font-semibold'}>{message}</p> {append ? solution : ''}</h3>
+                <h3 className="text-sm text-green-800 font-semibold">
+                  <div>Correct! You have earned {props.points} points</div>
+                  <div className="mt-2">
+                    {(props.solution.startsWith('https') ? 
+                      <img alt="Solution" src={props.solution} className="h-30 object-contain"/> : 
+                      <Latex>{props.solution}</Latex>)
+                    }
+                  </div>
+                </h3>
               </div>
             </div>
           </div>
@@ -218,7 +167,17 @@ export default function SAQuestion(props) {
                 <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
               </div>
               <div className="ml-3 mr-7">
-                <h3 className="text-sm text-red-800"><p className={append ? 'font-semibold mb-2' : 'font-semibold'}>{error}</p> {append ? solution : ''}</h3>  
+                <h3 className="text-sm text-red-800 font-semibold">
+                  <div className="mb-2">{error}</div>
+                  {submissions === 0 && 
+                    <div className="mt-2">
+                      {(props.solution.startsWith('https') ? 
+                        <img alt="Solution" src={props.solution} className="h-30 object-contain"/> : 
+                        <Latex>{props.solution}</Latex>)
+                      }
+                    </div>
+                  }
+                </h3>
               </div>
             </div>
           </div>

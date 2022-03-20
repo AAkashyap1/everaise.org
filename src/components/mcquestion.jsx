@@ -1,242 +1,120 @@
 import { useState, useEffect } from 'react'
 import { CheckCircleIcon, XCircleIcon, QuestionMarkCircleIcon } from '@heroicons/react/solid'
-import { database, increment } from '../firebase'
+import { database } from '../firebase'
 import { useParams } from 'react-router-dom'
-import firebase from 'firebase/app'
 import { useAuth } from '../contexts/AuthContext'
 import 'katex/dist/katex.min.css';
-import TeX from '@matejmazur/react-katex';
+import Latex from 'react-latex'
 
 export default function MCQuestion(props) {
-  const { assignmentId } = useParams()
-  const [userAnswer, setUserAnswer] = useState('')
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
-  const [confirmation, setConfirmation] = useState('')
-  const [updateData, setUpdateData] = useState(false)
-  const [value, setValue] = useState(props.attempts)
-  const [append, setAppend] = useState(false)
-  const { currentUser } = useAuth()
+  const { currentUser } = useAuth();
+  const { course, assignmentId, module } = useParams();
+  const docRef = database.users.doc(currentUser.email)
+    .collection('courses')
+    .doc(course)
+    .collection('modules')
+    .doc(module)
+    .collection('assignments')
+    .doc(assignmentId)
 
-  let userData = null
-  let solution = null
-  
-  if (props.course === 'physics') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
-    userData = database.physics_users
-  } else if (props.course === 'math') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
-    userData = database.math_users
-  } else if (props.course === 'biology') {
-    solution = <TeX>{props.solution}</TeX>
-    userData = database.biology_users
-  } else if (props.course === 'astronomy') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
-    userData = database.astronomy_users
-  }
-
+  const [answer, setAnswer] = useState(props.userAnswer);
+  const [error, setError] = useState(props.submissions === 0 ? (String(props.answer) === String(props.userAnswer) ? '' : 'Solution:') : '');
+  const [confirmation, setConfirmation] = useState(false);
+  const [message, setMessage] = useState(String(props.answer) === String(props.userAnswer));
+  const [submissions, setSubmissions] = useState(props.submissions);
 
   useEffect(() => {
-    setValue(props.attempts)
-    setUserAnswer(props.userAnswer)
-
-    if (props.attempts !== 0) {
-      setMessage('')
-      setError('')
-    } else if (props.completed === false && props.attempts === 0) {
-      setAppend(true)
-      setError('Solution: ')
-    } else if (props.completed === true && props.attempts === 0) {
-      setAppend(true)
-      setMessage('You have earned ' + props.points + ' points. Solution: ')
+    async function updateSubmissions() {
+      let result = await docRef.get();
+      let tempQuestions = result.data().questions;
+      tempQuestions[props.index].submissions = submissions;
+      docRef.update({
+        questions: tempQuestions,
+      })
     }
+    updateSubmissions();
+  // eslint-disable-next-line
+  }, [submissions])
 
-  }, [props.completed, props.userAnswer, props.attempts, props.points, assignmentId])
-
-  useEffect(() => {
-    userData.doc(currentUser.email).collection('assignments')
-      .doc(props.id).collection('questions').doc(String(props.number)).update({
-        status: userAnswer,
-      })
-  }, [userData, userAnswer, currentUser.email, props.id, props.number])
-
-  function UpdateSubmissions(number) {
-    userData.doc(currentUser.email).collection('assignments').doc(props.id).collection('questions')
-      .doc(String(props.number)).update({
-        attempts: number
-      }).finally(() => {
-        setUpdateData(!updateData)
-      })
-  }
-
-  function UpdateStatus(status) {
-    userData.doc(currentUser.email).collection('assignments').doc(props.id)
-      .collection('questions').doc(String(props.number)).update({
-        completed: status
-      }).finally(() => {
-        setUpdateData(!updateData)
-      })
-  }
-
-
-  function GiveUp(event) {
-    event.preventDefault()
-    setConfirmation('Are you sure you want to give up on this question?')
-  }
-
-  function Confirmed(event) {
-    setUserAnswer('')
-    event.preventDefault()
-    UpdateSubmissions(0)
-    UpdateStatus(false)
-    setValue(0)
-    setConfirmation('')
-    userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-      completed: increment
+  async function checkAnswer(e) {
+    e.preventDefault();
+    let result = await docRef.get();
+    let tempQuestions = result.data().questions;
+    tempQuestions[props.index].userAnswer = answer;
+    docRef.update({
+      questions: tempQuestions,
     })
-    setAppend(true)
-    setError('Solution: ')
-  }
-
-  function NotConfirmed(event) {
-    event.preventDefault()
-    setConfirmation('')
-  }
-
-  function CheckAnswer(event) {
-    event.preventDefault()
-    setMessage('')
-    setError('')
-    setConfirmation('')
-
-    if (userAnswer === String(props.answer)) {
-      UpdateStatus(true)
-      UpdateSubmissions(0)
-      setValue(0)
-      setAppend(true)
-      setMessage('You have earned ' + props.points + ' points. Solution: ')
-      let Promises = []
-      Promises.push(userData.doc(currentUser.email).update({
-        points: firebase.firestore.FieldValue.increment(props.points)
-      }))
-      Promises.push(userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-        earned: firebase.firestore.FieldValue.increment(props.points)
-      }))
-      Promises.push(userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-        completed: increment
-      }))
-      Promise.all(Promises)
+    if (String(answer) === String(props.answer)) {
+      setSubmissions(0); 
+      setError('');
+      setMessage(true);
     } else {
-      if (value > 1) {
-        setError('You have one attempt left.')
-        UpdateSubmissions(value - 1)
-        setValue(value - 1)
+      if (submissions === 2) {
+        setError(`You have one attempt remaining`);
+        setSubmissions(1);
       } else {
-        userData.doc(currentUser.email).collection('assignments').doc(assignmentId).update({
-          completed: increment
-        })
-        setAppend(true)
-        setError('Solution: ')
-        UpdateSubmissions(value - 1)
-        setValue(value - 1)
+        setError('Solution:');
+        setSubmissions(0);
       }
     }
   }
 
+  function giveUp(e) {
+    e.preventDefault();
+    setSubmissions(0);
+    setConfirmation(false);
+    setError('Solution:');
+  }
+
   return (
-    <form onSubmit={CheckAnswer} action="#" method="POST">
-      <div class="mt-4 mx-auto grid grid-cols-5">
-        <div class="flex items-center">
-          <input
-            id="A"
-            name="A"
-            type="checkbox"
-            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded-lg"
-            checked={userAnswer === 'A'}
-            disabled={value === 0}
-            onChange={e => (setUserAnswer('A'))}
-          ></input>
-          <label htmlFor="push_a" class="ml-3 block text-sm font-medium text-gray-700">
-            A
-          </label>
-        </div>
-        <div class="flex items-center">
-          <input
-            id="B"
-            name="B"
-            type="checkbox"
-            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded-lg"
-            checked={userAnswer === 'B'}
-            disabled={value === 0}
-            onChange={e => (setUserAnswer('B'))}
-          ></input>
-          <label htmlFor="push_b" class="ml-3 block text-sm font-medium text-gray-700">
-            B
-          </label>
-        </div>
-        <div class="flex items-center">
-          <input
-            id="C"
-            name="C"
-            type="checkbox"
-            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded-lg"
-            checked={userAnswer === 'C'}
-            disabled={value === 0}
-            onChange={e => (setUserAnswer('C'))}
-          ></input>
-          <label htmlFor="push_c" class="ml-3 block text-sm font-medium text-gray-700">
-            C
-          </label>
-        </div>
-        <div class="flex items-center">
-          <input
-            id="D"
-            name="D"
-            type="checkbox"
-            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded-lg"
-            checked={userAnswer === 'D'}
-            disabled={value === 0}
-            onChange={e => (setUserAnswer('D'))}
-          ></input>
-          <label htmlFor="push_d" class="ml-3 block text-sm font-medium text-gray-700">
-            D
-          </label>
-        </div>
-        <div class="flex items-center">
-          <input
-            id="E"
-            name="E"
-            type="checkbox"
-            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded-lg"
-            checked={userAnswer === 'E'}
-            disabled={value === 0}
-            onChange={e => (setUserAnswer('E'))}
-          ></input>
-          <label htmlFor="push_e" class="ml-3 block text-sm font-medium text-gray-700">
-            E
-          </label>
-        </div>
+    <form onSubmit={checkAnswer} action="#" method="POST">
+      <div className="my-3">
+        {(props.question.startsWith('https') ? 
+          <img alt="Question" src={props.question} className="h-30 w-full"/> : 
+          <Latex>{props.question}</Latex>)
+        }
+      </div>
+      <div class="mx-auto grid grid-cols-5">
+        {['A', 'B', 'C', 'D', 'E'].map((choice) => (
+          <div 
+            key={choice}
+            class="flex items-center"
+          >
+            <input
+              id={choice}
+              name={choice}
+              type="checkbox"
+              class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded-lg"
+              checked={answer === choice}
+              disabled={submissions === 0}
+              onChange={e => setAnswer(choice)}
+            ></input>
+            <label htmlFor={`push_${choice.toLowerCase()}`} class="ml-3 block text-sm font-medium text-gray-700">
+              {choice}
+            </label>
+          </div>
+        ))}
       </div>
       <span className="mt-4 relative z-0 inline-flex rounded-md">
         <button
-          disabled={value === 0}
+          disabled={submissions === 0}
           type="submit"
-          className={value === 0 ? "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
+          className={submissions === 0 ? "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
             "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
         >
           Submit
         </button>
         <button
-          disabled={value === 0}
-          onClick={GiveUp}
+          disabled={submissions === 0}
+          onClick={() => setConfirmation(true)}
           type="button"
-          className={value === 0 ? "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
+          className={submissions === 0 ? "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" :
             "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"}
         >
           Give Up
         </button>
       </span>
-      <p className="mt-2 text-sm font-medium text-gray-500">{value}/2 Submissions Remaining</p>
+      <p className="mt-2 text-sm font-medium text-gray-500">{submissions}/2 Submissions Remaining</p>
       {confirmation &&
         <div className="mt-4 rounded-md bg-red-50 p-4">
           <div className="flex">
@@ -244,18 +122,18 @@ export default function MCQuestion(props) {
               <QuestionMarkCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
             </div>
             <div className="ml-3">
-              <h3 className="text-sm text-red-800">{confirmation}</h3>
+              <h3 className="text-sm text-red-800">Are you sure you want to give up?</h3>
               <div className="mt-2">
                 <div className="-mx-2 -my-1.5 flex">
                   <button
-                    onClick={Confirmed}
+                    onClick={giveUp}
                     type="button"
                     className="bg-red-50 px-2 py-1.5 rounded-md text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-600"
                   >
                     Yes
                   </button>
                   <button
-                    onClick={NotConfirmed}
+                    onClick={() => setConfirmation(false)}
                     type="button"
                     className="ml-3 bg-red-50 px-2 py-1.5 rounded-md text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-600"
                   >
@@ -274,21 +152,40 @@ export default function MCQuestion(props) {
               <CheckCircleIcon className="h-5 w-30 text-green-400" aria-hidden="true" />
             </div>
             <div className="ml-3 mr-7">
-              <h3 className="text-sm text-green-800"><p className={append ? 'font-semibold mb-2' : 'font-semibold'}>{message}</p> {append ? solution : ''}</h3>
+              <h3 className="text-sm text-green-800 font-semibold">
+                <div>Correct! You have earned {props.points} points</div>
+                  <div className="mt-2">
+                    {(props.solution.startsWith('https') ? 
+                      <img alt="Solution" src={props.solution} className="h-30 object-contain"/> : 
+                      <Latex>{props.solution}</Latex>)
+                    }
+                  </div>
+              </h3>
             </div>
           </div>
         </div>
       }
-      {error && <div className="mt-4 rounded-md bg-red-50 p-4">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
-          </div>
-          <div className="ml-3 mr-7">
-            <h3 className="text-sm text-red-800"><p className={append ? 'font-semibold mb-2' : 'font-semibold'}>{error}</p> {append ? solution : ''}</h3>
+      {error && 
+        <div className="mt-4 rounded-md bg-red-50 p-4">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+            </div>
+            <div className="ml-3 mr-7">
+              <h3 className="text-sm text-red-800 font-semibold">
+                <div>{error}</div>
+                {submissions === 0 && 
+                  <div className="mt-2">
+                    {(props.solution.startsWith('https') ? 
+                      <img alt="Solution" src={props.solution} className="h-30 object-contain"/> : 
+                      <Latex>{props.solution}</Latex>)
+                    }
+                  </div>
+                }
+              </h3>
+            </div>
           </div>
         </div>
-      </div>
       }
     </form>
   )

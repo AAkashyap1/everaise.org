@@ -17,23 +17,18 @@ export default function Modules() {
   const [editModuleModalOpen, setEditModuleModalOpen] = useState(false);
   const [deleteModuleModalOpen, setDeleteModuleModalOpen] = useState(false);
   const courseModules = useCollectionData(courseData[course].assignmentData)[0];
-  const [number, setNumber] = useState(0);
-  const [idToEdit, setIdToEdit] = useState(0);
-  const [idToDelete, setIdToDelete] = useState(0);
+  const [idToEdit, setIdToEdit] = useState('');
+  const [idToDelete, setIdToDelete] = useState('');
 
   useEffect(() => {
     if (courseModules) {
       let tempModules = [];
-      let i = 1;
       for (const module of courseModules) {
         tempModules.push({
-          number: i,
           name: module.name,
           disabled: module.disabled,
         })
-        i++;
       }
-      setNumber(i);
       setModules(tempModules);
     }
   }, [courseModules])
@@ -56,12 +51,10 @@ export default function Modules() {
       <AddModuleModal 
         open={addModuleModalOpen} 
         setOpen={setAddModuleModalOpen} 
-        number={number} 
         data={courseData[course].assignmentData}
       />
       {modules.map((module) => (
-        <Module 
-          number={module.number} 
+        <Module
           name={module.name} 
           disabled={module.disabled}
           course={course} 

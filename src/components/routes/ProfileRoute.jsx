@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom' 
-import { useAuth } from '../contexts/AuthContext.js'
+import { useAuth } from '../../contexts/AuthContext.js'
 
 export default function ProfileRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth()

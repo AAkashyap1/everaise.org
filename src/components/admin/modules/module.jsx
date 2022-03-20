@@ -1,6 +1,7 @@
 import { 
   CalendarIcon,
   DotsVerticalIcon, 
+  EyeIcon, 
   FireIcon, 
   PencilIcon,
   PlusCircleIcon, 
@@ -11,7 +12,7 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import courseData from '../../../data/launch/courseData'
 import GetDate from '../../../utility/date'
 import AddAssignmentModal from './modals/assignments/addAssignment'
@@ -27,8 +28,8 @@ export default function Module(props) {
   const [addAssignmentModal, setAddAssignmentModal] = useState(false);
   const [deleteAssignmentModal, setDeleteAssignmentModal] = useState(false);
   const [editAssignmentModal, setEditAssignmentModal] = useState(false);
-  const assignmentIdData = useCollection(courseData[props.course].assignmentData.doc(`module-${props.number}`).collection('assignments').orderBy("due", "desc"))[0];
-  const assignmentCollection = useCollectionData(courseData[props.course].assignmentData.doc(`module-${props.number}`).collection('assignments').orderBy("due", "desc"))[0]
+  const assignmentIdData = useCollection(courseData[props.course].assignmentData.doc(`${props.name}`).collection('assignments').orderBy("due", "desc"))[0];
+  const assignmentCollection = useCollectionData(courseData[props.course].assignmentData.doc(`${props.name}`).collection('assignments').orderBy("due", "desc"))[0]
   const [assignments, setAssignments] = useState([]);
   const [idToDelete, setIdToDelete] = useState('');
   const [idToEdit, setIdToEdit] = useState('');
@@ -39,12 +40,24 @@ export default function Module(props) {
       let tempAssignments = [];
       for (const assignment of assignmentCollection) {
         let tempHandouts = [];
-        console.log(assignment.handouts)
         if (assignment.handouts) {
           for (const handout of assignment.handouts) {
             tempHandouts.push({
               name: handout.name,
               link: handout.link,
+            })
+          }
+        }
+        let tempQuestions = [];
+        if (assignment.questions) {
+          for (const question of assignment.questions) {
+            tempQuestions.push({
+              points: question.points,
+              question: question.question,
+              displayNo: question.displayNo,
+              type: question.type,
+              answer: question.answer,
+              solution: question.solution,
             })
           }
         }
@@ -58,6 +71,7 @@ export default function Module(props) {
             day: assignment.due.toDate().getDate(),
           },
           handouts: tempHandouts,
+          questions: tempQuestions,
         })
       }
       setAssignments(tempAssignments)
@@ -74,15 +88,17 @@ export default function Module(props) {
     }
   }, [assignmentIdData])
 
+  /*
   function changeId(e) {
     e.preventDefault();
-    props.setIdToEdit(props.number);
+    props.setIdToEdit(props.name);
     props.setEditModuleModalOpen(true);
   }
+  */
 
   function deleteModule(e) {
     e.preventDefault();
-    props.setIdToDelete(props.number);
+    props.setIdToDelete(props.name);
     props.setDeleteModuleModalOpen(true);
   }
 
@@ -99,26 +115,33 @@ export default function Module(props) {
     setEditAssignmentModal(true);
   }
   
+  function calculatePoints(questions) {
+    let points = 0;
+    for (const question of questions) {
+      points += question.points;
+    }
+    return points;
+  }
 
   return (
     <div>
       <AddAssignmentModal 
         open={addAssignmentModal}
         setOpen={setAddAssignmentModal}
-        number={props.number}
+        name={props.name}
         data={courseData[course].assignmentData}
       />
       <DeleteAssignmentModal 
         open={deleteAssignmentModal}
         setOpen={setDeleteAssignmentModal}
-        number={props.number}
+        name={props.name}
         id={idToDelete}
         data={courseData[course].assignmentData}
       />
       <EditAssignmentModal
         open={editAssignmentModal}
         setOpen={setEditAssignmentModal}
-        number={props.number}
+        name={props.name}
         id={idToEdit}
         ids={ids}
         assignments={assignments}
@@ -132,7 +155,7 @@ export default function Module(props) {
             <div className="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
               <div className="ml-4 mt-2">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  Module #{props.number}: {' ' + props.name}
+                  {' ' + props.name}
                 </h3>
               </div>
               <div className="ml-4 mt-4 flex-shrink-0">
@@ -169,6 +192,7 @@ export default function Module(props) {
                             </button>
                           )}
                         </Menu.Item>
+                        {/*
                         <Menu.Item>
                           {({ active }) => (
                             <button
@@ -183,6 +207,7 @@ export default function Module(props) {
                             </button>
                           )}
                         </Menu.Item>
+                        */}
                         <Menu.Item>
                           {({ active }) => (
                             <button
@@ -214,17 +239,24 @@ export default function Module(props) {
                   <div className="px-4 py-4 sm:px-6">
                     <div className="flex items-center justify-between">
                       <p className="text-base font-medium truncate">{assignment.name}</p>
-                      <div className="grid grid-cols-2 ">
+                      <div className="grid grid-cols-3 ">
+                        <Link 
+                          to={`/homework/${course}/${props.name}/${ids[assignmentIdx]}`}
+                          className="hover:text-green-700 text-green-500 ml-2 flex-shrink-0 flex justify-center"
+                        >
+                          <EyeIcon className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5" aria-hidden="true" />
+                          View 
+                        </Link>
                         <button 
                           onClick={e => editAssignment(e, ids[assignmentIdx])}
-                          className="hover:text-indigo-700 text-indigo-500 ml-2 flex-shrink-0 flex"
+                          className="hover:text-indigo-700 text-indigo-500 ml-2 flex-shrink-0 flex justify-center"
                         >
                           <PencilIcon className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5" aria-hidden="true" />
                           Edit 
                         </button>
                         <button 
                           onClick={e => deleteAsssignment(e, ids[assignmentIdx])}
-                          className="hover:text-red-700 text-red-500 ml-2 flex-shrink-0 flex"
+                          className="hover:text-red-700 text-red-500 ml-2 flex-shrink-0 flex justify-center"
                         >
                           <TrashIcon className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5" aria-hidden="true" />
                           Delete 
@@ -235,11 +267,11 @@ export default function Module(props) {
                       <div className="sm:flex">
                         <p className="flex items-center text-sm text-gray-500">
                           <QuestionMarkCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-indigo-400" aria-hidden="true" />
-                          20 Questions
+                          {assignment.questions.length} Question{assignment.questions.length !== 1 && 's'}
                         </p>
                         <p className="mt-2 flex items-center text-sm text-gray-600 sm:mt-0 sm:ml-6">
                           <FireIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
-                          100 Points
+                          {calculatePoints(assignment.questions)} Point{calculatePoints !== 1 && 's'}
                         </p>
                       </div>
                       <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">

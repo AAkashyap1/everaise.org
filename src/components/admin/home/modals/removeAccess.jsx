@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { TrashIcon } from '@heroicons/react/solid'
+import { TrashIcon, XIcon } from '@heroicons/react/solid'
 import { database } from '../../../../firebase'
 
 export default function RemoveAccess(props) {
@@ -44,6 +44,16 @@ export default function RemoveAccess(props) {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+              <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+                <button
+                  type="button"
+                  className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={() => props.setOpen(false)}
+                >
+                  <span className="sr-only">Close</span>
+                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
               <div>
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100">
                   <TrashIcon className="h-6 w-6 text-cyan-600" aria-hidden="true" />

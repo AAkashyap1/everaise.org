@@ -76,10 +76,10 @@ export default function Profile() {
         parent1Email: parent1Email,
         parent2Email: parent2Email,
         courses: [
-          { name: 'Physics Mechanics', value: false },
-          { name: 'Biology', value: false },
-          { name: 'Astronomy', value: false },
-          { name: 'Math Competitions I', value: false  },
+          { name: 'physics', enrolled: false },
+          { name: 'biology', enrolled: false },
+          { name: 'astronomy', enrolled: false },
+          { name: 'math', enrolled: false  },
         ],
         country: selected.name
       })

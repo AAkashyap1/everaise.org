@@ -19,6 +19,29 @@ import LaunchNav from '../components/global/navs/LaunchNav'
 import HomeAnnouncements from '../components/home/announcements'
 import Page from '../components/page'
 
+const courseData = {
+  'physics': {
+    name: 'Physics Mechanics',
+    icon: CalculatorIcon,
+    dates: 'June 21 - August 6',
+  },
+  'biology': {
+    name: 'Biology',
+    icon: FingerPrintIcon,
+    dates: 'July 5 - August 6',
+  },
+  'astronomy': {
+    name: 'Astronomy',
+    icon: GlobeIcon,
+    dates: 'July 12 - August 6',
+  },
+  'math': {
+    name: 'Math Competitions I',
+    icon: VariableIcon,
+    dates: 'July 12 - August 6',
+  }
+}
+
 export default function Home() {
   const [name, setName] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -35,38 +58,19 @@ export default function Home() {
 
   useEffect(() => {
     if (user) {
+      let tempCards = []
       for (const course of user.courses) {
-        if (course.value) {
-          let param, cardIcon, dateCourse
-          if (course.name === 'Physics Mechanics') {
-            param = 'physics'
-            cardIcon = CalculatorIcon
-            dateCourse = 'June 21 - August 6'
-          } else if (course.name === 'Biology') {
-            param = 'biology'
-            cardIcon = FingerPrintIcon
-            dateCourse = 'July 5 - August 6'
-          } else if (course.name === 'Astronomy') {
-            param = 'astronomy'
-            cardIcon = GlobeIcon 
-            dateCourse = 'July 12 - August 6'
-          } else {
-            param = 'math'
-            cardIcon = VariableIcon
-            dateCourse = 'July 12 - August 6'
-          }
-          setCards(prevCards => [
-            ...prevCards,
-            {
-              name: course.name, 
-              to: param, 
-              icon: cardIcon, 
-              dates: dateCourse
-            }
-          ])
+        if (course.enrolled) {
+          tempCards.push({
+            name: courseData[course.name].name, 
+            to: course.name, 
+            icon: courseData[course.name].icon, 
+            dates: courseData[course.name].dates
+          })
         }
       }
-      setLoaded(true)
+      setCards(tempCards);
+      setLoaded(true);
     }
   }, [user])
 

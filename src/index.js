@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import './index.css';
 import { AuthProvider } from './contexts/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
-import ProfileRoute from './components/ProfileRoute';
+import PrivateRoute from './components/routes/PrivateRoute';
+import ProfileRoute from './components/routes/ProfileRoute';
+import CourseRoute from './components/routes/CourseRoute'
 import AdminRoute from './components/admin/AdminRoute';
 import reportWebVitals from './reportWebVitals';
 import AdminDashboard from './pages/admin/dashboard';
@@ -49,8 +50,8 @@ ReactDOM.render(
           <PrivateRoute path="/update" component={Update} />
           <PrivateRoute path="/enroll" component={Enroll} />
           <PrivateRoute path="/home" component={Home} />
-          <PrivateRoute exact path="/dashboard/:course" component={Dashboard} />
-          <PrivateRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
+          <CourseRoute exact path="/dashboard/:course" component={Dashboard} />
+          <CourseRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
           <AdminRoute path="/admin/home" component={AdminHome} />
           <AdminRoute exact path="/admin/dashboard/:course" component={AdminDashboard} />
           <AdminRoute exact path="/admin/homework/:course/:assignmentId" component={CreateAssignment} />

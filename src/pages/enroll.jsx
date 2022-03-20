@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline'
 import Nav from '../components/global/navs/nav'
 import { useAuth } from '../contexts/AuthContext'
-import { database, getUserInfo } from '../firebase'
+import { database } from '../firebase'
 import Footer from '../components/footer'
 import Page from '../components/page'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore'
+import printError from '../utility/printError'
 
 export default function Enroll() {
   const [error , setError] = useState('')
@@ -17,6 +18,7 @@ export default function Enroll() {
   const { currentUser } = useAuth()
   const [open, setOpen] = useState([false, false, false, false]);
   const registrationData = useCollectionData(database.registrations)[0];
+  const userData = useDocumentData(database.users.doc(currentUser.email))[0];
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -30,46 +32,40 @@ export default function Enroll() {
   }, [registrationData])
 
   useEffect(() => {
-    getUserInfo(currentUser.email)
-      .then((doc) => {
-        setPhysics(doc.data().courses[0].value)
-        setBiology(doc.data().courses[1].value)
-        setAstronomy(doc.data().courses[2].value)
-        setMath(doc.data().courses[3].value)
-      })
-  }, [currentUser])
-
+    if (userData) {
+      setPhysics(userData.courses[0].enrolled)
+      setBiology(userData.courses[1].enrolled)
+      setAstronomy(userData.courses[2].enrolled)
+      setMath(userData.courses[3].enrolled)
+    }
+  }, [userData])
 
   function handleUpdate(event) {
-    setError("")
-    setLoading(true)
-    event.preventDefault()
-    let courses = [physics, biology, math, astronomy].reduce((total, x) => (x === true ? total+1 : total), 0)
-    if (courses <= 2) {
+    setError('');
+    setMessage('');
+    setLoading(true);
+    event.preventDefault();
+    let numCourses = [physics, biology, math, astronomy].reduce((total, x) => (x === true ? total+1 : total), 0)
+    if (numCourses <= 2) {
       try {
         database.users.doc(currentUser.email).update({
           courses: [
-            { name: 'Physics Mechanics', value: physics },
-            { name: 'Biology', value: biology },
-            { name: 'Astronomy', value: astronomy },
-            { name: 'Math Competitions I', value: math },
+            { enrolled: physics, name: 'physics' },
+            { enrolled: biology, name: 'biology' },
+            { enrolled: astronomy, name: 'astronomy' },
+            { enrolled: math, name: 'math' },
           ]
         })
-
-      } catch {
-        setMessage("")
-        setError('Failed to update course enrollment')
-        setLoading(false)
-      } finally {
-        setLoading(false)
         setMessage('Your course enrollment was successfully changed.');
+      } catch (err) {
+        setError('An error occurred while updating your course enrollment.');
+        printError(err)
       }
     } else {
       setMessage("")
       setError('Students are permitted to be enrolled in a maximum of two courses')
       setLoading(false)
     }
-    
   }
   
 
@@ -95,7 +91,7 @@ export default function Enroll() {
                       <div>
                         <h3 className="text-lg leading-6 font-medium text-gray-900">Course Selection</h3>
                         <p className="mt-1 text-sm text-gray-500">
-                          Visit <a className="text-decoration: underline text-cyan-600" href="https://everaise.org/classes/">this page</a> for more information on classes. Registration for our courses has closed. We aim to run these courses in the future and hope you will join us then.
+                          Visit <a className="text-decoration: underline text-cyan-600" href="https://everaise.org/courses/">this page</a> for more information on classes. Registration for our courses has closed. We aim to run these courses in the future and hope you will join us then.
                         </p>
                       </div>
 

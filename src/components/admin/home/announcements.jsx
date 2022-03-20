@@ -10,8 +10,8 @@ import {
   DotsVerticalIcon,
   TrashIcon,
   PencilIcon,
-  UserCircleIcon,
   PlusCircleIcon,
+  UserCircleIcon,
 } from '@heroicons/react/solid'
 
 function classNames(...classes) {

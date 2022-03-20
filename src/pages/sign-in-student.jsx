@@ -31,7 +31,6 @@ export default function SignIn1(props) {
 
   async function handleSubmit(event) {
     event.preventDefault()
-
     try {
       setError('')
       setLoading(true)
@@ -40,7 +39,6 @@ export default function SignIn1(props) {
     } catch {
       setError('Sorry, we did not recognize this login')
     }
-
     setLoading(false)
   }
 

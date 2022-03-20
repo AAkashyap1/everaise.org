@@ -47,7 +47,7 @@ export default function Access() {
           {instructors.map((instructor) => (
             <div
               key={instructor.email}
-              className="relative rounded-lg border bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-red-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-cyan-600"
+              className="relative rounded-lg border border-transparent bg-white px-6 py-5 shadow flex items-center space-x-3 hover:border-red-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-cyan-600"
             >
               <div className="flex-shrink-0">
                 <UserCircleIcon className="text-yellow-500 h-10 w-10 rounded-full" />
