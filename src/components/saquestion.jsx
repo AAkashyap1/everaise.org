@@ -51,8 +51,8 @@ export default function SAQuestion(props) {
     })
     setConfirmation(false);
     if (String(answer) === String(props.answer)) {
-      await database.users.
-        doc(currentUser.email)
+      await database.users
+        .doc(currentUser.email)
         .collection('courses')
         .doc(course)
         .update({
