@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex'
+import firebase from 'firebase'
 
 export default function MCQuestion(props) {
   const { currentUser } = useAuth();
@@ -41,11 +42,18 @@ export default function MCQuestion(props) {
     let result = await docRef.get();
     let tempQuestions = result.data().questions;
     tempQuestions[props.index].userAnswer = answer;
-    docRef.update({
+    await docRef.update({
       questions: tempQuestions,
     })
     setConfirmation(false);
     if (String(answer) === String(props.answer)) {
+      await database.users.
+        doc(currentUser.email)
+        .collection('courses')
+        .doc(course)
+        .update({
+          points: firebase.firestore.FieldValue.increment(props.points)
+        })
       setSubmissions(0); 
       setError('');
       setMessage(true);
@@ -157,7 +165,7 @@ export default function MCQuestion(props) {
             </div>
             <div className="ml-3 mr-7">
               <h3 className="text-sm text-green-800 font-semibold">
-                <div>Correct! You have earned {props.points} points</div>
+                <div>Correct! You have earned {props.points} point{props.points !== 1 && 's'}</div>
                   <div className="mt-2">
                     {(props.solution.startsWith('https') ? 
                       <img alt="Solution" src={props.solution} className="h-30 object-contain"/> : 

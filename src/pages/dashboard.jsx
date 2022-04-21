@@ -93,10 +93,11 @@ export default function Dashboard() {
         let completed = 0;
         let points = 0;
         let totalPoints = 0;
+        
         for (const question of assignment.answers) {
           if (
-            (question.type === 'MC' && question.submissions < 2) ||
-            (question.type === 'SA' && question.submissions < 100)
+            (question.submissions < 2) ||
+            (question.submissions === 99)
           ) {
             completed += 1;
           }
@@ -107,6 +108,7 @@ export default function Dashboard() {
             points += assignment.questions[i].points;
           }
         }
+        
         newAssignments.push({
           id: assignment.id,
           disabled: assignment.disabled,

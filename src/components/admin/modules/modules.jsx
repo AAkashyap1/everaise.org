@@ -64,7 +64,7 @@ export default function Modules() {
           setDeleteModuleModalOpen={setDeleteModuleModalOpen}
         />
       ))}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => setAddModuleModalOpen(true)}
           className="mt-4 w-full text-center bg-green-300 hover:bg-green-400 rounded-md flex justify-center items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 p-2 hover:by-cyan-700"

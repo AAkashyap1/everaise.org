@@ -8,6 +8,8 @@ import { countryData } from '../variables/countries'
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
 import Page from '../components/page.jsx'
+import courseData from '../data/launch/courseData'
+import printError from '../utility/printError'
 
 let countries = []
 let count = 1
@@ -27,6 +29,7 @@ export default function Profile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
+  const { currentUser } = useAuth();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [parent1Email, setParent1Email] = useState('')
@@ -43,6 +46,56 @@ export default function Profile() {
     document.title = 'Create Profile - Everaise Launch'
     window.scrollTo(0, 0)
   })
+
+  async function populateCourses(course, userEmail) {
+    try {
+      setLoading(true);
+      const modules = await courseData[course].assignmentData.get();
+      database.users
+        .doc(userEmail)
+        .collection('courses')
+        .doc(course)
+        .set({
+          points: 0
+        })
+      for (const module of modules.docs) {
+        database.users
+          .doc(userEmail)
+          .collection('courses')
+          .doc(course)
+          .collection('modules')
+          .doc(module.id)
+          .set({
+            disabled: module.data().disabled,
+            name: module.data().name
+          })
+        const assignments = await 
+          courseData[course].assignmentData
+            .doc(module.id)
+            .collection('assignments')
+            .get();
+        for (const assignment of assignments.docs) {
+          database.users
+            .doc(userEmail)
+            .collection('courses')
+            .doc(course)
+            .collection('modules')
+            .doc(module.id)
+            .collection('assignments')
+            .doc(assignment.id)
+            .set({
+              disabled: assignment.data().disabled,
+              due: assignment.data().due,
+              handouts: assignment.data().handouts,
+              name: assignment.data().name,
+              questions: assignment.data().questions,
+            })
+        }
+      }
+    } catch(err) {
+      printError(err)
+    }
+  }
 
   async function handleLogin(event) {
     event.preventDefault()
@@ -84,6 +137,10 @@ export default function Profile() {
         country: selected.name
       })
 
+      for (const course of Object.keys(courseData)) {
+        await populateCourses(course, currentUser.email)
+      }
+
       database.emails.doc(email).set({
         email: email
       })
@@ -91,7 +148,6 @@ export default function Profile() {
     } catch {
       setError('Failed to create profile. This email may already have an account associated with it.')
     }
-
     setLoading(false)
   }
 

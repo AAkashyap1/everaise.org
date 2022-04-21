@@ -58,15 +58,15 @@ export default function Cards() {
         ]
       )
     } catch (err) {
-      console.log(err);
       printError(err);
     }
   }
 
   useEffect(() => {
     getCards();
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
+
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

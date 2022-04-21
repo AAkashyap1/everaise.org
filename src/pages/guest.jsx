@@ -5,7 +5,6 @@ import Page from '../components/page'
 import speakers from '../data/guestSpeakers'
 
 export default function Guest() {
-
   return (
     <Page
       title="Guest Speakers - Everaise Academy"

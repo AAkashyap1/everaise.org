@@ -51,7 +51,6 @@ export default function Timeline() {
       for (let i = 0; i < userModule.docs.length; i++) {
         let completed = 0;
         for (const question of userModule.docs[i].data().questions) {
-          console.log(question)
           if (
             (question.submissions < 2) ||
             (question.submissions === 99)
@@ -127,7 +126,7 @@ export default function Timeline() {
                       <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                         <div>
                           <p className="mb-3 text-sm text-gray-500">
-                            {item.content}{' '}
+                            {item.content}{' - '}
                             <span
                               className="text-left font-medium text-gray-900 hover:text-gray-500"
                             >
@@ -154,7 +153,7 @@ export default function Timeline() {
                       <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                         <div>
                           <p className="mb-3 text-sm text-gray-500">
-                            {item.content}{' '}
+                            {item.content}{' - '}
                             <span
                               className="text-left font-medium text-gray-900 hover:text-gray-500"
                             >
