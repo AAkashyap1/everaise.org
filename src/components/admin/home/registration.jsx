@@ -11,8 +11,7 @@ function classNames(...classes) {
 }
 
 export default function Registration() {
-  const userIds = useCollection(database.total_users)[0];
-  const usersData = useCollectionData(database.total_users)[0];
+  const userCollection = useCollectionData(database.users)[0];
   const registrationData = useCollectionData(database.registrations)[0];
   const ids = useCollection(database.registrations)[0];
   const [registrations, setRegistrations] = useState([false, false, false, false]);
@@ -42,27 +41,26 @@ export default function Registration() {
   }, [registrationData, ids])
 
   useEffect(() => {
-    if (usersData && userIds) {
+    if (userCollection) {
       let tempUsers = []
-      for (let i = 0; i < 5; i++) {
-        tempUsers.push({
-          id: userIds.docs[i].id,
-          users: usersData[i].users
-        })
-      }
-      let tempNumbers = []
       for (let i = 0; i < 4; i++) {
         let course = courses[Object.keys(courses)[i]].link;
-        for (let j = 0; j < 5; j++) {
-          if (tempUsers[j].id === course) {
-            tempNumbers.push(tempUsers[j].users)
-            break
+        let courseUsers = 0;
+        for (const user of userCollection) {
+          for (const cse of user.courses) {
+            if (cse.name === course) {
+              if (cse.enrolled) {
+                courseUsers += 1;
+              }
+              break;
+            }
           }
         }
+        tempUsers.push(courseUsers)
       }
-      setUsers(tempNumbers)
+      setUsers(tempUsers);
     }
-  }, [usersData, userIds])
+  }, [userCollection])
 
   function updateRegistration(course) {
     let newRegistrations = [...registrations]
