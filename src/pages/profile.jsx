@@ -29,7 +29,6 @@ export default function Profile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
-  const { currentUser } = useAuth();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [parent1Email, setParent1Email] = useState('')
@@ -51,7 +50,7 @@ export default function Profile() {
     try {
       setLoading(true);
       const modules = await courseData[course].assignmentData.get();
-      database.users
+      await database.users
         .doc(userEmail)
         .collection('courses')
         .doc(course)
@@ -59,7 +58,7 @@ export default function Profile() {
           points: 0
         })
       for (const module of modules.docs) {
-        database.users
+        await database.users
           .doc(userEmail)
           .collection('courses')
           .doc(course)
@@ -75,7 +74,7 @@ export default function Profile() {
             .collection('assignments')
             .get();
         for (const assignment of assignments.docs) {
-          database.users
+          await database.users
             .doc(userEmail)
             .collection('courses')
             .doc(course)
@@ -119,7 +118,7 @@ export default function Profile() {
       
       history.push('/landing')
 
-      database.users.doc(email).set({
+      await database.users.doc(email).set({
         admin: false,
         first_name: firstName,
         last_name: lastName,
@@ -138,10 +137,10 @@ export default function Profile() {
       })
 
       for (const course of Object.keys(courseData)) {
-        await populateCourses(course, currentUser.email)
+        await populateCourses(course, email)
       }
 
-      database.emails.doc(email).set({
+      await database.emails.doc(email).set({
         email: email
       })
 
