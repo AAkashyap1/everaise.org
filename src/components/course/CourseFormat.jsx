@@ -12,7 +12,7 @@ export default function CourseFormat() {
       </p>
       <p className="mt-4 text-xl text-gray-500">
         Our web portal, <span className="text-indigo-500">
-          <Link to="/dashboard" target="_blank">Everaise Launch</Link></span>, is up and running! Register for classes,
+          <Link to="/launch" target="_blank">Everaise Launch</Link></span>, is up and running! Register for classes,
         view the course materials, and submit homework problems through Launch. All
         courses are self-paced with recommended due dates; students are free to jump around between the
         accessible materials but are advised to work on them in the order they are presented.
