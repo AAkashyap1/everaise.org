@@ -49,7 +49,10 @@ ReactDOM.render(
           <ProfileRoute path="/profile" component={Profile} />
           <PrivateRoute path="/update" component={Update} />
           <PrivateRoute path="/enroll" component={Enroll} />
-          <PrivateRoute path="/home" component={Home} />
+          <Route path="/home">
+            <Redirect to="/launch"></Redirect>
+          </Route>
+          <PrivateRoute path="/launch" component={Home} />
           <CourseRoute exact path="/dashboard/:course" component={Dashboard} />
           <CourseRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
           <AdminRoute path="/admin/home" component={AdminHome} />
