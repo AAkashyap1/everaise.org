@@ -86,9 +86,6 @@ export default function Estimathon() {
                             >
                               Status
                             </th>
-                            <th scope="col" className="relative px-6 py-3">
-                              <span className="sr-only">Link</span>
-                            </th>
                           </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
@@ -103,11 +100,6 @@ export default function Estimathon() {
                                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                                   {contest.status}
                                 </span>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a target="_blank" rel="noreferrer" href="https://discord.com/invite/JE5TaCrrFn" className="text-indigo-600 hover:text-indigo-900">
-                                  Link
-                                </a>
                               </td>
                             </tr>
                           ))}

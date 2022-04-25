@@ -147,9 +147,7 @@ export default function Course() {
                                             'cursor-pointer transform hover:scale-125 bg-green-400 h-8 w-8 rounded-full flex items-center justify-center ring-2 ring-white'
                                           }
                                         >
-                                          <Link to="/enroll">
-                                            <ClipboardIcon className="w-5 h-5 text-white" aria-hidden="true" />
-                                          </Link>
+                                          <ClipboardIcon className="w-5 h-5 text-white" aria-hidden="true" />
                                         </span>
                                       </div>
                                       <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">

@@ -46,7 +46,7 @@ const benefits = [
     {
       title: 'Variety of carefully-selected homework problems',
       desc: 'Welcoming students of all skill levels',
-      href: '/dashboard',
+      href: '/launch',
       icon: DatabaseIcon,
       iconForeground: 'text-indigo-700',
       iconBackground: 'bg-indigo-50',
@@ -62,7 +62,7 @@ const benefits = [
     {
       title: 'Exclusive access to our annual competitions',
       desc: 'Subject-specific End-of-Course contests and Estimathon',
-      href: '/events/estimathon',
+      href: '/events/contests/estimathon',
       icon: ClipboardIcon,
       iconForeground: 'text-indigo-700',
       iconBackground: 'bg-indigo-50',
@@ -78,7 +78,7 @@ const benefits = [
     {
       title: 'Climb the course leaderboard',
       desc: 'Earn cash prizes and win unique benefits',
-      href: '/dashboard',
+      href: '/launch',
       icon: ChartBarIcon,
       iconForeground: 'text-cyan-700',
       iconBackground: 'bg-cyan-100',

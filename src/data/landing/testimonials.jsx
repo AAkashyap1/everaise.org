@@ -38,6 +38,14 @@ const testimonials = [
         a well presented manner through the handouts. I loved how the information in the 
         handout was easy to digest so I could understand them better.`
   },
+  {
+    name: 'Cindy Yu',
+    course: 'Astronomy student',
+    testimonial: `The best part about the program was how organized everything was. We got 
+        the handout schedule way before the program started, so I always knew what was coming. 
+        The handouts were generally well-written and comprehensive as well. The Everaise team 
+        clearly put a lot of effort into planning these 5 weeks.`
+  },
 ]
 
 export default testimonials;

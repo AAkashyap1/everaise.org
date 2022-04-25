@@ -14,7 +14,6 @@ const footerNavigation = {
     { name: 'Donate', href: '' },
   ],
   help: [
-    { name: 'FAQ', href: '/contact' },
     { name: 'Contact Us', href: '/contact' },
   ],
   legal: [

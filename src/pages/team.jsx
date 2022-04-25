@@ -14,16 +14,16 @@ export default function Team() {
       <Nav />
       <div className="mt-5 bg-white">
         <div className="mx-auto pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
-          <div className="space-y-12">
+          <div className="">
             <div className="space-y-5 sm:space-y-4 xl:max-w-none">
               <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Meet Our Team</h2>
               <p className="text-xl text-gray-500">
                 Our team is comprised of high school and college students who have been successful
                 in a variety of STEM fields, including math, physics, and biology. Interested in being part
-                of the team? Learn more {' '}<Link to="/people/join"><span className="text-indigo-500">here</span></Link>!
+                of the team? Learn more {' '}<a href="https://docs.google.com/forms/d/e/1FAIpQLSeiQXl_vdbjcAFv4SRt1Zr8wZiylSfh4y30CMSVFr5r_ZQl3g/viewform" rel="noreferrer" target="_blank"><span className="text-indigo-500">here</span></a>!
               </p>
             </div>
-            <ul className="flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
+            <ul className="mt-6 flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
               {current.map((person) => (
                 <li key={person.name} className="py-10 px-6 border border-gray-200 shadow-lg text-left rounded-lg xl:px-10">
                   <div className="space-y-6 xl:space-y-10">
@@ -86,8 +86,9 @@ export default function Team() {
                   </div>
                 </li>
               ))}
-            </ul
-            ><ul className="flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
+            </ul>
+            <h2 className="mt-10 text-3xl font-bold text-gray-900 sm:text-4xl">Team Archive</h2>
+            <ul className="mt-6 flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
               {archive.map((person) => (
                 <li key={person.name} className="py-10 px-6 border border-gray-200 shadow-lg text-left rounded-lg xl:px-10">
                   <div className="space-y-6 xl:space-y-10">
