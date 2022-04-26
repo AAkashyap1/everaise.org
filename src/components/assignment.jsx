@@ -142,7 +142,7 @@ export default function Assignment(props) {
                           points={question.points}
                           solution={question.solution}
                           index={questionIdx}
-                          />
+                        />
                     }
                   </div>
                 ))}

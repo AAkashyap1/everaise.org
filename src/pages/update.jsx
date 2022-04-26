@@ -34,6 +34,7 @@ export default function Update() {
   const [selected, setSelected] = useState('')
   const [parent1Email, setParent1Email] = useState('')
   const [parent2Email, setParent2Email] = useState('')
+  const [referral, setReferral] = useState('');
 
   useEffect(() => {
     getUserInfo(currentUser.email)
@@ -44,6 +45,7 @@ export default function Update() {
         setParent1Email(doc.data().parent1Email)
         setParent2Email(doc.data().parent2Email)
         setSelected({ id: 4000, name: doc.data().country })
+        setReferral(doc.data().referral)
       })
   }, [currentUser])
 
@@ -57,6 +59,7 @@ export default function Update() {
       parent1Email: parent1Email,
       parent2Email: parent2Email,
       country: selected.name, 
+      referral: referral,
     })
     
    setUpdateData(!updateData)
@@ -231,6 +234,20 @@ export default function Update() {
                             </>
                           )}
                         </Listbox>
+                      </div>
+                      <div className="col-span-6 sm:col-span-6">
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                          How did you hear about us?{'*'}
+                        </label>
+                        <input
+                          required
+                          value={referral}
+                          onChange={e => setReferral(e.target.value)}
+                          id="text"
+                          name="text"
+                          type="text"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                        />
                       </div>
                       {message && 
                         <div className="rounded-md bg-green-50 p-4">

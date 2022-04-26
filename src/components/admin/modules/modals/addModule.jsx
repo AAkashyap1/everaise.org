@@ -1,11 +1,12 @@
 import { Fragment, useState } from 'react'
-import { Dialog, Transition, RadioGroup } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react'
 import { PencilIcon, XIcon } from '@heroicons/react/solid'
 import { database } from '../../../../firebase'
 import { useParams } from 'react-router-dom'
 import printError from '../../../../utility/printError'
 import Loading from './loading'
 
+/*
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -14,6 +15,7 @@ const settings = [
   { name: 'Not Disabled', description: 'Students will be able to access this module' },
   { name: 'Disabled', description: 'No student will be able to access this module' },
 ]
+*/
 
 export default function AddModuleModal(props) {
   const [loading, setLoading] = useState(false);
@@ -120,6 +122,7 @@ export default function AddModuleModal(props) {
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </div>
+                  {/*
                   <div className="col-span-2">
                     <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
                       Disabled{'*'}
@@ -175,6 +178,7 @@ export default function AddModuleModal(props) {
                       </RadioGroup>
                     </div>
                   </div>
+                  */}
                   <button
                     disabled={loading}
                     type="submit"

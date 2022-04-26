@@ -1,6 +1,5 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
-import { Link } from 'react-router-dom'
 import { current, archive } from '../data/team'
 import Page from '../components/page'
 

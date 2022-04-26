@@ -10,7 +10,6 @@ import AdminRoute from './components/admin/AdminRoute';
 import reportWebVitals from './reportWebVitals';
 import AdminDashboard from './pages/admin/dashboard';
 import AdminHome from './pages/admin/home';
-import CreateAssignment from './pages/admin/assignment'
 import Landing from './pages/landing';
 import Team from './pages/team';
 import Contact from './pages/contact';
@@ -57,7 +56,6 @@ ReactDOM.render(
           <CourseRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
           <AdminRoute path="/admin/home" component={AdminHome} />
           <AdminRoute exact path="/admin/dashboard/:course" component={AdminDashboard} />
-          <AdminRoute exact path="/admin/homework/:course/:assignmentId" component={CreateAssignment} />
           <Route path="*" component={NotFound} />
         </Switch>
       </AuthProvider>

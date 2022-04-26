@@ -78,7 +78,6 @@ export default function Dashboard() {
       const modules = await data.get();
       let tempAssignments = [];
       for (const tempModule of modules.docs) {
-        console.log(tempModule)
         let assignments = await fetchModule(tempModule.id);
         for (const assignment of assignments) {
           tempAssignments.push({
@@ -90,6 +89,7 @@ export default function Dashboard() {
       let newAssignments = [];
       for (const tempAssignment of tempAssignments) {
         const assignment = tempAssignment.assignment;
+        if (assignment.disabled) continue;
         let completed = 0;
         let points = 0;
         let totalPoints = 0;

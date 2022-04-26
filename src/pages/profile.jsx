@@ -37,6 +37,7 @@ export default function Profile() {
   const [age, setAge] = useState('')
   const [error, setError] = useState('')
   const [selected, setSelected] = useState(countries[186])
+  const [referral, setReferral] = useState('');
   const [loading, setLoading] = useState(false)
   const { signup } = useAuth()
   const history = useHistory()
@@ -133,7 +134,8 @@ export default function Profile() {
           { name: 'astronomy', enrolled: false },
           { name: 'math', enrolled: false  },
         ],
-        country: selected.name
+        country: selected.name,
+        referral: referral,
       })
 
       for (const course of Object.keys(courseData)) {
@@ -360,6 +362,20 @@ export default function Profile() {
                             name="confirmpassword"
                             type="password"
                             autoComplete="current-password"
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                          />
+                        </div>
+                        <div className="col-span-6 sm:col-span-6">
+                          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                            How did you hear about us?{'*'}
+                          </label>
+                          <input
+                            required
+                            value={referral}
+                            onChange={e => setReferral(e.target.value)}
+                            id="text"
+                            name="text"
+                            type="text"
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
                           />
                         </div>
