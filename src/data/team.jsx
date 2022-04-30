@@ -65,7 +65,7 @@ import JiyoungLee from '../images/team/JiyoungLee.png'
 const current = [
   {
     name: 'Preston Fu',
-    roles: ['Co-founder', 'Program Coordinator', 'Executive Board Member'],
+    roles: ['Program Co-founder', 'Program Coordinator', 'Executive Board Member'],
     imageUrl:
       PrestonFu,
     achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll', 'Ross Mathematics Program Alumnus'],
@@ -348,7 +348,7 @@ const current = [
 const archive = [
   {
     name: 'Brian Lee',
-    roles: ['Co-founder', 'Physics Co-founder and Co-head', 'Finance'],
+    roles: ['Program Co-founder', 'Physics', 'Co-founder', 'Co-head', 'Finance'],
     imageUrl:
       BrianLee,
     achievements: [],
@@ -358,7 +358,7 @@ const archive = [
   },
   {
     name: 'William Shi',
-    roles: ['Co-founder', 'Physics Co-founder and Co-head'],
+    roles: ['Program Co-founder', 'Physics', 'Co-founder', 'Co-head'],
     imageUrl:
       WilliamShi,
     achievements: [],
@@ -368,7 +368,7 @@ const archive = [
   },
   {
     name: 'Saadiq Shaikh',
-    roles: ['Co-founder', 'Math 1 Founder and Head'],
+    roles: ['Program Co-founder', 'Math 1', 'Founder', 'Head'],
     imageUrl:
       SaadiqShaikh,
     achievements: [],
@@ -378,7 +378,7 @@ const archive = [
   },
   {
     name: 'Greg Pylypovych',
-    roles: ['Co-founder', 'Astronomy Founder and Head'],
+    roles: ['Program Co-founder', 'Astronomy', 'Founder', 'Head'],
     imageUrl:
       GregPylypovych,
     achievements: [],
@@ -388,7 +388,7 @@ const archive = [
   },
   {
     name: 'Justin Shan',
-    roles: ['Biology Founder and Head'],
+    roles: ['Biology', 'Founder', 'Head'],
     imageUrl:
       JustinShan,
     achievements: [],
@@ -398,7 +398,7 @@ const archive = [
   },
   {
     name: 'Andrew Wu',
-    roles: ['Math 2 Founder and Head', 'Outreach'],
+    roles: ['Math 2', 'Founder', 'Head', 'Outreach'],
     imageUrl:
       AndrewWu,
     achievements: [],
@@ -408,7 +408,7 @@ const archive = [
   },
   {
     name: 'Jennifer Wang',
-    roles: ['Associate Head of Math 2'],
+    roles: ['Associate Head', 'Math 2'],
     imageUrl:
       JenniferWang,
     achievements: [],
@@ -418,7 +418,7 @@ const archive = [
   },
   {
     name: 'Dennis Chen',
-    roles: ['Associate Head of Math 1'],
+    roles: ['Associate Head', 'Math 1'],
     imageUrl:
       DennisChen,
     achievements: [],
