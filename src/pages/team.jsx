@@ -34,9 +34,7 @@ export default function Team() {
                           {person.roles.map((role) => (
                             <span
                               key={role}
-                              className={`${
-                                role.length > 23 ? 'text-xs' : 'text-sm'
-                              } whitespace-nowrap mx-0.5 my-0.5 inline-flex items-center px-2.5 py-0.5 rounded-full bg-gray-200 text-yei-secondary-main font-normal`}
+                              className={`text-sm whitespace-nowrap mx-0.5 my-0.5 inline-flex items-center px-2.5 py-0.5 rounded-full bg-gray-200 text-yei-secondary-main font-normal`}
                             >
                               {role}
                             </span>
