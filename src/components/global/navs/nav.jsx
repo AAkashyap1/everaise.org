@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Popover, Menu, Transition } from '@headlessui/react'
 import { Link, useHistory} from 'react-router-dom'
 import { useAuth } from '../../../contexts/AuthContext.js'
@@ -14,6 +14,7 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid'
 import Logo from '../../../images/EveraiseAcademy.svg'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
 
 const events = [
   {
@@ -67,6 +68,7 @@ export default function Nav() {
   const [name, setName] = useState('')
   const [admin, setAdmin] = useState(false)
   const { currentUser, signout } = useAuth()
+  const user = useDocumentData(database.users.doc(currentUser ? currentUser.email : 'emptyDoc'))[0]
   const [mobileEventsOpen, setMobileEventsOpen] = useState(false)
   const [mobilePeopleOpen, setMobilePeopleOpen] = useState(false)
   const history = useHistory()
@@ -81,20 +83,18 @@ export default function Nav() {
     }
   }
 
+  useEffect(() => {
+    if (user) {
+      setAdmin(user.admin || user.instructor);
+    }
+  }, [user])
+
   function getUserName() {
     database.users.doc(currentUser.email).get()
       .then((doc) => {
         setName(doc.data().first_name + ' ' + doc.data().last_name)
       })
     return name
-  }
-
-  function getAdmin() {
-    database.users.doc(currentUser.email).get()
-      .then((doc) => {
-        setAdmin(doc.data().admin || doc.data().instructor)
-      })
-    return admin
   }
 
   return (
@@ -298,6 +298,19 @@ export default function Nav() {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
+                                to="/enroll"
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                My Courses
+                              </Link>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
                                 to="/home"
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
@@ -308,51 +321,34 @@ export default function Nav() {
                               </Link>
                             )}
                           </Menu.Item>
-                          {(currentUser && getAdmin()) && 
+                          {admin && 
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
                                   to="/admin/home"
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',
-                                    'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                                    'block px-4 py-2 text-sm text-gray-700'
                                   )}
                                 >
                                   Admin Portal
                                 </Link>
                               )}
-                            </Menu.Item>
+                            </ Menu.Item>
                           }
-                          {currentUser && 
-                            <Menu.Item>
-                              {({ active }) => (
-                                <button
-                                  onClick={handleLogout}
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'text-left block px-4 w-full py-2 text-sm text-gray-700'
-                                  )}
-                                >
-                                  Logout
-                                </button>
-                              )}
-                            </Menu.Item>
-                          }
-                          {!currentUser && 
-                            <Menu.Item>
-                              {({ active }) => (
-                                <Link
-                                  to="/update"
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'text-left block px-4 w-full py-2 text-sm text-gray-700'
-                                  )}
-                                >
-                                  Sign In
-                                </Link>
-                              )}
-                            </Menu.Item>
-                          }
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                onClick={handleLogout}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                Logout
+                              </button>
+                            )}
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </>
