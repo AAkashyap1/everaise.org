@@ -10,8 +10,7 @@ const footerNavigation = {
   ],
   support: [
     { name: 'Join our Team', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeiQXl_vdbjcAFv4SRt1Zr8wZiylSfh4y30CMSVFr5r_ZQl3g/viewform' },
-    { name: 'Sponsor', href: '' },
-    { name: 'Donate', href: '' },
+    { name: 'Donate', href: 'https://www.paypal.com/donate?token=KAPurKoSBfXiAiGBJkxGPt7W-A4CqiPqBr2Qr4tAa584T3adV4CI8R48WSl3WpZaxjkOKZpkoB5bAi4A' },
   ],
   help: [
     { name: 'Contact Us', href: '/contact' },
