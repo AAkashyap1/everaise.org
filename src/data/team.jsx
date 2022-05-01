@@ -26,6 +26,7 @@ import AlbertYe from '../images/team/AlbertYe.png'
 import JeffreyHu from '../images/team/JeffreyHu.jpg'
 import LohithTummala from '../images/team/LohithTummala.png'
 import EvanKim from '../images/team/EvanKim.png'
+import MuhammedYasseen from './images/team/MuhammedYasseen.png'
 
 import BrianLee from '../images/team/BrianLee.png'
 import WilliamShi from '../images/team/WilliamShi.png'
@@ -340,6 +341,16 @@ const current = [
       AnujSakarda,
     achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
     education: `Acton Boxborough Regional High School, USA '22`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Muhammed Yaseen',
+    roles: ['Biology', 'Curriculum Developer'],
+    imageUrl:
+      MuhammedYasseen,
+    achievements: ['UAE IBO Team Selection Bronze', 'BBO Bronze'],
+    education: `GEMS Our Own Indian School Dubai, UAE '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
