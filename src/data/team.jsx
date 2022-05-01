@@ -26,7 +26,7 @@ import AlbertYe from '../images/team/AlbertYe.png'
 import JeffreyHu from '../images/team/JeffreyHu.jpg'
 import LohithTummala from '../images/team/LohithTummala.png'
 import EvanKim from '../images/team/EvanKim.png'
-import MuhammedYasseen from './images/team/MuhammedYasseen.png'
+import MuhammedYaseen from '../images/team/MuhammedYaseen.png'
 
 import BrianLee from '../images/team/BrianLee.png'
 import WilliamShi from '../images/team/WilliamShi.png'
@@ -348,7 +348,7 @@ const current = [
     name: 'Muhammed Yaseen',
     roles: ['Biology', 'Curriculum Developer'],
     imageUrl:
-      MuhammedYasseen,
+      MuhammedYaseen,
     achievements: ['UAE IBO Team Selection Bronze', 'BBO Bronze'],
     education: `GEMS Our Own Indian School Dubai, UAE '23`,
     linkedInUrl: '',
