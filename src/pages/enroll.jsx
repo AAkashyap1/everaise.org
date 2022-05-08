@@ -91,7 +91,7 @@ export default function Enroll() {
                       <div>
                         <h3 className="text-lg leading-6 font-medium text-gray-900">Course Selection</h3>
                         <p className="mt-1 text-sm text-gray-500">
-                          Visit <a className="text-decoration: underline text-cyan-600" href="https://everaise.org/courses/">this page</a> for more information on classes. Registration for our courses has closed. We aim to run these courses in the future and hope you will join us then.
+                          Visit <a className="text-decoration: underline text-cyan-600" href="https://everaise.org/courses/">this page</a> for more information on classes. Registration will end on June 12, 2022, so sign up soon!
                         </p>
                       </div>
 
@@ -112,7 +112,7 @@ export default function Enroll() {
                             </div>
                             <div className="ml-3 text-sm">
                               <label htmlFor="comments" className="font-medium text-gray-700">
-                                Physics Mechanics (June 21 – August 6, Registration Closed on June 20)
+                                Physics Mechanics (June 26 - July 30)
                               </label>
                               <p className="text-gray-500">A rigorous treatment of mechanics including kinematics, Newton’s laws, collisions, rolling motion, oscillations, fluid statics, fictitious forces, and error analysis.</p>
                             </div>
@@ -132,7 +132,7 @@ export default function Enroll() {
                               </div>
                               <div className="ml-3 text-sm">
                                 <label htmlFor="candidates" className="font-medium text-gray-700">
-                                  Biology (July 5 – August 6, Registration Closed on July 2)
+                                  Biology (June 26 - July 23)
                                 </label>
                                 <p className="text-gray-500">A deep study of theoretical biology, covering a range of topics from cell biology, genetics, and human anatomy and physiology to the mechanisms underlying plant life.</p>
                               </div>
@@ -153,7 +153,7 @@ export default function Enroll() {
                               </div>
                               <div className="ml-3 text-sm">
                                 <label htmlFor="offers" className="font-medium text-gray-700">
-                                  Astronomy (July 12 – August 6, Registration Closed on July 9)
+                                  Astronomy (June 26 - July 30)
                                 </label>
                                 <p className="text-gray-500">An introductory course in astronomy, including celestial coordinates, stellar systems, and cosmology in addition to important physics topics such as orbital mechanics.</p>
                               </div>
@@ -174,7 +174,7 @@ export default function Enroll() {
                               </div>
                               <div className="ml-3 text-sm">
                                 <label htmlFor="offers" className="font-medium text-gray-700">
-                                  Math Competitions I (July 12 – August 6, Registration Closed on July 9)
+                                  Math Competitions I (June 26 - July 30)
                                 </label>
                                 <p className="text-gray-500">An intuition-building math competitions course including sequences and series, polynomials, combinatorial identities, triangle centers, and modular arithmetic.</p>
                               </div>

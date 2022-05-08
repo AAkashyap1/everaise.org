@@ -1,9 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faPaypal,
+} from '@fortawesome/free-brands-svg-icons'
+
 export default function Donate() {
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block mb-1">Want to support the Everaise Academy?</span>
+          <span className="block mb-1">Want to support Everaise Academy?</span>
           <span className="block">Donate to us!</span>
         </h2>
         <div className="mt-8 flex justify-center">
@@ -20,8 +25,12 @@ export default function Donate() {
               />
               <button
                 type="submit"
-                className="shadow inline-flex items-center justify-center px-12 py-3 border border-transparent text-base font-medium rounded-md text-yei-primary-dark bg-cyan-600 text-white"
+                className="shadow inline-flex items-center justify-center px-12 py-3 border border-transparent text-base font-medium rounded-md text-yei-primary-dark bg-cyan-600 text-white hover:bg-cyan-700"
               >
+                <FontAwesomeIcon
+                  icon={faPaypal}
+                  className="w-5 h-5 mr-2"
+                />
                 Donate
               </button>
             </form>

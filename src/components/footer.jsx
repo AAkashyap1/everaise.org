@@ -110,10 +110,24 @@ export default function Footer() {
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.support.map((item) => (
                       <li key={item.name}>
-                        {item.href.startsWith('https') ? 
-                          <a href={item.href} target="_blank" rel="noreferrer" className="text-base text-gray-400 hover:text-white">
-                            {item.name}
-                          </a> :
+                        {item.name === 'Donate' ?
+                          <form
+                            action="https://www.paypal.com/donate"
+                            method="post"
+                            target="_blank"
+                          >
+                            <input
+                              type="hidden"
+                              name="hosted_button_id"
+                              defaultValue="DS587RY7M3CDG"
+                            />
+                            <button
+                              type="submit"
+                              className="text-base text-gray-400 hover:text-white"
+                            >
+                              Donate
+                            </button>
+                          </form> :
                           <Link to={item.href} className="text-base text-gray-400 hover:text-white">
                             {item.name}
                           </Link> 

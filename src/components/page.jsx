@@ -1,6 +1,21 @@
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
+import courseData from '../data/launch/courseData';
 
 export default function Page(props) {
+  
+  useEffect(() => {
+    let reset = true;
+    for (const course of Object.keys(courseData)) {
+      if (props.title.startsWith(courseData[course].courseName)) {
+        reset = false;
+      }
+    }
+    if (reset) {
+      window.scrollTo(0, 0);
+    }
+  })
+
   return (
     <div>
       <Helmet>

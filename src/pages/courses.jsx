@@ -17,7 +17,7 @@ const catalog = [
     img: Physics,
     desc: `A rigorous treatment of mechanics including kinematics, Newton’s laws, collisions, 
           rolling motion, oscillations, fluid statics, fictitious forces, and error analysis.`,
-    dates: 'June 21 – August 6',
+    dates: 'June 26 - July 30',
     link: 'physics'
   },
   {
@@ -25,7 +25,7 @@ const catalog = [
     img: Biology,
     desc: `A deep study of theoretical biology, covering a range of topics from cell biology, 
             genetics, and human anatomy and physiology to the mechanisms underlying plant life`,
-    dates: 'July 5 – August 6',
+    dates: 'June 26 - July 23',
     link: 'biology'
   },
   {
@@ -33,7 +33,7 @@ const catalog = [
     img: Math,
     desc: `An intuition-building math competitions course including sequences and series, 
             polynomials, combinatorial identities, triangle centers, and modular arithmetic.`,
-    dates: 'July 12 – August 6',
+    dates: 'June 26 - July 30',
     link: 'math',
   },
   {
@@ -41,12 +41,44 @@ const catalog = [
     img: Astronomy,
     desc: `An introductory course in astronomy, including celestial coordinates, stellar systems, 
             and cosmology in addition to important physics topics such as orbital mechanics.`,
-    dates: 'July 12 – August 6',
+    dates: 'June 26 - July 30',
     link: 'astronomy'
   },
 ]
 
 const courses2021 = [
+  {
+    course: 'Physics Mechanics',
+    dates: 'June 26 - July 30, 2022',
+    head: 'Ashmit Dutta / Evan Kim',
+    hours: ['TBD'],
+    cost: '$0',
+    status: 'upcoming',
+  },
+  {
+    course: 'Biology',
+    dates: 'June 26 - July 23, 2022',
+    head: 'Krish Jayarapu',
+    hours: ['TBD'],
+    cost: '$0',
+    status: 'upcoming',
+  },
+  {
+    course: 'Astronomy',
+    dates: 'June 26 - July 30, 2022',
+    head: 'Abhay Bestrapalli / Jeffrey Wei / Faraz Ahmed',
+    hours: ['TBD'],
+    cost: '$0',
+    status: 'upcoming',
+  },
+  {
+    course: 'Math Competitions I',
+    dates: 'June 26 - July 30, 2022',
+    head: 'Matthew Chen / Kiran Sun',
+    hours: ['TBD'],
+    cost: '$0',
+    status: 'upcoming',
+  },
   {
     course: 'Physics Mechanics',
     dates: 'June 21 – August 6, 2021',
@@ -185,7 +217,7 @@ export default function Courses() {
               <div>
                 <h2 className="mt-5 mb-3 text-3xl font-bold text-gray-900 tracking-tight">Class Schedule</h2>
                 <p className="text-xl text-gray-500">
-                  Information for Summer 2022 courses will be posted in Spring 2022.
+                  Information for summer 2022 courses has been posted.
                 </p>
               </div>
               <div className="xl:hidden"> 
