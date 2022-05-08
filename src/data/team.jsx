@@ -70,7 +70,7 @@ const current = [
     imageUrl:
       PrestonFu,
     achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll', 'Ross Mathematics Program Alumnus'],
-    education: `Saratoga High School, USA '22`,
+    education: `EECS @ UC Berkeley '26`,
     linkedInUrl: 'https://www.linkedin.com/in/preston-fu/',
     gitHubUrl: '',
   },
@@ -90,7 +90,7 @@ const current = [
     imageUrl:
       ChooiJeQin,
     achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
-    education: `Kolej Tuanku Ja'afar, Malaysia '22`,
+    education: `Harvard '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -110,7 +110,7 @@ const current = [
     imageUrl:
       KrishJayarapu,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
-    education: `Carmel High School, USA '22`,
+    education: `Johns Hopkins University '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -140,7 +140,7 @@ const current = [
     imageUrl:
       AbhayBestrapalli,
     achievements: ['Indian International Mathematical Olympiad Training Camp (IMOTC)', 'IOAA 2021 Silver Medalist', 'Indian Astronomy Selection Camp (IOAA OCSC)'],
-    education: `Delhi Public School Bangalore East, India '22`,
+    education: `MIT '26`,
     linkedInUrl: 'https://www.linkedin.com/in/abhay-bestrapalli-739280222/',
     gitHubUrl: '',
   },
@@ -180,7 +180,7 @@ const current = [
     imageUrl:
       LohithTummala,
     achievements: ['USA(J)MO Qualifier', '2x AMC Distinguished Honor Roll', '2x MathCounts National Qualifier'],
-    education: `Electrical and Computer Engineering @ Carnegie Mellon University, USA '25`,
+    education: `Electrical and Computer Engineering @ CMU '25`,
     linkedInUrl: 'https://www.linkedin.com/in/ltummala/',
     gitHubUrl: '',
   },
@@ -200,7 +200,7 @@ const current = [
     imageUrl:
       AlbertYe,
     achievements: ['3x AIME Qualifier', 'AMC 10 Distinguished Honor Roll', 'USAMTS Leaderboard'],
-    education: `Saratoga High School, USA '22`,
+    education: `Math+CS @ UC Berkeley '26`,
     linkedInUrl: 'https://www.linkedin.com/in/albert-ye-587aa81a2/',
     gitHubUrl: '',
   },
@@ -220,7 +220,7 @@ const current = [
     imageUrl:
       VictorLi,
     achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
-    education: `Massachusetts Institute of Technology, USA '25`,
+    education: `MIT '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -359,77 +359,77 @@ const current = [
 const archive = [
   {
     name: 'Brian Lee',
-    roles: ['Program Co-founder', 'Physics', 'Co-founder', 'Co-head', 'Finance'],
+    roles: ['Co-founder', 'Physics Co-head', 'Finance'],
     imageUrl:
       BrianLee,
     achievements: [],
-    education: `Math+CS @ Massachusetts Institute of Technology, USA '25`,
+    education: `Math+CS @ MIT '25`,
     linkedInUrl: 'https://www.linkedin.com/in/brian-lee-70a3111ab/',
     gitHubUrl: '',
   },
   {
     name: 'William Shi',
-    roles: ['Program Co-founder', 'Physics', 'Co-founder', 'Co-head'],
+    roles: ['Co-founder', 'Physics Co-head'],
     imageUrl:
       WilliamShi,
     achievements: [],
-    education: `Math+CS @ Harvard University, USA '25`,
+    education: `Math+CS @ Harvard '25`,
     linkedInUrl: 'https://www.linkedin.com/in/william-shi-80/',
     gitHubUrl: '',
   },
   {
     name: 'Saadiq Shaikh',
-    roles: ['Program Co-founder', 'Math 1', 'Founder', 'Head'],
+    roles: ['Co-founder', 'Math 1 Head'],
     imageUrl:
       SaadiqShaikh,
     achievements: [],
-    education: `Math+CS @ Carnegie Mellon University, USA '25`,
+    education: `Math+CS @ CMU '25`,
     linkedInUrl: 'https://www.linkedin.com/in/saadiq-shaikh-5a3785161/',
     gitHubUrl: '',
   },
   {
     name: 'Greg Pylypovych',
-    roles: ['Program Co-founder', 'Astronomy', 'Founder', 'Head'],
+    roles: ['Co-founder', 'Astronomy Head'],
     imageUrl:
       GregPylypovych,
     achievements: [],
-    education: `Math+CS @ Massachusetts Institute of Technology, USA '25`,
+    education: `Math+CS @ MIT '25`,
     linkedInUrl: 'https://www.linkedin.com/in/gregory-pylypovych-911542221/',
     gitHubUrl: '',
   },
   {
     name: 'Justin Shan',
-    roles: ['Biology', 'Founder', 'Head'],
+    roles: ['Founding Member', 'Biology Head'],
     imageUrl:
       JustinShan,
     achievements: [],
-    education: `Neuroscience+CS @ Massachusetts Institute of Technology, USA '25`,
+    education: `Neuroscience+CS @ MIT '25`,
     linkedInUrl: 'https://www.linkedin.com/in/justin-shan-1ab448194/',
     gitHubUrl: '',
   },
   {
     name: 'Andrew Wu',
-    roles: ['Math 2', 'Founder', 'Head', 'Outreach'],
+    roles: ['Founding Member', 'Math 2 Head', 'Outreach Lead'],
     imageUrl:
       AndrewWu,
     achievements: [],
-    education: `Math @ Yale University, USA '23`,
+    education: `Math @ Yale '23`,
     linkedInUrl: 'https://www.linkedin.com/in/andrewgongwu/',
     gitHubUrl: '',
   },
   {
     name: 'Jennifer Wang',
-    roles: ['Associate Head', 'Math 2'],
+    roles: ['Math 2 Associate Head'],
     imageUrl:
       JenniferWang,
     achievements: [],
-    education: `Massachusetts Institute of Technology, USA '25`,
+    education: `MIT '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
   {
     name: 'Dennis Chen',
-    roles: ['Associate Head', 'Math 1'],
+    roles: ['Math 1 Associate Head'],
     imageUrl:
       DennisChen,
     achievements: [],
@@ -453,8 +453,8 @@ const archive = [
     imageUrl:
       AndersOlsen,
     achievements: [],
-    education: `Massachusetts Institute of Technology, MIT '22`,
-    linkedInUrl: '',
+    education: `Math+CS @ MIT '22`,
+    linkedInUrl: 'https://www.linkedin.com/in/anders-olsen-1957b7224/',
     gitHubUrl: '',
   },
   {
@@ -463,7 +463,7 @@ const archive = [
     imageUrl:
       AlexIzmailov,
     achievements: [],
-    education: `Math+CS @ Brown University, USA '24`,
+    education: `Math+CS @ Brown '24`,
     linkedInUrl: 'https://www.linkedin.com/in/alizma0/',
     gitHubUrl: '',
   },
@@ -473,7 +473,7 @@ const archive = [
     imageUrl:
       SarahGleghorn,
     achievements: [],
-    education: `Skipton Girls' High School, United Kingdom '23`,
+    education: `Skipton Girls' High School, United Kingdom '20`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -483,7 +483,7 @@ const archive = [
     imageUrl:
       ValentioIverson,
     achievements: [],
-    education: `CS @ University of Waterloo, Canada '26`,
+    education: `CS @ University of Waterloo '26`,
     linkedInUrl: 'https://www.linkedin.com/in/valentio-iverson-0252771b1/',
     gitHubUrl: '',
   },
@@ -493,7 +493,7 @@ const archive = [
     imageUrl:
       SivaMuthupalaniappan,
     achievements: [],
-    education: `Harvard University, USA '23`,
+    education: `Math @ Harvard '23`,
     linkedInUrl: 'https://www.linkedin.com/in/smuthu1618/',
     gitHubUrl: '',
   },
@@ -503,7 +503,7 @@ const archive = [
     imageUrl:
       NishantBhakar,
     achievements: [],
-    education: `CS+Physics @ UC Berkeley, USA '24`,
+    education: `CS+Physics @ UC Berkeley '24`,
     linkedInUrl: 'https://www.linkedin.com/in/nishant-bhakar/',
     gitHubUrl: '',
   },
@@ -513,7 +513,7 @@ const archive = [
     imageUrl:
       LukeChoi,
     achievements: [],
-    education: `Brown University, USA '25`,
+    education: `Brown '25`,
     linkedInUrl: 'https://www.linkedin.com/in/luke-choi-6876281b5/',
     gitHubUrl: '',
   },
@@ -523,7 +523,7 @@ const archive = [
     imageUrl:
       JoshuaLee,
     achievements: [],
-    education: `Math+CS @ Massachusetts Institute of Technology, USA '25`,
+    education: `Math+CS @ MIT '25`,
     linkedInUrl: 'https://www.linkedin.com/in/joshua-lee-53400b1a0/',
     gitHubUrl: '',
   },
@@ -533,7 +533,7 @@ const archive = [
     imageUrl:
       SanjayNagaraj,
     achievements: [],
-    education: `CS @ Stanford University, USA '24`,
+    education: `CS @ Stanford '24`,
     linkedInUrl: 'https://www.linkedin.com/in/sanjay-nagaraj/',
     gitHubUrl: '',
   },
@@ -543,7 +543,7 @@ const archive = [
     imageUrl:
       NiyanthRao,
     achievements: [],
-    education: `Math+CS @ Carnegie Mellon University, USA '25`,
+    education: `Math+CS @ CMU '25`,
     linkedInUrl: 'https://www.linkedin.com/in/niyanthr/',
     gitHubUrl: '',
   },
@@ -553,9 +553,9 @@ const archive = [
     imageUrl:
       CharlesYu,
     achievements: [],
-    education: `Livingston High School, USA '22`,
+    education: `Princeton '26`,
     linkedInUrl: '',
-    gitHubUrl: '',
+    gitHubUrl: 'https://www.linkedin.com/in/charles-yu-35921819a/',
   },
   {
     name: 'Dylan Liu',
@@ -563,7 +563,7 @@ const archive = [
     imageUrl:
       DylanLiu,
     achievements: [],
-    education: `Math+CS @ Massachusetts Institute of Technology, USA '23`,
+    education: `Math+CS @ MIT '23`,
     linkedInUrl: 'https://www.linkedin.com/in/dylan-liu-9b4352193/',
     gitHubUrl: '',
   },
@@ -573,7 +573,7 @@ const archive = [
     imageUrl:
       AndrewYuan,
     achievements: [],
-    education: `Math+CS @ Yale University, USA '23`,
+    education: `Math+CS @ Yale '23`,
     linkedInUrl: 'https://www.linkedin.com/in/andrew-yuan-01702a156/',
     gitHubUrl: '',
   },
@@ -593,7 +593,7 @@ const archive = [
     imageUrl:
       SusiFeng,
     achievements: [],
-    education: `Enloe High School USA '21`,
+    education: `Enloe High School, USA '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -613,7 +613,7 @@ const archive = [
     imageUrl:
       PoonamSahoo,
     achievements: [],
-    education: `Acton Boxborough Regional High School, USA '21`,
+    education: `Math+CS @ Stanford '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -623,7 +623,7 @@ const archive = [
     imageUrl:
       SanjitBasker,
     achievements: [],
-    education: `CS @ Cornell University, USA '23`,
+    education: `CS @ Cornell '23`,
     linkedInUrl: 'https://www.linkedin.com/in/sanjit-basker/',
     gitHubUrl: '',
   },
@@ -633,7 +633,7 @@ const archive = [
     imageUrl:
       JinhaKim,
     achievements: [],
-    education: `CS @ Massachusetts Institute of Technology, USA '25`,
+    education: `CS @ MIT '25`,
     linkedInUrl: 'https://www.linkedin.com/in/jinha-kim-b587631a7/',
     gitHubUrl: '',
   },
@@ -653,7 +653,7 @@ const archive = [
     imageUrl:
       VismaySharan,
     achievements: [],
-    education: `Atlantic Community High School, USA '21`,
+    education: `Yale '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -663,7 +663,7 @@ const archive = [
     imageUrl:
       PeterLuo,
     achievements: [],
-    education: `Harvard University, USA '25`,
+    education: `Harvard '25`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -683,7 +683,7 @@ const archive = [
     imageUrl:
       JiyoungLee,
     achievements: [],
-    education: `Doctor of Pharmacy, Northeastern University, USA '22`,
+    education: `Doctor of Pharmacy, Northeastern University '22`,
     linkedInUrl: 'https://www.linkedin.com/in/jiyoung-gina-lee-994b74159/',
     gitHubUrl: '',
   },
