@@ -91,7 +91,7 @@ export default function Enroll() {
                       <div>
                         <h3 className="text-lg leading-6 font-medium text-gray-900">Course Selection</h3>
                         <p className="mt-1 text-sm text-gray-500">
-                          Visit <a className="text-decoration: underline text-cyan-600" href="https://everaise.org/courses/">this page</a> for more information on classes. Registration for our courses has closed. We aim to run these courses in the future and hope you will join us then.
+                          Visit <a className="text-decoration: underline text-cyan-600" href="https://everaise.org/courses/">this page</a> for more information on classes. Registration will end on June 12, 2022, so sign up soon!
                         </p>
                       </div>
 
