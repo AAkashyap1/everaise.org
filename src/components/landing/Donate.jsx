@@ -1,3 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faPaypal,
+} from '@fortawesome/free-brands-svg-icons'
+
 export default function Donate() {
   return (
     <div className="bg-gray-100">
@@ -20,8 +25,12 @@ export default function Donate() {
               />
               <button
                 type="submit"
-                className="shadow inline-flex items-center justify-center px-12 py-3 border border-transparent text-base font-medium rounded-md text-yei-primary-dark bg-cyan-600 text-white"
+                className="shadow inline-flex items-center justify-center px-12 py-3 border border-transparent text-base font-medium rounded-md text-yei-primary-dark bg-cyan-600 text-white hover:bg-cyan-700"
               >
+                <FontAwesomeIcon
+                  icon={faPaypal}
+                  className="w-5 h-5 mr-2"
+                />
                 Donate
               </button>
             </form>
