@@ -8,7 +8,7 @@ export default function Donate() {
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block mb-1">Want to support the Everaise Academy?</span>
+          <span className="block mb-1">Want to support Everaise Academy?</span>
           <span className="block">Donate to us!</span>
         </h2>
         <div className="mt-8 flex justify-center">

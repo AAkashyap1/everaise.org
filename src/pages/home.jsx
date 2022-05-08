@@ -23,22 +23,22 @@ const courseData = {
   'physics': {
     name: 'Physics Mechanics',
     icon: CalculatorIcon,
-    dates: 'June 21 - August 6',
+    dates: 'June 26 - July 30',
   },
   'biology': {
     name: 'Biology',
     icon: FingerPrintIcon,
-    dates: 'July 5 - August 6',
+    dates: 'June 26 - July 23',
   },
   'astronomy': {
     name: 'Astronomy',
     icon: GlobeIcon,
-    dates: 'July 12 - August 6',
+    dates: 'June 26 - July 30',
   },
   'math': {
     name: 'Math Competitions I',
     icon: VariableIcon,
-    dates: 'July 12 - August 6',
+    dates: 'June 26 - July 30',
   }
 }
 
