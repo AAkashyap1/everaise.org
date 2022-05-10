@@ -63,13 +63,8 @@ export default function Course() {
       <Nav />
       <div className="my-5 bg-white">
         <div className="contaier mx-auto pt-4 sm:pt-6 pb-12 px-4 max-w-7xl sm:px-6 lg:px-8">
-          <div className="mb-5 lg:mb-10 space-y-6 xl:max-w-none">
+          <div className="mb-6 space-y-6 xl:max-w-none">
             <div>
-              <h2 className="text-base font-semibold tracking-wide uppercase text-cyan-600">
-                <Link to="/enroll" className="text-cyan-600 hover:text-cyan-700">
-                  Enroll Now!
-                </Link>
-              </h2>
               <h2 className="font-extrabold text-gray-900 tracking-tight text-4xl">
                 {data.name}
               </h2>
@@ -77,6 +72,14 @@ export default function Course() {
             <p className="text-xl text-gray-500">
               {data.desc}
             </p>
+          </div>
+          <div className="w-48 rounded-md pb-10">
+            <Link
+              to="/enroll"
+              className="shadow-lg flex items-center justify-center border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 py-2.5 text-lg px-6"
+            >
+              Enroll Now &rarr;
+            </Link>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-4">
             <aside className="relative">

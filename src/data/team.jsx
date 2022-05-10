@@ -110,7 +110,7 @@ const current = [
     imageUrl:
       KrishJayarapu,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
-    education: `Johns Hopkins University '26`,
+    education: `Chemical+Biomolecular Engineering @ Johns Hopkins University '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },

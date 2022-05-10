@@ -1,7 +1,7 @@
 import Nav from '../components/global/navs/nav';
 import Footer from '../components/footer'
 import Page from '../components/page'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Physics from '../images/courses/Physics.jpg'
 import Math from '../images/courses/Math.jpg'
 import Biology from '../images/courses/Biology.jpg'
@@ -46,14 +46,14 @@ const catalog = [
   },
 ]
 
-const courses2021 = [
+const courses = [
   {
     course: 'Physics Mechanics',
     dates: 'June 26 - July 30, 2022',
     head: 'Ashmit Dutta / Evan Kim',
     hours: ['TBD'],
     cost: '$0',
-    status: 'upcoming',
+    status: 'enroll Now!',
   },
   {
     course: 'Biology',
@@ -61,7 +61,7 @@ const courses2021 = [
     head: 'Krish Jayarapu',
     hours: ['TBD'],
     cost: '$0',
-    status: 'upcoming',
+    status: 'enroll Now!',
   },
   {
     course: 'Astronomy',
@@ -69,7 +69,7 @@ const courses2021 = [
     head: 'Abhay Bestrapalli / Jeffrey Wei / Faraz Ahmed',
     hours: ['TBD'],
     cost: '$0',
-    status: 'upcoming',
+    status: 'enroll Now!',
   },
   {
     course: 'Math Competitions I',
@@ -77,7 +77,7 @@ const courses2021 = [
     head: 'Matthew Chen / Kiran Sun',
     hours: ['TBD'],
     cost: '$0',
-    status: 'upcoming',
+    status: 'enroll Now!',
   },
   {
     course: 'Physics Mechanics',
@@ -154,12 +154,19 @@ const courses2021 = [
 ]
 
 const statusStyles = {
-  upcoming: 'bg-green-100 text-green-800',
-  ongoing: 'bg-yellow-100 text-yellow-800',
-  ended: 'bg-red-100 text-red-800',
+  'enroll Now!': 'bg-green-100 text-green-800',
+  'ended': 'bg-red-100 text-red-800',
 }
 
 export default function Courses() {
+  const history = useHistory();
+
+  function enroll(course) {
+    console.log(course);
+    if (course.status.split(' ').length === 2) {
+      history.push('/enroll')
+    }
+  }
 
   return (
     <Page 
@@ -222,7 +229,7 @@ export default function Courses() {
               </div>
               <div className="xl:hidden"> 
                 <ul className="border border-gray-200 rounded-md mt-2 divide-y divide-gray-200 ">
-                  {courses2021.map((course) => (
+                  {courses.map((course) => (
                     <li key={course.course}>
                       <div className="block px-4 py-4 bg-white hover:bg-gray-50">
                         <span className="flex items-center space-x-4">
@@ -230,8 +237,10 @@ export default function Courses() {
                             <span className="flex flex-col text-gray-500 text-sm truncate">
                               <span className="truncate text-gray-900 font-medium">{course.course} 
                                 <span
+                                  onClick={() => enroll(course)}
                                   className={classNames(
                                     statusStyles[course.status],
+                                    course.status.split(' ').length === 2 ? 'cursor-pointer' : '',
                                     'ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
                                   )}
                                 >
@@ -285,7 +294,7 @@ export default function Courses() {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {courses2021.map((course) => (
+                        {courses.map((course) => (
                           <tr key={course.course} className="bg-white">
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                               <span className="text-gray-900 font-medium">{course.course} </span>
@@ -306,8 +315,10 @@ export default function Courses() {
                             </td>
                             <td className="text-right px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                               <span
+                                onClick={() => enroll(course)}
                                 className={classNames(
                                   statusStyles[course.status],
+                                  course.status.split(' ').length === 2 ? 'cursor-pointer' : '',
                                   'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
                                 )}
                               >
