@@ -69,7 +69,7 @@ const current = [
     roles: ['Program Co-founder', 'Program Coordinator', 'Executive Board Member'],
     imageUrl:
       PrestonFu,
-    achievements: ['USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll', 'Ross Mathematics Program Alumnus'],
+    achievements: ['2x USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll'],
     education: `EECS @ UC Berkeley '26`,
     linkedInUrl: 'https://www.linkedin.com/in/preston-fu/',
     gitHubUrl: '',
@@ -309,7 +309,7 @@ const current = [
     roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
     imageUrl:
       JustinHua,
-    achievements: ['Ross Mathematics Program Alumnus'],
+    achievements: ['Ross Mathematics Program'],
     education: `Hugh McRoberts Secondary School, Canada '21`,
     linkedInUrl: '',
     gitHubUrl: '',
@@ -340,7 +340,7 @@ const current = [
     imageUrl:
       AnujSakarda,
     achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
-    education: `Acton Boxborough Regional High School, USA '22`,
+    education: `Yale '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -443,7 +443,7 @@ const archive = [
     imageUrl:
       FionaAbneyMcPeek,
     achievements: [],
-    education: `University of Chicago Laboratory Schools, USA '23`,
+    education: `University of Chicago Laboratory Schools, USA '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },

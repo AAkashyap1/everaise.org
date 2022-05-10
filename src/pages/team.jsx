@@ -18,8 +18,8 @@ export default function Team() {
               <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Meet Our Team</h2>
               <p className="text-xl text-gray-500">
                 Our team is comprised of high school and college students who have been successful
-                in a variety of STEM fields, including math, physics, and biology. Interested in being part
-                of the team? Learn more {' '}<a href="https://docs.google.com/forms/d/e/1FAIpQLSeiQXl_vdbjcAFv4SRt1Zr8wZiylSfh4y30CMSVFr5r_ZQl3g/viewform" rel="noreferrer" target="_blank"><span className="text-indigo-500">here</span></a>!
+                in a variety of STEM fields, including math, physics, and biology. Interested in joining the
+                team? Learn more {' '}<a href="https://docs.google.com/forms/d/e/1FAIpQLSeiQXl_vdbjcAFv4SRt1Zr8wZiylSfh4y30CMSVFr5r_ZQl3g/viewform" rel="noreferrer" target="_blank"><span className="text-indigo-500">here</span></a>!
               </p>
             </div>
             <ul className="mt-6 flex jusify-center space-y-4 grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
@@ -103,13 +103,15 @@ export default function Team() {
                       <p className="text-2xl font-medium text-yei-secondary-main">
                         {person.name}
                       </p>
+                      <p className="font-normal text-base text-gray-700">
+                        {person.education}
+                      </p>
                       <div className="-mx-0.5 mt-2">
                         {person.roles.map((role) => (
                           <span
                             key={role}
-                            className={`${
-                              role.length > 23 ? 'text-xs' : 'text-sm'
-                            } whitespace-nowrap mx-0.5 my-0.5 inline-flex items-center px-2.5 py-0.5 rounded-full bg-gray-200 text-yei-secondary-main`}
+                            className={`${role.length > 23 ? 'text-xs' : 'text-sm'
+                              } whitespace-nowrap mx-0.5 my-0.5 inline-flex items-center px-2.5 py-0.5 rounded-full bg-gray-200 text-yei-secondary-main`}
                           >
                             {role}
                           </span>
