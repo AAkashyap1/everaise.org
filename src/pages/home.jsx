@@ -151,7 +151,7 @@ export default function Home() {
                     </div>
                   </div>) : 
                   (<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-lg leading-6 font-medium text-gray-900">Ended Courses</h2>
+                    <h2 className="text-lg leading-6 font-medium text-gray-900">Your Courses</h2>
                     <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                       {cards.map((card) => (
                         <div key={card.param} className="bg-white overflow-hidden shadow rounded-lg">
