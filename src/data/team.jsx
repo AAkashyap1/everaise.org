@@ -90,7 +90,7 @@ const current = [
     imageUrl:
       ChooiJeQin,
     achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
-    education: `Harvard '26`,
+    education: `Astrophysics @ Harvard '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -190,7 +190,7 @@ const current = [
     imageUrl:
       JeffreyHu,
     achievements: ['3x AIME qualifier', 'USAPhO qualifier', 'Santa Clara University Math Contest Honorable Mention'],
-    education: `Saratoga High School, USA '22`,
+    education: `CS @ University of Minnesota '26`,
     linkedInUrl: 'https://www.linkedin.com/in/jeffrey-hu-8473b918b/',
     gitHubUrl: '',
   },
@@ -250,7 +250,7 @@ const current = [
     imageUrl:
       AtharvaMahajan,
     achievements: ['Indian Physics Selection Camp (OCSC)', 'KVPY Top 50', 'RMO Qualifier'],
-    education: `Rankers International School, India '22`,
+    education: `Physics @ Oxford University '26`,
     linkedInUrl: 'https://www.linkedin.com/in/atharva-mahajan-5957b4212/',
     gitHubUrl: '',
   },
@@ -280,7 +280,7 @@ const current = [
     imageUrl:
       PeterPu,
     achievements: ['USABO Finalist (Top 20)', 'AMC 10 DHR', 'AMC 12 DHR'],
-    education: `University of Chicago Laboratory Schools, USA '22`,
+    education: `Bioengineering @ MIT '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
