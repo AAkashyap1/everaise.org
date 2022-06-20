@@ -7,14 +7,15 @@ import {
   GlobeIcon,
   VariableIcon,
 } from '@heroicons/react/solid'
+import courses from '../../../data/course/courses'
 
 export default function Cards() {
 
   const cards = [
-    ({ name: 'Physics Mechanics', to: 'physics', icon: CalculatorIcon, dates: 'June 21 - August 6' }),
-    ({ name: 'Biology', to: 'biology', icon: FingerPrintIcon, dates: 'July 5 - August 6' }),
-    ({ name: 'Astronomy', to: 'astronomy', icon: GlobeIcon, dates: 'July 12 - August 6' }),
-    ({ name: 'Math Competitions I', to: 'math', icon: VariableIcon, dates: 'July 12 - August 6' }),
+    ({ name: 'Physics Mechanics', to: 'physics', icon: CalculatorIcon }),
+    ({ name: 'Biology', to: 'biology', icon: FingerPrintIcon }),
+    ({ name: 'Astronomy', to: 'astronomy', icon: GlobeIcon }),
+    ({ name: 'Math Competitions I', to: 'math', icon: VariableIcon }),
   ]
 
   return (
@@ -33,7 +34,7 @@ export default function Cards() {
                     <dl>
                       <dt className="text-base font-medium text-gray-900 truncate">{card.name}</dt>
                       <dd>
-                        <div className="text-sm font-medium text-gray-600">{card.dates}</div>
+                        <div className="text-sm font-medium text-gray-600">{courses[card.to].dates}</div>
                       </dd>
                     </dl>
                   </div>
