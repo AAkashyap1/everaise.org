@@ -129,7 +129,7 @@ const current = [
     roles: ['Director of Technology'],
     imageUrl:
       AnanthKashyap,
-    achievements: ['2x AIME Qualifier', 'Research Intern at CMU School of Computer Science', 'Congressional App Challenge Winner'],
+    achievements: ['Research Assistant at Carnegie Mellon Robotics Institute', '2x AIME Qualifier', 'Congressional App Challenge Winner'],
     education: `Fox Chapel Area High School, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
     gitHubUrl: 'https://github.com/AAkashyap1',
