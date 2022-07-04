@@ -3,34 +3,36 @@ import { database } from '../../firebase'
 import printError from '../../utility/printError'
 import { useParams } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
-
+/*
 import {
   ChartSquareBarIcon,
 } from '@heroicons/react/outline'
+*/
 import {
   FireIcon,
 } from '@heroicons/react/solid'
-
+/*
 const indices = {
   'physics': 0,
   'biology': 1,
   'astronomy': 2,
   'math': 3,
 }
-
+*/
 export default function Cards() {
   const { course } = useParams()
   const { currentUser } = useAuth()
   const [cards, setCards] = useState([]);
-
+  /*
   async function getPoints(id) {
     let tempPoints = await database.users.doc(id).collection('courses').doc(course).get();
     return (tempPoints.data().points);
   }
-  
+  */
   async function getCards() {
     try {
       const points = await database.users.doc(currentUser.email).collection('courses').doc(course).get();
+      /*
       const users = await database.users.get();
       let rank = 1;
       let total = 0;
@@ -43,6 +45,7 @@ export default function Cards() {
           }
         }
       }
+      */
       setCards(
         [
           {
@@ -50,11 +53,13 @@ export default function Cards() {
             icon: FireIcon,
             amount: points.data().points
           },
+          /*
           {
             name: 'Rank', 
             icon: ChartSquareBarIcon,
             amount: rank + '/' + total
           },
+          */
         ]
       )
     } catch (err) {

@@ -17,7 +17,9 @@ import SideNav from '../components/global/navs/SideNav'
 import courseData from '../data/launch/courseData'
 import Page from '../components/page'
 import Cards from '../components/dashboard/cards'
+/*
 import Leaders from '../components/dashboard/leaders'
+*/
 
 const statusStyles = {
   'complete': 'bg-green-100 text-green-800',
@@ -362,7 +364,9 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
+              {/*
               <Leaders />
+              */}
             </div>
           </main>
         </div>
