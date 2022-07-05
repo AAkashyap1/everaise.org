@@ -282,7 +282,7 @@ export default function Nav() {
                           static
                           className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
-                          <Menu.Item>
+                          {currentUser && <Menu.Item>
                             {({ active }) => (
                               <Link
                                 to="/profile"
@@ -294,8 +294,8 @@ export default function Nav() {
                                 View Profile
                               </Link>
                             )}
-                          </Menu.Item>
-                          <Menu.Item>
+                          </Menu.Item>}
+                          {currentUser && <Menu.Item>
                             {({ active }) => (
                               <Link
                                 to="/enroll"
@@ -307,8 +307,8 @@ export default function Nav() {
                                 My Courses
                               </Link>
                             )}
-                          </Menu.Item>
-                          <Menu.Item>
+                          </Menu.Item>}
+                          {currentUser && <Menu.Item>
                             {({ active }) => (
                               <Link
                                 to="/home"
@@ -320,7 +320,7 @@ export default function Nav() {
                                 Course Home
                               </Link>
                             )}
-                          </Menu.Item>
+                          </Menu.Item>}
                           {admin && 
                             <Menu.Item>
                               {({ active }) => (
@@ -336,7 +336,7 @@ export default function Nav() {
                               )}
                             </ Menu.Item>
                           }
-                          {currentUser && 
+                          {currentUser ?
                             <Menu.Item>
                               {({ active }) => (
                                 <button
@@ -347,6 +347,19 @@ export default function Nav() {
                                   )}
                                 >
                                   Logout
+                                </button>
+                              )}
+                            </Menu.Item> :
+                            <Menu.Item>
+                              {({ active }) => (
+                                <button
+                                  onClick={handleLogout}
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                                  )}
+                                >
+                                  Sign In
                                 </button>
                               )}
                             </Menu.Item>

@@ -89,7 +89,7 @@ export default function LaunchNav(props) {
                     static
                     className="absolute origin-top-left md:origin-top-right md:right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
-                    <Menu.Item>
+                    {currentUser && <Menu.Item>
                       {({ active }) => (
                         <Link
                           to="/profile"
@@ -101,8 +101,8 @@ export default function LaunchNav(props) {
                           View Profile
                         </Link>
                       )}
-                    </Menu.Item>
-                    <Menu.Item>
+                    </Menu.Item>}
+                    {currentUser && <Menu.Item>
                       {({ active }) => (
                         <Link
                           to="/enroll"
@@ -114,8 +114,8 @@ export default function LaunchNav(props) {
                           My Courses
                         </Link>
                       )}
-                    </Menu.Item>
-                    <Menu.Item>
+                    </Menu.Item>}
+                    {currentUser && <Menu.Item>
                       {({ active }) => (
                         <Link
                           to="/home"
@@ -127,7 +127,7 @@ export default function LaunchNav(props) {
                           Course Home
                         </Link>
                       )}
-                    </Menu.Item>
+                    </Menu.Item>}
                     {admin && 
                       <Menu.Item>
                         {({ active }) => (
@@ -143,19 +143,34 @@ export default function LaunchNav(props) {
                         )}
                       </ Menu.Item>
                     }
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          onClick={handleLogout}
-                          className={classNames(
-                            active ? 'bg-gray-100' : '',
-                            'text-left block px-4 w-full py-2 text-sm text-gray-700'
-                          )}
-                        >
-                          Logout
-                        </button>
-                      )}
-                    </Menu.Item>
+                    {currentUser ?
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            onClick={handleLogout}
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            Logout
+                          </button>
+                        )}
+                      </Menu.Item> :
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            onClick={handleLogout}
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            Sign In
+                          </button>
+                        )}
+                      </Menu.Item>
+                    }
                   </Menu.Items>
                 </Transition>
               </>
