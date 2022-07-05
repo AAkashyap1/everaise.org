@@ -352,15 +352,15 @@ export default function Nav() {
                             </Menu.Item> :
                             <Menu.Item>
                               {({ active }) => (
-                                <button
-                                  onClick={handleLogout}
+                                <Link
+                                  to="/sign-in-student"
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',
-                                    'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                                    'block px-4 py-2 text-sm text-gray-700'
                                   )}
                                 >
-                                  Sign In
-                                </button>
+                                  Login
+                                </Link>
                               )}
                             </Menu.Item>
                           }
