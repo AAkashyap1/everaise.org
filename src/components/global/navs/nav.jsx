@@ -336,19 +336,21 @@ export default function Nav() {
                               )}
                             </ Menu.Item>
                           }
-                          <Menu.Item>
-                            {({ active }) => (
-                              <button
-                                onClick={handleLogout}
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'text-left block px-4 w-full py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                Logout
-                              </button>
-                            )}
-                          </Menu.Item>
+                          {currentUser && 
+                            <Menu.Item>
+                              {({ active }) => (
+                                <button
+                                  onClick={handleLogout}
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                                  )}
+                                >
+                                  Logout
+                                </button>
+                              )}
+                            </Menu.Item>
+                          }
                         </Menu.Items>
                       </Transition>
                     </>
