@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Link,/* useHistory, useParams */} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Dialog, Transition } from '@headlessui/react'
 import Launch from '../../../images/launch.png'
 import {
@@ -11,16 +11,13 @@ function classNames(...classes) {
 }
 
 export default function SideNav(props) {
-  /*
   const history = useHistory();
-  const { course } = useParams();
   
-  function RefreshModule(event, moduleVal, id) {
-    event.preventDefault()
-    history.push(`/homework/${course}/${moduleVal}/${id}`)
-    history.go(0)
+  function RefreshModule(event, href) {
+    event.preventDefault();
+    history.push(href);
+    history.go(0);
   }
-  */
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
@@ -253,17 +250,17 @@ export default function SideNav(props) {
                           <item.icon className="mr-4 h-6 w-6 text-cyan-200" aria-hidden="true" />
                           {item.name}
                         </a> :
-                        <Link
+                        <button
                           key={item.name}
-                          to={item.href}
+                          onClick={e => RefreshModule(e, item.href)}
                           className={classNames(
                             item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
-                            'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                            'w-full group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
                           )}
                         >
                           <item.icon className="mr-4 h-6 w-6 text-cyan-200" aria-hidden="true" />
                           {item.name}
-                        </Link>
+                        </button>
                   ))}
                 </div>
               </div>

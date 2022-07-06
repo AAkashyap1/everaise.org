@@ -14,6 +14,8 @@ import Timeline from '../components/homework/timeline'
 import { database } from '../firebase'
 import GetDate from '../utility/date'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
+import { ClipboardIcon } from '@heroicons/react/solid'
+import printError from '../utility/printError'
 
 export default function Homework() {
   const { course } = useParams();
@@ -23,6 +25,28 @@ export default function Homework() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [assignment, setAssignment] = useState({});
   const [title, setTitle] = useState('');
+  const [moduleNav, setModuleNav] = useState([]);
+
+  async function getModules() {
+    let tempModules = [];
+    try {
+      const moduleData = await courseData[course].assignmentData.get();
+      for (const md of moduleData.docs) {
+        const name = md.data().name;
+        const assignments = await courseData[course].assignmentData.doc(name).collection('assignments').get();
+        const redirectId = assignments.docs[0].id
+        tempModules.push({ name: name, href: `/homework/${course}/${name}/${redirectId}`, icon: ClipboardIcon, current: module === name });
+      }
+      setModuleNav(tempModules);
+    } catch (err) {
+      printError(err)
+    }
+  }
+
+  useEffect(() => {
+    getModules();
+    //eslint-disable-next-line
+  })
 
   const assignmentData = useDocumentData(courseData[course].assignmentData.doc(module).collection('assignments').doc(assignmentId))[0];
   const userAssignment = useDocumentData(database.users.doc(currentUser.email).collection('courses').doc(course).collection('modules').doc(module).collection('assignments').doc(assignmentId))[0];
@@ -82,7 +106,7 @@ export default function Homework() {
           sidebarOpen={sidebarOpen} 
           setSidebarOpen={setSidebarOpen} 
           navigation={homeworkNavigation}
-          secondaryNavigation={[]}
+          secondaryNavigation={moduleNav}
         />
         <div className="flex-1 overflow-auto focus:outline-none">
           <div className="block lg:hidden relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:border-none">
