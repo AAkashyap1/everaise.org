@@ -126,7 +126,7 @@ const current = [
   },
   {
     name: 'Ananth Kashyap',
-    roles: ['Director of Technology'],
+    roles: ['Director of Technology', 'Executive Board Member'],
     imageUrl:
       AnanthKashyap,
     achievements: ['Research Assistant at Carnegie Mellon Robotics Institute', '2x AIME Qualifier', 'Congressional App Challenge Winner'],
@@ -299,7 +299,7 @@ const current = [
     roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
     imageUrl:
       IvyZheng,
-    achievements: ['2x AIME Qualifier', 'AMC 10 Distinguished Honor Roll'],
+    achievements: ['2x USAJMO Qualifier', '3x AMC 10 Distinguished Honor Roll'],
     education: `Lexington High School, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
@@ -319,7 +319,7 @@ const current = [
     roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
     imageUrl:
       GaryHu,
-    achievements: ['AIME Qualifier', 'AMC 10 Distinction', 'CMIMC Algebra Number Theory Top 50'],
+    achievements: ['CMIMC 3rd Geometry & 4th Overall', 'Canada/USA Mathcamp 2022'],
     education: `Montclair Kimberley Academy, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
@@ -349,8 +349,38 @@ const current = [
     roles: ['Biology', 'Curriculum Developer'],
     imageUrl:
       MuhammedYaseen,
-    achievements: ['UAE IBO Team Selection Bronze', 'BBO Bronze'],
+    achievements: ['UAE IBO Team Selection Bronze', 'BBO Gold', 'Gulf Medical University HS Biomedial Program Admittee'],
     education: `GEMS Our Own Indian School Dubai, UAE '23`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Yushu Shah',
+    roles: ['Astronomy', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      MuhammedYaseen,
+    achievements: [],
+    education: `Thomas Jefferson High School for Science and Technology, USA '24`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Aiden Pan',
+    roles: ['Outreach'],
+    imageUrl:
+      MuhammedYaseen,
+    achievements: [],
+    education: `Great Neck South High School, USA '24`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Gary Hu',
+    roles: ['Outreach'],
+    imageUrl:
+      MuhammedYaseen,
+    achievements: [],
+    education: `Montclair Kimberley Academy, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
