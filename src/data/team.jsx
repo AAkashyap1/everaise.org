@@ -27,6 +27,8 @@ import JeffreyHu from '../images/team/JeffreyHu.jpg'
 import LohithTummala from '../images/team/LohithTummala.png'
 import EvanKim from '../images/team/EvanKim.png'
 import MuhammedYaseen from '../images/team/MuhammedYaseen.png'
+import YushuZhang from '../images/team/YushuZhang.jpg'
+import AidenPan from '../images/team/AidenPan.png'
 
 import BrianLee from '../images/team/BrianLee.png'
 import WilliamShi from '../images/team/WilliamShi.png'
@@ -65,32 +67,12 @@ import JiyoungLee from '../images/team/JiyoungLee.png'
 
 const current = [
   {
-    name: 'Preston Fu',
-    roles: ['Program Co-founder', 'Program Coordinator', 'Executive Board Member'],
-    imageUrl:
-      PrestonFu,
-    achievements: ['2x USA(J)MO Qualifier', 'USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll'],
-    education: `EECS @ UC Berkeley '26`,
-    linkedInUrl: 'https://www.linkedin.com/in/preston-fu/',
-    gitHubUrl: '',
-  },
-  {
     name: 'Matthew Chen',
     roles: ['Head of Math', 'Executive Board Member'],
     imageUrl:
       MatthewChen,
     achievements: ['2x USA(J)MO Qualifier', 'PUMaC A Algebra 8th Place, Individual Finals 20th Place', 'USEMO Distinction', 'USAPHO Qualifier'],
     education: `Wayzata High School, USA '23`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Chooi Je Qin',
-    roles: ['Head of Astronomy', 'Executive Board Member'],
-    imageUrl:
-      ChooiJeQin,
-    achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
-    education: `Astrophysics @ Harvard '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -149,9 +131,9 @@ const current = [
     roles: ['Associate Head of Astronomy'],
     imageUrl:
       FarazAhmedSiddiqui,
-    achievements: ['Physics Unlimited Explorer Competition (PUEC) Bronze Award', 'OPhO Invitational Qualifier'],
+    achievements: ['International Linguistics Olympiad 2022', '2x IOAA TST Qualifier', 'NAO Qualifier'],
     education: `Holy Family High School, India '24`,
-    linkedInUrl: 'https://www.linkedin.com/in/faraz-ahmed-siddiqui-73a3ba216/',
+    linkedInUrl: 'https://in.linkedin.com/in/faraz-ahmed-s-73a3ba216',
     gitHubUrl: '',
   },
   {
@@ -175,86 +157,6 @@ const current = [
     gitHubUrl: '',
   },
   {
-    name: 'Lohith Tummala',
-    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      LohithTummala,
-    achievements: ['USA(J)MO Qualifier', '2x AMC Distinguished Honor Roll', '2x MathCounts National Qualifier'],
-    education: `Electrical and Computer Engineering @ CMU '25`,
-    linkedInUrl: 'https://www.linkedin.com/in/ltummala/',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Jeffrey Hu',
-    roles: ['Math 1', 'Physics', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      JeffreyHu,
-    achievements: ['3x AIME qualifier', 'USAPhO qualifier', 'Santa Clara University Math Contest Honorable Mention'],
-    education: `CS @ University of Minnesota '26`,
-    linkedInUrl: 'https://www.linkedin.com/in/jeffrey-hu-8473b918b/',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Albert Ye',
-    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      AlbertYe,
-    achievements: ['3x AIME Qualifier', 'AMC 10 Distinguished Honor Roll', 'USAMTS Leaderboard'],
-    education: `Math+CS @ UC Berkeley '26`,
-    linkedInUrl: 'https://www.linkedin.com/in/albert-ye-587aa81a2/',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Nathan Ma',
-    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      NathanMa,
-    achievements: ['2x AMC 10 Distinguished Honor Roll', '2x AIME Qualifier', 'MathCounts Nationals Qualifier'],
-    education: `Stevenson High School, USA '23`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Victor Li',
-    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      VictorLi,
-    achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
-    education: `MIT '25`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Haoli Yin',
-    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      HaoliYin,
-    achievements: ['USABO Semifinalist', '2x Science Olympiad National Biology Event Medalist', 'Global Hackathon Top 5'],
-    education: `CS+Pre-Med @ Vanderbilt University '25`,
-    linkedInUrl: 'https://www.linkedin.com/in/haoliyin/',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Yaman Acharya',
-    roles: ['Astronomy', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      YamanAcharya,
-    achievements: ['IAO Qualifier', 'NAO Finalist', 'Intern at Nepal Astronomical Society (NASO)'],
-    education: `Vishwa Adarsha College, Nepal '22`,
-    linkedInUrl: 'https://www.linkedin.com/in/yaman-acharya-994250219/',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Atharva Mahajan',
-    roles: ['Physics', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      AtharvaMahajan,
-    achievements: ['Indian Physics Selection Camp (OCSC)', 'KVPY Top 50', 'RMO Qualifier'],
-    education: `Physics @ Oxford University '26`,
-    linkedInUrl: 'https://www.linkedin.com/in/atharva-mahajan-5957b4212/',
-    gitHubUrl: '',
-  },
-  {
     name: 'Aniruddha Sharma',
     roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
     imageUrl:
@@ -265,52 +167,12 @@ const current = [
     gitHubUrl: '',
   },
   {
-    name: 'Anurag Chittawar',
-    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      AnuragChittawar,
-    achievements: ['2x INBO gold medalist', 'AIR 52 in KVPY SA'],
-    education: `Biology @ Indian Institute of Science '25`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Peter Pu',
-    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      PeterPu,
-    achievements: ['USABO Finalist (Top 20)', 'AMC 10 DHR', 'AMC 12 DHR'],
-    education: `Bioengineering @ MIT '26`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Derek Chen',
-    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      DerekChen,
-    achievements: ['2021 USABO Team Member', '5x AIME Qualifier', 'USAPhO Honorable Mention', 'PROMYS Alumnus'],
-    education: `Belmont High School, USA '22`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
     name: 'Ivy Zheng',
     roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
     imageUrl:
       IvyZheng,
     achievements: ['2x USAJMO Qualifier', '3x AMC 10 Distinguished Honor Roll'],
     education: `Lexington High School, USA '24`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Justin Hua',
-    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      JustinHua,
-    achievements: ['Ross Mathematics Program'],
-    education: `Hugh McRoberts Secondary School, Canada '21`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -325,26 +187,6 @@ const current = [
     gitHubUrl: '',
   },
   {
-    name: 'Olivia Li',
-    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      OliviaLi,
-    achievements: ['AIME Qualifier', 'Math Prize for Girls Alumnus', 'USACO Silver Qualifier'],
-    education: `Dougherty Valley High School, USA '23`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Anuj Sakarda',
-    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
-    imageUrl:
-      AnujSakarda,
-    achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
-    education: `Yale '26`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
     name: 'Muhammed Yaseen',
     roles: ['Biology', 'Curriculum Developer'],
     imageUrl:
@@ -355,11 +197,11 @@ const current = [
     gitHubUrl: '',
   },
   {
-    name: 'Yushu Shah',
+    name: 'Yushu Zhang',
     roles: ['Astronomy', 'Curriculum Developer', 'Instructor'],
     imageUrl:
-      MuhammedYaseen,
-    achievements: [],
+      YushuZhang,
+    achievements: ['NAC Qualifier', '2x AIME Qualifier'],
     education: `Thomas Jefferson High School for Science and Technology, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
@@ -368,19 +210,9 @@ const current = [
     name: 'Aiden Pan',
     roles: ['Outreach'],
     imageUrl:
-      MuhammedYaseen,
+      AidenPan,
     achievements: [],
     education: `Great Neck South High School, USA '24`,
-    linkedInUrl: '',
-    gitHubUrl: '',
-  },
-  {
-    name: 'Gary Hu',
-    roles: ['Outreach'],
-    imageUrl:
-      MuhammedYaseen,
-    achievements: [],
-    education: `Montclair Kimberley Academy, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -388,8 +220,18 @@ const current = [
 
 const archive = [
   {
+    name: 'Preston Fu',
+    roles: ['Co-founder', 'Program Coordinator'],
+    imageUrl:
+      PrestonFu,
+    achievements: ['2x USA(J)MO Qualifier', '2x USAPhO Honorable Mention', 'Canadian Open Mathematics Challenge International Honor Roll'],
+    education: `EECS @ UC Berkeley '26`,
+    linkedInUrl: 'https://www.linkedin.com/in/preston-fu/',
+    gitHubUrl: '',
+  },
+  {
     name: 'Brian Lee',
-    roles: ['Co-founder', 'Physics Co-head', 'Finance'],
+    roles: ['Co-founder', 'Co-head of Physics', 'Finance'],
     imageUrl:
       BrianLee,
     achievements: [],
@@ -399,7 +241,7 @@ const archive = [
   },
   {
     name: 'William Shi',
-    roles: ['Co-founder', 'Physics Co-head'],
+    roles: ['Co-founder', 'Co-head of Physics'],
     imageUrl:
       WilliamShi,
     achievements: [],
@@ -409,7 +251,7 @@ const archive = [
   },
   {
     name: 'Saadiq Shaikh',
-    roles: ['Co-founder', 'Math 1 Head'],
+    roles: ['Co-founder', 'Head of Math 1'],
     imageUrl:
       SaadiqShaikh,
     achievements: [],
@@ -419,7 +261,7 @@ const archive = [
   },
   {
     name: 'Greg Pylypovych',
-    roles: ['Co-founder', 'Astronomy Head'],
+    roles: ['Co-founder', 'Head of Astronomy'],
     imageUrl:
       GregPylypovych,
     achievements: [],
@@ -429,7 +271,7 @@ const archive = [
   },
   {
     name: 'Justin Shan',
-    roles: ['Founding Member', 'Biology Head'],
+    roles: ['Founding Member', 'Head of Biology'],
     imageUrl:
       JustinShan,
     achievements: [],
@@ -439,7 +281,7 @@ const archive = [
   },
   {
     name: 'Andrew Wu',
-    roles: ['Founding Member', 'Math 2 Head', 'Outreach Lead'],
+    roles: ['Founding Member', 'Head of Math 2', 'Outreach Lead'],
     imageUrl:
       AndrewWu,
     achievements: [],
@@ -449,7 +291,7 @@ const archive = [
   },
   {
     name: 'Jennifer Wang',
-    roles: ['Math 2 Associate Head'],
+    roles: ['Associate Head of Math 2'],
     imageUrl:
       JenniferWang,
     achievements: [],
@@ -458,8 +300,18 @@ const archive = [
     gitHubUrl: '',
   },
   {
+    name: 'Chooi Je Qin',
+    roles: ['Head of Astronomy'],
+    imageUrl:
+      ChooiJeQin,
+    achievements: ['IESO 2018', 'IAO 2019', 'IOI 2021', 'IPhO 2021', 'IOAA 2021'],
+    education: `Astrophysics @ Harvard '26`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
     name: 'Dennis Chen',
-    roles: ['Math 1 Associate Head'],
+    roles: ['Associate Head of Math 1'],
     imageUrl:
       DennisChen,
     achievements: [],
@@ -488,6 +340,26 @@ const archive = [
     gitHubUrl: '',
   },
   {
+    name: 'Lohith Tummala',
+    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      LohithTummala,
+    achievements: ['USA(J)MO Qualifier', '2x AMC Distinguished Honor Roll', '2x MathCounts National Qualifier'],
+    education: `Electrical and Computer Engineering @ CMU '25`,
+    linkedInUrl: 'https://www.linkedin.com/in/ltummala/',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Jeffrey Hu',
+    roles: ['Math 1', 'Physics', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      JeffreyHu,
+    achievements: ['3x AIME qualifier', 'USAPhO qualifier', 'Santa Clara University Math Contest Honorable Mention'],
+    education: `CS @ University of Minnesota '26`,
+    linkedInUrl: 'https://www.linkedin.com/in/jeffrey-hu-8473b918b/',
+    gitHubUrl: '',
+  },
+  {
     name: 'Alex Izmailov',
     roles: ['Math 2', 'Curriculum Developer', 'Instructor'],
     imageUrl:
@@ -503,7 +375,7 @@ const archive = [
     imageUrl:
       SarahGleghorn,
     achievements: [],
-    education: `Skipton Girls' High School, United Kingdom '20`,
+    education: `Math @ Cambridge '24`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -568,6 +440,16 @@ const archive = [
     gitHubUrl: '',
   },
   {
+    name: 'Albert Ye',
+    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      AlbertYe,
+    achievements: ['3x AIME Qualifier', 'AMC 10 Distinguished Honor Roll', 'USAMTS Leaderboard'],
+    education: `Math+CS @ UC Berkeley '26`,
+    linkedInUrl: 'https://www.linkedin.com/in/albert-ye-587aa81a2/',
+    gitHubUrl: '',
+  },
+  {
     name: 'Niyanth Rao',
     roles: ['Math 2', 'Curriculum Developer', 'Instructor'],
     imageUrl:
@@ -584,8 +466,8 @@ const archive = [
       CharlesYu,
     achievements: [],
     education: `Princeton '26`,
-    linkedInUrl: '',
-    gitHubUrl: 'https://www.linkedin.com/in/charles-yu-35921819a/',
+    linkedInUrl: 'https://www.linkedin.com/in/charles-yu-35921819a/',
+    gitHubUrl: '',
   },
   {
     name: 'Dylan Liu',
@@ -613,7 +495,97 @@ const archive = [
     imageUrl:
       JasonCheah,
     achievements: [],
-    education: `Thomas Jefferson High School for Science and Technology, USA '21`,
+    education: `College of William & Mary '25`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Peter Pu',
+    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      PeterPu,
+    achievements: ['USABO Finalist (Top 20)', 'AMC 10 DHR', 'AMC 12 DHR'],
+    education: `Bioengineering @ MIT '26`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Nathan Ma',
+    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      NathanMa,
+    achievements: ['2x AMC 10 Distinguished Honor Roll', '2x AIME Qualifier', 'MathCounts Nationals Qualifier'],
+    education: `Stevenson High School, USA '23`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Atharva Mahajan',
+    roles: ['Physics', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      AtharvaMahajan,
+    achievements: ['Indian Physics Selection Camp (OCSC)', 'KVPY Top 50', 'RMO Qualifier'],
+    education: `Physics @ Oxford University '26`,
+    linkedInUrl: 'https://www.linkedin.com/in/atharva-mahajan-5957b4212/',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Victor Li',
+    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      VictorLi,
+    achievements: ['2020 USABO Top 20 Finalist', '2018 USESO Finalist'],
+    education: `MIT '25`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Justin Hua',
+    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      JustinHua,
+    achievements: ['Ross Mathematics Program'],
+    education: `Hugh McRoberts Secondary School, Canada '21`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Haoli Yin',
+    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      HaoliYin,
+    achievements: ['USABO Semifinalist', '2x Science Olympiad National Biology Event Medalist', 'Global Hackathon Top 5'],
+    education: `CS+Pre-Med @ Vanderbilt University '25`,
+    linkedInUrl: 'https://www.linkedin.com/in/haoliyin/',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Yaman Acharya',
+    roles: ['Astronomy', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      YamanAcharya,
+    achievements: ['IAO Qualifier', 'NAO Finalist', 'Intern at Nepal Astronomical Society (NASO)'],
+    education: `Vishwa Adarsha College, Nepal '22`,
+    linkedInUrl: 'https://www.linkedin.com/in/yaman-acharya-994250219/',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Anurag Chittawar',
+    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      AnuragChittawar,
+    achievements: ['2x INBO gold medalist', 'AIR 52 in KVPY SA'],
+    education: `Biology @ Indian Institute of Science '25`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Anuj Sakarda',
+    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      AnujSakarda,
+    achievements: ['USAMO Qualifier', 'MIT PRIMES Researcher', 'HCSSIM Alumnus', 'PROMYS Mathematics Program'],
+    education: `Yale '26`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -644,6 +616,16 @@ const archive = [
       PoonamSahoo,
     achievements: [],
     education: `Math+CS @ Stanford '25`,
+    linkedInUrl: 'https://www.linkedin.com/in/poonam-sahoo/',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Olivia Li',
+    roles: ['Math 1', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      OliviaLi,
+    achievements: ['AIME Qualifier', 'Math Prize for Girls Alumnus', 'USACO Silver Qualifier'],
+    education: `Dougherty Valley High School, USA '23`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
@@ -673,7 +655,17 @@ const archive = [
     imageUrl:
       JessicaHe,
     achievements: [],
-    education: `Phillips Academy Andover, USA '22`,
+    education: `MIT '26`,
+    linkedInUrl: '',
+    gitHubUrl: '',
+  },
+  {
+    name: 'Derek Chen',
+    roles: ['Biology', 'Curriculum Developer', 'Instructor'],
+    imageUrl:
+      DerekChen,
+    achievements: ['2021 USABO Team Member', '5x AIME Qualifier', 'USAPhO Honorable Mention', 'PROMYS Alumnus'],
+    education: `Belmont High School, USA '22`,
     linkedInUrl: '',
     gitHubUrl: '',
   },
