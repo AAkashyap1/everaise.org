@@ -87,6 +87,16 @@ const current = [
     gitHubUrl: '',
   },
   {
+    name: 'Ananth Kashyap',
+    roles: ['Director of Technology', 'Executive Board Member'],
+    imageUrl:
+      AnanthKashyap,
+    achievements: ['Research Assistant at Carnegie Mellon Robotics Institute', '2x AIME Qualifier', 'Congressional App Challenge Winner'],
+    education: `Fox Chapel Area High School, USA '23`,
+    linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
+    gitHubUrl: 'https://github.com/AAkashyap1',
+  },
+  {
     name: 'Krish Jayarapu',
     roles: ['Head of Biology', 'Executive Board Member'],
     imageUrl:
@@ -105,16 +115,6 @@ const current = [
     education: `St. George's School, Canada '24`,
     linkedInUrl: '',
     gitHubUrl: '',
-  },
-  {
-    name: 'Ananth Kashyap',
-    roles: ['Director of Technology', 'Executive Board Member'],
-    imageUrl:
-      AnanthKashyap,
-    achievements: ['Research Assistant at Carnegie Mellon Robotics Institute', '2x AIME Qualifier', 'Congressional App Challenge Winner'],
-    education: `Fox Chapel Area High School, USA '23`,
-    linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
-    gitHubUrl: 'https://github.com/AAkashyap1',
   },
   {
     name: 'Abhay Bestrapalli',
