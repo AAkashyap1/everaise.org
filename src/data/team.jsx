@@ -68,7 +68,7 @@ import JiyoungLee from '../images/team/JiyoungLee.png'
 const current = [
   {
     name: 'Matthew Chen',
-    roles: ['Head of Math', 'Executive Board Member'],
+    roles: ['Head of Math', 'Executive Team Member'],
     imageUrl:
       MatthewChen,
     achievements: ['2x USA(J)MO Qualifier', 'PUMaC A Algebra 8th Place, Individual Finals 20th Place', 'USEMO Distinction', 'USAPHO Qualifier'],
@@ -78,7 +78,7 @@ const current = [
   },
   {
     name: 'Ashmit Dutta',
-    roles: ['Head of Physics', 'Executive Board Member'],
+    roles: ['Head of Physics', 'Executive Team Member'],
     imageUrl:
       AshmitDutta,
     achievements: ['Thomas Jefferson Physics Olympiad (TJPhO) Second Place', 'Physics Unlimited Explorer Competition (PUEC) Special Award', 'Online Physics Olympiad (OPhO) Problem Writer'],
@@ -87,8 +87,18 @@ const current = [
     gitHubUrl: '',
   },
   {
+    name: 'Ananth Kashyap',
+    roles: ['Director of Technology', 'Executive Team Member'],
+    imageUrl:
+      AnanthKashyap,
+    achievements: ['Robotics Researcher at Carnegie Mellon University', '2x AIME Qualifier', '2022 AP Computer Science A Exam Perfect Scorer'],
+    education: `Fox Chapel Area High School, USA '23`,
+    linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
+    gitHubUrl: 'https://github.com/AAkashyap1',
+  },
+  {
     name: 'Krish Jayarapu',
-    roles: ['Head of Biology', 'Executive Board Member'],
+    roles: ['Head of Biology', 'Executive Team Member'],
     imageUrl:
       KrishJayarapu,
     achievements: ['USABO Honorable Mention, Semifinalist', 'Science Olympiad National Medalist', 'Researcher at IU'],
@@ -98,23 +108,13 @@ const current = [
   },
   {
     name: 'Kiran Sun',
-    roles: ['Associate Head of Math', 'Executive Board Member'],
+    roles: ['Associate Head of Math', 'Executive Team Member'],
     imageUrl:
       KiranSun,
     achievements: ['Canadian Junior Mathematical Olympiad (CJMO) Qualifier', '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier', 'AIME Qualifier'],
     education: `St. George's School, Canada '24`,
     linkedInUrl: '',
     gitHubUrl: '',
-  },
-  {
-    name: 'Ananth Kashyap',
-    roles: ['Director of Technology', 'Executive Board Member'],
-    imageUrl:
-      AnanthKashyap,
-    achievements: ['Research Assistant at Carnegie Mellon Robotics Institute', '2x AIME Qualifier', 'Congressional App Challenge Winner'],
-    education: `Fox Chapel Area High School, USA '23`,
-    linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
-    gitHubUrl: 'https://github.com/AAkashyap1',
   },
   {
     name: 'Abhay Bestrapalli',
