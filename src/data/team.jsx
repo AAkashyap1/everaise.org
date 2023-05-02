@@ -91,7 +91,7 @@ const current = [
     roles: ['Director of Technology', 'Executive Team Member'],
     imageUrl:
       AnanthKashyap,
-    achievements: ['Robotics Researcher at Carnegie Mellon University', '2x AIME Qualifier', '2022 AP Computer Science A Exam Perfect Scorer'],
+    achievements: ['Robotics Researcher at Carnegie Mellon University', '3x AIME Qualifier', '2022 AP Computer Science A Exam Perfect Scorer'],
     education: `Fox Chapel Area High School, USA '23`,
     linkedInUrl: 'https://www.linkedin.com/in/ananth-kashyap-88b996209/',
     gitHubUrl: 'https://github.com/AAkashyap1',
