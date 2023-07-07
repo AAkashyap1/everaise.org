@@ -211,7 +211,7 @@ const current = [
     roles: ['Outreach'],
     imageUrl:
       AidenPan,
-    achievements: [],
+    achievements: ['USESO Training Camp', 'ISEF Finalist'],
     education: `Great Neck South High School, USA '24`,
     linkedInUrl: '',
     gitHubUrl: '',

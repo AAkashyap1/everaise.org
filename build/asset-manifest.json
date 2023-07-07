@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.0927a876.chunk.css",
-    "main.js": "/static/js/main.21e74b78.chunk.js",
-    "main.js.map": "/static/js/main.21e74b78.chunk.js.map",
+    "main.css": "/static/css/main.f6f0de0c.chunk.css",
+    "main.js": "/static/js/main.d4e1bdaa.chunk.js",
+    "main.js.map": "/static/js/main.d4e1bdaa.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ff5e528c.js",
     "runtime-main.js.map": "/static/js/runtime-main.ff5e528c.js.map",
     "static/css/2.ff5b8b6f.chunk.css": "/static/css/2.ff5b8b6f.chunk.css",
-    "static/js/2.b1d96932.chunk.js": "/static/js/2.b1d96932.chunk.js",
-    "static/js/2.b1d96932.chunk.js.map": "/static/js/2.b1d96932.chunk.js.map",
+    "static/js/2.245c3c2f.chunk.js": "/static/js/2.245c3c2f.chunk.js",
+    "static/js/2.245c3c2f.chunk.js.map": "/static/js/2.245c3c2f.chunk.js.map",
     "static/js/3.29190f6b.chunk.js": "/static/js/3.29190f6b.chunk.js",
     "static/js/3.29190f6b.chunk.js.map": "/static/js/3.29190f6b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.ff5b8b6f.chunk.css.map": "/static/css/2.ff5b8b6f.chunk.css.map",
-    "static/css/main.0927a876.chunk.css.map": "/static/css/main.0927a876.chunk.css.map",
-    "static/js/2.b1d96932.chunk.js.LICENSE.txt": "/static/js/2.b1d96932.chunk.js.LICENSE.txt",
+    "static/css/main.f6f0de0c.chunk.css.map": "/static/css/main.f6f0de0c.chunk.css.map",
+    "static/js/2.245c3c2f.chunk.js.LICENSE.txt": "/static/js/2.245c3c2f.chunk.js.LICENSE.txt",
     "static/media/AbhayBestrapalli.0504725e.png": "/static/media/AbhayBestrapalli.0504725e.png",
-    "static/media/AidenPan.5f3f8c58.png": "/static/media/AidenPan.5f3f8c58.png",
+    "static/media/AidenPan.778b8dfc.png": "/static/media/AidenPan.778b8dfc.png",
     "static/media/AlbertYe.a87e9d38.png": "/static/media/AlbertYe.a87e9d38.png",
     "static/media/AlbertZhu.c3fc50ec.jpeg": "/static/media/AlbertZhu.c3fc50ec.jpeg",
     "static/media/AlexIzmailov.84df32e3.jpeg": "/static/media/AlexIzmailov.84df32e3.jpeg",
@@ -85,7 +85,7 @@
     "static/media/Physics.d1be647d.jpg": "/static/media/Physics.d1be647d.jpg",
     "static/media/Physics_OrbitalMechanics_2021.5ae2e231.pdf": "/static/media/Physics_OrbitalMechanics_2021.5ae2e231.pdf",
     "static/media/PoonamSahoo.e21b42b2.jpg": "/static/media/PoonamSahoo.e21b42b2.jpg",
-    "static/media/PrestonFu.5a4ee7db.png": "/static/media/PrestonFu.5a4ee7db.png",
+    "static/media/PrestonFu.8315a225.png": "/static/media/PrestonFu.8315a225.png",
     "static/media/Quines.12c552eb.png": "/static/media/Quines.12c552eb.png",
     "static/media/Rajesh.e9be728b.png": "/static/media/Rajesh.e9be728b.png",
     "static/media/SaadiqShaikh.e138def2.png": "/static/media/SaadiqShaikh.e138def2.png",
@@ -113,8 +113,8 @@
   "entrypoints": [
     "static/js/runtime-main.ff5e528c.js",
     "static/css/2.ff5b8b6f.chunk.css",
-    "static/js/2.b1d96932.chunk.js",
-    "static/css/main.0927a876.chunk.css",
-    "static/js/main.21e74b78.chunk.js"
+    "static/js/2.245c3c2f.chunk.js",
+    "static/css/main.f6f0de0c.chunk.css",
+    "static/js/main.d4e1bdaa.chunk.js"
   ]
 }
