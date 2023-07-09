@@ -29,6 +29,8 @@ import EvanKim from '../images/team/EvanKim.png';
 import MuhammedYaseen from '../images/team/MuhammedYaseen.png';
 import YushuZhang from '../images/team/YushuZhang.jpg';
 import AidenPan from '../images/team/AidenPan.png';
+import SunainaPati from '../images/team/SunainaPati.png';
+import SamarthBarve from '../images/team/SamarthBarve.png';
 
 import BrianLee from '../images/team/BrianLee.png';
 import WilliamShi from '../images/team/WilliamShi.png';
@@ -247,6 +249,34 @@ const current = [
     achievements: ['USESO Training Camp', 'ISEF Finalist'],
     education: `Great Neck South High School, USA '24`,
     linkedInUrl: '',
+    gitHubUrl: ''
+  },
+  {
+    name: 'Sunaina Pati',
+    roles: ['Math 1', 'Curriculum Developer'],
+    imageUrl: SunainaPati,
+    achievements: [
+      'EGMO 2023 Silver Medalist',
+      '3x Indian International Mathematical Olympiad Training Camp (IMOTC)',
+      'PROMYS 2023 India Mehta Fellow',
+      'Iranian Geometry Olympiad HM'
+    ],
+    education: `Sarala Birla Gyan Jyoti '23`,
+    linkedInUrl: '',
+    gitHubUrl: ''
+  },
+  {
+    name: 'Samarth Barve',
+    roles: ['Math 1', 'Curriculum Developer'],
+    imageUrl: SamarthBarve,
+    achievements: [
+      'ISI Limit, 9th Place',
+      'NMTC All India, 7th Place',
+      'Physics Brawl, Open Category, 4th Place',
+      'AIME qualifier'
+    ],
+    education: `Indian Institute of Technology, Kharagpur, '27`,
+    linkedInUrl: 'https://www.linkedin.com/in/samarth-barve?trk=contact-info',
     gitHubUrl: ''
   }
 ];
