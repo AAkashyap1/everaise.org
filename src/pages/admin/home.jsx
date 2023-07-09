@@ -1,38 +1,33 @@
-import { useState, useEffect } from 'react'
-import Cards from '../../components/admin/home/cards'
-import AdminAnnouncements from '../../components/admin/home/announcements'
-import {
-  MenuAlt1Icon,
-} from '@heroicons/react/outline'
-import SideNav from '../../components/global/navs/SideNav'
-import { homeNavigation } from '../../data/launch/navigation/labels'
-import LaunchNav from '../../components/global/navs/LaunchNav'
-import Access from '../../components/admin/home/access'
-import Registration from '../../components/admin/home/registration'
-import { useDocumentData } from 'react-firebase-hooks/firestore'
-import { database } from '../../firebase' 
-import { useAuth } from '../../contexts/AuthContext'
-import Page from '../../components/page'
+import { useState, useEffect } from 'react';
+import Cards from '../../components/admin/home/cards';
+import AdminAnnouncements from '../../components/admin/home/announcements';
+import { MenuAlt1Icon } from '@heroicons/react/outline';
+import SideNav from '../../components/global/navs/SideNav';
+import { homeNavigation } from '../../data/launch/navigation/labels';
+import LaunchNav from '../../components/global/navs/LaunchNav';
+import Access from '../../components/admin/home/access';
+import Registration from '../../components/admin/home/registration';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { database } from '../../firebase';
+import { useAuth } from '../../contexts/AuthContext';
+import Page from '../../components/page';
 
 export default function AdminHome() {
   const { currentUser } = useAuth();
   const user = useDocumentData(database.users.doc(currentUser.email))[0];
   const [admin, setAdmin] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (user) {
-      setAdmin(user.admin)
+      setAdmin(user.admin);
     }
-  }, [user])
+  }, [user]);
 
   return (
-    <Page 
-      title="Admin Home - Everaise Launch"
-      description=""
-    >
+    <Page title="Admin Home - Everaise Launch" description="">
       <div className="h-screen flex overflow-hidden bg-gray-100">
-        <SideNav 
+        <SideNav
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
           navigation={homeNavigation}
@@ -51,16 +46,16 @@ export default function AdminHome() {
           <main className="flex-1 relative pb-8 z-0 overflow-y-auto">
             <LaunchNav admin={true} info={'Home - Admin'} />
             <Cards />
-            {admin &&
+            {admin && (
               <div>
                 <AdminAnnouncements />
                 <Access />
                 <Registration />
               </div>
-            }
+            )}
           </main>
         </div>
-      </div>  
+      </div>
     </Page>
-  )
+  );
 }

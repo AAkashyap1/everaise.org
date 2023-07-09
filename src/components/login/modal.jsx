@@ -1,27 +1,33 @@
-import { Fragment, useRef, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { MailIcon } from '@heroicons/react/outline'
-import { useAuth } from '../../contexts/AuthContext'
-import { CheckCircleIcon } from '@heroicons/react/solid'
+import { Fragment, useRef, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { MailIcon } from '@heroicons/react/outline';
+import { useAuth } from '../../contexts/AuthContext';
+import { CheckCircleIcon } from '@heroicons/react/solid';
 
 export default function ForgotPasswordModal(props) {
   const [message, setMessage] = useState('');
-  const { sendPasswordResetEmail } = useAuth()
-  const emailRef = useRef(null)
-  
+  const { sendPasswordResetEmail } = useAuth();
+  const emailRef = useRef(null);
+
   async function resetPassword(event) {
     event.preventDefault();
     try {
       await sendPasswordResetEmail(emailRef.current.value);
-    } catch {
-
-    }
-    setMessage('Password reset instructions have been sent to ' + emailRef.current.value + ' if there is an account associated with this email.');
+    } catch {}
+    setMessage(
+      'Password reset instructions have been sent to ' +
+        emailRef.current.value +
+        ' if there is an account associated with this email.'
+    );
   }
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={() => props.setOpen(!props.open)}>
+      <Dialog
+        as="div"
+        className="fixed z-10 inset-0 overflow-y-auto"
+        onClose={() => props.setOpen(!props.open)}
+      >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
@@ -36,7 +42,10 @@ export default function ForgotPasswordModal(props) {
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
             &#8203;
           </span>
           <Transition.Child
@@ -51,16 +60,24 @@ export default function ForgotPasswordModal(props) {
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
               <div>
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100">
-                  <MailIcon className="h-6 w-6 text-cyan-600" aria-hidden="true" />
+                  <MailIcon
+                    className="h-6 w-6 text-cyan-600"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="mt-3 text-center sm:mt-5">
-                  <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg leading-6 font-medium text-gray-900"
+                  >
                     Reset password
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      To reset your password, enter the email associated with your account into the field below.
-                      An email with instructions on how to reset your password will be sent to that email.
+                      To reset your password, enter the email associated with
+                      your account into the field below. An email with
+                      instructions on how to reset your password will be sent to
+                      that email.
                     </p>
                   </div>
                 </div>
@@ -77,18 +94,21 @@ export default function ForgotPasswordModal(props) {
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-              {message && 
+              {message && (
                 <div className="mt-5 w-full rounded-md bg-green-50 p-4">
                   <div className="flex">
                     <div className="flex-shrink-0">
-                      <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+                      <CheckCircleIcon
+                        className="h-5 w-5 text-green-400"
+                        aria-hidden="true"
+                      />
                     </div>
                     <div className="ml-3">
                       <h3 className="text-sm text-green-800">{message}</h3>
                     </div>
                   </div>
                 </div>
-              }
+              )}
               <div className="mt-5 sm:mt-6">
                 <button
                   type="button"
@@ -103,5 +123,5 @@ export default function ForgotPasswordModal(props) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

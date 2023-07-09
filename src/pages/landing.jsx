@@ -1,14 +1,14 @@
-import Footer from '../components/footer'
+import Footer from '../components/footer';
 // import { PayPalButton } from 'react-paypal-button-v2'
-import Hero from '../components/landing/Hero'
-import Goals from '../components/landing/Goals'
-import CallToAction from '../components/landing/CallToAction'
-import Numbers from '../components/landing/Numbers'
-import GuestSpeakers from '../data/landing/guest'
-import Testimonials from '../components/landing/Testimonials'
-import Sponsors from '../components/landing/Sponsors'
-import Page from '../components/page'
-import Donate from '../components/landing/Donate'
+import Hero from '../components/landing/Hero';
+import Goals from '../components/landing/Goals';
+import CallToAction from '../components/landing/CallToAction';
+import Numbers from '../components/landing/Numbers';
+import GuestSpeakers from '../data/landing/guest';
+import Testimonials from '../components/landing/Testimonials';
+import Sponsors from '../components/landing/Sponsors';
+import Page from '../components/page';
+import Donate from '../components/landing/Donate';
 
 export default function Landing() {
   return (
@@ -30,5 +30,5 @@ export default function Landing() {
         <Footer />
       </div>
     </Page>
-  )
+  );
 }

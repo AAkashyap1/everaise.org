@@ -1,35 +1,35 @@
-import { Fragment, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { Menu, Transition } from '@headlessui/react'
-import { useAuth } from '../../../contexts/AuthContext'
-import { database } from '../../../firebase'
-import {
-  ChevronDownIcon,
-} from '@heroicons/react/solid'
+import { Fragment, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Menu, Transition } from '@headlessui/react';
+import { useAuth } from '../../../contexts/AuthContext';
+import { database } from '../../../firebase';
+import { ChevronDownIcon } from '@heroicons/react/solid';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function ProfileDropdown() {
-  const [name, setName] = useState('')
-  const history = useHistory()
-  const { currentUser, signout } = useAuth()
+  const [name, setName] = useState('');
+  const history = useHistory();
+  const { currentUser, signout } = useAuth();
   function getUserName() {
-    database.users.doc(currentUser.email).get()
+    database.users
+      .doc(currentUser.email)
+      .get()
       .then((doc) => {
-        setName(doc.data().first_name + ' ' + doc.data().last_name)
-      })
-    return name
+        setName(doc.data().first_name + ' ' + doc.data().last_name);
+      });
+    return name;
   }
 
   async function handleLogout(event) {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      await signout()
-      history.push("/landing")
+      await signout();
+      history.push('/landing');
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
@@ -41,14 +41,11 @@ export default function ProfileDropdown() {
             <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
               <span className="ml-3 text-gray-700 text-sm font-medium lg:block">
                 <span className="sr-only">Open user menu for </span>
-                {(currentUser === null) ?
-                  <p>
-                    Not Signed In
-                  </p> :
-                  <p>
-                    {getUserName()}
-                  </p>
-                }
+                {currentUser === null ? (
+                  <p>Not Signed In</p>
+                ) : (
+                  <p>{getUserName()}</p>
+                )}
               </span>
               <ChevronDownIcon
                 className="flex-shrink-0 ml-1 h-5 w-5 text-gray-400 lg:block"
@@ -114,5 +111,5 @@ export default function ProfileDropdown() {
         </>
       )}
     </Menu>
-  )
+  );
 }

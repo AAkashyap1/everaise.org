@@ -1,51 +1,49 @@
-import { Fragment, useState, useRef, useEffect } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
-import { XCircleIcon, CheckIcon, SelectorIcon } from '@heroicons/react/solid'
-import { useHistory } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext.js'
-import { database } from '../firebase'
-import { countryData } from '../variables/countries'
+import { Fragment, useState, useRef, useEffect } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
+import { XCircleIcon, CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext.js';
+import { database } from '../firebase';
+import { countryData } from '../variables/countries';
 import Nav from '../components/global/navs/nav';
-import Footer from '../components/footer'
-import Page from '../components/page.jsx'
-import courseData from '../data/launch/courseData'
-import printError from '../utility/printError'
+import Footer from '../components/footer';
+import Page from '../components/page.jsx';
+import courseData from '../data/launch/courseData';
+import printError from '../utility/printError';
 
-let countries = []
-let count = 1
+let countries = [];
+let count = 1;
 
 countryData.map((country) => {
-  count = count + 1
-  return (
-    countries.push({ id: count, name: country.name })
-  )
-})
+  count = count + 1;
+  return countries.push({ id: count, name: country.name });
+});
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Profile() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const confirmPasswordRef = useRef()
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [parent1Email, setParent1Email] = useState('')
-  const [parent2Email, setParent2Email] = useState('')
-  const [email, setEmail] = useState('')
-  const [age, setAge] = useState('')
-  const [error, setError] = useState('')
-  const [selected, setSelected] = useState(countries[186])
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [parent1Email, setParent1Email] = useState('');
+  const [parent2Email, setParent2Email] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
+  const [error, setError] = useState('');
+  const [selected, setSelected] = useState(countries[186]);
   const [referral, setReferral] = useState('');
-  const [loading, setLoading] = useState(false)
-  const { signup } = useAuth()
-  const history = useHistory()
+  const [loading, setLoading] = useState(false);
+  const { signup } = useAuth();
+  const history = useHistory();
 
   useEffect(() => {
-    document.title = 'Create Profile - Everaise Launch'
-    window.scrollTo(0, 0)
-  })
+    document.title = 'Create Profile - Everaise Launch';
+    window.scrollTo(0, 0);
+  });
 
   async function populateCourses(course, userEmail) {
     try {
@@ -57,7 +55,7 @@ export default function Profile() {
         .doc(course)
         .set({
           points: 0
-        })
+        });
       for (const module of modules.docs) {
         await database.users
           .doc(userEmail)
@@ -68,12 +66,11 @@ export default function Profile() {
           .set({
             disabled: module.data().disabled,
             name: module.data().name
-          })
-        const assignments = await 
-          courseData[course].assignmentData
-            .doc(module.id)
-            .collection('assignments')
-            .get();
+          });
+        const assignments = await courseData[course].assignmentData
+          .doc(module.id)
+          .collection('assignments')
+          .get();
         for (const assignment of assignments.docs) {
           await database.users
             .doc(userEmail)
@@ -88,36 +85,36 @@ export default function Profile() {
               due: assignment.data().due,
               handouts: assignment.data().handouts,
               name: assignment.data().name,
-              questions: assignment.data().questions,
-            })
+              questions: assignment.data().questions
+            });
         }
       }
-    } catch(err) {
-      printError(err)
+    } catch (err) {
+      printError(err);
     }
   }
 
   async function handleLogin(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     if (passwordRef.current.value.length < 7) {
-      return setError('Passwords must be at least 7 characters in length')
+      return setError('Passwords must be at least 7 characters in length');
     }
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setError('Your passwords do not match')
+      return setError('Your passwords do not match');
     }
 
     if (emailRef.current.value.toLowerCase() !== emailRef.current.value) {
-      return setError('Your email must only contain lowercase letters')
+      return setError('Your email must only contain lowercase letters');
     }
 
     try {
-      setError("")
-      setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
-      
-      history.push('/landing')
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+
+      history.push('/landing');
 
       await database.users.doc(email).set({
         admin: false,
@@ -132,37 +129,37 @@ export default function Profile() {
           { name: 'physics', enrolled: false },
           { name: 'biology', enrolled: false },
           { name: 'astronomy', enrolled: false },
-          { name: 'math', enrolled: false  },
+          { name: 'math', enrolled: false }
         ],
         country: selected.name,
-        referral: referral,
-      })
+        referral: referral
+      });
 
       for (const course of Object.keys(courseData)) {
-        await populateCourses(course, email)
+        await populateCourses(course, email);
       }
 
       await database.emails.doc(email).set({
         email: email
-      })
-
+      });
     } catch {
-      setError('Failed to create profile. This email may already have an account associated with it.')
+      setError(
+        'Failed to create profile. This email may already have an account associated with it.'
+      );
     }
-    setLoading(false)
+    setLoading(false);
   }
 
   return (
-    <Page 
-      title="Create Profile - Everaise Launch"
-      description=""
-    >
+    <Page title="Create Profile - Everaise Launch" description="">
       <div className="bg-white">
         <Nav />
         <div className="mt-5 pt-5 pb-16">
           <header>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-              <h1 className="text-3xl font-bold leading-tight text-gray-900">Create a Profile</h1>
+              <h1 className="text-3xl font-bold leading-tight text-gray-900">
+                Create a Profile
+              </h1>
             </div>
           </header>
           <main>
@@ -172,18 +169,25 @@ export default function Profile() {
                   <div className="shadow sm:rounded-md overflow-hidden shadow border border-gray-200">
                     <div className="bg-white py-6 px-4 space-y-6 sm:p-6">
                       <div>
-                        <h3 className="text-lg leading-6 font-medium text-gray-900">Personal Information</h3>
-                        <p className="mt-1 text-sm text-gray-500">{'* '}Denotes a required field.</p>
+                        <h3 className="text-lg leading-6 font-medium text-gray-900">
+                          Personal Information
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {'* '}Denotes a required field.
+                        </p>
                       </div>
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
-                          <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="first_name"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             First Name{'*'}
                           </label>
                           <input
                             required
                             value={firstName}
-                            onChange={e => setFirstName(e.target.value)}
+                            onChange={(e) => setFirstName(e.target.value)}
                             type="text"
                             name="first_name"
                             id="first_name"
@@ -193,12 +197,15 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="last_name"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Last Name{'*'}
                           </label>
                           <input
                             value={lastName}
-                            onChange={e => setLastName(e.target.value)}
+                            onChange={(e) => setLastName(e.target.value)}
                             required
                             type="text"
                             name="last_name"
@@ -209,13 +216,16 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-4">
-                          <label htmlFor="emailAddress" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="emailAddress"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Email Address{'*'}
                           </label>
                           <input
                             ref={emailRef}
                             value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                             type="email"
                             name="email"
@@ -226,13 +236,16 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-4">
-                          <label htmlFor="emailAddress" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="emailAddress"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Primary Parent/Guardian Email Address{'*'}
                           </label>
                           <input
                             required
                             value={parent1Email}
-                            onChange={e => setParent1Email(e.target.value)}
+                            onChange={(e) => setParent1Email(e.target.value)}
                             type="email"
                             name="email"
                             id="email"
@@ -242,12 +255,15 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-4">
-                          <label htmlFor="emailAddress" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="emailAddress"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Secondary Parent/Guardian Email Address
                           </label>
                           <input
                             value={parent2Email}
-                            onChange={e => setParent2Email(e.target.value)}
+                            onChange={(e) => setParent2Email(e.target.value)}
                             type="email"
                             name="email"
                             id="email"
@@ -257,13 +273,16 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="age"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Age{'*'}
                           </label>
                           <input
                             required
                             value={age}
-                            onChange={e => setAge(e.target.value)}
+                            onChange={(e) => setAge(e.target.value)}
                             type="number"
                             name="age"
                             id="aeg"
@@ -273,7 +292,10 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-4">
-                          <label htmlFor="place" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="place"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Country{'*'}
                           </label>
                           <Listbox value={selected} onChange={setSelected}>
@@ -281,9 +303,14 @@ export default function Profile() {
                               <>
                                 <div className="mt-1 relative">
                                   <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    <span className="block truncate">{selected.name}</span>
+                                    <span className="block truncate">
+                                      {selected.name}
+                                    </span>
                                     <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                                      <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                      <SelectorIcon
+                                        className="h-5 w-5 text-gray-400"
+                                        aria-hidden="true"
+                                      />
                                     </span>
                                   </Listbox.Button>
 
@@ -303,7 +330,9 @@ export default function Profile() {
                                           key={country.id}
                                           className={({ active }) =>
                                             classNames(
-                                              active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                                              active
+                                                ? 'text-white bg-indigo-600'
+                                                : 'text-gray-900',
                                               'cursor-default select-none relative py-2 pl-3 pr-9'
                                             )
                                           }
@@ -311,18 +340,30 @@ export default function Profile() {
                                         >
                                           {({ selected, active }) => (
                                             <>
-                                              <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                                              <span
+                                                className={classNames(
+                                                  selected
+                                                    ? 'font-semibold'
+                                                    : 'font-normal',
+                                                  'block truncate'
+                                                )}
+                                              >
                                                 {country.name}
                                               </span>
 
                                               {selected ? (
                                                 <span
                                                   className={classNames(
-                                                    active ? 'text-white' : 'text-indigo-600',
+                                                    active
+                                                      ? 'text-white'
+                                                      : 'text-indigo-600',
                                                     'absolute inset-y-0 right-0 flex items-center pr-4'
                                                   )}
                                                 >
-                                                  <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                                  <CheckIcon
+                                                    className="h-5 w-5"
+                                                    aria-hidden="true"
+                                                  />
                                                 </span>
                                               ) : null}
                                             </>
@@ -338,7 +379,10 @@ export default function Profile() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6">
-                          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="password"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Password{'*'}
                           </label>
                           <input
@@ -352,7 +396,10 @@ export default function Profile() {
                           />
                         </div>
                         <div className="col-span-6 sm:col-span-6">
-                          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="password"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             Confirm Password{'*'}
                           </label>
                           <input
@@ -366,13 +413,16 @@ export default function Profile() {
                           />
                         </div>
                         <div className="col-span-6 sm:col-span-6">
-                          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                          <label
+                            htmlFor="password"
+                            className="block text-sm font-medium text-gray-700"
+                          >
                             How did you hear about us?{'*'}
                           </label>
                           <input
                             required
                             value={referral}
-                            onChange={e => setReferral(e.target.value)}
+                            onChange={(e) => setReferral(e.target.value)}
                             id="text"
                             name="text"
                             type="text"
@@ -380,19 +430,21 @@ export default function Profile() {
                           />
                         </div>
                       </div>
-                      {error && 
+                      {error && (
                         <div className="rounded-md bg-red-50 p-4">
                           <div className="flex">
                             <div className="flex-shrink-0">
-                              <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+                              <XCircleIcon
+                                className="h-5 w-5 text-red-400"
+                                aria-hidden="true"
+                              />
                             </div>
                             <div className="ml-3">
                               <h3 className="text-sm text-red-800">{error}</h3>
                             </div>
                           </div>
                         </div>
-                      }
-                      
+                      )}
                     </div>
                     <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                       <button
@@ -412,5 +464,5 @@ export default function Profile() {
         <Footer />
       </div>
     </Page>
-  )
+  );
 }

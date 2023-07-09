@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { Link } from 'react-router-dom';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-import Nav from '../global/navs/nav'
-import Board from '../../images/index.png'
+import Nav from '../global/navs/nav';
+import Board from '../../images/index.png';
 
 export default function Hero() {
   return (
@@ -16,7 +16,8 @@ export default function Hero() {
               <span className="block text-cyan-600 xl:inline">Worldwide</span>
             </h1>
             <p className="mt-3 max-w-md mx-auto text-3xl text-gray-500 sm:text-3xl md:mt-5 md:max-w-3xl">
-              By students, for students: Making quality education freely accessible to all.
+              By students, for students: Making quality education freely
+              accessible to all.
             </p>
             <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
@@ -48,5 +49,5 @@ export default function Hero() {
         </div>
       </main>
     </div>
-  )
+  );
 }

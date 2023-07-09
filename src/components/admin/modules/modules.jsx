@@ -1,17 +1,15 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-import courseData from '../../../data/launch/courseData'
-import Module from './module'
-import AddModuleModal from './modals/addModule'
-import EditModuleModal from './modals/editModule'
-import {
-  PlusCircleIcon,
-} from '@heroicons/react/solid'
-import DeleteModuleModal from './modals/confirmation'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import courseData from '../../../data/launch/courseData';
+import Module from './module';
+import AddModuleModal from './modals/addModule';
+import EditModuleModal from './modals/editModule';
+import { PlusCircleIcon } from '@heroicons/react/solid';
+import DeleteModuleModal from './modals/confirmation';
 
 export default function Modules() {
-  const { course } = useParams()
+  const { course } = useParams();
   const [modules, setModules] = useState([]);
   const [addModuleModalOpen, setAddModuleModalOpen] = useState(false);
   const [editModuleModalOpen, setEditModuleModalOpen] = useState(false);
@@ -26,12 +24,12 @@ export default function Modules() {
       for (const module of courseModules) {
         tempModules.push({
           name: module.name,
-          disabled: module.disabled,
-        })
+          disabled: module.disabled
+        });
       }
       setModules(tempModules);
     }
-  }, [courseModules])
+  }, [courseModules]);
 
   return (
     <div>
@@ -48,19 +46,19 @@ export default function Modules() {
         id={idToDelete}
         data={courseData[course].assignmentData}
       />
-      <AddModuleModal 
-        open={addModuleModalOpen} 
-        setOpen={setAddModuleModalOpen} 
+      <AddModuleModal
+        open={addModuleModalOpen}
+        setOpen={setAddModuleModalOpen}
         data={courseData[course].assignmentData}
       />
       {modules.map((module) => (
         <Module
-          name={module.name} 
+          name={module.name}
           disabled={module.disabled}
-          course={course} 
-          setIdToEdit={setIdToEdit} 
+          course={course}
+          setIdToEdit={setIdToEdit}
           setIdToDelete={setIdToDelete}
-          setEditModuleModalOpen={setEditModuleModalOpen} 
+          setEditModuleModalOpen={setEditModuleModalOpen}
           setDeleteModuleModalOpen={setDeleteModuleModalOpen}
         />
       ))}
@@ -71,14 +69,19 @@ export default function Modules() {
         >
           <div className="flex ">
             <div className="flex-shrink-0">
-              <PlusCircleIcon className="ml-3 h-5 w-5 text-green-500" aria-hidden="true" />
+              <PlusCircleIcon
+                className="ml-3 h-5 w-5 text-green-500"
+                aria-hidden="true"
+              />
             </div>
             <div className="ml-3 mr-7">
-              <h3 className="text-sm text-green-800 font-semibold">Add module</h3>
+              <h3 className="text-sm text-green-800 font-semibold">
+                Add module
+              </h3>
             </div>
           </div>
         </button>
       </div>
     </div>
-  )
+  );
 }

@@ -1,18 +1,20 @@
-import testimonials from '../../data/landing/testimonials'
+import testimonials from '../../data/landing/testimonials';
 
 export default function Testimonials() {
   return (
     <div className="relative bg-white pt-10">
       <div className="mx-auto max-w-md px-4 text-center max-w-4xl lg:max-w-7xl">
-        <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Testimonials</h2>
+        <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">
+          Testimonials
+        </h2>
         <p className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl">
           Trusted by students worldwide.
         </p>
         <div className="mt-12">
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((person) => (
-              <li key={person} className="px-3 md:px-4 col-span-1" >
-                <figure className="shadow-lg border border-gray-200 rounded-xl flex-none" >
+              <li key={person} className="px-3 md:px-4 col-span-1">
+                <figure className="shadow-lg border border-gray-200 rounded-xl flex-none">
                   <blockquote className="rounded-t-xl bg-white px-6 py-8 md:px-10 py-8 text-lg md:text-lg leading-8 md:leading-8 font-semibold text-gray-900">
                     <svg
                       className="mb-3 h-8 w-8 text-cyan-300"
@@ -25,7 +27,9 @@ export default function Testimonials() {
                     <p>{person.testimonial}</p>
                   </blockquote>
                   <figcaption className="flex items-center space-x-4 p-6 md:px-10 py-2 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-cyan-500 to-blue-300">
-                    <div className="flex-auto">{person.name}, {person.course}</div>
+                    <div className="flex-auto">
+                      {person.name}, {person.course}
+                    </div>
                   </figcaption>
                 </figure>
               </li>
@@ -34,5 +38,5 @@ export default function Testimonials() {
         </div>
       </div>
     </div>
-  )
+  );
 }

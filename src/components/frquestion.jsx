@@ -1,25 +1,31 @@
-import { useState } from 'react'
-import { CheckCircleIcon } from '@heroicons/react/solid'
+import { useState } from 'react';
+import { CheckCircleIcon } from '@heroicons/react/solid';
 
 export default function FRQuestion(props) {
   var Latex = require('react-latex');
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
   function updateVisibility(event) {
-    event.preventDefault()
-    setVisible(!visible)
+    event.preventDefault();
+    setVisible(!visible);
   }
 
-  let solution = null 
+  let solution = null;
 
   if (props.course === 'physics') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
+    solution = (
+      <img src={props.solution} alt="" className="w-full rounded-md" />
+    );
   } else if (props.course === 'math') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
+    solution = (
+      <img src={props.solution} alt="" className="w-full rounded-md" />
+    );
   } else if (props.course === 'biology') {
-    solution = <Latex>{props.soution}</Latex>
+    solution = <Latex>{props.soution}</Latex>;
   } else if (props.course === 'astronomy') {
-    solution = <img src={props.solution} alt="" className="w-full rounded-md"/>
+    solution = (
+      <img src={props.solution} alt="" className="w-full rounded-md" />
+    );
   }
 
   return (
@@ -32,17 +38,23 @@ export default function FRQuestion(props) {
           {visible ? 'Hide Solution' : 'View Solution'}
         </button>
       </span>
-      {visible && <div className="mt-4 rounded-md bg-green-50 p-4">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
-          </div>
-          <div className="ml-3 mr-7">
-            <h3 className="text-sm text-green-800"><p className={'font-semibold mb-2'}>Solution: </p> {solution}</h3>
+      {visible && (
+        <div className="mt-4 rounded-md bg-green-50 p-4">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <CheckCircleIcon
+                className="h-5 w-5 text-green-400"
+                aria-hidden="true"
+              />
+            </div>
+            <div className="ml-3 mr-7">
+              <h3 className="text-sm text-green-800">
+                <p className={'font-semibold mb-2'}>Solution: </p> {solution}
+              </h3>
+            </div>
           </div>
         </div>
-      </div>
-      }
+      )}
     </div>
-  )
+  );
 }

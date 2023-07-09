@@ -1,26 +1,29 @@
-import { 
+import {
   CalendarIcon,
-  DotsVerticalIcon, 
-  EyeIcon, 
-  FireIcon, 
+  DotsVerticalIcon,
+  EyeIcon,
+  FireIcon,
   PencilIcon,
-  PlusCircleIcon, 
+  PlusCircleIcon,
   QuestionMarkCircleIcon,
-  TrashIcon,
-} from '@heroicons/react/solid'
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { useEffect, useState } from 'react'
-import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore'
-import { Link, useParams } from 'react-router-dom'
-import courseData from '../../../data/launch/courseData'
-import GetDate from '../../../utility/date'
-import AddAssignmentModal from './modals/assignments/addAssignment'
-import DeleteAssignmentModal from './modals/assignments/deleteAssignment'
-import EditAssignmentModal from './modals/assignments/editAssignment'
+  TrashIcon
+} from '@heroicons/react/solid';
+import { Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { useEffect, useState } from 'react';
+import {
+  useCollection,
+  useCollectionData
+} from 'react-firebase-hooks/firestore';
+import { Link, useParams } from 'react-router-dom';
+import courseData from '../../../data/launch/courseData';
+import GetDate from '../../../utility/date';
+import AddAssignmentModal from './modals/assignments/addAssignment';
+import DeleteAssignmentModal from './modals/assignments/deleteAssignment';
+import EditAssignmentModal from './modals/assignments/editAssignment';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Module(props) {
@@ -28,8 +31,18 @@ export default function Module(props) {
   const [addAssignmentModal, setAddAssignmentModal] = useState(false);
   const [deleteAssignmentModal, setDeleteAssignmentModal] = useState(false);
   const [editAssignmentModal, setEditAssignmentModal] = useState(false);
-  const assignmentIdData = useCollection(courseData[props.course].assignmentData.doc(`${props.name}`).collection('assignments').orderBy("due", "desc"))[0];
-  const assignmentCollection = useCollectionData(courseData[props.course].assignmentData.doc(`${props.name}`).collection('assignments').orderBy("due", "desc"))[0]
+  const assignmentIdData = useCollection(
+    courseData[props.course].assignmentData
+      .doc(`${props.name}`)
+      .collection('assignments')
+      .orderBy('due', 'desc')
+  )[0];
+  const assignmentCollection = useCollectionData(
+    courseData[props.course].assignmentData
+      .doc(`${props.name}`)
+      .collection('assignments')
+      .orderBy('due', 'desc')
+  )[0];
   const [assignments, setAssignments] = useState([]);
   const [idToDelete, setIdToDelete] = useState('');
   const [idToEdit, setIdToEdit] = useState('');
@@ -44,8 +57,8 @@ export default function Module(props) {
           for (const handout of assignment.handouts) {
             tempHandouts.push({
               name: handout.name,
-              link: handout.link,
-            })
+              link: handout.link
+            });
           }
         }
         let tempQuestions = [];
@@ -57,8 +70,8 @@ export default function Module(props) {
               displayNo: question.displayNo,
               type: question.type,
               answer: question.answer,
-              solution: question.solution,
-            })
+              solution: question.solution
+            });
           }
         }
         tempAssignments.push({
@@ -68,15 +81,15 @@ export default function Module(props) {
           link: `/admin/home`,
           due: {
             month: assignment.due.toDate().getMonth() + 1,
-            day: assignment.due.toDate().getDate(),
+            day: assignment.due.toDate().getDate()
           },
           handouts: tempHandouts,
-          questions: tempQuestions,
-        })
+          questions: tempQuestions
+        });
       }
-      setAssignments(tempAssignments)
+      setAssignments(tempAssignments);
     }
-  }, [assignmentCollection])
+  }, [assignmentCollection]);
 
   useEffect(() => {
     if (assignmentIdData) {
@@ -86,7 +99,7 @@ export default function Module(props) {
       }
       setIds(tempIds);
     }
-  }, [assignmentIdData])
+  }, [assignmentIdData]);
 
   /*
   function changeId(e) {
@@ -108,13 +121,12 @@ export default function Module(props) {
     setDeleteAssignmentModal(true);
   }
 
-  
   function editAssignment(e, id) {
     e.preventDefault();
     setIdToEdit(id);
     setEditAssignmentModal(true);
   }
-  
+
   function calculatePoints(questions) {
     let points = 0;
     for (const question of questions) {
@@ -125,13 +137,13 @@ export default function Module(props) {
 
   return (
     <div>
-      <AddAssignmentModal 
+      <AddAssignmentModal
         open={addAssignmentModal}
         setOpen={setAddAssignmentModal}
         name={props.name}
         data={courseData[course].assignmentData}
       />
-      <DeleteAssignmentModal 
+      <DeleteAssignmentModal
         open={deleteAssignmentModal}
         setOpen={setDeleteAssignmentModal}
         name={props.name}
@@ -147,8 +159,7 @@ export default function Module(props) {
         assignments={assignments}
         data={courseData[course].assignmentData}
       />
-      <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">
-      </h2>
+      <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8"></h2>
       <div className="mt-2 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow overflow-hidden rounded-md">
           <div className="bg-white px-4 py-2 border-b border-gray-200 sm:px-6">
@@ -163,7 +174,10 @@ export default function Module(props) {
                   <div>
                     <Menu.Button className="-m-2 p-2 rounded-full flex items-center text-gray-400 hover:text-gray-600">
                       <span className="sr-only">Open options</span>
-                      <DotsVerticalIcon className="h-5 w-5" aria-hidden="true" />
+                      <DotsVerticalIcon
+                        className="h-5 w-5"
+                        aria-hidden="true"
+                      />
                     </Menu.Button>
                   </div>
 
@@ -178,16 +192,21 @@ export default function Module(props) {
                   >
                     <Menu.Items className="z-100 origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <div className="py-1">
-                        <Menu.Item> 
+                        <Menu.Item>
                           {({ active }) => (
                             <button
                               onClick={() => setAddAssignmentModal(true)}
                               className={classNames(
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                active
+                                  ? 'bg-gray-100 text-gray-900'
+                                  : 'text-gray-700',
                                 'w-full flex px-4 py-2 text-sm'
                               )}
                             >
-                              <PlusCircleIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                              <PlusCircleIcon
+                                className="mr-3 h-5 w-5 text-gray-400"
+                                aria-hidden="true"
+                              />
                               <span>Add assignment</span>
                             </button>
                           )}
@@ -213,11 +232,16 @@ export default function Module(props) {
                             <button
                               onClick={deleteModule}
                               className={classNames(
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                active
+                                  ? 'bg-gray-100 text-gray-900'
+                                  : 'text-gray-700',
                                 'w-full flex px-4 py-2 text-sm'
                               )}
                             >
-                              <TrashIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                              <TrashIcon
+                                className="mr-3 h-5 w-5 text-gray-400"
+                                aria-hidden="true"
+                              />
                               <span>Delete module</span>
                             </button>
                           )}
@@ -231,51 +255,72 @@ export default function Module(props) {
           </div>
           <ul className="divide-y divide-gray-200">
             {assignments.map((assignment, assignmentIdx) => (
-              <div
-                className="cursor-pointer"
-                key={assignment.name}
-              >
+              <div className="cursor-pointer" key={assignment.name}>
                 <div className="block hover:bg-gray-50">
                   <div className="px-4 py-4 sm:px-6">
                     <div className="flex items-center justify-between">
-                      <p className="text-base font-medium truncate">{assignment.name}</p>
+                      <p className="text-base font-medium truncate">
+                        {assignment.name}
+                      </p>
                       <div className="grid grid-cols-3 ">
-                        <Link 
+                        <Link
                           to={`/homework/${course}/${props.name}/${ids[assignmentIdx]}`}
                           className="hover:text-green-700 text-green-500 ml-2 flex-shrink-0 flex justify-center"
                         >
-                          <EyeIcon className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5" aria-hidden="true" />
-                          View 
+                          <EyeIcon
+                            className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                          View
                         </Link>
-                        <button 
-                          onClick={e => editAssignment(e, ids[assignmentIdx])}
+                        <button
+                          onClick={(e) => editAssignment(e, ids[assignmentIdx])}
                           className="hover:text-indigo-700 text-indigo-500 ml-2 flex-shrink-0 flex justify-center"
                         >
-                          <PencilIcon className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5" aria-hidden="true" />
-                          Edit 
+                          <PencilIcon
+                            className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                          Edit
                         </button>
-                        <button 
-                          onClick={e => deleteAsssignment(e, ids[assignmentIdx])}
+                        <button
+                          onClick={(e) =>
+                            deleteAsssignment(e, ids[assignmentIdx])
+                          }
                           className="hover:text-red-700 text-red-500 ml-2 flex-shrink-0 flex justify-center"
                         >
-                          <TrashIcon className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5" aria-hidden="true" />
-                          Delete 
+                          <TrashIcon
+                            className="mt-0.5 flex-shrink-0 mr-1.5 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                          Delete
                         </button>
                       </div>
                     </div>
                     <div className="mt-2 sm:flex sm:justify-between">
                       <div className="sm:flex">
                         <p className="flex items-center text-sm text-gray-500">
-                          <QuestionMarkCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-indigo-400" aria-hidden="true" />
-                          {assignment.questions.length} Question{assignment.questions.length !== 1 && 's'}
+                          <QuestionMarkCircleIcon
+                            className="flex-shrink-0 mr-1.5 h-5 w-5 text-indigo-400"
+                            aria-hidden="true"
+                          />
+                          {assignment.questions.length} Question
+                          {assignment.questions.length !== 1 && 's'}
                         </p>
                         <p className="mt-2 flex items-center text-sm text-gray-600 sm:mt-0 sm:ml-6">
-                          <FireIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
-                          {calculatePoints(assignment.questions)} Point{calculatePoints !== 1 && 's'}
+                          <FireIcon
+                            className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
+                            aria-hidden="true"
+                          />
+                          {calculatePoints(assignment.questions)} Point
+                          {calculatePoints !== 1 && 's'}
                         </p>
                       </div>
                       <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                        <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                        <CalendarIcon
+                          className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                          aria-hidden="true"
+                        />
                         <p>
                           <time>{assignment.dueDate}</time>
                         </p>
@@ -286,15 +331,15 @@ export default function Module(props) {
               </div>
             ))}
           </ul>
-          {!assignments.length &&
+          {!assignments.length && (
             <div className="block hover:bg-gray-50">
               <div className="flex p-7 items-center text-lg justify-center m-auto">
                 No assignments in this module!
               </div>
             </div>
-          }
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }

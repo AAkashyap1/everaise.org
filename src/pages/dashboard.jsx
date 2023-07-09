@@ -1,64 +1,69 @@
-import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { database } from '../firebase'
-import { useAuth } from '../contexts/AuthContext'
-import GetDate from '../utility/date'
-import printError from '../utility/printError'
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { database } from '../firebase';
+import { useAuth } from '../contexts/AuthContext';
+import GetDate from '../utility/date';
+import printError from '../utility/printError';
+import { DocumentTextIcon, MenuAlt1Icon } from '@heroicons/react/outline';
+import { ChevronRightIcon } from '@heroicons/react/solid';
 import {
-  DocumentTextIcon,
-  MenuAlt1Icon,
-} from '@heroicons/react/outline'
-import {
-  ChevronRightIcon,
-} from '@heroicons/react/solid'
-import { dashboardNavigation, dashboardSecondaryNavigation } from '../data/launch/navigation/labels'
-import LaunchNav from '../components/global/navs/LaunchNav'
-import SideNav from '../components/global/navs/SideNav'
-import courseData from '../data/launch/courseData'
-import Page from '../components/page'
-import Cards from '../components/dashboard/cards'
+  dashboardNavigation,
+  dashboardSecondaryNavigation
+} from '../data/launch/navigation/labels';
+import LaunchNav from '../components/global/navs/LaunchNav';
+import SideNav from '../components/global/navs/SideNav';
+import courseData from '../data/launch/courseData';
+import Page from '../components/page';
+import Cards from '../components/dashboard/cards';
 /*
 import Leaders from '../components/dashboard/leaders'
 */
 
 const statusStyles = {
-  'complete': 'bg-green-100 text-green-800',
+  complete: 'bg-green-100 text-green-800',
   'in Progress': 'bg-yellow-100 text-yellow-800',
-  'not Started': 'bg-red-100 text-red-800',
-}
+  'not Started': 'bg-red-100 text-red-800'
+};
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Dashboard() {
-  const { course } = useParams()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { currentUser } = useAuth()
-  const [numAssignments, setNumAssignments] = useState(0)
-  const [viewStatus, setViewStatus] = useState(true)
-  const [homework, setHomework] = useState([])
+  const { course } = useParams();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { currentUser } = useAuth();
+  const [numAssignments, setNumAssignments] = useState(0);
+  const [viewStatus, setViewStatus] = useState(true);
+  const [homework, setHomework] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const data = courseData[course].assignmentData
-  const userData = database.users.doc(currentUser.email).collection('courses').doc(course).collection('modules');
-  
+  const data = courseData[course].assignmentData;
+  const userData = database.users
+    .doc(currentUser.email)
+    .collection('courses')
+    .doc(course)
+    .collection('modules');
+
   useEffect(() => {
     if (homework.length > 0) {
       dashboardNavigation[1].href = `/homework/${course}/${homework[0].module}/${homework[0].id}`;
     } else {
       dashboardNavigation[1].href = `#`;
     }
-  }, [homework, course])
+  }, [homework, course]);
 
   useEffect(() => {
     loadAssignments();
-  // eslint-disable-next-line
-  }, [])
+    // eslint-disable-next-line
+  }, []);
 
   async function fetchModule(id) {
     let tempAssignments = [];
-    const userAssignments = await userData.doc(id).collection('assignments').get();
+    const userAssignments = await userData
+      .doc(id)
+      .collection('assignments')
+      .get();
     const assignments = await data.doc(id).collection('assignments').get();
     for (let i = 0; i < assignments.docs.length; i++) {
       tempAssignments.push({
@@ -68,8 +73,8 @@ export default function Dashboard() {
         name: assignments.docs[i].data().name,
         questions: assignments.docs[i].data().questions,
         answers: userAssignments.docs[i].data().questions,
-        due: GetDate(assignments.docs[i].data().due),
-      })
+        due: GetDate(assignments.docs[i].data().due)
+      });
     }
     return tempAssignments;
   }
@@ -84,7 +89,7 @@ export default function Dashboard() {
         for (const assignment of assignments) {
           tempAssignments.push({
             assignment: assignment,
-            module: tempModule.data().name,
+            module: tempModule.data().name
           });
         }
       }
@@ -95,22 +100,22 @@ export default function Dashboard() {
         let completed = 0;
         let points = 0;
         let totalPoints = 0;
-        
+
         for (const question of assignment.answers) {
-          if (
-            (question.submissions < 2) ||
-            (question.submissions === 99)
-          ) {
+          if (question.submissions < 2 || question.submissions === 99) {
             completed += 1;
           }
         }
         for (let i = 0; i < assignment.answers.length; i++) {
           totalPoints += assignment.questions[i].points;
-          if (String(assignment.answers[i].userAnswer) === String(assignment.questions[i].answer)) {
+          if (
+            String(assignment.answers[i].userAnswer) ===
+            String(assignment.questions[i].answer)
+          ) {
             points += assignment.questions[i].points;
           }
         }
-        
+
         newAssignments.push({
           id: assignment.id,
           disabled: assignment.disabled,
@@ -122,23 +127,25 @@ export default function Dashboard() {
           points: points,
           completed: completed,
           grade: points + '/' + totalPoints,
-          status: 
-            (completed === 0) ? 'not Started' : 
-            ((completed === assignment.answers.length) ? 
-              'complete' : 'in Progress')
-        })
+          status:
+            completed === 0
+              ? 'not Started'
+              : completed === assignment.answers.length
+              ? 'complete'
+              : 'in Progress'
+        });
       }
-      newAssignments.sort((a1, a2) => (a1.due > a2.due) ? 1 : -1)
+      newAssignments.sort((a1, a2) => (a1.due > a2.due ? 1 : -1));
       setHomework(newAssignments);
       setNumAssignments(Math.min(newAssignments.length, 4));
     } catch (err) {
-      printError(err)
+      printError(err);
     }
     setLoading(false);
   }
-  
+
   function updateAssignments(event) {
-    event.preventDefault()
+    event.preventDefault();
     if (numAssignments < homework.length) {
       setNumAssignments(homework.length);
       setViewStatus(false);
@@ -149,14 +156,18 @@ export default function Dashboard() {
   }
 
   return (
-    <Page 
-      title={"Dashboard - " + courseData[course].courseName}
-      description={"Access all information related to the Everaise Academy " + courseData[course].courseName + " course."}
+    <Page
+      title={'Dashboard - ' + courseData[course].courseName}
+      description={
+        'Access all information related to the Everaise Academy ' +
+        courseData[course].courseName +
+        ' course.'
+      }
     >
       <div className="h-screen flex overflow-hidden bg-gray-100">
-        <SideNav 
-          sidebarOpen={sidebarOpen} 
-          setSidebarOpen={setSidebarOpen} 
+        <SideNav
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
           navigation={dashboardNavigation}
           secondaryNavigation={dashboardSecondaryNavigation}
         />
@@ -181,45 +192,68 @@ export default function Dashboard() {
               {/* Activity list (smallest breakpoint only) */}
               <div className="shadow sm:hidden">
                 <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
-                  {loading ?
-                    ['1', '2', '3', '4'].map((assignment) => (
-                      <li key={assignment}>
-                        <p className="block px-4 py-4 bg-white hover:bg-gray-50">
-                          <span className="flex items-center space-x-4">
-                            <span className="flex-1 flex space-x-2 truncate">
-                              <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
-                              <span className="flex flex-col text-gray-900 text-sm truncate space-y-1">
-                                <span className="bg-gray-200 text-gray-200 rounded-md h-4 truncate animate-pulse">Kinematics in One Dimension</span>
-                                <span>
-                                  <span className="bg-gray-200 text-gray-200 rounded-md font-medium animate-pulse">99 / 100</span>{' '}
+                  {loading
+                    ? ['1', '2', '3', '4'].map((assignment) => (
+                        <li key={assignment}>
+                          <p className="block px-4 py-4 bg-white hover:bg-gray-50">
+                            <span className="flex items-center space-x-4">
+                              <span className="flex-1 flex space-x-2 truncate">
+                                <DocumentTextIcon
+                                  className="flex-shrink-0 h-5 w-5 text-gray-500"
+                                  aria-hidden="true"
+                                />
+                                <span className="flex flex-col text-gray-900 text-sm truncate space-y-1">
+                                  <span className="bg-gray-200 text-gray-200 rounded-md h-4 truncate animate-pulse">
+                                    Kinematics in One Dimension
+                                  </span>
+                                  <span>
+                                    <span className="bg-gray-200 text-gray-200 rounded-md font-medium animate-pulse">
+                                      99 / 100
+                                    </span>{' '}
+                                  </span>
+                                  <time className="rounded-md bg-gray-200 text-gray-200 text-sm w-1/2 h-4 animate-pulse">
+                                    June 23, 2021
+                                  </time>
                                 </span>
-                                <time className="rounded-md bg-gray-200 text-gray-200 text-sm w-1/2 h-4 animate-pulse">June 23, 2021</time>
                               </span>
                             </span>
-                          </span>
-                        </p>
-                      </li>
-                    )) :
-                    homework.map((assignment) => (
-                      <li key={assignment.id}>
-                        <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`} className="block px-4 py-4 bg-white hover:bg-gray-50">
-                          <span className="flex items-center space-x-4">
-                            <span className="flex-1 flex space-x-2 truncate">
-                              <DocumentTextIcon className="flex-shrink-0 h-5 w-5 text-gray-500" aria-hidden="true" />
-                              <span className="flex flex-col text-gray-900 text-sm truncate">
-                                <span className="truncate">{assignment.name}</span>
-                                <span>
-                                  <span className="text-gray-900 font-medium">{assignment.grade}</span>{' '}
+                          </p>
+                        </li>
+                      ))
+                    : homework.map((assignment) => (
+                        <li key={assignment.id}>
+                          <Link
+                            to={`/homework/${course}/${assignment.module}/${assignment.id}`}
+                            className="block px-4 py-4 bg-white hover:bg-gray-50"
+                          >
+                            <span className="flex items-center space-x-4">
+                              <span className="flex-1 flex space-x-2 truncate">
+                                <DocumentTextIcon
+                                  className="flex-shrink-0 h-5 w-5 text-gray-500"
+                                  aria-hidden="true"
+                                />
+                                <span className="flex flex-col text-gray-900 text-sm truncate">
+                                  <span className="truncate">
+                                    {assignment.name}
+                                  </span>
+                                  <span>
+                                    <span className="text-gray-900 font-medium">
+                                      {assignment.grade}
+                                    </span>{' '}
+                                  </span>
+                                  <time dateTime={assignment.due}>
+                                    {assignment.due}
+                                  </time>
                                 </span>
-                                <time dateTime={assignment.due}>{assignment.due}</time>
                               </span>
+                              <ChevronRightIcon
+                                className="flex-shrink-0 h-5 w-5 text-gray-400"
+                                aria-hidden="true"
+                              />
                             </span>
-                            <ChevronRightIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
-                          </span>
-                        </Link>
-                      </li>
-                    ))
-                  }
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
 
                 <nav
@@ -261,84 +295,106 @@ export default function Dashboard() {
                           </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                          {loading ? 
-                            ['1', '2', '3', '4'].map((assignment) => (
-                              (<tr key={assignment} className="bg-white">
-                                <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                  <p>
-                                    <div className="flex">
-                                      <p className="group inline-flex space-x-2 truncate text-sm">
-                                        <DocumentTextIcon
-                                          className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
-                                          aria-hidden="true"
-                                        />
-                                        <p className="animate-pulse rounded-md bg-gray-200 text-gray-200">Kinematics in One Dim</p>
-                                      </p>
-                                    </div>
-                                  </p>
-                                </td>
-                                <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                                  <p>
-                                    <span className="animate-pulse text-gray-200 bg-gray-200 rounded-md font-medium">93 / 100</span>
-                                  </p>
-                                </td>
-                                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
-                                  <p>
-                                    <span
-                                      className="animate-pulse bg-gray-200 text-gray-200 inline-flex items-center px-2.5 rounded-md text-xs font-medium capitalize"
-                                    >
-                                      Completed
-                                    </span>
-                                  </p>
-                                </td>
-                                <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                                  <p>
-                                    <time className="bg-gray-200 rounded-md text-gray-200 animate-pulse">June 23, 2021</time>
-                                  </p>
-                                </td>
-                              </tr>)
-                            )) :
-                            homework.map((assignment, assignmentIdx) => (
-                              assignmentIdx < numAssignments &&
-                                <tr key={assignment.id} className="bg-white">
+                          {loading
+                            ? ['1', '2', '3', '4'].map((assignment) => (
+                                <tr key={assignment} className="bg-white">
                                   <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
+                                    <p>
                                       <div className="flex">
                                         <p className="group inline-flex space-x-2 truncate text-sm">
                                           <DocumentTextIcon
                                             className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
                                             aria-hidden="true"
                                           />
-                                          <p className="text-gray-900 truncate group-hover:text-gray-400">{assignment.name}</p>
+                                          <p className="animate-pulse rounded-md bg-gray-200 text-gray-200">
+                                            Kinematics in One Dim
+                                          </p>
                                         </p>
                                       </div>
-                                    </Link>
+                                    </p>
                                   </td>
                                   <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                                    <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                      <span className="text-gray-900 font-medium">{assignment.grade} </span>
-                                    </Link>
+                                    <p>
+                                      <span className="animate-pulse text-gray-200 bg-gray-200 rounded-md font-medium">
+                                        93 / 100
+                                      </span>
+                                    </p>
                                   </td>
                                   <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
-                                    <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                      <span
-                                        className={classNames(
-                                          statusStyles[assignment.status],
-                                          'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
-                                        )}
-                                      >
-                                        {assignment.status}
+                                    <p>
+                                      <span className="animate-pulse bg-gray-200 text-gray-200 inline-flex items-center px-2.5 rounded-md text-xs font-medium capitalize">
+                                        Completed
                                       </span>
-                                    </Link>
+                                    </p>
                                   </td>
                                   <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
-                                    <Link to={`/homework/${course}/${assignment.module}/${assignment.id}`}>
-                                      <time dateTime={assignment.due}>{assignment.due}</time>
-                                    </Link>
+                                    <p>
+                                      <time className="bg-gray-200 rounded-md text-gray-200 animate-pulse">
+                                        June 23, 2021
+                                      </time>
+                                    </p>
                                   </td>
                                 </tr>
-                            ))
-                          }
+                              ))
+                            : homework.map(
+                                (assignment, assignmentIdx) =>
+                                  assignmentIdx < numAssignments && (
+                                    <tr
+                                      key={assignment.id}
+                                      className="bg-white"
+                                    >
+                                      <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <Link
+                                          to={`/homework/${course}/${assignment.module}/${assignment.id}`}
+                                        >
+                                          <div className="flex">
+                                            <p className="group inline-flex space-x-2 truncate text-sm">
+                                              <DocumentTextIcon
+                                                className="flex-shrink-0 h-5 w-5 text-gray-500 group-hover:text-gray-400"
+                                                aria-hidden="true"
+                                              />
+                                              <p className="text-gray-900 truncate group-hover:text-gray-400">
+                                                {assignment.name}
+                                              </p>
+                                            </p>
+                                          </div>
+                                        </Link>
+                                      </td>
+                                      <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                        <Link
+                                          to={`/homework/${course}/${assignment.module}/${assignment.id}`}
+                                        >
+                                          <span className="text-gray-900 font-medium">
+                                            {assignment.grade}{' '}
+                                          </span>
+                                        </Link>
+                                      </td>
+                                      <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
+                                        <Link
+                                          to={`/homework/${course}/${assignment.module}/${assignment.id}`}
+                                        >
+                                          <span
+                                            className={classNames(
+                                              statusStyles[assignment.status],
+                                              'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
+                                            )}
+                                          >
+                                            {assignment.status}
+                                          </span>
+                                        </Link>
+                                      </td>
+                                      <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                                        <Link
+                                          to={`/homework/${course}/${assignment.module}/${assignment.id}`}
+                                        >
+                                          <time dateTime={assignment.due}>
+                                            {assignment.due}
+                                          </time>
+                                        </Link>
+                                      </td>
+                                    </tr>
+                                  )
+                              )}
                         </tbody>
                       </table>
                       {/* Pagination */}
@@ -348,7 +404,12 @@ export default function Dashboard() {
                       >
                         <div className="hidden sm:block">
                           <p className="text-sm text-gray-700">
-                            Showing <span className="font-medium">{numAssignments}</span>{' '}assignment{numAssignments === 1 ? '' : 's'}
+                            Showing{' '}
+                            <span className="font-medium">
+                              {numAssignments}
+                            </span>{' '}
+                            assignment
+                            {numAssignments === 1 ? '' : 's'}
                           </p>
                         </div>
                         <div className="flex-1 flex justify-between sm:justify-end">
@@ -372,5 +433,5 @@ export default function Dashboard() {
         </div>
       </div>
     </Page>
-  )
+  );
 }

@@ -1,37 +1,35 @@
-import EvCirc from '../../../images/evcirc.png'
-import { Fragment, useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { Menu, Transition } from '@headlessui/react'
-import { useAuth } from '../../../contexts/AuthContext'
-import {
-  ChevronDownIcon,
-} from '@heroicons/react/solid'
-import { useDocumentData } from 'react-firebase-hooks/firestore'
-import { database } from '../../../firebase'
+import EvCirc from '../../../images/evcirc.png';
+import { Fragment, useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Menu, Transition } from '@headlessui/react';
+import { useAuth } from '../../../contexts/AuthContext';
+import { ChevronDownIcon } from '@heroicons/react/solid';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { database } from '../../../firebase';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function LaunchNav(props) {
-  const history = useHistory()
+  const history = useHistory();
   const [admin, setAdmin] = useState(false);
-  const { currentUser, signout } = useAuth()
-  const user = useDocumentData(database.users.doc(currentUser.email))[0]
+  const { currentUser, signout } = useAuth();
+  const user = useDocumentData(database.users.doc(currentUser.email))[0];
 
   useEffect(() => {
     if (user) {
       setAdmin(user.admin || user.instructor);
     }
-  }, [user])
+  }, [user]);
 
   async function handleLogout(event) {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      history.push("/landing")
-      await signout()
+      history.push('/landing');
+      await signout();
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
@@ -89,46 +87,52 @@ export default function LaunchNav(props) {
                     static
                     className="absolute origin-top-left md:origin-top-right md:right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
-                    {currentUser && <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          to="/profile"
-                          className={classNames(
-                            active ? 'bg-gray-100' : '',
-                            'block px-4 py-2 text-sm text-gray-700'
-                          )}
-                        >
-                          View Profile
-                        </Link>
-                      )}
-                    </Menu.Item>}
-                    {currentUser && <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          to="/enroll"
-                          className={classNames(
-                            active ? 'bg-gray-100' : '',
-                            'text-left block px-4 w-full py-2 text-sm text-gray-700'
-                          )}
-                        >
-                          My Courses
-                        </Link>
-                      )}
-                    </Menu.Item>}
-                    {currentUser && <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          to="/home"
-                          className={classNames(
-                            active ? 'bg-gray-100' : '',
-                            'block px-4 py-2 text-sm text-gray-700'
-                          )}
-                        >
-                          Course Home
-                        </Link>
-                      )}
-                    </Menu.Item>}
-                    {admin && 
+                    {currentUser && (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/profile"
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            View Profile
+                          </Link>
+                        )}
+                      </Menu.Item>
+                    )}
+                    {currentUser && (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/enroll"
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'text-left block px-4 w-full py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            My Courses
+                          </Link>
+                        )}
+                      </Menu.Item>
+                    )}
+                    {currentUser && (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/home"
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            Course Home
+                          </Link>
+                        )}
+                      </Menu.Item>
+                    )}
+                    {admin && (
                       <Menu.Item>
                         {({ active }) => (
                           <Link
@@ -141,9 +145,9 @@ export default function LaunchNav(props) {
                             Admin Portal
                           </Link>
                         )}
-                      </ Menu.Item>
-                    }
-                    {currentUser ?
+                      </Menu.Item>
+                    )}
+                    {currentUser ? (
                       <Menu.Item>
                         {({ active }) => (
                           <button
@@ -156,7 +160,8 @@ export default function LaunchNav(props) {
                             Logout
                           </button>
                         )}
-                      </Menu.Item> :
+                      </Menu.Item>
+                    ) : (
                       <Menu.Item>
                         {({ active }) => (
                           <Link
@@ -170,7 +175,7 @@ export default function LaunchNav(props) {
                           </Link>
                         )}
                       </Menu.Item>
-                    }
+                    )}
                   </Menu.Items>
                 </Transition>
               </>
@@ -179,5 +184,5 @@ export default function LaunchNav(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

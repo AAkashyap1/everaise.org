@@ -1,10 +1,10 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { PencilIcon, XIcon } from '@heroicons/react/solid'
-import { database } from '../../../../firebase'
-import { useParams } from 'react-router-dom'
-import printError from '../../../../utility/printError'
-import Loading from './loading'
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { PencilIcon, XIcon } from '@heroicons/react/solid';
+import { database } from '../../../../firebase';
+import { useParams } from 'react-router-dom';
+import printError from '../../../../utility/printError';
+import Loading from './loading';
 
 /*
 function classNames(...classes) {
@@ -22,7 +22,7 @@ export default function AddModuleModal(props) {
   const { course } = useParams();
   const [module, setModule] = useState({
     name: '',
-    disabled: false,
+    disabled: false
   });
 
   async function addModule(e) {
@@ -31,26 +31,27 @@ export default function AddModuleModal(props) {
       setLoading(true);
       props.data.doc(`${module.name}`).set({
         name: module.name,
-        disabled: module.disabled,
-      })
+        disabled: module.disabled
+      });
       const users = await database.users.get();
       users.docs.forEach((doc) => {
-        database.users.doc(doc.id)
+        database.users
+          .doc(doc.id)
           .collection('courses')
           .doc(course)
           .collection('modules')
           .doc(`${module.name}`)
           .set({
             name: module.name,
-            disabled: module.disabled,
-          })
-      })
+            disabled: module.disabled
+          });
+      });
       console.log('Module succesfully created!');
       props.setOpen(false);
       setModule({
         name: '',
-        disabled: false,
-      })
+        disabled: false
+      });
     } catch (err) {
       printError(err);
     }
@@ -59,7 +60,11 @@ export default function AddModuleModal(props) {
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={() => (!loading && props.setOpen(false))}>
+      <Dialog
+        as="div"
+        className="fixed z-10 inset-0 overflow-y-auto"
+        onClose={() => !loading && props.setOpen(false)}
+      >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
@@ -74,7 +79,10 @@ export default function AddModuleModal(props) {
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
             &#8203;
           </span>
           <Transition.Child
@@ -87,42 +95,57 @@ export default function AddModuleModal(props) {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
-              {!loading ?
-              <div>
-                <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
-                  <button
-                    type="button"
-                    className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={() => props.setOpen(false)}
-                  >
-                    <span className="sr-only">Close</span>
-                    <XIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-                </div>
+              {!loading ? (
                 <div>
-                  <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100">
-                    <PencilIcon className="h-6 w-6 text-cyan-600" aria-hidden="true" />
+                  <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+                    <button
+                      type="button"
+                      className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => props.setOpen(false)}
+                    >
+                      <span className="sr-only">Close</span>
+                      <XIcon className="h-6 w-6" aria-hidden="true" />
+                    </button>
                   </div>
-                  <div className="mt-3 text-center sm:mt-5">
-                    <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
-                      Create module
-                    </Dialog.Title>
+                  <div>
+                    <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100">
+                      <PencilIcon
+                        className="h-6 w-6 text-cyan-600"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div className="mt-3 text-center sm:mt-5">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg leading-6 font-medium text-gray-900"
+                      >
+                        Create module
+                      </Dialog.Title>
+                    </div>
                   </div>
-                </div>
-                <form className="mt-6 grid grid-cols-2 gap-6" onSubmit={addModule} method="POST">
-                  <div className="col-span-2">
-                    <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
-                      Name{'*'}
-                    </label>
-                    <input
-                      required
-                      value={module.name}
-                      onChange={e => setModule({...module, name: e.target.value })}
-                      placeholder="Enter module name"
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                  {/*
+                  <form
+                    className="mt-6 grid grid-cols-2 gap-6"
+                    onSubmit={addModule}
+                    method="POST"
+                  >
+                    <div className="col-span-2">
+                      <label
+                        htmlFor="question_id"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Name{'*'}
+                      </label>
+                      <input
+                        required
+                        value={module.name}
+                        onChange={(e) =>
+                          setModule({ ...module, name: e.target.value })
+                        }
+                        placeholder="Enter module name"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    {/*
                   <div className="col-span-2">
                     <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
                       Disabled{'*'}
@@ -179,20 +202,22 @@ export default function AddModuleModal(props) {
                     </div>
                   </div>
                   */}
-                  <button
-                    disabled={loading}
-                    type="submit"
-                    className="col-span-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-cyan-600 text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
-                  >
-                    Save module
-                  </button>
-                </form>
-              </div> : <Loading />
-              }
+                    <button
+                      disabled={loading}
+                      type="submit"
+                      className="col-span-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-cyan-600 text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                    >
+                      Save module
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                <Loading />
+              )}
             </div>
           </Transition.Child>
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

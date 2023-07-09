@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './index.css';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/routes/PrivateRoute';
 import ProfileRoute from './components/routes/ProfileRoute';
-import CourseRoute from './components/routes/CourseRoute'
+import CourseRoute from './components/routes/CourseRoute';
 import AdminRoute from './components/admin/AdminRoute';
 import reportWebVitals from './reportWebVitals';
 import AdminDashboard from './pages/admin/dashboard';
@@ -26,7 +26,6 @@ import Resources from './pages/resources';
 import Courses from './pages/courses';
 import Course from './pages/course';
 import NotFound from './pages/404';
-
 
 ReactDOM.render(
   <React.StrictMode>
@@ -53,9 +52,17 @@ ReactDOM.render(
           </Route>
           <PrivateRoute path="/launch" component={Home} />
           <CourseRoute exact path="/dashboard/:course" component={Dashboard} />
-          <CourseRoute exact path="/homework/:course/:module/:assignmentId" component={Homework} />
+          <CourseRoute
+            exact
+            path="/homework/:course/:module/:assignmentId"
+            component={Homework}
+          />
           <AdminRoute path="/admin/home" component={AdminHome} />
-          <AdminRoute exact path="/admin/dashboard/:course" component={AdminDashboard} />
+          <AdminRoute
+            exact
+            path="/admin/dashboard/:course"
+            component={AdminDashboard}
+          />
           <Route path="*" component={NotFound} />
         </Switch>
       </AuthProvider>

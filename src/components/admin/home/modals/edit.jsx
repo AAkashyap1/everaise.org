@@ -1,7 +1,7 @@
-import { Fragment, useState, useEffect } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { PencilIcon, XIcon } from '@heroicons/react/solid'
-import { database } from '../../../../firebase'
+import { Fragment, useState, useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { PencilIcon, XIcon } from '@heroicons/react/solid';
+import { database } from '../../../../firebase';
 
 export default function EditModal(props) {
   const [announcement, setAnnouncement] = useState({
@@ -16,7 +16,7 @@ export default function EditModal(props) {
   useEffect(() => {
     if (props.announcements && props.id) {
       for (let i = 0; i < props.announcements.length; i++) {
-        if (props.announcements[i].id === props.id) {;
+        if (props.announcements[i].id === props.id) {
           setAnnouncement({
             title: props.announcements[i].title,
             body: props.announcements[i].body,
@@ -28,26 +28,33 @@ export default function EditModal(props) {
         }
       }
     }
-  }, [props.announcements, props.id])
+  }, [props.announcements, props.id]);
 
   function savePost(e) {
     e.preventDefault();
-    database.announcements.doc(props.id).update({
-      title: announcement.title,
-      body: announcement.body,
-      author: {
-        imageUrl: announcement.author.imageUrl,
-        name: announcement.author.name
-      },
-    }).then(() => {
-      console.log('Assignment succesfully edited!')
-      props.setOpen(false)
-    })
+    database.announcements
+      .doc(props.id)
+      .update({
+        title: announcement.title,
+        body: announcement.body,
+        author: {
+          imageUrl: announcement.author.imageUrl,
+          name: announcement.author.name
+        }
+      })
+      .then(() => {
+        console.log('Assignment succesfully edited!');
+        props.setOpen(false);
+      });
   }
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={() => props.setOpen(!props.open)}>
+      <Dialog
+        as="div"
+        className="fixed z-10 inset-0 overflow-y-auto"
+        onClose={() => props.setOpen(!props.open)}
+      >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
@@ -62,7 +69,10 @@ export default function EditModal(props) {
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
             &#8203;
           </span>
           <Transition.Child
@@ -87,27 +97,49 @@ export default function EditModal(props) {
               </div>
               <div>
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100">
-                  <PencilIcon className="h-6 w-6 text-cyan-600" aria-hidden="true" />
+                  <PencilIcon
+                    className="h-6 w-6 text-cyan-600"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="mt-3 text-center sm:mt-5">
-                  <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg leading-6 font-medium text-gray-900"
+                  >
                     Edit announcement
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      You must hit the save button for any edits to be saved. All unsaved work will be lost!
+                      You must hit the save button for any edits to be saved.
+                      All unsaved work will be lost!
                     </p>
                   </div>
                 </div>
               </div>
-              <form className="mt-6 grid grid-cols-2 gap-6" onSubmit={savePost} method="POST">
+              <form
+                className="mt-6 grid grid-cols-2 gap-6"
+                onSubmit={savePost}
+                method="POST"
+              >
                 <div className="col-span-2 md:col-span-1">
-                  <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="question_id"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Author Profile Image
                   </label>
                   <input
                     value={announcement.author.imageUrl}
-                    onChange={e => setAnnouncement({...announcement, author: {...announcement.author, imageUrl: e.target.value}})}
+                    onChange={(e) =>
+                      setAnnouncement({
+                        ...announcement,
+                        author: {
+                          ...announcement.author,
+                          imageUrl: e.target.value
+                        }
+                      })
+                    }
                     type="url"
                     name="url"
                     id="url"
@@ -116,13 +148,21 @@ export default function EditModal(props) {
                   />
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                  <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="question_id"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Author Name{'*'}
                   </label>
                   <input
                     required
                     value={announcement.author.name}
-                    onChange={e => setAnnouncement({...announcement, author: {...announcement.author, name: e.target.value}})}
+                    onChange={(e) =>
+                      setAnnouncement({
+                        ...announcement,
+                        author: { ...announcement.author, name: e.target.value }
+                      })
+                    }
                     type="name"
                     name="name"
                     id="name"
@@ -131,13 +171,21 @@ export default function EditModal(props) {
                   />
                 </div>
                 <div className="col-span-2">
-                  <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="question_id"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Title{'*'}
                   </label>
                   <input
                     required
                     value={announcement.title}
-                    onChange={e => setAnnouncement({...announcement, title: e.target.value})}
+                    onChange={(e) =>
+                      setAnnouncement({
+                        ...announcement,
+                        title: e.target.value
+                      })
+                    }
                     type="title"
                     name="title"
                     id="title"
@@ -146,14 +194,19 @@ export default function EditModal(props) {
                   />
                 </div>
                 <div className="col-span-2">
-                  <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="question_id"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Announcement{'*'}
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={announcement.body}
-                    onChange={e => setAnnouncement({...announcement, body: e.target.value})}
+                    onChange={(e) =>
+                      setAnnouncement({ ...announcement, body: e.target.value })
+                    }
                     type="announcement"
                     name="announcement"
                     id="announcement"
@@ -173,5 +226,5 @@ export default function EditModal(props) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

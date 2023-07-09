@@ -1,6 +1,6 @@
-import CountUpOnce from '../../utility/count'
-import PhysicsCalc from '../../images/physics.png'
-import metrics from '../../data/landing/metrics'
+import CountUpOnce from '../../utility/count';
+import PhysicsCalc from '../../images/physics.png';
+import metrics from '../../data/landing/metrics';
 
 export default function Numbers() {
   return (
@@ -28,7 +28,9 @@ export default function Numbers() {
             </span>
           </h2>
           <p className="mt-3 text-xl font-bold text-gray-900">
-            We're a group of high school and college students who have been successful in a variety of STEM fields, including math, physics, astronomy, and biology.
+            We're a group of high school and college students who have been
+            successful in a variety of STEM fields, including math, physics,
+            astronomy, and biology.
           </p>
           <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
             {metrics.map((item) => (
@@ -37,7 +39,10 @@ export default function Numbers() {
                   <CountUpOnce end={item.end} suffix={item.suffix} />
                 </span>
                 <span className="mt-1 block text-gray-700">
-                  <span className="text-xl font-medium text-gray-9000">{item.emphasis}</span> {item.rest}
+                  <span className="text-xl font-medium text-gray-9000">
+                    {item.emphasis}
+                  </span>{' '}
+                  {item.rest}
                 </span>
               </p>
             ))}
@@ -45,5 +50,5 @@ export default function Numbers() {
         </div>
       </div>
     </div>
-  )
+  );
 }

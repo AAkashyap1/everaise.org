@@ -1,28 +1,28 @@
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { adminDashboardNavigation, adminDashboardSecondaryNavigation } from '../../data/launch/navigation/labels'
-import LaunchNav from '../../components/global/navs/LaunchNav'
-import SideNav from '../../components/global/navs/SideNav'
-import courseData from '../../data/launch/courseData'
-import Page from '../../components/page'
-import Modules from '../../components/admin/modules/modules'
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import {
-  MenuAlt1Icon,
-} from '@heroicons/react/outline'
-import {
-} from '@heroicons/react/solid'
+  adminDashboardNavigation,
+  adminDashboardSecondaryNavigation
+} from '../../data/launch/navigation/labels';
+import LaunchNav from '../../components/global/navs/LaunchNav';
+import SideNav from '../../components/global/navs/SideNav';
+import courseData from '../../data/launch/courseData';
+import Page from '../../components/page';
+import Modules from '../../components/admin/modules/modules';
+import { MenuAlt1Icon } from '@heroicons/react/outline';
+import {} from '@heroicons/react/solid';
 
 export default function Dashboard() {
-  const { course } = useParams()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { course } = useParams();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <Page 
-      title={courseData[course].courseName + " - Admin Dashboard"}
+    <Page
+      title={courseData[course].courseName + ' - Admin Dashboard'}
       description=""
     >
       <div className="h-screen flex overflow-hidden bg-gray-100">
-        <SideNav 
+        <SideNav
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
           navigation={adminDashboardNavigation}
@@ -39,11 +39,14 @@ export default function Dashboard() {
             </button>
           </div>
           <main className="flex-1 relative pb-8 z-0 overflow-y-auto">
-            <LaunchNav admin={true} info={courseData[course].courseName + ' - Admin'} />
+            <LaunchNav
+              admin={true}
+              info={courseData[course].courseName + ' - Admin'}
+            />
             <Modules />
           </main>
         </div>
       </div>
-    </Page>                                  
-  )
+    </Page>
+  );
 }

@@ -1,6 +1,6 @@
-import CountUp from "react-countup"
-import VisibilitySensor from 'react-visibility-sensor'
-import { useRef } from "react";
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
+import { useRef } from 'react';
 
 export default function CountUpOnce(props) {
   const countedUp = useRef();
@@ -11,8 +11,8 @@ export default function CountUpOnce(props) {
         <VisibilitySensor
           onChange={(isVisible) => {
             if (!countedUp.current && isVisible) {
-              countedUp.current = true
-              start()
+              countedUp.current = true;
+              start();
             }
           }}
           delayedCall
@@ -21,5 +21,5 @@ export default function CountUpOnce(props) {
         </VisibilitySensor>
       )}
     </CountUp>
-  )
+  );
 }

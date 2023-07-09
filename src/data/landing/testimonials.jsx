@@ -45,7 +45,7 @@ const testimonials = [
         the handout schedule way before the program started, so I always knew what was coming. 
         The handouts were generally well-written and comprehensive as well. The Everaise team 
         clearly put a lot of effort into planning these 5 weeks.`
-  },
-]
+  }
+];
 
 export default testimonials;

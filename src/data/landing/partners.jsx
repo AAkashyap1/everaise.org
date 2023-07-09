@@ -1,10 +1,10 @@
-import Biolympiads from '../../images/sponsors/Biolympiads.png'
+import Biolympiads from '../../images/sponsors/Biolympiads.png';
 
 const partners = [
   {
-    name: "Biolympiads",
-    image: Biolympiads,
-  },
-]
+    name: 'Biolympiads',
+    image: Biolympiads
+  }
+];
 
 export default partners;

@@ -1,7 +1,7 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { PencilIcon, XCircleIcon, XIcon } from '@heroicons/react/solid'
-import { database } from '../../../../firebase'
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { PencilIcon, XCircleIcon, XIcon } from '@heroicons/react/solid';
+import { database } from '../../../../firebase';
 
 export default function AddAccess(props) {
   const [email, setEmail] = useState('');
@@ -9,21 +9,29 @@ export default function AddAccess(props) {
 
   function grantAccess(e) {
     e.preventDefault();
-    database.users.doc(email).update({
-      instructor: true
-    }).then(() => {
-      console.log('Instructor succesfully added!')
-      setEmail('');
-      setError('');
-      props.setOpen(false);
-    }).catch(() => {
-      setError('Unable to grant ' + email + ' instructor access.')
-    })
+    database.users
+      .doc(email)
+      .update({
+        instructor: true
+      })
+      .then(() => {
+        console.log('Instructor succesfully added!');
+        setEmail('');
+        setError('');
+        props.setOpen(false);
+      })
+      .catch(() => {
+        setError('Unable to grant ' + email + ' instructor access.');
+      });
   }
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={() => props.setOpen(!props.open)}>
+      <Dialog
+        as="div"
+        className="fixed z-10 inset-0 overflow-y-auto"
+        onClose={() => props.setOpen(!props.open)}
+      >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
@@ -38,7 +46,10 @@ export default function AddAccess(props) {
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
             &#8203;
           </span>
           <Transition.Child
@@ -63,27 +74,37 @@ export default function AddAccess(props) {
               </div>
               <div>
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100">
-                  <PencilIcon className="h-6 w-6 text-cyan-600" aria-hidden="true" />
+                  <PencilIcon
+                    className="h-6 w-6 text-cyan-600"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="mt-3 text-center sm:mt-5">
-                  <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg leading-6 font-medium text-gray-900"
+                  >
                     Add instructor
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      To add an instructor, enter the email associated with their Launch account below.
+                      To add an instructor, enter the email associated with
+                      their Launch account below.
                     </p>
                   </div>
                 </div>
               </div>
               <form onSubmit={grantAccess} method="POST">
                 <div className="my-6">
-                  <label htmlFor="question_id" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="question_id"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Email{'*'}
                   </label>
                   <input
                     value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     name="email"
                     id="email"
@@ -91,18 +112,21 @@ export default function AddAccess(props) {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
-                {error && 
-                <div className="mb-6 rounded-md bg-red-50 p-4">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
-                    </div>
-                    <div className="ml-3 mr-7">
-                      <h3 className="text-sm text-red-800">{error}</h3>
+                {error && (
+                  <div className="mb-6 rounded-md bg-red-50 p-4">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <XCircleIcon
+                          className="h-5 w-5 text-red-400"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <div className="ml-3 mr-7">
+                        <h3 className="text-sm text-red-800">{error}</h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-                }
+                )}
                 <button
                   type="submit"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-cyan-600 text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
@@ -115,5 +139,5 @@ export default function AddAccess(props) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

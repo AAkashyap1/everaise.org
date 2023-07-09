@@ -1,37 +1,48 @@
-import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useState, useEffect } from 'react'
-import { database } from '../../../firebase'
-import { useCollectionData, useCollection } from 'react-firebase-hooks/firestore'
-import ConfirmationModal from './modals/confirmation'
-import EditModal from './modals/edit'
-import CreateModal from './modals/create'
-import GetDate from '../../../utility/date'
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment, useState, useEffect } from 'react';
+import { database } from '../../../firebase';
+import {
+  useCollectionData,
+  useCollection
+} from 'react-firebase-hooks/firestore';
+import ConfirmationModal from './modals/confirmation';
+import EditModal from './modals/edit';
+import CreateModal from './modals/create';
+import GetDate from '../../../utility/date';
 import {
   DotsVerticalIcon,
   TrashIcon,
   PencilIcon,
   PlusCircleIcon,
-  UserCircleIcon,
-} from '@heroicons/react/solid'
+  UserCircleIcon
+} from '@heroicons/react/solid';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function AdminAnnouncements() {
   const [announcements, setAnnouncements] = useState([]);
-  const announcementCollectionData = useCollectionData(database.announcements.orderBy("date", "desc"))[0];
-  const announcementCollection = useCollection(database.announcements.orderBy("date", "desc"))[0];
+  const announcementCollectionData = useCollectionData(
+    database.announcements.orderBy('date', 'desc')
+  )[0];
+  const announcementCollection = useCollection(
+    database.announcements.orderBy('date', 'desc')
+  )[0];
   const [idToEdit, setIdToEdit] = useState('');
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
-  
+
   useEffect(() => {
     if (announcementCollection && announcementCollectionData) {
       const docs = announcementCollection.docs;
       let tempAnnouncements = [];
-      for (let i = 0; i < Math.min(docs.length, announcementCollectionData.length); i++) {
+      for (
+        let i = 0;
+        i < Math.min(docs.length, announcementCollectionData.length);
+        i++
+      ) {
         let announcement = announcementCollectionData[i];
         tempAnnouncements.push({
           id: docs[i].id,
@@ -39,12 +50,12 @@ export default function AdminAnnouncements() {
           date: GetDate(announcement.date),
           datetime: announcement.date,
           body: announcement.body,
-          author: announcement.author,
-        })
+          author: announcement.author
+        });
       }
       setAnnouncements(tempAnnouncements);
     }
-  }, [announcementCollectionData, announcementCollection])
+  }, [announcementCollectionData, announcementCollection]);
 
   function confirmDeletion(e, id) {
     e.preventDefault();
@@ -65,8 +76,17 @@ export default function AdminAnnouncements() {
 
   return (
     <div>
-      <ConfirmationModal id={idToEdit} open={confirmationModalOpen} setOpen={setConfirmationModalOpen} />
-      <EditModal announcements={announcements} id={idToEdit} open={editModalOpen} setOpen={setEditModalOpen} />
+      <ConfirmationModal
+        id={idToEdit}
+        open={confirmationModalOpen}
+        setOpen={setConfirmationModalOpen}
+      />
+      <EditModal
+        announcements={announcements}
+        id={idToEdit}
+        open={editModalOpen}
+        setOpen={setEditModalOpen}
+      />
       <CreateModal open={createModalOpen} setOpen={setCreateModalOpen} />
       <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">
         Edit Announcements
@@ -77,36 +97,63 @@ export default function AdminAnnouncements() {
           <main className="mt-2">
             <ul className="space-y-4">
               {announcements.map((announcement) => (
-                <li key={announcement.id} className="bg-white px-4 py-6 shadow sm:p-6 rounded-lg">
-                  <article aria-labelledby={'announcement-title-' + announcement.id}>
+                <li
+                  key={announcement.id}
+                  className="bg-white px-4 py-6 shadow sm:p-6 rounded-lg"
+                >
+                  <article
+                    aria-labelledby={'announcement-title-' + announcement.id}
+                  >
                     <div>
                       <div className="flex space-x-3">
                         <div className="flex-shrink-0">
-                          <a href={announcement.href} target="_blank" rel="noreferrer">
-                            {announcement.author.imageUrl ? 
-                              <img className="h-10 w-10 rounded-full" src={announcement.author.imageUrl} alt="" /> :
-                              <UserCircleIcon className="text-yellow-400 h-10 w-10 rounded-full"/>
-                            }
+                          <a
+                            href={announcement.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {announcement.author.imageUrl ? (
+                              <img
+                                className="h-10 w-10 rounded-full"
+                                src={announcement.author.imageUrl}
+                                alt=""
+                              />
+                            ) : (
+                              <UserCircleIcon className="text-yellow-400 h-10 w-10 rounded-full" />
+                            )}
                           </a>
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-medium text-gray-900">
-                            <a href={announcement.href} target="_blank" rel="noreferrer" className="hover:underline">
+                            <a
+                              href={announcement.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="hover:underline"
+                            >
                               {announcement.author.name}
                             </a>
                           </p>
                           <p className="text-sm text-gray-500">
                             <p className="hover:underline">
-                              <time dateTime={announcement.datetime}>{announcement.date}</time>
+                              <time dateTime={announcement.datetime}>
+                                {announcement.date}
+                              </time>
                             </p>
                           </p>
                         </div>
                         <div className="flex-shrink-0 self-center flex">
-                          <Menu as="div" className="relative inline-block text-left">
+                          <Menu
+                            as="div"
+                            className="relative inline-block text-left"
+                          >
                             <div>
                               <Menu.Button className="-m-2 p-2 rounded-full flex items-center text-gray-400 hover:text-gray-600">
                                 <span className="sr-only">Open options</span>
-                                <DotsVerticalIcon className="h-5 w-5" aria-hidden="true" />
+                                <DotsVerticalIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
                               </Menu.Button>
                             </div>
 
@@ -124,13 +171,20 @@ export default function AdminAnnouncements() {
                                   <Menu.Item>
                                     {({ active }) => (
                                       <button
-                                        onClick={e => confirmDeletion(e, announcement.id)}
+                                        onClick={(e) =>
+                                          confirmDeletion(e, announcement.id)
+                                        }
                                         className={classNames(
-                                          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                          active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                           'w-full flex px-4 py-2 text-sm'
                                         )}
                                       >
-                                        <TrashIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                                        <TrashIcon
+                                          className="mr-3 h-5 w-5 text-gray-400"
+                                          aria-hidden="true"
+                                        />
                                         <span>Delete post</span>
                                       </button>
                                     )}
@@ -138,13 +192,20 @@ export default function AdminAnnouncements() {
                                   <Menu.Item>
                                     {({ active }) => (
                                       <button
-                                        onClick={e => editPost(e, announcement.id)}
+                                        onClick={(e) =>
+                                          editPost(e, announcement.id)
+                                        }
                                         className={classNames(
-                                          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                          active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                           'w-full flex px-4 py-2 text-sm'
                                         )}
                                       >
-                                        <PencilIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                                        <PencilIcon
+                                          className="mr-3 h-5 w-5 text-gray-400"
+                                          aria-hidden="true"
+                                        />
                                         <span>Edit post</span>
                                       </button>
                                     )}
@@ -155,7 +216,10 @@ export default function AdminAnnouncements() {
                           </Menu>
                         </div>
                       </div>
-                      <h2 id={'announcement-title-' + announcement.id} className="mt-4 text-base font-medium text-gray-900">
+                      <h2
+                        id={'announcement-title-' + announcement.id}
+                        className="mt-4 text-base font-medium text-gray-900"
+                      >
                         {announcement.title}
                       </h2>
                     </div>
@@ -173,15 +237,20 @@ export default function AdminAnnouncements() {
           >
             <div className="flex ">
               <div className="flex-shrink-0">
-                <PlusCircleIcon className="ml-3 h-5 w-5 text-green-500" aria-hidden="true" />
+                <PlusCircleIcon
+                  className="ml-3 h-5 w-5 text-green-500"
+                  aria-hidden="true"
+                />
               </div>
               <div className="ml-3 mr-7">
-                <h3 className="text-sm text-green-800 font-semibold">Add announcement</h3>
+                <h3 className="text-sm text-green-800 font-semibold">
+                  Add announcement
+                </h3>
               </div>
             </div>
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
