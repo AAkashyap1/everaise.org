@@ -37,6 +37,7 @@ import WilliamShi from '../images/team/WilliamShi.png';
 import SaadiqShaikh from '../images/team/SaadiqShaikh.png';
 import GregPylypovych from '../images/team/GregoryPylypovych.png';
 import JustinShan from '../images/team/JustinShan.png';
+import JetChung from '../images/team/JetChung.png';
 import AndrewWu from '../images/team/AndrewWu.png';
 import JenniferWang from '../images/team/JenniferWang.png';
 import DennisChen from '../images/team/DennisChen.png';
@@ -329,6 +330,15 @@ const archive = [
     achievements: [],
     education: `Math+CS @ MIT '25`,
     linkedInUrl: 'https://www.linkedin.com/in/gregory-pylypovych-911542221/',
+    gitHubUrl: ''
+  },
+  {
+    name: 'Jet Chung',
+    roles: ['Co-founder'],
+    imageUrl: JetChung,
+    achievements: [],
+    education: `Math+Stats @ Oxford '25`,
+    linkedInUrl: '',
     gitHubUrl: ''
   },
   {
