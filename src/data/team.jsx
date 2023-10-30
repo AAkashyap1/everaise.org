@@ -128,7 +128,7 @@ const current = [
     achievements: [
       'Canadian Junior Mathematical Olympiad (CJMO) Qualifier',
       '2x Canadian Mathematical Olympiad Qualifying Repêchage (CMOQR) Qualifier',
-      'AIME Qualifier'
+      '3x AIME Qualifier'
     ],
     education: `St. George's School, Canada '24`,
     linkedInUrl: '',
