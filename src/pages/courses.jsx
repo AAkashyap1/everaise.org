@@ -53,7 +53,7 @@ const courses = [
     head: 'Ashmit Dutta / Evan Kim',
     hours: ['TBD'],
     cost: '$0',
-    status: 'ended'
+    status: 'enroll Now!'
   },
   {
     course: 'Biology',
@@ -61,7 +61,7 @@ const courses = [
     head: 'Krish Jayarapu',
     hours: ['TBD'],
     cost: '$0',
-    status: 'ended'
+    status: 'enroll Now!'
   },
   {
     course: 'Astronomy',
@@ -69,7 +69,7 @@ const courses = [
     head: 'Abhay Bestrapalli / Jeffrey Wei / Faraz Ahmed',
     hours: ['TBD'],
     cost: '$0',
-    status: 'ended'
+    status: 'enroll Now!'
   },
   {
     course: 'Math Competitions I',
@@ -77,7 +77,7 @@ const courses = [
     head: 'Matthew Chen / Kiran Sun',
     hours: ['TBD'],
     cost: '$0',
-    status: 'ended'
+    status: 'enroll Now!'
   },
   {
     course: 'Physics Mechanics',
