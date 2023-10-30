@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.af80579d.chunk.css",
-    "main.js": "/static/js/main.5f6b8852.chunk.js",
-    "main.js.map": "/static/js/main.5f6b8852.chunk.js.map",
+    "main.js": "/static/js/main.07515ace.chunk.js",
+    "main.js.map": "/static/js/main.07515ace.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ff5e528c.js",
     "runtime-main.js.map": "/static/js/runtime-main.ff5e528c.js.map",
     "static/css/2.ff5b8b6f.chunk.css": "/static/css/2.ff5b8b6f.chunk.css",
@@ -57,7 +57,6 @@
     "static/media/JeffreyWei.1060fca9.png": "/static/media/JeffreyWei.1060fca9.png",
     "static/media/JenniferWang.a0847faf.png": "/static/media/JenniferWang.a0847faf.png",
     "static/media/JessicaHe.2d7504a4.png": "/static/media/JessicaHe.2d7504a4.png",
-    "static/media/JetChung.a458cf06.png": "/static/media/JetChung.a458cf06.png",
     "static/media/JinhaKim.c3c9a3b8.png": "/static/media/JinhaKim.c3c9a3b8.png",
     "static/media/JiyoungLee.061011e9.png": "/static/media/JiyoungLee.061011e9.png",
     "static/media/JoshuaLee.35ccb743.jpg": "/static/media/JoshuaLee.35ccb743.jpg",
@@ -117,6 +116,6 @@
     "static/css/2.ff5b8b6f.chunk.css",
     "static/js/2.245c3c2f.chunk.js",
     "static/css/main.af80579d.chunk.css",
-    "static/js/main.5f6b8852.chunk.js"
+    "static/js/main.07515ace.chunk.js"
   ]
 }
