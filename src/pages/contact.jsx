@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <Page
       title="Contact us - Everaise Academy"
-      description="Have any unanswered questions or concerns? Contact us!"
+      description="Have any unanswered questions or concerns about the program? Contact us!"
     >
       <div>
         <Nav />
