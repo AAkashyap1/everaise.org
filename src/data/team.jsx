@@ -97,7 +97,7 @@ const current = [
   },
   {
     name: 'Ananth Kashyap',
-    roles: ['Director of Technology', 'Executive Team Member', 'Co-Founder'],
+    roles: ['Co-founder', 'Director of Technology', 'Executive Team Member'],
     imageUrl: AnanthKashyap,
     achievements: [
       'Robotics Researcher at Carnegie Mellon University',
