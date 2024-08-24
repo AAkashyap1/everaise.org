@@ -10,7 +10,7 @@ const app = firebase.initializeApp({
   storageBucket: 'everaise-launch-83ee8.appspot.com',
   messagingSenderId: '862278495973',
   appId: '1:862278495973:web:40ce33cb196be320382e0c',
-  measurementId: 'G-RBBZJNHH3S'
+  measurementId: 'G-RBBZJNHH3S'  
 });
 
 const firestore = app.firestore();
